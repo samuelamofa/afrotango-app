@@ -12,10 +12,10 @@ class MyPostModel extends FlutterFlowModel<MyPostWidget> {
   String? Function(BuildContext, String?)? searchBarTextControllerValidator;
   // Model for NavBar component.
   late NavBarModel navBarModel;
-  // State field(s) for TabBar widget.
-  TabController? tabBarController;
-  int get tabBarCurrentIndex =>
-      tabBarController != null ? tabBarController!.index : 0;
+  // State field(s) for PostTabBar widget.
+  TabController? postTabBarController;
+  int get postTabBarCurrentIndex =>
+      postTabBarController != null ? postTabBarController!.index : 0;
 
   @override
   void initState(BuildContext context) {
@@ -28,6 +28,6 @@ class MyPostModel extends FlutterFlowModel<MyPostWidget> {
     searchBarTextController?.dispose();
 
     navBarModel.dispose();
-    tabBarController?.dispose();
+    postTabBarController?.dispose();
   }
 }

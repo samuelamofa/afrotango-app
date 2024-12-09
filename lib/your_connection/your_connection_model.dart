@@ -1,3 +1,4 @@
+import '/backend/backend.dart';
 import '/components/nav_bar_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'your_connection_widget.dart' show YourConnectionWidget;
@@ -21,14 +22,14 @@ class YourConnectionModel extends FlutterFlowModel<YourConnectionWidget> {
   FocusNode? textFieldFocusNode1;
   TextEditingController? textController2;
   String? Function(BuildContext, String?)? textController2Validator;
+  // Stores action output result for [Firestore Query - Query a collection] action in IconButton widget.
+  ChatRecord? queryChatref;
+  // Stores action output result for [Backend Call - Create Document] action in IconButton widget.
+  ChatRecord? newChatRef;
   // State field(s) for TextField widget.
   FocusNode? textFieldFocusNode2;
   TextEditingController? textController3;
   String? Function(BuildContext, String?)? textController3Validator;
-  // State field(s) for TextField widget.
-  FocusNode? textFieldFocusNode3;
-  TextEditingController? textController4;
-  String? Function(BuildContext, String?)? textController4Validator;
 
   @override
   void initState(BuildContext context) {
@@ -47,8 +48,5 @@ class YourConnectionModel extends FlutterFlowModel<YourConnectionWidget> {
 
     textFieldFocusNode2?.dispose();
     textController3?.dispose();
-
-    textFieldFocusNode3?.dispose();
-    textController4?.dispose();
   }
 }

@@ -1,10 +1,10 @@
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/form_field_controller.dart';
-import 'event_create_widget.dart' show EventCreateWidget;
+import 'ad_post_create_widget.dart' show AdPostCreateWidget;
 import 'package:flutter/material.dart';
 
-class EventCreateModel extends FlutterFlowModel<EventCreateWidget> {
+class AdPostCreateModel extends FlutterFlowModel<AdPostCreateWidget> {
   ///  State fields for stateful widgets in this component.
 
   bool isDataUploading1 = false;
@@ -18,7 +18,6 @@ class EventCreateModel extends FlutterFlowModel<EventCreateWidget> {
   // State field(s) for DropDown widget.
   String? dropDownValue;
   FormFieldController<String>? dropDownValueController;
-  DateTime? datePicked;
   // State field(s) for TextField widget.
   FocusNode? textFieldFocusNode2;
   TextEditingController? textController2;
@@ -33,7 +32,7 @@ class EventCreateModel extends FlutterFlowModel<EventCreateWidget> {
   String uploadedFileUrl2 = '';
 
   // Stores action output result for [Backend Call - Create Document] action in Button widget.
-  EventRecord? eventDoc;
+  AdsRecord? adPostDoc;
 
   @override
   void initState(BuildContext context) {}

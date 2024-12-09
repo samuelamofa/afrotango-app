@@ -130,7 +130,12 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'myPost',
           path: '/mypost',
-          builder: (context, params) => const MyPostWidget(),
+          builder: (context, params) => MyPostWidget(
+            adsBool: params.getParam(
+              'adsBool',
+              ParamType.bool,
+            ),
+          ),
         ),
         FFRoute(
           name: 'homeFeed',
@@ -154,14 +159,28 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => const BusinessDirectoryWidget(),
         ),
         FFRoute(
-          name: 'Buisness',
-          path: '/buisness',
-          builder: (context, params) => const BuisnessWidget(),
+          name: 'BuisnessProfile',
+          path: '/buisnessProfile',
+          builder: (context, params) => BuisnessProfileWidget(
+            businessRef: params.getParam(
+              'businessRef',
+              ParamType.DocumentReference,
+              isList: false,
+              collectionNamePath: ['business'],
+            ),
+          ),
         ),
         FFRoute(
           name: 'Review',
           path: '/review',
-          builder: (context, params) => const ReviewWidget(),
+          builder: (context, params) => ReviewWidget(
+            businessRef: params.getParam(
+              'businessRef',
+              ParamType.DocumentReference,
+              isList: false,
+              collectionNamePath: ['business'],
+            ),
+          ),
         ),
         FFRoute(
           name: 'Allmessage',
@@ -176,12 +195,24 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'messaging',
           path: '/messaging',
-          builder: (context, params) => const MessagingWidget(),
+          builder: (context, params) => MessagingWidget(
+            chatRef: params.getParam(
+              'chatRef',
+              ParamType.DocumentReference,
+              isList: false,
+              collectionNamePath: ['chat'],
+            ),
+          ),
         ),
         FFRoute(
           name: 'yourConnection',
           path: '/yourConnection',
-          builder: (context, params) => const YourConnectionWidget(),
+          builder: (context, params) => YourConnectionWidget(
+            allConnectionBool: params.getParam(
+              'allConnectionBool',
+              ParamType.bool,
+            ),
+          ),
         ),
         FFRoute(
           name: 'Community',
@@ -189,9 +220,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => const CommunityWidget(),
         ),
         FFRoute(
-          name: 'myCommunity',
+          name: 'myCommunities',
           path: '/mycommunity',
-          builder: (context, params) => const MyCommunityWidget(),
+          builder: (context, params) => const MyCommunitiesWidget(),
         ),
         FFRoute(
           name: 'communitySpace',
@@ -203,17 +234,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'aboutCommunity',
           path: '/aboutcommunity',
           requireAuth: true,
-          builder: (context, params) => const AboutCommunityWidget(),
-        ),
-        FFRoute(
-          name: 'MarketplaceCategories',
-          path: '/marketplacecategories',
-          builder: (context, params) => const MarketplaceCategoriesWidget(),
-        ),
-        FFRoute(
-          name: 'ResourceCenter',
-          path: '/resourceCenter',
-          builder: (context, params) => const ResourceCenterWidget(),
+          builder: (context, params) => AboutCommunityWidget(
+            communityRef: params.getParam(
+              'communityRef',
+              ParamType.DocumentReference,
+              isList: false,
+              collectionNamePath: ['communities'],
+            ),
+          ),
         ),
         FFRoute(
           name: 'Marketplace',
@@ -221,9 +249,21 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => const MarketplaceWidget(),
         ),
         FFRoute(
+          name: 'ResourceCenter',
+          path: '/resourceCenter',
+          builder: (context, params) => const ResourceCenterWidget(),
+        ),
+        FFRoute(
           name: 'adviewPage',
           path: '/adviewPage',
-          builder: (context, params) => const AdviewPageWidget(),
+          builder: (context, params) => AdviewPageWidget(
+            adPostRef: params.getParam(
+              'adPostRef',
+              ParamType.DocumentReference,
+              isList: false,
+              collectionNamePath: ['ads'],
+            ),
+          ),
         ),
         FFRoute(
           name: 'events',
@@ -233,7 +273,19 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'eventView',
           path: '/eventView',
-          builder: (context, params) => const EventViewWidget(),
+          builder: (context, params) => EventViewWidget(
+            eventRef: params.getParam(
+              'eventRef',
+              ParamType.DocumentReference,
+              isList: false,
+              collectionNamePath: ['event'],
+            ),
+          ),
+        ),
+        FFRoute(
+          name: 'CreateBusiness',
+          path: '/createBusiness',
+          builder: (context, params) => const CreateBusinessWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
@@ -423,8 +475,8 @@ class FFRoute {
                   child: Center(
                     child: Image.asset(
                       'assets/images/AFRO_T_1.1.1.png',
-                      width: 200.0,
-                      height: 200.0,
+                      width: 100.0,
+                      height: 100.0,
                       fit: BoxFit.contain,
                     ),
                   ),

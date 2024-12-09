@@ -128,6 +128,32 @@ class UsersRecord extends FirestoreRecord {
   String get bannerImage => _bannerImage ?? '';
   bool hasBannerImage() => _bannerImage != null;
 
+  // "connections" field.
+  List<DocumentReference>? _connections;
+  List<DocumentReference> get connections => _connections ?? const [];
+  bool hasConnections() => _connections != null;
+
+  // "country_flag" field.
+  String? _countryFlag;
+  String get countryFlag => _countryFlag ?? '';
+  bool hasCountryFlag() => _countryFlag != null;
+
+  // "joined_communities" field.
+  List<DocumentReference>? _joinedCommunities;
+  List<DocumentReference> get joinedCommunities =>
+      _joinedCommunities ?? const [];
+  bool hasJoinedCommunities() => _joinedCommunities != null;
+
+  // "favourites" field.
+  List<DocumentReference>? _favourites;
+  List<DocumentReference> get favourites => _favourites ?? const [];
+  bool hasFavourites() => _favourites != null;
+
+  // "chatUserRef" field.
+  List<DocumentReference>? _chatUserRef;
+  List<DocumentReference> get chatUserRef => _chatUserRef ?? const [];
+  bool hasChatUserRef() => _chatUserRef != null;
+
   void _initializeFields() {
     _email = snapshotData['email'] as String?;
     _displayName = snapshotData['display_name'] as String?;
@@ -152,6 +178,11 @@ class UsersRecord extends FirestoreRecord {
     _snapchat = snapshotData['snapchat'] as String?;
     _instagram = snapshotData['instagram'] as String?;
     _bannerImage = snapshotData['banner_image'] as String?;
+    _connections = getDataList(snapshotData['connections']);
+    _countryFlag = snapshotData['country_flag'] as String?;
+    _joinedCommunities = getDataList(snapshotData['joined_communities']);
+    _favourites = getDataList(snapshotData['favourites']);
+    _chatUserRef = getDataList(snapshotData['chatUserRef']);
   }
 
   static CollectionReference get collection =>
@@ -206,6 +237,7 @@ Map<String, dynamic> createUsersRecordData({
   String? snapchat,
   String? instagram,
   String? bannerImage,
+  String? countryFlag,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -227,6 +259,7 @@ Map<String, dynamic> createUsersRecordData({
       'snapchat': snapchat,
       'instagram': instagram,
       'banner_image': bannerImage,
+      'country_flag': countryFlag,
     }.withoutNulls,
   );
 
@@ -261,7 +294,12 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e1?.whatsapp == e2?.whatsapp &&
         e1?.snapchat == e2?.snapchat &&
         e1?.instagram == e2?.instagram &&
-        e1?.bannerImage == e2?.bannerImage;
+        e1?.bannerImage == e2?.bannerImage &&
+        listEquality.equals(e1?.connections, e2?.connections) &&
+        e1?.countryFlag == e2?.countryFlag &&
+        listEquality.equals(e1?.joinedCommunities, e2?.joinedCommunities) &&
+        listEquality.equals(e1?.favourites, e2?.favourites) &&
+        listEquality.equals(e1?.chatUserRef, e2?.chatUserRef);
   }
 
   @override
@@ -287,7 +325,12 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e?.whatsapp,
         e?.snapchat,
         e?.instagram,
-        e?.bannerImage
+        e?.bannerImage,
+        e?.connections,
+        e?.countryFlag,
+        e?.joinedCommunities,
+        e?.favourites,
+        e?.chatUserRef
       ]);
 
   @override

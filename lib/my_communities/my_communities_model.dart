@@ -1,8 +1,8 @@
 import '/flutter_flow/flutter_flow_util.dart';
-import 'my_community_widget.dart' show MyCommunityWidget;
+import 'my_communities_widget.dart' show MyCommunitiesWidget;
 import 'package:flutter/material.dart';
 
-class MyCommunityModel extends FlutterFlowModel<MyCommunityWidget> {
+class MyCommunitiesModel extends FlutterFlowModel<MyCommunitiesWidget> {
   ///  State fields for stateful widgets in this page.
 
   // State field(s) for searchBar widget.

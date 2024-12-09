@@ -149,44 +149,51 @@ class _ProfileEditWidgetState extends State<ProfileEditWidget> {
                                   ),
                             ),
                           ),
-                          Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                93.0, 0.0, 0.0, 0.0),
-                            child: FFButtonWidget(
-                              onPressed: () async {
-                                await currentUserReference!
-                                    .update(createUsersRecordData(
-                                  firstName: _model.textController1.text,
-                                  otherName: _model.textController2.text,
-                                  lastName: _model.textController3.text,
-                                  bio: _model.textController4.text,
-                                  city: _model.textController6.text,
-                                  website: _model.textController7.text,
-                                  facebook: _model.textController8.text,
-                                  whatsapp: _model.textController9.text,
-                                  snapchat: _model.textController10.text,
-                                  instagram: _model.textController11.text,
-                                ));
-                              },
-                              text: 'Save',
-                              options: FFButtonOptions(
-                                width: 105.0,
-                                height: 36.0,
+                          Expanded(
+                            child: Align(
+                              alignment: const AlignmentDirectional(1.0, 0.0),
+                              child: Padding(
                                 padding: const EdgeInsetsDirectional.fromSTEB(
-                                    16.0, 0.0, 16.0, 0.0),
-                                iconPadding: const EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 0.0, 0.0),
-                                color: FlutterFlowTheme.of(context).primary,
-                                textStyle: FlutterFlowTheme.of(context)
-                                    .titleSmall
-                                    .override(
-                                      fontFamily: 'Inter Tight',
-                                      color: Colors.white,
-                                      fontSize: 12.0,
-                                      letterSpacing: 0.0,
-                                    ),
-                                elevation: 0.0,
-                                borderRadius: BorderRadius.circular(999.0),
+                                    0.0, 0.0, 15.0, 0.0),
+                                child: FFButtonWidget(
+                                  onPressed: () async {
+                                    await currentUserReference!
+                                        .update(createUsersRecordData(
+                                      firstName: _model.textController1.text,
+                                      otherName: _model.textController2.text,
+                                      lastName: _model.textController3.text,
+                                      bio: _model.textController4.text,
+                                      city: _model.textController6.text,
+                                      website: _model.textController7.text,
+                                      facebook: _model.textController8.text,
+                                      whatsapp: _model.textController9.text,
+                                      snapchat: _model.textController10.text,
+                                      instagram: _model.textController11.text,
+                                    ));
+
+                                    context.pushNamed('personalProfile');
+                                  },
+                                  text: 'Save',
+                                  options: FFButtonOptions(
+                                    width: 105.0,
+                                    height: 36.0,
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                        16.0, 0.0, 16.0, 0.0),
+                                    iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 0.0, 0.0, 0.0),
+                                    color: FlutterFlowTheme.of(context).primary,
+                                    textStyle: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .override(
+                                          fontFamily: 'Inter Tight',
+                                          color: Colors.white,
+                                          fontSize: 12.0,
+                                          letterSpacing: 0.0,
+                                        ),
+                                    elevation: 0.0,
+                                    borderRadius: BorderRadius.circular(999.0),
+                                  ),
+                                ),
                               ),
                             ),
                           ),

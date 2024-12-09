@@ -8,18 +8,18 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/flutter_flow/upload_data.dart';
 import 'package:flutter/material.dart';
-import 'community_create_model.dart';
-export 'community_create_model.dart';
+import 'ad_post_create_model.dart';
+export 'ad_post_create_model.dart';
 
-class CommunityCreateWidget extends StatefulWidget {
-  const CommunityCreateWidget({super.key});
+class AdPostCreateWidget extends StatefulWidget {
+  const AdPostCreateWidget({super.key});
 
   @override
-  State<CommunityCreateWidget> createState() => _CommunityCreateWidgetState();
+  State<AdPostCreateWidget> createState() => _AdPostCreateWidgetState();
 }
 
-class _CommunityCreateWidgetState extends State<CommunityCreateWidget> {
-  late CommunityCreateModel _model;
+class _AdPostCreateWidgetState extends State<AdPostCreateWidget> {
+  late AdPostCreateModel _model;
 
   @override
   void setState(VoidCallback callback) {
@@ -30,13 +30,16 @@ class _CommunityCreateWidgetState extends State<CommunityCreateWidget> {
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => CommunityCreateModel());
+    _model = createModel(context, () => AdPostCreateModel());
 
     _model.textController1 ??= TextEditingController();
     _model.textFieldFocusNode1 ??= FocusNode();
 
     _model.textController2 ??= TextEditingController();
     _model.textFieldFocusNode2 ??= FocusNode();
+
+    _model.textController3 ??= TextEditingController();
+    _model.textFieldFocusNode3 ??= FocusNode();
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
@@ -52,7 +55,7 @@ class _CommunityCreateWidgetState extends State<CommunityCreateWidget> {
   Widget build(BuildContext context) {
     return Container(
       width: MediaQuery.sizeOf(context).width * 1.0,
-      height: 780.0,
+      height: 760.0,
       decoration: BoxDecoration(
         color: FlutterFlowTheme.of(context).secondaryBackground,
         borderRadius: const BorderRadius.only(
@@ -63,7 +66,7 @@ class _CommunityCreateWidgetState extends State<CommunityCreateWidget> {
         ),
       ),
       child: Padding(
-        padding: const EdgeInsetsDirectional.fromSTEB(1.0, 10.0, 0.0, 0.0),
+        padding: const EdgeInsetsDirectional.fromSTEB(10.0, 10.0, 10.0, 10.0),
         child: SingleChildScrollView(
           child: Column(
             mainAxisSize: MainAxisSize.max,
@@ -91,7 +94,7 @@ class _CommunityCreateWidgetState extends State<CommunityCreateWidget> {
               Align(
                 alignment: const AlignmentDirectional(0.0, 0.0),
                 child: Text(
-                  'Create a Community',
+                  'Post an Ad',
                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                         fontFamily: 'Inter',
                         fontSize: 18.0,
@@ -169,7 +172,7 @@ class _CommunityCreateWidgetState extends State<CommunityCreateWidget> {
                                 padding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 10.0, 0.0, 0.0),
                                 child: Text(
-                                  'Drop your community image here or browse',
+                                  'Drop your ad image here or browse',
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
@@ -203,9 +206,9 @@ class _CommunityCreateWidgetState extends State<CommunityCreateWidget> {
               Align(
                 alignment: const AlignmentDirectional(-1.0, 0.0),
                 child: Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(10.0, 20.0, 0.0, 0.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(10.0, 10.0, 0.0, 0.0),
                   child: Text(
-                    'Community Name',
+                    'Ad Name',
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                           fontFamily: 'Inter',
                           fontSize: 16.0,
@@ -231,7 +234,7 @@ class _CommunityCreateWidgetState extends State<CommunityCreateWidget> {
                                 fontFamily: 'Inter',
                                 letterSpacing: 0.0,
                               ),
-                      hintText: 'Community Name',
+                      hintText: 'Ad Name',
                       hintStyle:
                           FlutterFlowTheme.of(context).labelMedium.override(
                                 fontFamily: 'Inter',
@@ -300,17 +303,36 @@ class _CommunityCreateWidgetState extends State<CommunityCreateWidget> {
               Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: FlutterFlowDropDown<String>(
-                  controller: _model.dropDownValueController1 ??=
+                  controller: _model.dropDownValueController ??=
                       FormFieldController<String>(null),
                   options: const [
-                    'Professionals',
-                    'Official Government',
-                    'Commercial',
-                    'Religion',
-                    'Scholars'
+                    'Antiques and Collectibles',
+                    'Arts and Crafts',
+                    'Books, film and Music',
+                    'Car part',
+                    'Children’s wear and baby',
+                    'DIY',
+                    'Electronic',
+                    'Furniture',
+                    'Garage Sale',
+                    'Health and Beauty',
+                    'Home and kitchen',
+                    'Jewelry and Watches',
+                    'Luggage and Bags',
+                    'Menswear',
+                    'Miscellaneous',
+                    'Musical Instrument',
+                    'Patio and Garden',
+                    'Pet Supplies',
+                    'Properties for Rent',
+                    'Properties for Sale',
+                    'Sporting goods',
+                    'Toys and Game',
+                    'Vehicles',
+                    'Womenswear'
                   ],
                   onChanged: (val) =>
-                      safeSetState(() => _model.dropDownValue1 = val),
+                      safeSetState(() => _model.dropDownValue = val),
                   width: double.infinity,
                   height: 40.0,
                   textStyle: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -342,7 +364,7 @@ class _CommunityCreateWidgetState extends State<CommunityCreateWidget> {
                 child: Padding(
                   padding: const EdgeInsetsDirectional.fromSTEB(10.0, 10.0, 0.0, 0.0),
                   child: Text(
-                    'Privacy',
+                    'Description',
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                           fontFamily: 'Inter',
                           fontSize: 16.0,
@@ -353,56 +375,7 @@ class _CommunityCreateWidgetState extends State<CommunityCreateWidget> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: FlutterFlowDropDown<String>(
-                  controller: _model.dropDownValueController2 ??=
-                      FormFieldController<String>(null),
-                  options: const ['Public', 'Private'],
-                  onChanged: (val) =>
-                      safeSetState(() => _model.dropDownValue2 = val),
-                  width: double.infinity,
-                  height: 40.0,
-                  textStyle: FlutterFlowTheme.of(context).bodyMedium.override(
-                        fontFamily: 'Inter',
-                        color: const Color(0xFF6B7280),
-                        fontSize: 15.0,
-                        letterSpacing: 0.0,
-                        fontWeight: FontWeight.w500,
-                      ),
-                  hintText: 'Choose privacy',
-                  icon: const Icon(
-                    Icons.keyboard_arrow_down_rounded,
-                    color: Color(0xFF6B7280),
-                    size: 24.0,
-                  ),
-                  elevation: 2.0,
-                  borderColor: const Color(0xFF6B7280),
-                  borderWidth: 0.0,
-                  borderRadius: 999.0,
-                  margin: const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
-                  hidesUnderline: true,
-                  isOverButton: false,
-                  isSearchable: false,
-                  isMultiSelect: false,
-                ),
-              ),
-              Align(
-                alignment: const AlignmentDirectional(-1.0, 0.0),
-                child: Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(10.0, 10.0, 0.0, 0.0),
-                  child: Text(
-                    'About Community',
-                    style: FlutterFlowTheme.of(context).bodyMedium.override(
-                          fontFamily: 'Inter',
-                          fontSize: 16.0,
-                          letterSpacing: 0.0,
-                          fontWeight: FontWeight.w600,
-                        ),
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(10.0, 10.0, 10.0, 10.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(10.0, 10.0, 10.0, 0.0),
                 child: SizedBox(
                   width: MediaQuery.sizeOf(context).width * 1.0,
                   child: TextFormField(
@@ -417,7 +390,7 @@ class _CommunityCreateWidgetState extends State<CommunityCreateWidget> {
                                 fontFamily: 'Inter',
                                 letterSpacing: 0.0,
                               ),
-                      hintText: 'Community description',
+                      hintText: 'Group description',
                       hintStyle:
                           FlutterFlowTheme.of(context).labelMedium.override(
                                 fontFamily: 'Inter',
@@ -469,164 +442,251 @@ class _CommunityCreateWidgetState extends State<CommunityCreateWidget> {
                   ),
                 ),
               ),
-              Row(
-                mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Padding(
-                    padding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 20.0, 0.0),
-                    child: FFButtonWidget(
-                      onPressed: () async {
-                        Navigator.pop(context);
-                      },
-                      text: 'Cancel',
-                      options: FFButtonOptions(
-                        height: 40.0,
-                        padding: const EdgeInsetsDirectional.fromSTEB(
-                            16.0, 0.0, 16.0, 0.0),
-                        iconPadding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                        color: FlutterFlowTheme.of(context).primaryBackground,
-                        textStyle:
-                            FlutterFlowTheme.of(context).titleSmall.override(
-                                  fontFamily: 'Inter Tight',
-                                  color: FlutterFlowTheme.of(context).primary,
-                                  letterSpacing: 0.0,
-                                ),
-                        elevation: 0.0,
-                        borderRadius: BorderRadius.circular(20.0),
+              Align(
+                alignment: const AlignmentDirectional(-1.0, 0.0),
+                child: Padding(
+                  padding: const EdgeInsetsDirectional.fromSTEB(10.0, 10.0, 0.0, 0.0),
+                  child: Text(
+                    'Ad Pricing',
+                    style: FlutterFlowTheme.of(context).bodyMedium.override(
+                          fontFamily: 'Inter',
+                          fontSize: 16.0,
+                          letterSpacing: 0.0,
+                          fontWeight: FontWeight.w600,
+                        ),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsetsDirectional.fromSTEB(10.0, 10.0, 10.0, 10.0),
+                child: SizedBox(
+                  width: MediaQuery.sizeOf(context).width * 1.0,
+                  child: TextFormField(
+                    controller: _model.textController3,
+                    focusNode: _model.textFieldFocusNode3,
+                    autofocus: false,
+                    obscureText: false,
+                    decoration: InputDecoration(
+                      isDense: true,
+                      labelStyle:
+                          FlutterFlowTheme.of(context).labelMedium.override(
+                                fontFamily: 'Inter',
+                                letterSpacing: 0.0,
+                              ),
+                      hintText: 'Amount in GHS',
+                      hintStyle:
+                          FlutterFlowTheme.of(context).labelMedium.override(
+                                fontFamily: 'Inter',
+                                color: const Color(0xFF6B7280),
+                                fontSize: 15.0,
+                                letterSpacing: 0.0,
+                                fontWeight: FontWeight.w500,
+                              ),
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: const BorderSide(
+                          color: Color(0xFF6B7280),
+                          width: 1.0,
+                        ),
+                        borderRadius: BorderRadius.circular(999.0),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: const BorderSide(
+                          color: Color(0x00000000),
+                          width: 1.0,
+                        ),
+                        borderRadius: BorderRadius.circular(999.0),
+                      ),
+                      errorBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: FlutterFlowTheme.of(context).error,
+                          width: 1.0,
+                        ),
+                        borderRadius: BorderRadius.circular(999.0),
+                      ),
+                      focusedErrorBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: FlutterFlowTheme.of(context).error,
+                          width: 1.0,
+                        ),
+                        borderRadius: BorderRadius.circular(999.0),
+                      ),
+                      filled: true,
+                      fillColor:
+                          FlutterFlowTheme.of(context).secondaryBackground,
+                    ),
+                    style: FlutterFlowTheme.of(context).bodyMedium.override(
+                          fontFamily: 'Inter',
+                          letterSpacing: 0.0,
+                        ),
+                    cursorColor: FlutterFlowTheme.of(context).primaryText,
+                    validator:
+                        _model.textController3Validator.asValidator(context),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 5.0, 0.0, 0.0),
+                child: Row(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Padding(
+                      padding:
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 20.0, 0.0),
+                      child: FFButtonWidget(
+                        onPressed: () async {
+                          Navigator.pop(context);
+                        },
+                        text: 'Cancel',
+                        options: FFButtonOptions(
+                          height: 40.0,
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              16.0, 0.0, 16.0, 0.0),
+                          iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                              0.0, 0.0, 0.0, 0.0),
+                          color: FlutterFlowTheme.of(context).primaryBackground,
+                          textStyle:
+                              FlutterFlowTheme.of(context).titleSmall.override(
+                                    fontFamily: 'Inter Tight',
+                                    color: FlutterFlowTheme.of(context).primary,
+                                    letterSpacing: 0.0,
+                                  ),
+                          elevation: 0.0,
+                          borderRadius: BorderRadius.circular(20.0),
+                        ),
                       ),
                     ),
-                  ),
-                  Padding(
-                    padding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 20.0, 0.0),
-                    child: FFButtonWidget(
-                      onPressed: () async {
-                        if ((_model.uploadedLocalFile1.bytes?.isEmpty ??
-                                true)) {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
-                              content: Text(
-                                'Please pick an image',
-                                style: TextStyle(
-                                  color: FlutterFlowTheme.of(context)
-                                      .secondaryBackground,
+                    Padding(
+                      padding:
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 20.0, 0.0),
+                      child: FFButtonWidget(
+                        onPressed: () async {
+                          if ((_model.uploadedLocalFile1.bytes?.isEmpty ??
+                                  true)) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text(
+                                  'Please pick an image!',
+                                  style: TextStyle(
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryBackground,
+                                  ),
                                 ),
+                                duration: const Duration(milliseconds: 4000),
+                                backgroundColor:
+                                    FlutterFlowTheme.of(context).secondary,
                               ),
-                              duration: const Duration(milliseconds: 4000),
-                              backgroundColor:
-                                  FlutterFlowTheme.of(context).secondary,
-                            ),
-                          );
-                        } else if ((_model.uploadedLocalFile1.bytes?.isNotEmpty ??
-                                false)) {
-                          {
-                            safeSetState(() => _model.isDataUploading2 = true);
-                            var selectedUploadedFiles = <FFUploadedFile>[];
-                            var selectedMedia = <SelectedFile>[];
-                            var downloadUrls = <String>[];
-                            try {
-                              selectedUploadedFiles =
-                                  _model.uploadedLocalFile1.bytes!.isNotEmpty
-                                      ? [_model.uploadedLocalFile1]
-                                      : <FFUploadedFile>[];
-                              selectedMedia = selectedFilesFromUploadedFiles(
-                                selectedUploadedFiles,
-                              );
-                              downloadUrls = (await Future.wait(
-                                selectedMedia.map(
-                                  (m) async =>
-                                      await uploadData(m.storagePath, m.bytes),
+                            );
+                          } else if ((_model.uploadedLocalFile1.bytes?.isNotEmpty ??
+                                  false)) {
+                            {
+                              safeSetState(
+                                  () => _model.isDataUploading2 = true);
+                              var selectedUploadedFiles = <FFUploadedFile>[];
+                              var selectedMedia = <SelectedFile>[];
+                              var downloadUrls = <String>[];
+                              try {
+                                selectedUploadedFiles =
+                                    _model.uploadedLocalFile1.bytes!.isNotEmpty
+                                        ? [_model.uploadedLocalFile1]
+                                        : <FFUploadedFile>[];
+                                selectedMedia = selectedFilesFromUploadedFiles(
+                                  selectedUploadedFiles,
+                                );
+                                downloadUrls = (await Future.wait(
+                                  selectedMedia.map(
+                                    (m) async => await uploadData(
+                                        m.storagePath, m.bytes),
+                                  ),
+                                ))
+                                    .where((u) => u != null)
+                                    .map((u) => u!)
+                                    .toList();
+                              } finally {
+                                _model.isDataUploading2 = false;
+                              }
+                              if (selectedUploadedFiles.length ==
+                                      selectedMedia.length &&
+                                  downloadUrls.length == selectedMedia.length) {
+                                safeSetState(() {
+                                  _model.uploadedLocalFile2 =
+                                      selectedUploadedFiles.first;
+                                  _model.uploadedFileUrl2 = downloadUrls.first;
+                                });
+                              } else {
+                                safeSetState(() {});
+                                return;
+                              }
+                            }
+
+                            var adsRecordReference = AdsRecord.collection.doc();
+                            await adsRecordReference.set(createAdsRecordData(
+                              adsName: _model.textController1.text,
+                              createdUserRef: currentUserReference,
+                              adCategory: _model.dropDownValue,
+                              adDescription: _model.textController2.text,
+                              adPricing:
+                                  int.tryParse(_model.textController3.text),
+                              createdTime: getCurrentTimestamp,
+                              adImage: _model.uploadedFileUrl2,
+                            ));
+                            _model.adPostDoc = AdsRecord.getDocumentFromData(
+                                createAdsRecordData(
+                                  adsName: _model.textController1.text,
+                                  createdUserRef: currentUserReference,
+                                  adCategory: _model.dropDownValue,
+                                  adDescription: _model.textController2.text,
+                                  adPricing:
+                                      int.tryParse(_model.textController3.text),
+                                  createdTime: getCurrentTimestamp,
+                                  adImage: _model.uploadedFileUrl2,
                                 ),
-                              ))
-                                  .where((u) => u != null)
-                                  .map((u) => u!)
-                                  .toList();
-                            } finally {
-                              _model.isDataUploading2 = false;
-                            }
-                            if (selectedUploadedFiles.length ==
-                                    selectedMedia.length &&
-                                downloadUrls.length == selectedMedia.length) {
-                              safeSetState(() {
-                                _model.uploadedLocalFile2 =
-                                    selectedUploadedFiles.first;
-                                _model.uploadedFileUrl2 = downloadUrls.first;
-                              });
-                            } else {
-                              safeSetState(() {});
-                              return;
-                            }
+                                adsRecordReference);
+
+                            await currentUserReference!.update({
+                              ...mapToFirestore(
+                                {
+                                  'ads_created_ref': FieldValue.arrayUnion(
+                                      [_model.adPostDoc?.reference]),
+                                },
+                              ),
+                            });
+
+                            context.goNamed(
+                              'homeFeed',
+                              extra: <String, dynamic>{
+                                kTransitionInfoKey: const TransitionInfo(
+                                  hasTransition: true,
+                                  transitionType:
+                                      PageTransitionType.rightToLeft,
+                                ),
+                              },
+                            );
                           }
 
-                          var communitiesRecordReference =
-                              CommunitiesRecord.collection.doc();
-                          await communitiesRecordReference
-                              .set(createCommunitiesRecordData(
-                            communityName: _model.textController1.text,
-                            createdUserRef: currentUserReference,
-                            communityImage: _model.uploadedFileUrl2,
-                            communityCategory: _model.dropDownValue1,
-                            aboutCommunity: _model.textController2.text,
-                            createdTime: getCurrentTimestamp,
-                          ));
-                          _model.communitiesDoc =
-                              CommunitiesRecord.getDocumentFromData(
-                                  createCommunitiesRecordData(
-                                    communityName: _model.textController1.text,
-                                    createdUserRef: currentUserReference,
-                                    communityImage: _model.uploadedFileUrl2,
-                                    communityCategory: _model.dropDownValue1,
-                                    aboutCommunity: _model.textController2.text,
-                                    createdTime: getCurrentTimestamp,
+                          safeSetState(() {});
+                        },
+                        text: 'Create',
+                        options: FFButtonOptions(
+                          height: 40.0,
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              25.0, 0.0, 25.0, 0.0),
+                          iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                              0.0, 0.0, 0.0, 0.0),
+                          color: FlutterFlowTheme.of(context).primary,
+                          textStyle:
+                              FlutterFlowTheme.of(context).titleSmall.override(
+                                    fontFamily: 'Inter Tight',
+                                    color: Colors.white,
+                                    letterSpacing: 0.0,
                                   ),
-                                  communitiesRecordReference);
-
-                          await currentUserReference!.update({
-                            ...mapToFirestore(
-                              {
-                                'communities_created_ref':
-                                    FieldValue.arrayUnion(
-                                        [_model.communitiesDoc?.reference]),
-                              },
-                            ),
-                          });
-
-                          context.goNamed(
-                            'homeFeed',
-                            extra: <String, dynamic>{
-                              kTransitionInfoKey: const TransitionInfo(
-                                hasTransition: true,
-                                transitionType: PageTransitionType.rightToLeft,
-                              ),
-                            },
-                          );
-                        }
-
-                        safeSetState(() {});
-                      },
-                      text: 'Create',
-                      options: FFButtonOptions(
-                        height: 40.0,
-                        padding: const EdgeInsetsDirectional.fromSTEB(
-                            25.0, 0.0, 25.0, 0.0),
-                        iconPadding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                        color: FlutterFlowTheme.of(context).primary,
-                        textStyle:
-                            FlutterFlowTheme.of(context).titleSmall.override(
-                                  fontFamily: 'Inter Tight',
-                                  color: Colors.white,
-                                  letterSpacing: 0.0,
-                                ),
-                        elevation: 0.0,
-                        borderRadius: BorderRadius.circular(20.0),
+                          elevation: 0.0,
+                          borderRadius: BorderRadius.circular(20.0),
+                        ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ],
           ),

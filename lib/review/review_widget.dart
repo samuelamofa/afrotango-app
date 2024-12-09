@@ -1,13 +1,21 @@
+import '/auth/firebase_auth/auth_util.dart';
+import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'review_model.dart';
 export 'review_model.dart';
 
 class ReviewWidget extends StatefulWidget {
-  const ReviewWidget({super.key});
+  const ReviewWidget({
+    super.key,
+    required this.businessRef,
+  });
+
+  final DocumentReference? businessRef;
 
   @override
   State<ReviewWidget> createState() => _ReviewWidgetState();
@@ -91,38 +99,21 @@ class _ReviewWidgetState extends State<ReviewWidget> {
                       fontWeight: FontWeight.normal,
                     ),
               ),
-              const Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(32.0, 16.0, 32.0, 36.0),
-                child: Row(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Icon(
-                      Icons.star_outline,
-                      color: Color(0xFFAF7E00),
-                      size: 56.0,
-                    ),
-                    Icon(
-                      Icons.star_outline,
-                      color: Color(0xFFAF7E00),
-                      size: 56.0,
-                    ),
-                    Icon(
-                      Icons.star_outline,
-                      color: Color(0xFFAF7E00),
-                      size: 56.0,
-                    ),
-                    Icon(
-                      Icons.star_outline,
-                      color: Color(0xFFAF7E00),
-                      size: 56.0,
-                    ),
-                    Icon(
-                      Icons.star_outline,
-                      color: Color(0xFFAF7E00),
-                      size: 56.0,
-                    ),
-                  ],
+              Padding(
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 36.0),
+                child: RatingBar.builder(
+                  onRatingUpdate: (newValue) =>
+                      safeSetState(() => _model.ratingBarValue = newValue),
+                  itemBuilder: (context, index) => Icon(
+                    Icons.star_rounded,
+                    color: FlutterFlowTheme.of(context).secondary,
+                  ),
+                  direction: Axis.horizontal,
+                  initialRating: _model.ratingBarValue ??= 0.0,
+                  unratedColor: FlutterFlowTheme.of(context).accent1,
+                  itemCount: 5,
+                  itemSize: 70.0,
+                  glowColor: FlutterFlowTheme.of(context).secondary,
                 ),
               ),
               Text(
@@ -221,8 +212,8 @@ class _ReviewWidgetState extends State<ReviewWidget> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     FFButtonWidget(
-                      onPressed: () {
-                        print('Button pressed ...');
+                      onPressed: () async {
+                        context.safePop();
                       },
                       text: 'Cancel',
                       options: FFButtonOptions(
@@ -250,8 +241,30 @@ class _ReviewWidgetState extends State<ReviewWidget> {
                       padding:
                           const EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
                       child: FFButtonWidget(
-                        onPressed: () {
-                          print('Button pressed ...');
+                        onPressed: () async {
+                          await ReviewsRecord.createDoc(widget.businessRef!)
+                              .set(createReviewsRecordData(
+                            reviewText: _model.textController.text,
+                            createdUserRef: currentUserReference,
+                            ratingsCountValue: _model.ratingBarValue,
+                            createdTime: getCurrentTimestamp,
+                          ));
+
+                          context.goNamed(
+                            'BuisnessProfile',
+                            queryParameters: {
+                              'businessRef': serializeParam(
+                                widget.businessRef,
+                                ParamType.DocumentReference,
+                              ),
+                            }.withoutNulls,
+                            extra: <String, dynamic>{
+                              kTransitionInfoKey: const TransitionInfo(
+                                hasTransition: true,
+                                transitionType: PageTransitionType.leftToRight,
+                              ),
+                            },
+                          );
                         },
                         text: 'Submit',
                         options: FFButtonOptions(

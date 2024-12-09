@@ -9,10 +9,6 @@ class EventViewModel extends FlutterFlowModel<EventViewWidget> {
   FocusNode? searchBarFocusNode;
   TextEditingController? searchBarTextController;
   String? Function(BuildContext, String?)? searchBarTextControllerValidator;
-  // State field(s) for TextField widget.
-  FocusNode? textFieldFocusNode;
-  TextEditingController? textController2;
-  String? Function(BuildContext, String?)? textController2Validator;
 
   @override
   void initState(BuildContext context) {}
@@ -21,8 +17,5 @@ class EventViewModel extends FlutterFlowModel<EventViewWidget> {
   void dispose() {
     searchBarFocusNode?.dispose();
     searchBarTextController?.dispose();
-
-    textFieldFocusNode?.dispose();
-    textController2?.dispose();
   }
 }
