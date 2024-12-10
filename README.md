@@ -1,6 +1,6 @@
 # AFRO TANGO
 
-A new Flutter project.
+A social networking app to connect all diasporan together.
 
 ## Getting Started
 
