@@ -5,6 +5,7 @@ import '/create_components/event_create/event_create_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'personal_profile_model.dart';
@@ -242,56 +243,86 @@ class _PersonalProfileWidgetState extends State<PersonalProfileWidget> {
                               children: [
                                 Stack(
                                   children: [
-                                    AuthUserStreamWidget(
-                                      builder: (context) => ClipRRect(
-                                        borderRadius: const BorderRadius.only(
-                                          bottomLeft: Radius.circular(0.0),
-                                          bottomRight: Radius.circular(0.0),
-                                          topLeft: Radius.circular(15.0),
-                                          topRight: Radius.circular(15.0),
-                                        ),
-                                        child: Image.network(
-                                          valueOrDefault(
-                                              currentUserDocument?.bannerImage,
-                                              ''),
-                                          width: double.infinity,
-                                          height: 139.29,
-                                          fit: BoxFit.cover,
-                                        ),
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
-                                          130.0, 75.0, 0.0, 0.0),
-                                      child: Container(
-                                        width: 128.57,
-                                        height: 128.57,
-                                        decoration: BoxDecoration(
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryBackground,
-                                          shape: BoxShape.circle,
-                                          border: Border.all(
-                                            color: FlutterFlowTheme.of(context)
-                                                .secondaryBackground,
-                                            width: 5.0,
+                                    if (valueOrDefault(
+                                                currentUserDocument
+                                                    ?.bannerImage,
+                                                '') ==
+                                            '')
+                                      AuthUserStreamWidget(
+                                        builder: (context) => ClipRRect(
+                                          borderRadius: const BorderRadius.only(
+                                            bottomLeft: Radius.circular(0.0),
+                                            bottomRight: Radius.circular(0.0),
+                                            topLeft: Radius.circular(15.0),
+                                            topRight: Radius.circular(15.0),
+                                          ),
+                                          child: Image.asset(
+                                            'assets/images/Image_(4).png',
+                                            width: double.infinity,
+                                            height: 139.0,
+                                            fit: BoxFit.cover,
                                           ),
                                         ),
+                                      ),
+                                    if (valueOrDefault(
+                                                currentUserDocument
+                                                    ?.bannerImage,
+                                                '') !=
+                                            '')
+                                      AuthUserStreamWidget(
+                                        builder: (context) => ClipRRect(
+                                          borderRadius: const BorderRadius.only(
+                                            bottomLeft: Radius.circular(0.0),
+                                            bottomRight: Radius.circular(0.0),
+                                            topLeft: Radius.circular(15.0),
+                                            topRight: Radius.circular(15.0),
+                                          ),
+                                          child: Image.network(
+                                            valueOrDefault(
+                                                currentUserDocument
+                                                    ?.bannerImage,
+                                                ''),
+                                            width: double.infinity,
+                                            height: 139.29,
+                                            fit: BoxFit.cover,
+                                          ),
+                                        ),
+                                      ),
+                                    if (currentUserPhoto == '')
+                                      Padding(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                            130.0, 75.0, 0.0, 0.0),
                                         child: AuthUserStreamWidget(
                                           builder: (context) => Container(
-                                            width: 120.0,
-                                            height: 120.0,
-                                            clipBehavior: Clip.antiAlias,
-                                            decoration: const BoxDecoration(
+                                            width: 128.57,
+                                            height: 128.57,
+                                            decoration: BoxDecoration(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryBackground,
                                               shape: BoxShape.circle,
+                                              border: Border.all(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondaryBackground,
+                                                width: 5.0,
+                                              ),
                                             ),
-                                            child: Image.network(
-                                              currentUserPhoto,
-                                              fit: BoxFit.cover,
+                                            child: Container(
+                                              width: 120.0,
+                                              height: 120.0,
+                                              clipBehavior: Clip.antiAlias,
+                                              decoration: const BoxDecoration(
+                                                shape: BoxShape.circle,
+                                              ),
+                                              child: Image.asset(
+                                                'assets/images/Media_5.png',
+                                                fit: BoxFit.cover,
+                                              ),
                                             ),
                                           ),
                                         ),
                                       ),
-                                    ),
                                     Align(
                                       alignment:
                                           const AlignmentDirectional(1.0, -1.0),
@@ -343,6 +374,41 @@ class _PersonalProfileWidgetState extends State<PersonalProfileWidget> {
                                         ),
                                       ),
                                     ),
+                                    if (currentUserPhoto != '')
+                                      Padding(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                            130.0, 75.0, 0.0, 0.0),
+                                        child: AuthUserStreamWidget(
+                                          builder: (context) => Container(
+                                            width: 128.57,
+                                            height: 128.57,
+                                            decoration: BoxDecoration(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryBackground,
+                                              shape: BoxShape.circle,
+                                              border: Border.all(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondaryBackground,
+                                                width: 5.0,
+                                              ),
+                                            ),
+                                            child: Container(
+                                              width: 120.0,
+                                              height: 120.0,
+                                              clipBehavior: Clip.antiAlias,
+                                              decoration: const BoxDecoration(
+                                                shape: BoxShape.circle,
+                                              ),
+                                              child: Image.network(
+                                                currentUserPhoto,
+                                                fit: BoxFit.cover,
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
                                   ],
                                 ),
                                 Column(
@@ -402,20 +468,31 @@ class _PersonalProfileWidgetState extends State<PersonalProfileWidget> {
                                         ],
                                       ),
                                     ),
-                                    Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 10.0, 0.0, 0.0),
-                                      child: ClipRRect(
-                                        borderRadius:
-                                            BorderRadius.circular(0.0),
-                                        child: Image.asset(
-                                          'assets/images/flag-400.png',
-                                          width: 25.0,
-                                          height: 15.0,
-                                          fit: BoxFit.cover,
+                                    if (valueOrDefault(
+                                                currentUserDocument
+                                                    ?.countryName,
+                                                '') !=
+                                            '')
+                                      Padding(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 10.0, 0.0, 0.0),
+                                        child: AuthUserStreamWidget(
+                                          builder: (context) => ClipRRect(
+                                            borderRadius:
+                                                BorderRadius.circular(0.0),
+                                            child: Image.network(
+                                              functions.countryFlag(
+                                                  valueOrDefault(
+                                                      currentUserDocument
+                                                          ?.countryName,
+                                                      ''))!,
+                                              width: 25.0,
+                                              height: 15.0,
+                                              fit: BoxFit.cover,
+                                            ),
+                                          ),
                                         ),
                                       ),
-                                    ),
                                     Padding(
                                       padding: const EdgeInsetsDirectional.fromSTEB(
                                           20.0, 10.0, 20.0, 0.0),

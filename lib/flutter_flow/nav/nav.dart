@@ -190,7 +190,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'groupMessagingBox',
           path: '/groupmessagingBox',
-          builder: (context, params) => const GroupMessagingBoxWidget(),
+          builder: (context, params) => GroupMessagingBoxWidget(
+            chatRef: params.getParam(
+              'chatRef',
+              ParamType.DocumentReference,
+              isList: false,
+              collectionNamePath: ['chat'],
+            ),
+          ),
         ),
         FFRoute(
           name: 'messaging',
@@ -286,6 +293,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'CreateBusiness',
           path: '/createBusiness',
           builder: (context, params) => const CreateBusinessWidget(),
+        ),
+        FFRoute(
+          name: 'groupMessagingBoxCopy',
+          path: '/groupmessagingBoxk',
+          builder: (context, params) => const GroupMessagingBoxCopyWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

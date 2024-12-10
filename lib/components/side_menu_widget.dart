@@ -1,3 +1,5 @@
+import '/auth/firebase_auth/auth_util.dart';
+import '/create_components/event_create/event_create_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
@@ -80,19 +82,38 @@ class _SideMenuWidgetState extends State<SideMenuWidget> {
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      Padding(
-                        padding:
-                            const EdgeInsetsDirectional.fromSTEB(11.0, 0.0, 0.0, 0.0),
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(8.0),
-                          child: Image.asset(
-                            'assets/images/Group_18910.png',
-                            width: 65.0,
-                            height: 65.0,
-                            fit: BoxFit.cover,
+                      if (currentUserPhoto == '')
+                        Padding(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              11.0, 0.0, 0.0, 0.0),
+                          child: AuthUserStreamWidget(
+                            builder: (context) => ClipRRect(
+                              borderRadius: BorderRadius.circular(8.0),
+                              child: Image.asset(
+                                'assets/images/Group_18910.png',
+                                width: 65.0,
+                                height: 65.0,
+                                fit: BoxFit.cover,
+                              ),
+                            ),
                           ),
                         ),
-                      ),
+                      if (currentUserPhoto != '')
+                        Padding(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              11.0, 0.0, 0.0, 0.0),
+                          child: AuthUserStreamWidget(
+                            builder: (context) => ClipRRect(
+                              borderRadius: BorderRadius.circular(8.0),
+                              child: Image.network(
+                                currentUserPhoto,
+                                width: 65.0,
+                                height: 65.0,
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                          ),
+                        ),
                       Padding(
                         padding:
                             const EdgeInsetsDirectional.fromSTEB(6.0, 0.0, 0.0, 0.0),
@@ -101,17 +122,19 @@ class _SideMenuWidgetState extends State<SideMenuWidget> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(
-                              'Samuel Amofa',
-                              style: FlutterFlowTheme.of(context)
-                                  .bodyMedium
-                                  .override(
-                                    fontFamily: 'Poppins',
-                                    color: const Color(0xFF141821),
-                                    fontSize: 16.0,
-                                    letterSpacing: 0.0,
-                                    fontWeight: FontWeight.w500,
-                                  ),
+                            AuthUserStreamWidget(
+                              builder: (context) => Text(
+                                '${valueOrDefault(currentUserDocument?.firstName, '')} ${valueOrDefault(currentUserDocument?.lastName, '')}',
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Poppins',
+                                      color: const Color(0xFF141821),
+                                      fontSize: 16.0,
+                                      letterSpacing: 0.0,
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                              ),
                             ),
                             Text(
                               'View My Profile',
@@ -136,7 +159,7 @@ class _SideMenuWidgetState extends State<SideMenuWidget> {
                 children: [
                   Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(31.0, 30.0, 24.0, 0.0),
+                        const EdgeInsetsDirectional.fromSTEB(31.0, 30.0, 0.0, 0.0),
                     child: InkWell(
                       splashColor: Colors.transparent,
                       focusColor: Colors.transparent,
@@ -214,7 +237,7 @@ class _SideMenuWidgetState extends State<SideMenuWidget> {
                   ),
                   Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(31.0, 24.0, 24.0, 0.0),
+                        const EdgeInsetsDirectional.fromSTEB(31.0, 24.0, 0.0, 0.0),
                     child: InkWell(
                       splashColor: Colors.transparent,
                       focusColor: Colors.transparent,
@@ -294,53 +317,79 @@ class _SideMenuWidgetState extends State<SideMenuWidget> {
               ),
               Padding(
                 padding: const EdgeInsetsDirectional.fromSTEB(0.0, 37.0, 0.0, 0.0),
-                child: Container(
-                  width: 253.0,
-                  height: 121.0,
-                  decoration: BoxDecoration(
-                    color: const Color(0xFF141821),
-                    borderRadius: BorderRadius.circular(20.0),
-                  ),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
-                            34.0, 0.0, 19.0, 0.0),
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(8.0),
-                          child: Image.asset(
-                            'assets/images/Logo_(1).png',
-                            width: 42.0,
-                            height: 42.0,
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                      ),
-                      Text(
-                        'Event Ad',
-                        style: FlutterFlowTheme.of(context).bodyMedium.override(
-                              fontFamily: 'Inter',
-                              color: FlutterFlowTheme.of(context)
-                                  .secondaryBackground,
-                              fontSize: 16.0,
-                              letterSpacing: 0.0,
-                            ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(31.0, 41.0, 24.0, 0.0),
                 child: InkWell(
                   splashColor: Colors.transparent,
                   focusColor: Colors.transparent,
                   hoverColor: Colors.transparent,
                   highlightColor: Colors.transparent,
                   onTap: () async {
-                    context.pushNamed('ResourceCenter');
+                    Navigator.pop(context);
+                    await showModalBottomSheet(
+                      isScrollControlled: true,
+                      backgroundColor: Colors.transparent,
+                      enableDrag: false,
+                      context: context,
+                      builder: (context) {
+                        return Padding(
+                          padding: MediaQuery.viewInsetsOf(context),
+                          child: const EventCreateWidget(),
+                        );
+                      },
+                    ).then((value) => safeSetState(() {}));
+                  },
+                  child: Container(
+                    width: 253.0,
+                    height: 121.0,
+                    decoration: BoxDecoration(
+                      color: const Color(0xFF141821),
+                      borderRadius: BorderRadius.circular(20.0),
+                    ),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              34.0, 0.0, 19.0, 0.0),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(8.0),
+                            child: Image.asset(
+                              'assets/images/Logo_(1).png',
+                              width: 42.0,
+                              height: 42.0,
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        ),
+                        Text(
+                          'Event Ad',
+                          style:
+                              FlutterFlowTheme.of(context).bodyMedium.override(
+                                    fontFamily: 'Inter',
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryBackground,
+                                    fontSize: 16.0,
+                                    letterSpacing: 0.0,
+                                  ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsetsDirectional.fromSTEB(31.0, 70.0, 0.0, 0.0),
+                child: InkWell(
+                  splashColor: Colors.transparent,
+                  focusColor: Colors.transparent,
+                  hoverColor: Colors.transparent,
+                  highlightColor: Colors.transparent,
+                  onTap: () async {
+                    GoRouter.of(context).prepareAuthEvent();
+                    await authManager.signOut();
+                    GoRouter.of(context).clearRedirectLocation();
+
+                    context.goNamedAuth('signupPage', context.mounted);
                   },
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
@@ -348,26 +397,23 @@ class _SideMenuWidgetState extends State<SideMenuWidget> {
                       Padding(
                         padding:
                             const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 15.0, 0.0),
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(8.0),
-                          child: Image.asset(
-                            'assets/images/customer-service-2-line.png',
-                            width: 24.0,
-                            height: 24.0,
-                            fit: BoxFit.cover,
-                          ),
+                        child: Icon(
+                          Icons.logout,
+                          color: FlutterFlowTheme.of(context).primaryText,
+                          size: 24.0,
                         ),
                       ),
                       Padding(
                         padding: const EdgeInsetsDirectional.fromSTEB(
-                            0.0, 0.0, 134.0, 0.0),
+                            0.0, 0.0, 140.0, 0.0),
                         child: Text(
-                          'Support',
+                          'Logout',
                           style:
                               FlutterFlowTheme.of(context).bodyMedium.override(
                                     fontFamily: 'Poppins',
                                     color: const Color(0xFF858997),
                                     letterSpacing: 0.0,
+                                    fontWeight: FontWeight.w600,
                                   ),
                         ),
                       ),
@@ -378,41 +424,6 @@ class _SideMenuWidgetState extends State<SideMenuWidget> {
                       ),
                     ],
                   ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(31.0, 70.0, 24.0, 0.0),
-                child: Row(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    Padding(
-                      padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 15.0, 0.0),
-                      child: Icon(
-                        Icons.logout,
-                        color: FlutterFlowTheme.of(context).primaryText,
-                        size: 24.0,
-                      ),
-                    ),
-                    Padding(
-                      padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 140.0, 0.0),
-                      child: Text(
-                        'Logout',
-                        style: FlutterFlowTheme.of(context).bodyMedium.override(
-                              fontFamily: 'Poppins',
-                              color: const Color(0xFF858997),
-                              letterSpacing: 0.0,
-                              fontWeight: FontWeight.w600,
-                            ),
-                      ),
-                    ),
-                    Icon(
-                      Icons.keyboard_arrow_right,
-                      color: FlutterFlowTheme.of(context).primaryText,
-                      size: 14.0,
-                    ),
-                  ],
                 ),
               ),
             ],

@@ -56,6 +56,11 @@ class ChatRecord extends FirestoreRecord {
   DateTime? get timeStamps => _timeStamps;
   bool hasTimeStamps() => _timeStamps != null;
 
+  // "communityRef" field.
+  DocumentReference? _communityRef;
+  DocumentReference? get communityRef => _communityRef;
+  bool hasCommunityRef() => _communityRef != null;
+
   void _initializeFields() {
     _userIds = getDataList(snapshotData['userIds']);
     _messageBool = snapshotData['messageBool'] as bool?;
@@ -65,6 +70,7 @@ class ChatRecord extends FirestoreRecord {
     _lastMessage = snapshotData['lastMessage'] as String?;
     _userNames = getDataList(snapshotData['userNames']);
     _timeStamps = snapshotData['timeStamps'] as DateTime?;
+    _communityRef = snapshotData['communityRef'] as DocumentReference?;
   }
 
   static CollectionReference get collection =>
@@ -107,6 +113,7 @@ Map<String, dynamic> createChatRecordData({
   DocumentReference? groupMessageRef,
   String? lastMessage,
   DateTime? timeStamps,
+  DocumentReference? communityRef,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -116,6 +123,7 @@ Map<String, dynamic> createChatRecordData({
       'groupMessageRef': groupMessageRef,
       'lastMessage': lastMessage,
       'timeStamps': timeStamps,
+      'communityRef': communityRef,
     }.withoutNulls,
   );
 
@@ -135,7 +143,8 @@ class ChatRecordDocumentEquality implements Equality<ChatRecord> {
         e1?.groupMessageRef == e2?.groupMessageRef &&
         e1?.lastMessage == e2?.lastMessage &&
         listEquality.equals(e1?.userNames, e2?.userNames) &&
-        e1?.timeStamps == e2?.timeStamps;
+        e1?.timeStamps == e2?.timeStamps &&
+        e1?.communityRef == e2?.communityRef;
   }
 
   @override
@@ -147,7 +156,8 @@ class ChatRecordDocumentEquality implements Equality<ChatRecord> {
         e?.groupMessageRef,
         e?.lastMessage,
         e?.userNames,
-        e?.timeStamps
+        e?.timeStamps,
+        e?.communityRef
       ]);
 
   @override

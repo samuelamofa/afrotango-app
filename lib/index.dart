@@ -38,3 +38,5 @@ export '/events/events_widget.dart' show EventsWidget;
 export '/event_view/event_view_widget.dart' show EventViewWidget;
 export '/pages/create_business/create_business_widget.dart'
     show CreateBusinessWidget;
+export '/chats/group_messaging_box_copy/group_messaging_box_copy_widget.dart'
+    show GroupMessagingBoxCopyWidget;

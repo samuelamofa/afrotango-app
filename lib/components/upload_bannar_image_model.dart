@@ -1,8 +1,8 @@
 import '/flutter_flow/flutter_flow_util.dart';
-import 'upload_image_widget.dart' show UploadImageWidget;
+import 'upload_bannar_image_widget.dart' show UploadBannarImageWidget;
 import 'package:flutter/material.dart';
 
-class UploadImageModel extends FlutterFlowModel<UploadImageWidget> {
+class UploadBannarImageModel extends FlutterFlowModel<UploadBannarImageWidget> {
   ///  State fields for stateful widgets in this component.
 
   bool isDataUploading1 = false;

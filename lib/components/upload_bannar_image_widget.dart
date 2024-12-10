@@ -6,18 +6,19 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';
 import 'package:flutter/material.dart';
-import 'upload_image_model.dart';
-export 'upload_image_model.dart';
+import 'upload_bannar_image_model.dart';
+export 'upload_bannar_image_model.dart';
 
-class UploadImageWidget extends StatefulWidget {
-  const UploadImageWidget({super.key});
+class UploadBannarImageWidget extends StatefulWidget {
+  const UploadBannarImageWidget({super.key});
 
   @override
-  State<UploadImageWidget> createState() => _UploadImageWidgetState();
+  State<UploadBannarImageWidget> createState() =>
+      _UploadBannarImageWidgetState();
 }
 
-class _UploadImageWidgetState extends State<UploadImageWidget> {
-  late UploadImageModel _model;
+class _UploadBannarImageWidgetState extends State<UploadBannarImageWidget> {
+  late UploadBannarImageModel _model;
 
   @override
   void setState(VoidCallback callback) {
@@ -28,7 +29,7 @@ class _UploadImageWidgetState extends State<UploadImageWidget> {
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => UploadImageModel());
+    _model = createModel(context, () => UploadBannarImageModel());
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
@@ -44,7 +45,7 @@ class _UploadImageWidgetState extends State<UploadImageWidget> {
   Widget build(BuildContext context) {
     return Container(
       width: MediaQuery.sizeOf(context).width * 1.0,
-      height: 270.0,
+      height: 300.0,
       decoration: BoxDecoration(
         color: FlutterFlowTheme.of(context).secondaryBackground,
         borderRadius: BorderRadius.circular(20.0),
@@ -58,20 +59,19 @@ class _UploadImageWidgetState extends State<UploadImageWidget> {
               padding: const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
               child: Stack(
                 children: [
-                  if ((currentUserPhoto == '') &&
+                  if ((valueOrDefault(
+                                  currentUserDocument?.bannerImage, '') ==
+                              '') &&
                       ((_model.uploadedLocalFile1.bytes?.isEmpty ?? true)))
                     Align(
                       alignment: const AlignmentDirectional(0.0, 0.0),
                       child: AuthUserStreamWidget(
-                        builder: (context) => Container(
-                          width: 180.0,
-                          height: 180.0,
-                          clipBehavior: Clip.antiAlias,
-                          decoration: const BoxDecoration(
-                            shape: BoxShape.circle,
-                          ),
+                        builder: (context) => ClipRRect(
+                          borderRadius: BorderRadius.circular(8.0),
                           child: Image.asset(
-                            'assets/images/Image_(3).png',
+                            'assets/images/Image_(5).png',
+                            width: 300.0,
+                            height: 200.0,
                             fit: BoxFit.cover,
                           ),
                         ),
@@ -81,34 +81,30 @@ class _UploadImageWidgetState extends State<UploadImageWidget> {
                     Align(
                       alignment: const AlignmentDirectional(0.0, 0.0),
                       child: AuthUserStreamWidget(
-                        builder: (context) => Container(
-                          width: 180.0,
-                          height: 180.0,
-                          clipBehavior: Clip.antiAlias,
-                          decoration: const BoxDecoration(
-                            shape: BoxShape.circle,
-                          ),
+                        builder: (context) => ClipRRect(
+                          borderRadius: BorderRadius.circular(8.0),
                           child: Image.memory(
                             _model.uploadedLocalFile1.bytes ??
                                 Uint8List.fromList([]),
+                            width: 300.0,
+                            height: 200.0,
                             fit: BoxFit.cover,
                           ),
                         ),
                       ),
                     ),
-                  if (currentUserPhoto != '')
+                  if (valueOrDefault(currentUserDocument?.bannerImage, '') !=
+                          '')
                     Align(
                       alignment: const AlignmentDirectional(0.0, 0.0),
                       child: AuthUserStreamWidget(
-                        builder: (context) => Container(
-                          width: 180.0,
-                          height: 180.0,
-                          clipBehavior: Clip.antiAlias,
-                          decoration: const BoxDecoration(
-                            shape: BoxShape.circle,
-                          ),
+                        builder: (context) => ClipRRect(
+                          borderRadius: BorderRadius.circular(8.0),
                           child: Image.network(
-                            currentUserPhoto,
+                            valueOrDefault(
+                                currentUserDocument?.bannerImage, ''),
+                            width: 300.0,
+                            height: 200.0,
                             fit: BoxFit.cover,
                           ),
                         ),
@@ -224,7 +220,7 @@ class _UploadImageWidgetState extends State<UploadImageWidget> {
 
                           await currentUserReference!
                               .update(createUsersRecordData(
-                            photoUrl: _model.uploadedFileUrl2,
+                            bannerImage: _model.uploadedFileUrl2,
                           ));
                           Navigator.pop(context);
                         },

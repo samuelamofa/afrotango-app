@@ -154,6 +154,11 @@ class UsersRecord extends FirestoreRecord {
   List<DocumentReference> get chatUserRef => _chatUserRef ?? const [];
   bool hasChatUserRef() => _chatUserRef != null;
 
+  // "country_name" field.
+  String? _countryName;
+  String get countryName => _countryName ?? '';
+  bool hasCountryName() => _countryName != null;
+
   void _initializeFields() {
     _email = snapshotData['email'] as String?;
     _displayName = snapshotData['display_name'] as String?;
@@ -183,6 +188,7 @@ class UsersRecord extends FirestoreRecord {
     _joinedCommunities = getDataList(snapshotData['joined_communities']);
     _favourites = getDataList(snapshotData['favourites']);
     _chatUserRef = getDataList(snapshotData['chatUserRef']);
+    _countryName = snapshotData['country_name'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -238,6 +244,7 @@ Map<String, dynamic> createUsersRecordData({
   String? instagram,
   String? bannerImage,
   String? countryFlag,
+  String? countryName,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -260,6 +267,7 @@ Map<String, dynamic> createUsersRecordData({
       'instagram': instagram,
       'banner_image': bannerImage,
       'country_flag': countryFlag,
+      'country_name': countryName,
     }.withoutNulls,
   );
 
@@ -299,7 +307,8 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e1?.countryFlag == e2?.countryFlag &&
         listEquality.equals(e1?.joinedCommunities, e2?.joinedCommunities) &&
         listEquality.equals(e1?.favourites, e2?.favourites) &&
-        listEquality.equals(e1?.chatUserRef, e2?.chatUserRef);
+        listEquality.equals(e1?.chatUserRef, e2?.chatUserRef) &&
+        e1?.countryName == e2?.countryName;
   }
 
   @override
@@ -330,7 +339,8 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e?.countryFlag,
         e?.joinedCommunities,
         e?.favourites,
-        e?.chatUserRef
+        e?.chatUserRef,
+        e?.countryName
       ]);
 
   @override
