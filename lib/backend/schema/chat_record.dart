@@ -41,12 +41,36 @@ class ChatRecord extends FirestoreRecord {
   DocumentReference? get groupMessageRef => _groupMessageRef;
   bool hasGroupMessageRef() => _groupMessageRef != null;
 
+  // "lastMessage" field.
+  String? _lastMessage;
+  String get lastMessage => _lastMessage ?? '';
+  bool hasLastMessage() => _lastMessage != null;
+
+  // "userNames" field.
+  List<String>? _userNames;
+  List<String> get userNames => _userNames ?? const [];
+  bool hasUserNames() => _userNames != null;
+
+  // "timeStamps" field.
+  DateTime? _timeStamps;
+  DateTime? get timeStamps => _timeStamps;
+  bool hasTimeStamps() => _timeStamps != null;
+
+  // "communityRef" field.
+  DocumentReference? _communityRef;
+  DocumentReference? get communityRef => _communityRef;
+  bool hasCommunityRef() => _communityRef != null;
+
   void _initializeFields() {
     _userIds = getDataList(snapshotData['userIds']);
     _messageBool = snapshotData['messageBool'] as bool?;
     _groupBool = snapshotData['groupBool'] as bool?;
     _messageRef = snapshotData['messageRef'] as DocumentReference?;
     _groupMessageRef = snapshotData['groupMessageRef'] as DocumentReference?;
+    _lastMessage = snapshotData['lastMessage'] as String?;
+    _userNames = getDataList(snapshotData['userNames']);
+    _timeStamps = snapshotData['timeStamps'] as DateTime?;
+    _communityRef = snapshotData['communityRef'] as DocumentReference?;
   }
 
   static CollectionReference get collection =>
@@ -87,6 +111,9 @@ Map<String, dynamic> createChatRecordData({
   bool? groupBool,
   DocumentReference? messageRef,
   DocumentReference? groupMessageRef,
+  String? lastMessage,
+  DateTime? timeStamps,
+  DocumentReference? communityRef,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -94,6 +121,9 @@ Map<String, dynamic> createChatRecordData({
       'groupBool': groupBool,
       'messageRef': messageRef,
       'groupMessageRef': groupMessageRef,
+      'lastMessage': lastMessage,
+      'timeStamps': timeStamps,
+      'communityRef': communityRef,
     }.withoutNulls,
   );
 
@@ -110,7 +140,11 @@ class ChatRecordDocumentEquality implements Equality<ChatRecord> {
         e1?.messageBool == e2?.messageBool &&
         e1?.groupBool == e2?.groupBool &&
         e1?.messageRef == e2?.messageRef &&
-        e1?.groupMessageRef == e2?.groupMessageRef;
+        e1?.groupMessageRef == e2?.groupMessageRef &&
+        e1?.lastMessage == e2?.lastMessage &&
+        listEquality.equals(e1?.userNames, e2?.userNames) &&
+        e1?.timeStamps == e2?.timeStamps &&
+        e1?.communityRef == e2?.communityRef;
   }
 
   @override
@@ -119,7 +153,11 @@ class ChatRecordDocumentEquality implements Equality<ChatRecord> {
         e?.messageBool,
         e?.groupBool,
         e?.messageRef,
-        e?.groupMessageRef
+        e?.groupMessageRef,
+        e?.lastMessage,
+        e?.userNames,
+        e?.timeStamps,
+        e?.communityRef
       ]);
 
   @override

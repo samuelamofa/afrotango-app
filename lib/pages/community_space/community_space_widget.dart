@@ -1,9 +1,13 @@
+import '/components/about_comm_widget.dart';
 import '/components/logo_header_widget.dart';
 import '/components/nav_bar_widget.dart';
+import '/create_components/ad_post_create/ad_post_create_widget.dart';
+import '/create_components/event_create/event_create_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:ui';
+import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:flutter/material.dart';
 import 'community_space_model.dart';
 export 'community_space_model.dart';
@@ -82,10 +86,19 @@ class _CommunitySpaceWidgetState extends State<CommunitySpaceWidget> {
                             width: 2.0,
                           ),
                         ),
-                        child: const Icon(
-                          Icons.keyboard_arrow_left_sharp,
-                          color: Color(0xFFAF7E00),
-                          size: 24.0,
+                        child: InkWell(
+                          splashColor: Colors.transparent,
+                          focusColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
+                          onTap: () async {
+                            context.pushNamed('myCommunities');
+                          },
+                          child: const Icon(
+                            Icons.keyboard_arrow_left_sharp,
+                            color: Color(0xFFAF7E00),
+                            size: 24.0,
+                          ),
                         ),
                       ),
                       Text(
@@ -98,10 +111,39 @@ class _CommunitySpaceWidgetState extends State<CommunitySpaceWidget> {
                               fontWeight: FontWeight.w600,
                             ),
                       ),
-                      const Icon(
-                        Icons.keyboard_control_sharp,
-                        color: Color(0xFF1A314D),
-                        size: 24.0,
+                      Builder(
+                        builder: (context) => InkWell(
+                          splashColor: Colors.transparent,
+                          focusColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
+                          onTap: () async {
+                            await showAlignedDialog(
+                              context: context,
+                              isGlobal: false,
+                              avoidOverflow: true,
+                              targetAnchor: const AlignmentDirectional(1.0, 5.0)
+                                  .resolve(Directionality.of(context)),
+                              followerAnchor: const AlignmentDirectional(0.0, 0.0)
+                                  .resolve(Directionality.of(context)),
+                              builder: (dialogContext) {
+                                return Material(
+                                  color: Colors.transparent,
+                                  child: GestureDetector(
+                                    onTap: () =>
+                                        FocusScope.of(dialogContext).unfocus(),
+                                    child: const AboutCommWidget(),
+                                  ),
+                                );
+                              },
+                            );
+                          },
+                          child: const Icon(
+                            Icons.keyboard_control_sharp,
+                            color: Color(0xFF1A314D),
+                            size: 24.0,
+                          ),
+                        ),
                       ),
                     ],
                   ),
@@ -140,7 +182,7 @@ class _CommunitySpaceWidgetState extends State<CommunitySpaceWidget> {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Text(
-                                      'Business Directory',
+                                      'Community Name',
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
@@ -177,8 +219,26 @@ class _CommunitySpaceWidgetState extends State<CommunitySpaceWidget> {
                                     padding: const EdgeInsetsDirectional.fromSTEB(
                                         53.0, 15.0, 15.0, 0.0),
                                     child: FFButtonWidget(
-                                      onPressed: () {
-                                        print('Button pressed ...');
+                                      onPressed: () async {
+                                        await showModalBottomSheet(
+                                          isScrollControlled: true,
+                                          backgroundColor: Colors.transparent,
+                                          enableDrag: false,
+                                          context: context,
+                                          builder: (context) {
+                                            return GestureDetector(
+                                              onTap: () =>
+                                                  FocusScope.of(context)
+                                                      .unfocus(),
+                                              child: Padding(
+                                                padding:
+                                                    MediaQuery.viewInsetsOf(
+                                                        context),
+                                                child: const AdPostCreateWidget(),
+                                              ),
+                                            );
+                                          },
+                                        ).then((value) => safeSetState(() {}));
                                       },
                                       text: 'Post an Ad',
                                       options: FFButtonOptions(
@@ -208,8 +268,26 @@ class _CommunitySpaceWidgetState extends State<CommunitySpaceWidget> {
                                     padding: const EdgeInsetsDirectional.fromSTEB(
                                         0.0, 15.0, 0.0, 0.0),
                                     child: FFButtonWidget(
-                                      onPressed: () {
-                                        print('Button pressed ...');
+                                      onPressed: () async {
+                                        await showModalBottomSheet(
+                                          isScrollControlled: true,
+                                          backgroundColor: Colors.transparent,
+                                          enableDrag: false,
+                                          context: context,
+                                          builder: (context) {
+                                            return GestureDetector(
+                                              onTap: () =>
+                                                  FocusScope.of(context)
+                                                      .unfocus(),
+                                              child: Padding(
+                                                padding:
+                                                    MediaQuery.viewInsetsOf(
+                                                        context),
+                                                child: const EventCreateWidget(),
+                                              ),
+                                            );
+                                          },
+                                        ).then((value) => safeSetState(() {}));
                                       },
                                       text: 'Create an Event',
                                       options: FFButtonOptions(
@@ -247,8 +325,8 @@ class _CommunitySpaceWidgetState extends State<CommunitySpaceWidget> {
                                 padding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 15.0, 0.0, 0.0),
                                 child: FFButtonWidget(
-                                  onPressed: () {
-                                    print('Button pressed ...');
+                                  onPressed: () async {
+                                    context.pushNamed('CreateBusiness');
                                   },
                                   text: 'List a Business',
                                   options: FFButtonOptions(

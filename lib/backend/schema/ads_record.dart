@@ -25,9 +25,39 @@ class AdsRecord extends FirestoreRecord {
   DocumentReference? get createdUserRef => _createdUserRef;
   bool hasCreatedUserRef() => _createdUserRef != null;
 
+  // "ad_category" field.
+  String? _adCategory;
+  String get adCategory => _adCategory ?? '';
+  bool hasAdCategory() => _adCategory != null;
+
+  // "ad_description" field.
+  String? _adDescription;
+  String get adDescription => _adDescription ?? '';
+  bool hasAdDescription() => _adDescription != null;
+
+  // "ad_pricing" field.
+  int? _adPricing;
+  int get adPricing => _adPricing ?? 0;
+  bool hasAdPricing() => _adPricing != null;
+
+  // "created_time" field.
+  DateTime? _createdTime;
+  DateTime? get createdTime => _createdTime;
+  bool hasCreatedTime() => _createdTime != null;
+
+  // "ad_image" field.
+  String? _adImage;
+  String get adImage => _adImage ?? '';
+  bool hasAdImage() => _adImage != null;
+
   void _initializeFields() {
     _adsName = snapshotData['ads_name'] as String?;
     _createdUserRef = snapshotData['createdUserRef'] as DocumentReference?;
+    _adCategory = snapshotData['ad_category'] as String?;
+    _adDescription = snapshotData['ad_description'] as String?;
+    _adPricing = castToType<int>(snapshotData['ad_pricing']);
+    _createdTime = snapshotData['created_time'] as DateTime?;
+    _adImage = snapshotData['ad_image'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -66,11 +96,21 @@ class AdsRecord extends FirestoreRecord {
 Map<String, dynamic> createAdsRecordData({
   String? adsName,
   DocumentReference? createdUserRef,
+  String? adCategory,
+  String? adDescription,
+  int? adPricing,
+  DateTime? createdTime,
+  String? adImage,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
       'ads_name': adsName,
       'createdUserRef': createdUserRef,
+      'ad_category': adCategory,
+      'ad_description': adDescription,
+      'ad_pricing': adPricing,
+      'created_time': createdTime,
+      'ad_image': adImage,
     }.withoutNulls,
   );
 
@@ -83,12 +123,24 @@ class AdsRecordDocumentEquality implements Equality<AdsRecord> {
   @override
   bool equals(AdsRecord? e1, AdsRecord? e2) {
     return e1?.adsName == e2?.adsName &&
-        e1?.createdUserRef == e2?.createdUserRef;
+        e1?.createdUserRef == e2?.createdUserRef &&
+        e1?.adCategory == e2?.adCategory &&
+        e1?.adDescription == e2?.adDescription &&
+        e1?.adPricing == e2?.adPricing &&
+        e1?.createdTime == e2?.createdTime &&
+        e1?.adImage == e2?.adImage;
   }
 
   @override
-  int hash(AdsRecord? e) =>
-      const ListEquality().hash([e?.adsName, e?.createdUserRef]);
+  int hash(AdsRecord? e) => const ListEquality().hash([
+        e?.adsName,
+        e?.createdUserRef,
+        e?.adCategory,
+        e?.adDescription,
+        e?.adPricing,
+        e?.createdTime,
+        e?.adImage
+      ]);
 
   @override
   bool isValidKey(Object? o) => o is AdsRecord;

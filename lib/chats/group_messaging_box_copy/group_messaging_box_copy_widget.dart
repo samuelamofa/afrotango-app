@@ -2,26 +2,27 @@ import '/components/logo_header_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
-import 'group_messaging_box_model.dart';
-export 'group_messaging_box_model.dart';
+import 'group_messaging_box_copy_model.dart';
+export 'group_messaging_box_copy_model.dart';
 
-class GroupMessagingBoxWidget extends StatefulWidget {
-  const GroupMessagingBoxWidget({super.key});
+class GroupMessagingBoxCopyWidget extends StatefulWidget {
+  const GroupMessagingBoxCopyWidget({super.key});
 
   @override
-  State<GroupMessagingBoxWidget> createState() =>
-      _GroupMessagingBoxWidgetState();
+  State<GroupMessagingBoxCopyWidget> createState() =>
+      _GroupMessagingBoxCopyWidgetState();
 }
 
-class _GroupMessagingBoxWidgetState extends State<GroupMessagingBoxWidget> {
-  late GroupMessagingBoxModel _model;
+class _GroupMessagingBoxCopyWidgetState
+    extends State<GroupMessagingBoxCopyWidget> {
+  late GroupMessagingBoxCopyModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => GroupMessagingBoxModel());
+    _model = createModel(context, () => GroupMessagingBoxCopyModel());
 
     _model.textController ??= TextEditingController();
     _model.textFieldFocusNode ??= FocusNode();

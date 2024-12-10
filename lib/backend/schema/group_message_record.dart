@@ -15,15 +15,33 @@ class GroupMessageRecord extends FirestoreRecord {
     _initializeFields();
   }
 
-  // "group_name" field.
-  String? _groupName;
-  String get groupName => _groupName ?? '';
-  bool hasGroupName() => _groupName != null;
+  // "text" field.
+  String? _text;
+  String get text => _text ?? '';
+  bool hasText() => _text != null;
+
+  // "image" field.
+  String? _image;
+  String get image => _image ?? '';
+  bool hasImage() => _image != null;
+
+  // "timeStamp" field.
+  DateTime? _timeStamp;
+  DateTime? get timeStamp => _timeStamp;
+  bool hasTimeStamp() => _timeStamp != null;
+
+  // "createdUserRef" field.
+  DocumentReference? _createdUserRef;
+  DocumentReference? get createdUserRef => _createdUserRef;
+  bool hasCreatedUserRef() => _createdUserRef != null;
 
   DocumentReference get parentReference => reference.parent.parent!;
 
   void _initializeFields() {
-    _groupName = snapshotData['group_name'] as String?;
+    _text = snapshotData['text'] as String?;
+    _image = snapshotData['image'] as String?;
+    _timeStamp = snapshotData['timeStamp'] as DateTime?;
+    _createdUserRef = snapshotData['createdUserRef'] as DocumentReference?;
   }
 
   static Query<Map<String, dynamic>> collection([DocumentReference? parent]) =>
@@ -66,11 +84,17 @@ class GroupMessageRecord extends FirestoreRecord {
 }
 
 Map<String, dynamic> createGroupMessageRecordData({
-  String? groupName,
+  String? text,
+  String? image,
+  DateTime? timeStamp,
+  DocumentReference? createdUserRef,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
-      'group_name': groupName,
+      'text': text,
+      'image': image,
+      'timeStamp': timeStamp,
+      'createdUserRef': createdUserRef,
     }.withoutNulls,
   );
 
@@ -83,11 +107,15 @@ class GroupMessageRecordDocumentEquality
 
   @override
   bool equals(GroupMessageRecord? e1, GroupMessageRecord? e2) {
-    return e1?.groupName == e2?.groupName;
+    return e1?.text == e2?.text &&
+        e1?.image == e2?.image &&
+        e1?.timeStamp == e2?.timeStamp &&
+        e1?.createdUserRef == e2?.createdUserRef;
   }
 
   @override
-  int hash(GroupMessageRecord? e) => const ListEquality().hash([e?.groupName]);
+  int hash(GroupMessageRecord? e) => const ListEquality()
+      .hash([e?.text, e?.image, e?.timeStamp, e?.createdUserRef]);
 
   @override
   bool isValidKey(Object? o) => o is GroupMessageRecord;

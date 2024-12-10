@@ -5,16 +5,21 @@ import 'package:flutter/material.dart';
 class MessagingModel extends FlutterFlowModel<MessagingWidget> {
   ///  State fields for stateful widgets in this page.
 
+  // State field(s) for Columnscroll widget.
+  ScrollController? columnscroll;
   // State field(s) for TextField widget.
   FocusNode? textFieldFocusNode;
   TextEditingController? textController;
   String? Function(BuildContext, String?)? textControllerValidator;
 
   @override
-  void initState(BuildContext context) {}
+  void initState(BuildContext context) {
+    columnscroll = ScrollController();
+  }
 
   @override
   void dispose() {
+    columnscroll?.dispose();
     textFieldFocusNode?.dispose();
     textController?.dispose();
   }

@@ -1,8 +1,8 @@
 import '/flutter_flow/flutter_flow_util.dart';
-import 'buisness_widget.dart' show BuisnessWidget;
+import 'buisness_profile_widget.dart' show BuisnessProfileWidget;
 import 'package:flutter/material.dart';
 
-class BuisnessModel extends FlutterFlowModel<BuisnessWidget> {
+class BuisnessProfileModel extends FlutterFlowModel<BuisnessProfileWidget> {
   ///  State fields for stateful widgets in this page.
 
   // State field(s) for searchBar widget.

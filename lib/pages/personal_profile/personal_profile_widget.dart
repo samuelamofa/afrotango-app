@@ -1,8 +1,13 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/components/nav_bar_widget.dart';
+import '/create_components/ad_post_create/ad_post_create_widget.dart';
+import '/create_components/event_create/event_create_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'personal_profile_model.dart';
 export 'personal_profile_model.dart';
 
@@ -238,50 +243,86 @@ class _PersonalProfileWidgetState extends State<PersonalProfileWidget> {
                               children: [
                                 Stack(
                                   children: [
-                                    ClipRRect(
-                                      borderRadius: const BorderRadius.only(
-                                        bottomLeft: Radius.circular(0.0),
-                                        bottomRight: Radius.circular(0.0),
-                                        topLeft: Radius.circular(15.0),
-                                        topRight: Radius.circular(15.0),
-                                      ),
-                                      child: Image.asset(
-                                        'assets/images/Image_(5).png',
-                                        width: double.infinity,
-                                        height: 139.29,
-                                        fit: BoxFit.cover,
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
-                                          130.0, 75.0, 0.0, 0.0),
-                                      child: Container(
-                                        width: 128.57,
-                                        height: 128.57,
-                                        decoration: BoxDecoration(
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryBackground,
-                                          shape: BoxShape.circle,
-                                          border: Border.all(
-                                            color: FlutterFlowTheme.of(context)
-                                                .secondaryBackground,
-                                            width: 5.0,
-                                          ),
-                                        ),
-                                        child: Container(
-                                          width: 120.0,
-                                          height: 120.0,
-                                          clipBehavior: Clip.antiAlias,
-                                          decoration: const BoxDecoration(
-                                            shape: BoxShape.circle,
+                                    if (valueOrDefault(
+                                                currentUserDocument
+                                                    ?.bannerImage,
+                                                '') ==
+                                            '')
+                                      AuthUserStreamWidget(
+                                        builder: (context) => ClipRRect(
+                                          borderRadius: const BorderRadius.only(
+                                            bottomLeft: Radius.circular(0.0),
+                                            bottomRight: Radius.circular(0.0),
+                                            topLeft: Radius.circular(15.0),
+                                            topRight: Radius.circular(15.0),
                                           ),
                                           child: Image.asset(
-                                            'assets/images/Image_(3).png',
+                                            'assets/images/Image_(4).png',
+                                            width: double.infinity,
+                                            height: 139.0,
                                             fit: BoxFit.cover,
                                           ),
                                         ),
                                       ),
-                                    ),
+                                    if (valueOrDefault(
+                                                currentUserDocument
+                                                    ?.bannerImage,
+                                                '') !=
+                                            '')
+                                      AuthUserStreamWidget(
+                                        builder: (context) => ClipRRect(
+                                          borderRadius: const BorderRadius.only(
+                                            bottomLeft: Radius.circular(0.0),
+                                            bottomRight: Radius.circular(0.0),
+                                            topLeft: Radius.circular(15.0),
+                                            topRight: Radius.circular(15.0),
+                                          ),
+                                          child: Image.network(
+                                            valueOrDefault(
+                                                currentUserDocument
+                                                    ?.bannerImage,
+                                                ''),
+                                            width: double.infinity,
+                                            height: 139.29,
+                                            fit: BoxFit.cover,
+                                          ),
+                                        ),
+                                      ),
+                                    if (currentUserPhoto == '')
+                                      Padding(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                            130.0, 75.0, 0.0, 0.0),
+                                        child: AuthUserStreamWidget(
+                                          builder: (context) => Container(
+                                            width: 128.57,
+                                            height: 128.57,
+                                            decoration: BoxDecoration(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryBackground,
+                                              shape: BoxShape.circle,
+                                              border: Border.all(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondaryBackground,
+                                                width: 5.0,
+                                              ),
+                                            ),
+                                            child: Container(
+                                              width: 120.0,
+                                              height: 120.0,
+                                              clipBehavior: Clip.antiAlias,
+                                              decoration: const BoxDecoration(
+                                                shape: BoxShape.circle,
+                                              ),
+                                              child: Image.asset(
+                                                'assets/images/Media_5.png',
+                                                fit: BoxFit.cover,
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
                                     Align(
                                       alignment:
                                           const AlignmentDirectional(1.0, -1.0),
@@ -333,6 +374,41 @@ class _PersonalProfileWidgetState extends State<PersonalProfileWidget> {
                                         ),
                                       ),
                                     ),
+                                    if (currentUserPhoto != '')
+                                      Padding(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                            130.0, 75.0, 0.0, 0.0),
+                                        child: AuthUserStreamWidget(
+                                          builder: (context) => Container(
+                                            width: 128.57,
+                                            height: 128.57,
+                                            decoration: BoxDecoration(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryBackground,
+                                              shape: BoxShape.circle,
+                                              border: Border.all(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondaryBackground,
+                                                width: 5.0,
+                                              ),
+                                            ),
+                                            child: Container(
+                                              width: 120.0,
+                                              height: 120.0,
+                                              clipBehavior: Clip.antiAlias,
+                                              decoration: const BoxDecoration(
+                                                shape: BoxShape.circle,
+                                              ),
+                                              child: Image.network(
+                                                currentUserPhoto,
+                                                fit: BoxFit.cover,
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
                                   ],
                                 ),
                                 Column(
@@ -351,59 +427,87 @@ class _PersonalProfileWidgetState extends State<PersonalProfileWidget> {
                                           Padding(
                                             padding:
                                                 const EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 0.0, 10.0, 0.0),
-                                            child: Text(
-                                              'Samuel Amofa',
-                                              style:
-                                                  FlutterFlowTheme.of(context)
+                                                    0.0, 0.0, 5.0, 0.0),
+                                            child: AuthUserStreamWidget(
+                                              builder: (context) => Text(
+                                                '${valueOrDefault(currentUserDocument?.firstName, '')} ${valueOrDefault(currentUserDocument?.lastName, '')}',
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily: 'Inter',
+                                                          fontSize: 16.0,
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FontWeight.w600,
+                                                        ),
+                                              ),
+                                            ),
+                                          ),
+                                          if (valueOrDefault(
+                                                      currentUserDocument
+                                                          ?.otherName,
+                                                      '') !=
+                                                  '')
+                                            Padding(
+                                              padding: const EdgeInsetsDirectional
+                                                  .fromSTEB(5.0, 0.0, 0.0, 0.0),
+                                              child: AuthUserStreamWidget(
+                                                builder: (context) => Text(
+                                                  '@${valueOrDefault(currentUserDocument?.otherName, '')}',
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
                                                       .bodyMedium
                                                       .override(
                                                         fontFamily: 'Inter',
-                                                        fontSize: 16.0,
                                                         letterSpacing: 0.0,
-                                                        fontWeight:
-                                                            FontWeight.w600,
                                                       ),
-                                            ),
-                                          ),
-                                          Text(
-                                            '@username',
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily: 'Inter',
-                                                  letterSpacing: 0.0,
                                                 ),
-                                          ),
+                                              ),
+                                            ),
                                         ],
                                       ),
                                     ),
-                                    Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 10.0, 0.0, 0.0),
-                                      child: ClipRRect(
-                                        borderRadius:
-                                            BorderRadius.circular(0.0),
-                                        child: Image.asset(
-                                          'assets/images/flag-400.png',
-                                          width: 25.0,
-                                          height: 15.0,
-                                          fit: BoxFit.cover,
+                                    if (valueOrDefault(
+                                                currentUserDocument
+                                                    ?.countryName,
+                                                '') !=
+                                            '')
+                                      Padding(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 10.0, 0.0, 0.0),
+                                        child: AuthUserStreamWidget(
+                                          builder: (context) => ClipRRect(
+                                            borderRadius:
+                                                BorderRadius.circular(0.0),
+                                            child: Image.network(
+                                              functions.countryFlag(
+                                                  valueOrDefault(
+                                                      currentUserDocument
+                                                          ?.countryName,
+                                                      ''))!,
+                                              width: 25.0,
+                                              height: 15.0,
+                                              fit: BoxFit.cover,
+                                            ),
+                                          ),
                                         ),
                                       ),
-                                    ),
                                     Padding(
                                       padding: const EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 10.0, 0.0, 0.0),
-                                      child: Text(
-                                        '“Pushing pixels and experiences in digital\nproducts for KacyArts”',
-                                        textAlign: TextAlign.center,
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .override(
-                                              fontFamily: 'Inter',
-                                              letterSpacing: 0.0,
-                                            ),
+                                          20.0, 10.0, 20.0, 0.0),
+                                      child: AuthUserStreamWidget(
+                                        builder: (context) => Text(
+                                          valueOrDefault(
+                                              currentUserDocument?.bio, ''),
+                                          textAlign: TextAlign.center,
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily: 'Inter',
+                                                letterSpacing: 0.0,
+                                              ),
+                                        ),
                                       ),
                                     ),
                                   ],
@@ -424,69 +528,76 @@ class _PersonalProfileWidgetState extends State<PersonalProfileWidget> {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 13.0, 16.19, 0.0),
-                                      child: Column(
-                                        mainAxisSize: MainAxisSize.max,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.center,
-                                        children: [
-                                          Text(
-                                            'Post',
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily: 'Inter',
-                                                  color: const Color(0xFFAF7E00),
-                                                  letterSpacing: 0.0,
-                                                  fontWeight: FontWeight.normal,
-                                                ),
-                                          ),
-                                          Padding(
-                                            padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 4.0, 0.0, 0.0),
-                                            child: Text(
-                                              '10.3K',
-                                              style: FlutterFlowTheme.of(
-                                                      context)
-                                                  .bodyMedium
-                                                  .override(
-                                                    fontFamily: 'Inter',
-                                                    color: const Color(0xFFAF7E00),
-                                                    fontSize: 16.0,
-                                                    letterSpacing: 0.0,
-                                                    fontWeight: FontWeight.w600,
-                                                  ),
+                                    if (currentUserEmail == '')
+                                      Padding(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 13.0, 16.19, 0.0),
+                                        child: Column(
+                                          mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.center,
+                                          children: [
+                                            Text(
+                                              'Post',
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Inter',
+                                                        color:
+                                                            const Color(0xFFAF7E00),
+                                                        letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FontWeight.normal,
+                                                      ),
                                             ),
-                                          ),
-                                          Padding(
-                                            padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
-                                                    7.0, 10.86, 0.0, 0.0),
-                                            child: Container(
-                                              width: 77.14,
-                                              height: 3.21,
-                                              decoration: const BoxDecoration(
-                                                color: Color(0xFFAF7E00),
-                                                borderRadius: BorderRadius.only(
-                                                  bottomLeft:
-                                                      Radius.circular(0.0),
-                                                  bottomRight:
-                                                      Radius.circular(0.0),
-                                                  topLeft: Radius.circular(8.0),
-                                                  topRight:
-                                                      Radius.circular(8.0),
+                                            Padding(
+                                              padding: const EdgeInsetsDirectional
+                                                  .fromSTEB(0.0, 4.0, 0.0, 0.0),
+                                              child: Text(
+                                                '10.3K',
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily: 'Inter',
+                                                          color:
+                                                              const Color(0xFFAF7E00),
+                                                          fontSize: 16.0,
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FontWeight.w600,
+                                                        ),
+                                              ),
+                                            ),
+                                            Padding(
+                                              padding: const EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      7.0, 10.86, 0.0, 0.0),
+                                              child: Container(
+                                                width: 77.14,
+                                                height: 3.21,
+                                                decoration: const BoxDecoration(
+                                                  color: Color(0xFFAF7E00),
+                                                  borderRadius:
+                                                      BorderRadius.only(
+                                                    bottomLeft:
+                                                        Radius.circular(0.0),
+                                                    bottomRight:
+                                                        Radius.circular(0.0),
+                                                    topLeft:
+                                                        Radius.circular(8.0),
+                                                    topRight:
+                                                        Radius.circular(8.0),
+                                                  ),
                                                 ),
                                               ),
                                             ),
-                                          ),
-                                        ],
+                                          ],
+                                        ),
                                       ),
-                                    ),
                                     Padding(
                                       padding: const EdgeInsetsDirectional.fromSTEB(
                                           0.0, 13.0, 16.19, 0.0),
@@ -512,18 +623,35 @@ class _PersonalProfileWidgetState extends State<PersonalProfileWidget> {
                                             padding:
                                                 const EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 4.0, 0.0, 0.0),
-                                            child: Text(
-                                              '2,561',
-                                              style: FlutterFlowTheme.of(
-                                                      context)
-                                                  .bodyMedium
-                                                  .override(
-                                                    fontFamily: 'Inter',
-                                                    color: const Color(0xFF44444F),
-                                                    fontSize: 16.0,
-                                                    letterSpacing: 0.0,
-                                                    fontWeight: FontWeight.w600,
+                                            child: AuthUserStreamWidget(
+                                              builder: (context) => Text(
+                                                valueOrDefault<String>(
+                                                  formatNumber(
+                                                    (currentUserDocument
+                                                                ?.connections
+                                                                .toList() ??
+                                                            [])
+                                                        .length,
+                                                    formatType:
+                                                        FormatType.decimal,
+                                                    decimalType:
+                                                        DecimalType.automatic,
                                                   ),
+                                                  '0',
+                                                ),
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily: 'Inter',
+                                                          color:
+                                                              const Color(0xFF44444F),
+                                                          fontSize: 16.0,
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FontWeight.w600,
+                                                        ),
+                                              ),
                                             ),
                                           ),
                                         ],
@@ -554,18 +682,35 @@ class _PersonalProfileWidgetState extends State<PersonalProfileWidget> {
                                             padding:
                                                 const EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 4.0, 0.0, 0.0),
-                                            child: Text(
-                                              '3,152',
-                                              style: FlutterFlowTheme.of(
-                                                      context)
-                                                  .bodyMedium
-                                                  .override(
-                                                    fontFamily: 'Inter',
-                                                    color: const Color(0xFF44444F),
-                                                    fontSize: 16.0,
-                                                    letterSpacing: 0.0,
-                                                    fontWeight: FontWeight.w600,
+                                            child: AuthUserStreamWidget(
+                                              builder: (context) => Text(
+                                                valueOrDefault<String>(
+                                                  formatNumber(
+                                                    (currentUserDocument
+                                                                ?.joinedCommunities
+                                                                .toList() ??
+                                                            [])
+                                                        .length,
+                                                    formatType:
+                                                        FormatType.decimal,
+                                                    decimalType:
+                                                        DecimalType.automatic,
                                                   ),
+                                                  '0',
+                                                ),
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily: 'Inter',
+                                                          color:
+                                                              const Color(0xFF44444F),
+                                                          fontSize: 16.0,
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FontWeight.w600,
+                                                        ),
+                                              ),
                                             ),
                                           ),
                                         ],
@@ -640,15 +785,22 @@ class _PersonalProfileWidgetState extends State<PersonalProfileWidget> {
                                       Padding(
                                         padding: const EdgeInsetsDirectional.fromSTEB(
                                             17.91, 0.0, 0.0, 0.0),
-                                        child: Text(
-                                          'Airport City,',
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium
-                                              .override(
-                                                fontFamily: 'Inter',
-                                                color: const Color(0xFF171725),
-                                                letterSpacing: 0.0,
-                                              ),
+                                        child: AuthUserStreamWidget(
+                                          builder: (context) => Text(
+                                            valueOrDefault<String>(
+                                              valueOrDefault(
+                                                  currentUserDocument?.city,
+                                                  ''),
+                                              'Not set',
+                                            ),
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily: 'Inter',
+                                                  color: const Color(0xFF171725),
+                                                  letterSpacing: 0.0,
+                                                ),
+                                          ),
                                         ),
                                       ),
                                     ],
@@ -657,75 +809,131 @@ class _PersonalProfileWidgetState extends State<PersonalProfileWidget> {
                                 Padding(
                                   padding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 18.0, 0.0, 0.0),
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
-                                            14.86, 0.0, 0.0, 0.0),
-                                        child: ClipRRect(
-                                          borderRadius:
-                                              BorderRadius.circular(0.0),
-                                          child: Image.asset(
-                                            'assets/images/global-line.png',
-                                            width: 24.0,
-                                            height: 24.0,
-                                            fit: BoxFit.cover,
+                                  child: InkWell(
+                                    splashColor: Colors.transparent,
+                                    focusColor: Colors.transparent,
+                                    hoverColor: Colors.transparent,
+                                    highlightColor: Colors.transparent,
+                                    onTap: () async {
+                                      await Clipboard.setData(ClipboardData(
+                                          text: valueOrDefault(
+                                              currentUserDocument?.website,
+                                              '')));
+                                    },
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Padding(
+                                          padding:
+                                              const EdgeInsetsDirectional.fromSTEB(
+                                                  14.86, 0.0, 0.0, 0.0),
+                                          child: ClipRRect(
+                                            borderRadius:
+                                                BorderRadius.circular(0.0),
+                                            child: Image.asset(
+                                              'assets/images/global-line.png',
+                                              width: 24.0,
+                                              height: 24.0,
+                                              fit: BoxFit.cover,
+                                            ),
                                           ),
                                         ),
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
-                                            17.91, 0.0, 0.0, 0.0),
-                                        child: Text(
-                                          'linkedin.com/samuelamofa',
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium
-                                              .override(
-                                                fontFamily: 'Inter',
-                                                color: const Color(0xFF171725),
-                                                letterSpacing: 0.0,
+                                        Padding(
+                                          padding:
+                                              const EdgeInsetsDirectional.fromSTEB(
+                                                  17.91, 0.0, 0.0, 0.0),
+                                          child: AuthUserStreamWidget(
+                                            builder: (context) => Text(
+                                              valueOrDefault<String>(
+                                                valueOrDefault(
+                                                    currentUserDocument
+                                                        ?.website,
+                                                    ''),
+                                                'Not set',
                                               ),
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Inter',
+                                                        color:
+                                                            const Color(0xFF171725),
+                                                        letterSpacing: 0.0,
+                                                      ),
+                                            ),
+                                          ),
                                         ),
-                                      ),
-                                    ],
+                                      ],
+                                    ),
                                   ),
                                 ),
                                 Padding(
                                   padding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 18.0, 0.0, 0.0),
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
-                                            14.86, 0.0, 0.0, 0.0),
-                                        child: ClipRRect(
-                                          borderRadius:
-                                              BorderRadius.circular(0.0),
-                                          child: Image.asset(
-                                            'assets/images/phone-fill.png',
-                                            width: 24.0,
-                                            height: 24.0,
-                                            fit: BoxFit.cover,
+                                  child: InkWell(
+                                    splashColor: Colors.transparent,
+                                    focusColor: Colors.transparent,
+                                    hoverColor: Colors.transparent,
+                                    highlightColor: Colors.transparent,
+                                    onTap: () async {
+                                      await Clipboard.setData(ClipboardData(
+                                          text: currentPhoneNumber));
+                                    },
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Padding(
+                                          padding:
+                                              const EdgeInsetsDirectional.fromSTEB(
+                                                  14.86, 0.0, 0.0, 0.0),
+                                          child: ClipRRect(
+                                            borderRadius:
+                                                BorderRadius.circular(0.0),
+                                            child: Image.asset(
+                                              'assets/images/phone-fill.png',
+                                              width: 24.0,
+                                              height: 24.0,
+                                              fit: BoxFit.cover,
+                                            ),
                                           ),
                                         ),
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
-                                            17.91, 0.0, 0.0, 0.0),
-                                        child: Text(
-                                          '+233541926200',
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium
-                                              .override(
-                                                fontFamily: 'Inter',
-                                                color: const Color(0xFF171725),
-                                                letterSpacing: 0.0,
+                                        Padding(
+                                          padding:
+                                              const EdgeInsetsDirectional.fromSTEB(
+                                                  17.91, 0.0, 0.0, 0.0),
+                                          child: AuthUserStreamWidget(
+                                            builder: (context) => InkWell(
+                                              splashColor: Colors.transparent,
+                                              focusColor: Colors.transparent,
+                                              hoverColor: Colors.transparent,
+                                              highlightColor:
+                                                  Colors.transparent,
+                                              onTap: () async {
+                                                await Clipboard.setData(
+                                                    ClipboardData(
+                                                        text:
+                                                            currentPhoneNumber));
+                                              },
+                                              child: Text(
+                                                valueOrDefault<String>(
+                                                  currentPhoneNumber,
+                                                  'Not set',
+                                                ),
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily: 'Inter',
+                                                          color:
+                                                              const Color(0xFF171725),
+                                                          letterSpacing: 0.0,
+                                                        ),
                                               ),
+                                            ),
+                                          ),
                                         ),
-                                      ),
-                                    ],
+                                      ],
+                                    ),
                                   ),
                                 ),
                                 Padding(
@@ -742,11 +950,22 @@ class _PersonalProfileWidgetState extends State<PersonalProfileWidget> {
                                             .secondary,
                                         size: 24.0,
                                       ),
-                                      Icon(
-                                        Icons.facebook,
-                                        color: FlutterFlowTheme.of(context)
-                                            .secondary,
-                                        size: 24.0,
+                                      InkWell(
+                                        splashColor: Colors.transparent,
+                                        focusColor: Colors.transparent,
+                                        hoverColor: Colors.transparent,
+                                        highlightColor: Colors.transparent,
+                                        onTap: () async {
+                                          await launchURL(valueOrDefault(
+                                              currentUserDocument?.facebook,
+                                              ''));
+                                        },
+                                        child: Icon(
+                                          Icons.facebook,
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondary,
+                                          size: 24.0,
+                                        ),
                                       ),
                                       Icon(
                                         FFIcons.ksnapchatGhost,
@@ -767,164 +986,167 @@ class _PersonalProfileWidgetState extends State<PersonalProfileWidget> {
                             ),
                           ),
                         ),
-                        Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
-                              15.0, 5.36, 15.0, 0.0),
-                          child: Container(
-                            width: 342.86,
-                            height: 272.14,
-                            decoration: BoxDecoration(
-                              color: FlutterFlowTheme.of(context)
-                                  .secondaryBackground,
-                            ),
-                            child: Column(
-                              mainAxisSize: MainAxisSize.max,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 10.17, 0.0, 0.0),
-                                  child: Row(
+                        if (currentUserEmail == '')
+                          Padding(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                15.0, 5.36, 15.0, 0.0),
+                            child: Container(
+                              width: 342.86,
+                              height: 272.14,
+                              decoration: BoxDecoration(
+                                color: FlutterFlowTheme.of(context)
+                                    .secondaryBackground,
+                              ),
+                              child: Column(
+                                mainAxisSize: MainAxisSize.max,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 10.17, 0.0, 0.0),
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Padding(
+                                          padding:
+                                              const EdgeInsetsDirectional.fromSTEB(
+                                                  16.07, 0.0, 0.0, 0.0),
+                                          child: Text(
+                                            'Photos and Videos',
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily: 'Inter',
+                                                  color: const Color(0xFF171725),
+                                                  letterSpacing: 0.0,
+                                                  fontWeight: FontWeight.w500,
+                                                ),
+                                          ),
+                                        ),
+                                        Padding(
+                                          padding:
+                                              const EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 0.0, 21.87, 0.0),
+                                          child: Text(
+                                            'See all',
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily: 'Inter',
+                                                  color: const Color(0xFFAF7E00),
+                                                  fontSize: 12.0,
+                                                  letterSpacing: 0.0,
+                                                  fontWeight: FontWeight.w500,
+                                                ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                        16.7, 10.71, 16.7, 0.0),
+                                    child: Container(
+                                      width: double.infinity,
+                                      height: 1.0,
+                                      decoration: const BoxDecoration(
+                                        color: Color(0xFFE2E2EA),
+                                      ),
+                                    ),
+                                  ),
+                                  Column(
                                     mainAxisSize: MainAxisSize.max,
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
                                     children: [
                                       Padding(
                                         padding: const EdgeInsetsDirectional.fromSTEB(
-                                            16.07, 0.0, 0.0, 0.0),
-                                        child: Text(
-                                          'Photos and Videos',
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium
-                                              .override(
-                                                fontFamily: 'Inter',
-                                                color: const Color(0xFF171725),
-                                                letterSpacing: 0.0,
-                                                fontWeight: FontWeight.w500,
+                                            16.07, 10.71, 16.07, 0.0),
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            ClipRRect(
+                                              borderRadius:
+                                                  BorderRadius.circular(15.0),
+                                              child: Image.asset(
+                                                'assets/images/Media_1.png',
+                                                width: 96.43,
+                                                height: 96.43,
+                                                fit: BoxFit.cover,
                                               ),
+                                            ),
+                                            ClipRRect(
+                                              borderRadius:
+                                                  BorderRadius.circular(15.0),
+                                              child: Image.asset(
+                                                'assets/images/Media_2.png',
+                                                width: 96.43,
+                                                height: 96.43,
+                                                fit: BoxFit.cover,
+                                              ),
+                                            ),
+                                            ClipRRect(
+                                              borderRadius:
+                                                  BorderRadius.circular(15.0),
+                                              child: Image.asset(
+                                                'assets/images/Media_3.png',
+                                                width: 96.43,
+                                                height: 96.43,
+                                                fit: BoxFit.cover,
+                                              ),
+                                            ),
+                                          ],
                                         ),
                                       ),
                                       Padding(
                                         padding: const EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 0.0, 21.87, 0.0),
-                                        child: Text(
-                                          'See all',
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium
-                                              .override(
-                                                fontFamily: 'Inter',
-                                                color: const Color(0xFFAF7E00),
-                                                fontSize: 12.0,
-                                                letterSpacing: 0.0,
-                                                fontWeight: FontWeight.w500,
+                                            16.07, 10.71, 16.07, 0.0),
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            ClipRRect(
+                                              borderRadius:
+                                                  BorderRadius.circular(15.0),
+                                              child: Image.asset(
+                                                'assets/images/Media_4.png',
+                                                width: 96.43,
+                                                height: 96.43,
+                                                fit: BoxFit.cover,
                                               ),
+                                            ),
+                                            ClipRRect(
+                                              borderRadius:
+                                                  BorderRadius.circular(15.0),
+                                              child: Image.asset(
+                                                'assets/images/Media_5.png',
+                                                width: 96.43,
+                                                height: 96.43,
+                                                fit: BoxFit.cover,
+                                              ),
+                                            ),
+                                            ClipRRect(
+                                              borderRadius:
+                                                  BorderRadius.circular(15.0),
+                                              child: Image.asset(
+                                                'assets/images/Media_6.png',
+                                                width: 96.43,
+                                                height: 96.43,
+                                                fit: BoxFit.cover,
+                                              ),
+                                            ),
+                                          ],
                                         ),
                                       ),
                                     ],
                                   ),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
-                                      16.7, 10.71, 16.7, 0.0),
-                                  child: Container(
-                                    width: double.infinity,
-                                    height: 1.0,
-                                    decoration: const BoxDecoration(
-                                      color: Color(0xFFE2E2EA),
-                                    ),
-                                  ),
-                                ),
-                                Column(
-                                  mainAxisSize: MainAxisSize.max,
-                                  children: [
-                                    Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
-                                          16.07, 10.71, 16.07, 0.0),
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          ClipRRect(
-                                            borderRadius:
-                                                BorderRadius.circular(15.0),
-                                            child: Image.asset(
-                                              'assets/images/Media_1.png',
-                                              width: 96.43,
-                                              height: 96.43,
-                                              fit: BoxFit.cover,
-                                            ),
-                                          ),
-                                          ClipRRect(
-                                            borderRadius:
-                                                BorderRadius.circular(15.0),
-                                            child: Image.asset(
-                                              'assets/images/Media_2.png',
-                                              width: 96.43,
-                                              height: 96.43,
-                                              fit: BoxFit.cover,
-                                            ),
-                                          ),
-                                          ClipRRect(
-                                            borderRadius:
-                                                BorderRadius.circular(15.0),
-                                            child: Image.asset(
-                                              'assets/images/Media_3.png',
-                                              width: 96.43,
-                                              height: 96.43,
-                                              fit: BoxFit.cover,
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
-                                          16.07, 10.71, 16.07, 0.0),
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          ClipRRect(
-                                            borderRadius:
-                                                BorderRadius.circular(15.0),
-                                            child: Image.asset(
-                                              'assets/images/Media_4.png',
-                                              width: 96.43,
-                                              height: 96.43,
-                                              fit: BoxFit.cover,
-                                            ),
-                                          ),
-                                          ClipRRect(
-                                            borderRadius:
-                                                BorderRadius.circular(15.0),
-                                            child: Image.asset(
-                                              'assets/images/Media_5.png',
-                                              width: 96.43,
-                                              height: 96.43,
-                                              fit: BoxFit.cover,
-                                            ),
-                                          ),
-                                          ClipRRect(
-                                            borderRadius:
-                                                BorderRadius.circular(15.0),
-                                            child: Image.asset(
-                                              'assets/images/Media_6.png',
-                                              width: 96.43,
-                                              height: 96.43,
-                                              fit: BoxFit.cover,
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
                           ),
-                        ),
                         Column(
                           mainAxisSize: MainAxisSize.max,
                           children: [
@@ -1710,8 +1932,18 @@ class _PersonalProfileWidgetState extends State<PersonalProfileWidget> {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   FFButtonWidget(
-                                    onPressed: () {
-                                      print('Button pressed ...');
+                                    onPressed: () async {
+                                      context.pushNamed(
+                                        'CreateBusiness',
+                                        extra: <String, dynamic>{
+                                          kTransitionInfoKey: const TransitionInfo(
+                                            hasTransition: true,
+                                            transitionType:
+                                                PageTransitionType.fade,
+                                            duration: Duration(milliseconds: 0),
+                                          ),
+                                        },
+                                      );
                                     },
                                     text: 'List a Business',
                                     options: FFButtonOptions(
@@ -3162,8 +3394,23 @@ class _PersonalProfileWidgetState extends State<PersonalProfileWidget> {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   FFButtonWidget(
-                                    onPressed: () {
-                                      print('Button pressed ...');
+                                    onPressed: () async {
+                                      await showModalBottomSheet(
+                                        isScrollControlled: true,
+                                        backgroundColor: Colors.transparent,
+                                        context: context,
+                                        builder: (context) {
+                                          return GestureDetector(
+                                            onTap: () => FocusScope.of(context)
+                                                .unfocus(),
+                                            child: Padding(
+                                              padding: MediaQuery.viewInsetsOf(
+                                                  context),
+                                              child: const EventCreateWidget(),
+                                            ),
+                                          );
+                                        },
+                                      ).then((value) => safeSetState(() {}));
                                     },
                                     text: 'Create an Event',
                                     options: FFButtonOptions(
@@ -4158,8 +4405,23 @@ class _PersonalProfileWidgetState extends State<PersonalProfileWidget> {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   FFButtonWidget(
-                                    onPressed: () {
-                                      print('Button pressed ...');
+                                    onPressed: () async {
+                                      await showModalBottomSheet(
+                                        isScrollControlled: true,
+                                        backgroundColor: Colors.transparent,
+                                        context: context,
+                                        builder: (context) {
+                                          return GestureDetector(
+                                            onTap: () => FocusScope.of(context)
+                                                .unfocus(),
+                                            child: Padding(
+                                              padding: MediaQuery.viewInsetsOf(
+                                                  context),
+                                              child: const AdPostCreateWidget(),
+                                            ),
+                                          );
+                                        },
+                                      ).then((value) => safeSetState(() {}));
                                     },
                                     text: 'Post an Ad',
                                     options: FFButtonOptions(

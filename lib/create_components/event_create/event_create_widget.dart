@@ -1,8 +1,13 @@
+import '/auth/firebase_auth/auth_util.dart';
+import '/backend/backend.dart';
+import '/backend/firebase_storage/storage.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
+import '/flutter_flow/upload_data.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'event_create_model.dart';
 export 'event_create_model.dart';
@@ -51,7 +56,7 @@ class _EventCreateWidgetState extends State<EventCreateWidget> {
   Widget build(BuildContext context) {
     return Container(
       width: MediaQuery.sizeOf(context).width * 1.0,
-      height: 700.0,
+      height: 780.0,
       decoration: BoxDecoration(
         color: FlutterFlowTheme.of(context).secondaryBackground,
         borderRadius: const BorderRadius.only(
@@ -62,7 +67,7 @@ class _EventCreateWidgetState extends State<EventCreateWidget> {
         ),
       ),
       child: Padding(
-        padding: const EdgeInsetsDirectional.fromSTEB(1.0, 10.0, 0.0, 0.0),
+        padding: const EdgeInsetsDirectional.fromSTEB(10.0, 10.0, 10.0, 20.0),
         child: SingleChildScrollView(
           child: Column(
             mainAxisSize: MainAxisSize.max,
@@ -71,10 +76,19 @@ class _EventCreateWidgetState extends State<EventCreateWidget> {
                 alignment: const AlignmentDirectional(1.0, -1.0),
                 child: Padding(
                   padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 10.0, 0.0),
-                  child: Icon(
-                    Icons.close_outlined,
-                    color: FlutterFlowTheme.of(context).primaryText,
-                    size: 30.0,
+                  child: InkWell(
+                    splashColor: Colors.transparent,
+                    focusColor: Colors.transparent,
+                    hoverColor: Colors.transparent,
+                    highlightColor: Colors.transparent,
+                    onTap: () async {
+                      Navigator.pop(context);
+                    },
+                    child: Icon(
+                      Icons.close_outlined,
+                      color: FlutterFlowTheme.of(context).primaryText,
+                      size: 30.0,
+                    ),
                   ),
                 ),
               ),
@@ -90,46 +104,110 @@ class _EventCreateWidgetState extends State<EventCreateWidget> {
                       ),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(8.0),
-                  child: Image.network(
-                    'https://picsum.photos/seed/817/600',
-                    width: 100.0,
-                    height: 100.0,
-                    fit: BoxFit.cover,
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
-                child: FFButtonWidget(
-                  onPressed: () {
-                    print('Button pressed ...');
-                  },
-                  text: 'Upload Image',
-                  options: FFButtonOptions(
-                    height: 40.0,
-                    padding:
-                        const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
-                    iconPadding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                    color: FlutterFlowTheme.of(context).secondary,
-                    textStyle: FlutterFlowTheme.of(context).titleSmall.override(
-                          fontFamily: 'Inter Tight',
-                          color: Colors.white,
-                          letterSpacing: 0.0,
+              InkWell(
+                splashColor: Colors.transparent,
+                focusColor: Colors.transparent,
+                hoverColor: Colors.transparent,
+                highlightColor: Colors.transparent,
+                onTap: () async {
+                  final selectedMedia = await selectMediaWithSourceBottomSheet(
+                    context: context,
+                    allowPhoto: true,
+                  );
+                  if (selectedMedia != null &&
+                      selectedMedia.every(
+                          (m) => validateFileFormat(m.storagePath, context))) {
+                    safeSetState(() => _model.isDataUploading1 = true);
+                    var selectedUploadedFiles = <FFUploadedFile>[];
+
+                    try {
+                      selectedUploadedFiles = selectedMedia
+                          .map((m) => FFUploadedFile(
+                                name: m.storagePath.split('/').last,
+                                bytes: m.bytes,
+                                height: m.dimensions?.height,
+                                width: m.dimensions?.width,
+                                blurHash: m.blurHash,
+                              ))
+                          .toList();
+                    } finally {
+                      _model.isDataUploading1 = false;
+                    }
+                    if (selectedUploadedFiles.length == selectedMedia.length) {
+                      safeSetState(() {
+                        _model.uploadedLocalFile1 = selectedUploadedFiles.first;
+                      });
+                    } else {
+                      safeSetState(() {});
+                      return;
+                    }
+                  }
+                },
+                child: Stack(
+                  children: [
+                    if ((_model.uploadedLocalFile1.bytes?.isEmpty ?? true))
+                      Padding(
+                        padding: const EdgeInsets.all(20.0),
+                        child: Container(
+                          width: MediaQuery.sizeOf(context).width * 1.0,
+                          height: 220.0,
+                          decoration: BoxDecoration(
+                            color: FlutterFlowTheme.of(context)
+                                .secondaryBackground,
+                            borderRadius: BorderRadius.circular(20.0),
+                            border: Border.all(
+                              color: FlutterFlowTheme.of(context).alternate,
+                              width: 1.0,
+                            ),
+                          ),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              const Icon(
+                                Icons.image_outlined,
+                                color: Color(0xFFAAAAAA),
+                                size: 120.0,
+                              ),
+                              Padding(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 10.0, 0.0, 0.0),
+                                child: Text(
+                                  'Drop your event image here or browse',
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Inter',
+                                        letterSpacing: 0.0,
+                                        fontWeight: FontWeight.w500,
+                                      ),
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
-                    elevation: 0.0,
-                    borderRadius: BorderRadius.circular(8.0),
-                  ),
+                      ),
+                    if ((_model.uploadedLocalFile1.bytes?.isNotEmpty ?? false))
+                      Padding(
+                        padding: const EdgeInsets.all(20.0),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(20.0),
+                          child: Image.memory(
+                            _model.uploadedLocalFile1.bytes ??
+                                Uint8List.fromList([]),
+                            width: MediaQuery.sizeOf(context).width * 1.0,
+                            height: 220.0,
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      ),
+                  ],
                 ),
               ),
               Align(
                 alignment: const AlignmentDirectional(-1.0, 0.0),
                 child: Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(10.0, 20.0, 0.0, 0.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(10.0, 10.0, 0.0, 0.0),
                   child: Text(
                     'Event Name',
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -228,7 +306,7 @@ class _EventCreateWidgetState extends State<EventCreateWidget> {
                 child: FlutterFlowDropDown<String>(
                   controller: _model.dropDownValueController ??=
                       FormFieldController<String>(null),
-                  options: const ['Category 1', 'Category 2'],
+                  options: const ['Sports', 'Cooking', 'Business', 'Party'],
                   onChanged: (val) =>
                       safeSetState(() => _model.dropDownValue = val),
                   width: double.infinity,
@@ -585,8 +663,8 @@ class _EventCreateWidgetState extends State<EventCreateWidget> {
                     padding:
                         const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 20.0, 0.0),
                     child: FFButtonWidget(
-                      onPressed: () {
-                        print('Button pressed ...');
+                      onPressed: () async {
+                        Navigator.pop(context);
                       },
                       text: 'Cancel',
                       options: FFButtonOptions(
@@ -611,8 +689,110 @@ class _EventCreateWidgetState extends State<EventCreateWidget> {
                     padding:
                         const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 20.0, 0.0),
                     child: FFButtonWidget(
-                      onPressed: () {
-                        print('Button pressed ...');
+                      onPressed: () async {
+                        if ((_model.uploadedLocalFile1.bytes?.isEmpty ??
+                                true)) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text(
+                                'Please pick an image',
+                                style: TextStyle(
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryBackground,
+                                ),
+                              ),
+                              duration: const Duration(milliseconds: 4000),
+                              backgroundColor:
+                                  FlutterFlowTheme.of(context).secondary,
+                            ),
+                          );
+                        } else if ((_model.uploadedLocalFile1.bytes?.isNotEmpty ??
+                                false)) {
+                          {
+                            safeSetState(() => _model.isDataUploading2 = true);
+                            var selectedUploadedFiles = <FFUploadedFile>[];
+                            var selectedMedia = <SelectedFile>[];
+                            var downloadUrls = <String>[];
+                            try {
+                              selectedUploadedFiles =
+                                  _model.uploadedLocalFile1.bytes!.isNotEmpty
+                                      ? [_model.uploadedLocalFile1]
+                                      : <FFUploadedFile>[];
+                              selectedMedia = selectedFilesFromUploadedFiles(
+                                selectedUploadedFiles,
+                              );
+                              downloadUrls = (await Future.wait(
+                                selectedMedia.map(
+                                  (m) async =>
+                                      await uploadData(m.storagePath, m.bytes),
+                                ),
+                              ))
+                                  .where((u) => u != null)
+                                  .map((u) => u!)
+                                  .toList();
+                            } finally {
+                              _model.isDataUploading2 = false;
+                            }
+                            if (selectedUploadedFiles.length ==
+                                    selectedMedia.length &&
+                                downloadUrls.length == selectedMedia.length) {
+                              safeSetState(() {
+                                _model.uploadedLocalFile2 =
+                                    selectedUploadedFiles.first;
+                                _model.uploadedFileUrl2 = downloadUrls.first;
+                              });
+                            } else {
+                              safeSetState(() {});
+                              return;
+                            }
+                          }
+
+                          var eventRecordReference =
+                              EventRecord.collection.doc();
+                          await eventRecordReference.set(createEventRecordData(
+                            eventName: _model.textController1.text,
+                            createdUserRef: currentUserReference,
+                            eventImage: _model.uploadedFileUrl2,
+                            createdTime: getCurrentTimestamp,
+                            eventCategory: _model.dropDownValue,
+                            eventDate: getCurrentTimestamp,
+                            eventLocation: _model.textController2.text,
+                            eventDescription: _model.textController3.text,
+                          ));
+                          _model.eventDoc = EventRecord.getDocumentFromData(
+                              createEventRecordData(
+                                eventName: _model.textController1.text,
+                                createdUserRef: currentUserReference,
+                                eventImage: _model.uploadedFileUrl2,
+                                createdTime: getCurrentTimestamp,
+                                eventCategory: _model.dropDownValue,
+                                eventDate: getCurrentTimestamp,
+                                eventLocation: _model.textController2.text,
+                                eventDescription: _model.textController3.text,
+                              ),
+                              eventRecordReference);
+
+                          await currentUserReference!.update({
+                            ...mapToFirestore(
+                              {
+                                'event_created_ref': FieldValue.arrayUnion(
+                                    [_model.eventDoc?.reference]),
+                              },
+                            ),
+                          });
+
+                          context.goNamed(
+                            'homeFeed',
+                            extra: <String, dynamic>{
+                              kTransitionInfoKey: const TransitionInfo(
+                                hasTransition: true,
+                                transitionType: PageTransitionType.rightToLeft,
+                              ),
+                            },
+                          );
+                        }
+
+                        safeSetState(() {});
                       },
                       text: 'Create',
                       options: FFButtonOptions(
