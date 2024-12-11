@@ -86,14 +86,14 @@ class _MyCommunitiesWidgetState extends State<MyCommunitiesWidget> {
                             labelStyle: FlutterFlowTheme.of(context)
                                 .labelMedium
                                 .override(
-                                  fontFamily: 'Inter',
+                                  fontFamily: 'Poppins',
                                   letterSpacing: 0.0,
                                 ),
                             hintText: 'Search',
                             hintStyle: FlutterFlowTheme.of(context)
                                 .labelMedium
                                 .override(
-                                  fontFamily: 'Inter',
+                                  fontFamily: 'Poppins',
                                   letterSpacing: 0.0,
                                 ),
                             enabledBorder: OutlineInputBorder(
@@ -134,7 +134,7 @@ class _MyCommunitiesWidgetState extends State<MyCommunitiesWidget> {
                           ),
                           style:
                               FlutterFlowTheme.of(context).bodyMedium.override(
-                                    fontFamily: 'Inter',
+                                    fontFamily: 'Poppins',
                                     letterSpacing: 0.0,
                                   ),
                           cursorColor: FlutterFlowTheme.of(context).primaryText,
@@ -223,7 +223,7 @@ class _MyCommunitiesWidgetState extends State<MyCommunitiesWidget> {
                       child: Text(
                         'My Communities',
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
-                              fontFamily: 'Inter',
+                              fontFamily: 'Poppins',
                               color: const Color(0xFF1A314D),
                               fontSize: 16.0,
                               letterSpacing: 0.0,
@@ -254,6 +254,12 @@ class _MyCommunitiesWidgetState extends State<MyCommunitiesWidget> {
                             decoration: BoxDecoration(
                               color: FlutterFlowTheme.of(context)
                                   .secondaryBackground,
+                              borderRadius: const BorderRadius.only(
+                                bottomLeft: Radius.circular(0.0),
+                                bottomRight: Radius.circular(0.0),
+                                topLeft: Radius.circular(15.0),
+                                topRight: Radius.circular(15.0),
+                              ),
                             ),
                             child: Column(
                               mainAxisSize: MainAxisSize.max,
@@ -329,7 +335,7 @@ class _MyCommunitiesWidgetState extends State<MyCommunitiesWidget> {
                                       textStyle: FlutterFlowTheme.of(context)
                                           .titleSmall
                                           .override(
-                                            fontFamily: 'Inter Tight',
+                                            fontFamily: 'Poppins',
                                             color: Colors.white,
                                             letterSpacing: 0.0,
                                           ),
@@ -401,10 +407,16 @@ class _MyCommunitiesWidgetState extends State<MyCommunitiesWidget> {
                                     },
                                     child: Container(
                                       width: 346.0,
-                                      height: 262.71,
+                                      height: 270.0,
                                       decoration: BoxDecoration(
                                         color: FlutterFlowTheme.of(context)
                                             .secondaryBackground,
+                                        borderRadius: const BorderRadius.only(
+                                          bottomLeft: Radius.circular(0.0),
+                                          bottomRight: Radius.circular(0.0),
+                                          topLeft: Radius.circular(15.0),
+                                          topRight: Radius.circular(15.0),
+                                        ),
                                       ),
                                       child: Column(
                                         mainAxisSize: MainAxisSize.max,
@@ -435,7 +447,7 @@ class _MyCommunitiesWidgetState extends State<MyCommunitiesWidget> {
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium
                                                       .override(
-                                                        fontFamily: 'Inter',
+                                                        fontFamily: 'Poppins',
                                                         fontSize: 16.0,
                                                         letterSpacing: 0.0,
                                                         fontWeight:
@@ -453,7 +465,7 @@ class _MyCommunitiesWidgetState extends State<MyCommunitiesWidget> {
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium
                                                       .override(
-                                                        fontFamily: 'Inter',
+                                                        fontFamily: 'Poppins',
                                                         color:
                                                             const Color(0xFF92929D),
                                                         fontSize: 12.0,
@@ -658,7 +670,7 @@ class _MyCommunitiesWidgetState extends State<MyCommunitiesWidget> {
                                                               .titleSmall
                                                               .override(
                                                                 fontFamily:
-                                                                    'Inter Tight',
+                                                                    'Poppins',
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .primary,

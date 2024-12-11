@@ -141,7 +141,7 @@ class _SideMenuWidgetState extends State<SideMenuWidget> {
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(
-                                    fontFamily: 'Inter',
+                                    fontFamily: 'Poppins',
                                     color:
                                         FlutterFlowTheme.of(context).secondary,
                                     letterSpacing: 0.0,
@@ -217,7 +217,7 @@ class _SideMenuWidgetState extends State<SideMenuWidget> {
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
-                                        fontFamily: 'Inter',
+                                        fontFamily: 'Poppins',
                                         color: const Color(0xFFEAB308),
                                         fontSize: 10.0,
                                         letterSpacing: 0.0,
@@ -295,7 +295,7 @@ class _SideMenuWidgetState extends State<SideMenuWidget> {
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
-                                        fontFamily: 'Inter',
+                                        fontFamily: 'Poppins',
                                         color: const Color(0xFFEAB308),
                                         fontSize: 10.0,
                                         letterSpacing: 0.0,
@@ -365,7 +365,7 @@ class _SideMenuWidgetState extends State<SideMenuWidget> {
                           'Event Ad',
                           style:
                               FlutterFlowTheme.of(context).bodyMedium.override(
-                                    fontFamily: 'Inter',
+                                    fontFamily: 'Poppins',
                                     color: FlutterFlowTheme.of(context)
                                         .secondaryBackground,
                                     fontSize: 16.0,
@@ -389,7 +389,7 @@ class _SideMenuWidgetState extends State<SideMenuWidget> {
                     await authManager.signOut();
                     GoRouter.of(context).clearRedirectLocation();
 
-                    context.goNamedAuth('signupPage', context.mounted);
+                    context.goNamedAuth('loginPage', context.mounted);
                   },
                   child: Row(
                     mainAxisSize: MainAxisSize.max,

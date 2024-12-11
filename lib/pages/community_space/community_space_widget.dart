@@ -104,7 +104,7 @@ class _CommunitySpaceWidgetState extends State<CommunitySpaceWidget> {
                       Text(
                         'UI/UX Community',
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
-                              fontFamily: 'Inter',
+                              fontFamily: 'Poppins',
                               color: const Color(0xFF1A314D),
                               fontSize: 16.0,
                               letterSpacing: 0.0,
@@ -254,7 +254,7 @@ class _CommunitySpaceWidgetState extends State<CommunitySpaceWidget> {
                                         textStyle: FlutterFlowTheme.of(context)
                                             .titleSmall
                                             .override(
-                                              fontFamily: 'Inter Tight',
+                                              fontFamily: 'Poppins',
                                               color: Colors.white,
                                               letterSpacing: 0.0,
                                             ),
@@ -303,7 +303,7 @@ class _CommunitySpaceWidgetState extends State<CommunitySpaceWidget> {
                                         textStyle: FlutterFlowTheme.of(context)
                                             .titleSmall
                                             .override(
-                                              fontFamily: 'Inter Tight',
+                                              fontFamily: 'Poppins',
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .primary,
@@ -372,7 +372,7 @@ class _CommunitySpaceWidgetState extends State<CommunitySpaceWidget> {
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
-                                        fontFamily: 'Inter',
+                                        fontFamily: 'Poppins',
                                         fontSize: 16.0,
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.w600,
@@ -902,7 +902,7 @@ class _CommunitySpaceWidgetState extends State<CommunitySpaceWidget> {
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
-                                          fontFamily: 'Inter',
+                                          fontFamily: 'Poppins',
                                           fontSize: 16.0,
                                           letterSpacing: 0.0,
                                           fontWeight: FontWeight.w600,
@@ -957,7 +957,7 @@ class _CommunitySpaceWidgetState extends State<CommunitySpaceWidget> {
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium
                                                       .override(
-                                                        fontFamily: 'Inter',
+                                                        fontFamily: 'Poppins',
                                                         fontSize: 16.0,
                                                         letterSpacing: 0.0,
                                                         fontWeight:
@@ -975,7 +975,7 @@ class _CommunitySpaceWidgetState extends State<CommunitySpaceWidget> {
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium
                                                       .override(
-                                                        fontFamily: 'Inter',
+                                                        fontFamily: 'Poppins',
                                                         color:
                                                             const Color(0xFF92929D),
                                                         fontSize: 12.0,
@@ -1074,7 +1074,7 @@ class _CommunitySpaceWidgetState extends State<CommunitySpaceWidget> {
                                                                   .bodyMedium
                                                                   .override(
                                                                     fontFamily:
-                                                                        'Inter',
+                                                                        'Poppins',
                                                                     color: const Color(
                                                                         0xFF4987FF),
                                                                     fontSize:
@@ -1139,7 +1139,7 @@ class _CommunitySpaceWidgetState extends State<CommunitySpaceWidget> {
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium
                                                       .override(
-                                                        fontFamily: 'Inter',
+                                                        fontFamily: 'Poppins',
                                                         fontSize: 16.0,
                                                         letterSpacing: 0.0,
                                                         fontWeight:
@@ -1157,7 +1157,7 @@ class _CommunitySpaceWidgetState extends State<CommunitySpaceWidget> {
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium
                                                       .override(
-                                                        fontFamily: 'Inter',
+                                                        fontFamily: 'Poppins',
                                                         color:
                                                             const Color(0xFF92929D),
                                                         fontSize: 12.0,
@@ -1256,7 +1256,7 @@ class _CommunitySpaceWidgetState extends State<CommunitySpaceWidget> {
                                                                   .bodyMedium
                                                                   .override(
                                                                     fontFamily:
-                                                                        'Inter',
+                                                                        'Poppins',
                                                                     color: const Color(
                                                                         0xFF4987FF),
                                                                     fontSize:
@@ -1321,7 +1321,7 @@ class _CommunitySpaceWidgetState extends State<CommunitySpaceWidget> {
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium
                                                       .override(
-                                                        fontFamily: 'Inter',
+                                                        fontFamily: 'Poppins',
                                                         fontSize: 16.0,
                                                         letterSpacing: 0.0,
                                                         fontWeight:
@@ -1339,7 +1339,7 @@ class _CommunitySpaceWidgetState extends State<CommunitySpaceWidget> {
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium
                                                       .override(
-                                                        fontFamily: 'Inter',
+                                                        fontFamily: 'Poppins',
                                                         color:
                                                             const Color(0xFF92929D),
                                                         fontSize: 12.0,
@@ -1438,7 +1438,7 @@ class _CommunitySpaceWidgetState extends State<CommunitySpaceWidget> {
                                                                   .bodyMedium
                                                                   .override(
                                                                     fontFamily:
-                                                                        'Inter',
+                                                                        'Poppins',
                                                                     color: const Color(
                                                                         0xFF4987FF),
                                                                     fontSize:
@@ -1503,7 +1503,7 @@ class _CommunitySpaceWidgetState extends State<CommunitySpaceWidget> {
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium
                                                       .override(
-                                                        fontFamily: 'Inter',
+                                                        fontFamily: 'Poppins',
                                                         fontSize: 16.0,
                                                         letterSpacing: 0.0,
                                                         fontWeight:
@@ -1521,7 +1521,7 @@ class _CommunitySpaceWidgetState extends State<CommunitySpaceWidget> {
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium
                                                       .override(
-                                                        fontFamily: 'Inter',
+                                                        fontFamily: 'Poppins',
                                                         color:
                                                             const Color(0xFF92929D),
                                                         fontSize: 12.0,
@@ -1620,7 +1620,7 @@ class _CommunitySpaceWidgetState extends State<CommunitySpaceWidget> {
                                                                   .bodyMedium
                                                                   .override(
                                                                     fontFamily:
-                                                                        'Inter',
+                                                                        'Poppins',
                                                                     color: const Color(
                                                                         0xFF4987FF),
                                                                     fontSize:
@@ -1669,7 +1669,7 @@ class _CommunitySpaceWidgetState extends State<CommunitySpaceWidget> {
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
-                                          fontFamily: 'Inter',
+                                          fontFamily: 'Poppins',
                                           fontSize: 16.0,
                                           letterSpacing: 0.0,
                                           fontWeight: FontWeight.w600,
@@ -1688,7 +1688,7 @@ class _CommunitySpaceWidgetState extends State<CommunitySpaceWidget> {
                                   children: [
                                     Container(
                                       width: 260.0,
-                                      height: 262.71,
+                                      height: 265.0,
                                       decoration: BoxDecoration(
                                         color: FlutterFlowTheme.of(context)
                                             .secondaryBackground,
@@ -1751,7 +1751,7 @@ class _CommunitySpaceWidgetState extends State<CommunitySpaceWidget> {
                                                                 .bodyMedium
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Inter',
+                                                                      'Poppins',
                                                                   color: const Color(
                                                                       0xFF92929D),
                                                                   fontSize:
@@ -1770,7 +1770,7 @@ class _CommunitySpaceWidgetState extends State<CommunitySpaceWidget> {
                                                                 .bodyMedium
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Inter',
+                                                                      'Poppins',
                                                                   fontSize:
                                                                       24.0,
                                                                   letterSpacing:
@@ -1797,7 +1797,7 @@ class _CommunitySpaceWidgetState extends State<CommunitySpaceWidget> {
                                                               .bodyMedium
                                                               .override(
                                                                 fontFamily:
-                                                                    'Inter',
+                                                                    'Poppins',
                                                                 color: const Color(
                                                                     0xFF44444F),
                                                                 fontSize: 16.0,
@@ -1828,7 +1828,7 @@ class _CommunitySpaceWidgetState extends State<CommunitySpaceWidget> {
                                                                     .bodyMedium
                                                                     .override(
                                                                       fontFamily:
-                                                                          'Inter',
+                                                                          'Poppins',
                                                                       color: const Color(
                                                                           0xFF92929D),
                                                                       letterSpacing:
@@ -1850,7 +1850,7 @@ class _CommunitySpaceWidgetState extends State<CommunitySpaceWidget> {
                                                                       .bodyMedium
                                                                       .override(
                                                                         fontFamily:
-                                                                            'Inter',
+                                                                            'Poppins',
                                                                         color: const Color(
                                                                             0xFF92929D),
                                                                         letterSpacing:
@@ -1871,7 +1871,7 @@ class _CommunitySpaceWidgetState extends State<CommunitySpaceWidget> {
                                           Padding(
                                             padding:
                                                 const EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 27.0, 0.0, 18.71),
+                                                    0.0, 20.0, 0.0, 0.0),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
                                               mainAxisAlignment:
@@ -2029,7 +2029,7 @@ class _CommunitySpaceWidgetState extends State<CommunitySpaceWidget> {
                                     ),
                                     Container(
                                       width: 260.0,
-                                      height: 262.71,
+                                      height: 265.0,
                                       decoration: BoxDecoration(
                                         color: FlutterFlowTheme.of(context)
                                             .secondaryBackground,
@@ -2092,7 +2092,7 @@ class _CommunitySpaceWidgetState extends State<CommunitySpaceWidget> {
                                                                 .bodyMedium
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Inter',
+                                                                      'Poppins',
                                                                   color: const Color(
                                                                       0xFF92929D),
                                                                   fontSize:
@@ -2111,7 +2111,7 @@ class _CommunitySpaceWidgetState extends State<CommunitySpaceWidget> {
                                                                 .bodyMedium
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Inter',
+                                                                      'Poppins',
                                                                   fontSize:
                                                                       24.0,
                                                                   letterSpacing:
@@ -2138,7 +2138,7 @@ class _CommunitySpaceWidgetState extends State<CommunitySpaceWidget> {
                                                               .bodyMedium
                                                               .override(
                                                                 fontFamily:
-                                                                    'Inter',
+                                                                    'Poppins',
                                                                 color: const Color(
                                                                     0xFF44444F),
                                                                 fontSize: 16.0,
@@ -2169,7 +2169,7 @@ class _CommunitySpaceWidgetState extends State<CommunitySpaceWidget> {
                                                                     .bodyMedium
                                                                     .override(
                                                                       fontFamily:
-                                                                          'Inter',
+                                                                          'Poppins',
                                                                       color: const Color(
                                                                           0xFF92929D),
                                                                       letterSpacing:
@@ -2191,7 +2191,7 @@ class _CommunitySpaceWidgetState extends State<CommunitySpaceWidget> {
                                                                       .bodyMedium
                                                                       .override(
                                                                         fontFamily:
-                                                                            'Inter',
+                                                                            'Poppins',
                                                                         color: const Color(
                                                                             0xFF92929D),
                                                                         letterSpacing:
@@ -2212,7 +2212,7 @@ class _CommunitySpaceWidgetState extends State<CommunitySpaceWidget> {
                                           Padding(
                                             padding:
                                                 const EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 27.0, 0.0, 18.71),
+                                                    0.0, 20.0, 0.0, 0.0),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
                                               mainAxisAlignment:
@@ -2370,7 +2370,7 @@ class _CommunitySpaceWidgetState extends State<CommunitySpaceWidget> {
                                     ),
                                     Container(
                                       width: 260.0,
-                                      height: 262.71,
+                                      height: 265.0,
                                       decoration: BoxDecoration(
                                         color: FlutterFlowTheme.of(context)
                                             .secondaryBackground,
@@ -2433,7 +2433,7 @@ class _CommunitySpaceWidgetState extends State<CommunitySpaceWidget> {
                                                                 .bodyMedium
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Inter',
+                                                                      'Poppins',
                                                                   color: const Color(
                                                                       0xFF92929D),
                                                                   fontSize:
@@ -2452,7 +2452,7 @@ class _CommunitySpaceWidgetState extends State<CommunitySpaceWidget> {
                                                                 .bodyMedium
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Inter',
+                                                                      'Poppins',
                                                                   fontSize:
                                                                       24.0,
                                                                   letterSpacing:
@@ -2479,7 +2479,7 @@ class _CommunitySpaceWidgetState extends State<CommunitySpaceWidget> {
                                                               .bodyMedium
                                                               .override(
                                                                 fontFamily:
-                                                                    'Inter',
+                                                                    'Poppins',
                                                                 color: const Color(
                                                                     0xFF44444F),
                                                                 fontSize: 16.0,
@@ -2510,7 +2510,7 @@ class _CommunitySpaceWidgetState extends State<CommunitySpaceWidget> {
                                                                     .bodyMedium
                                                                     .override(
                                                                       fontFamily:
-                                                                          'Inter',
+                                                                          'Poppins',
                                                                       color: const Color(
                                                                           0xFF92929D),
                                                                       letterSpacing:
@@ -2532,7 +2532,7 @@ class _CommunitySpaceWidgetState extends State<CommunitySpaceWidget> {
                                                                       .bodyMedium
                                                                       .override(
                                                                         fontFamily:
-                                                                            'Inter',
+                                                                            'Poppins',
                                                                         color: const Color(
                                                                             0xFF92929D),
                                                                         letterSpacing:
@@ -2553,7 +2553,7 @@ class _CommunitySpaceWidgetState extends State<CommunitySpaceWidget> {
                                           Padding(
                                             padding:
                                                 const EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 27.0, 0.0, 18.71),
+                                                    0.0, 20.0, 0.0, 0.0),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
                                               mainAxisAlignment:
@@ -2711,7 +2711,7 @@ class _CommunitySpaceWidgetState extends State<CommunitySpaceWidget> {
                                     ),
                                     Container(
                                       width: 260.0,
-                                      height: 262.71,
+                                      height: 265.0,
                                       decoration: BoxDecoration(
                                         color: FlutterFlowTheme.of(context)
                                             .secondaryBackground,
@@ -2774,7 +2774,7 @@ class _CommunitySpaceWidgetState extends State<CommunitySpaceWidget> {
                                                                 .bodyMedium
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Inter',
+                                                                      'Poppins',
                                                                   color: const Color(
                                                                       0xFF92929D),
                                                                   fontSize:
@@ -2793,7 +2793,7 @@ class _CommunitySpaceWidgetState extends State<CommunitySpaceWidget> {
                                                                 .bodyMedium
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Inter',
+                                                                      'Poppins',
                                                                   fontSize:
                                                                       24.0,
                                                                   letterSpacing:
@@ -2820,7 +2820,7 @@ class _CommunitySpaceWidgetState extends State<CommunitySpaceWidget> {
                                                               .bodyMedium
                                                               .override(
                                                                 fontFamily:
-                                                                    'Inter',
+                                                                    'Poppins',
                                                                 color: const Color(
                                                                     0xFF44444F),
                                                                 fontSize: 16.0,
@@ -2851,7 +2851,7 @@ class _CommunitySpaceWidgetState extends State<CommunitySpaceWidget> {
                                                                     .bodyMedium
                                                                     .override(
                                                                       fontFamily:
-                                                                          'Inter',
+                                                                          'Poppins',
                                                                       color: const Color(
                                                                           0xFF92929D),
                                                                       letterSpacing:
@@ -2873,7 +2873,7 @@ class _CommunitySpaceWidgetState extends State<CommunitySpaceWidget> {
                                                                       .bodyMedium
                                                                       .override(
                                                                         fontFamily:
-                                                                            'Inter',
+                                                                            'Poppins',
                                                                         color: const Color(
                                                                             0xFF92929D),
                                                                         letterSpacing:
@@ -2894,7 +2894,7 @@ class _CommunitySpaceWidgetState extends State<CommunitySpaceWidget> {
                                           Padding(
                                             padding:
                                                 const EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 27.0, 0.0, 18.71),
+                                                    0.0, 20.0, 0.0, 0.0),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
                                               mainAxisAlignment:
@@ -3072,7 +3072,7 @@ class _CommunitySpaceWidgetState extends State<CommunitySpaceWidget> {
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
-                                          fontFamily: 'Inter',
+                                          fontFamily: 'Poppins',
                                           fontSize: 16.0,
                                           letterSpacing: 0.0,
                                           fontWeight: FontWeight.w600,
@@ -3194,7 +3194,7 @@ class _CommunitySpaceWidgetState extends State<CommunitySpaceWidget> {
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium
                                                       .override(
-                                                        fontFamily: 'Inter',
+                                                        fontFamily: 'Poppins',
                                                         fontSize: 16.0,
                                                         letterSpacing: 0.0,
                                                         fontWeight:
@@ -3230,7 +3230,7 @@ class _CommunitySpaceWidgetState extends State<CommunitySpaceWidget> {
                                                       context)
                                                   .bodyMedium
                                                   .override(
-                                                    fontFamily: 'Inter',
+                                                    fontFamily: 'Poppins',
                                                     color: FlutterFlowTheme.of(
                                                             context)
                                                         .secondary,
@@ -3243,7 +3243,7 @@ class _CommunitySpaceWidgetState extends State<CommunitySpaceWidget> {
                                           Padding(
                                             padding:
                                                 const EdgeInsetsDirectional.fromSTEB(
-                                                    19.0, 7.0, 0.0, 18.71),
+                                                    19.0, 7.0, 0.0, 0.0),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
                                               mainAxisAlignment:
@@ -3421,7 +3421,7 @@ class _CommunitySpaceWidgetState extends State<CommunitySpaceWidget> {
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium
                                                       .override(
-                                                        fontFamily: 'Inter',
+                                                        fontFamily: 'Poppins',
                                                         fontSize: 16.0,
                                                         letterSpacing: 0.0,
                                                         fontWeight:
@@ -3457,7 +3457,7 @@ class _CommunitySpaceWidgetState extends State<CommunitySpaceWidget> {
                                                       context)
                                                   .bodyMedium
                                                   .override(
-                                                    fontFamily: 'Inter',
+                                                    fontFamily: 'Poppins',
                                                     color: FlutterFlowTheme.of(
                                                             context)
                                                         .secondary,
@@ -3470,7 +3470,7 @@ class _CommunitySpaceWidgetState extends State<CommunitySpaceWidget> {
                                           Padding(
                                             padding:
                                                 const EdgeInsetsDirectional.fromSTEB(
-                                                    19.0, 7.0, 0.0, 18.71),
+                                                    19.0, 7.0, 0.0, 0.0),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
                                               mainAxisAlignment:
@@ -3648,7 +3648,7 @@ class _CommunitySpaceWidgetState extends State<CommunitySpaceWidget> {
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium
                                                       .override(
-                                                        fontFamily: 'Inter',
+                                                        fontFamily: 'Poppins',
                                                         fontSize: 16.0,
                                                         letterSpacing: 0.0,
                                                         fontWeight:
@@ -3684,7 +3684,7 @@ class _CommunitySpaceWidgetState extends State<CommunitySpaceWidget> {
                                                       context)
                                                   .bodyMedium
                                                   .override(
-                                                    fontFamily: 'Inter',
+                                                    fontFamily: 'Poppins',
                                                     color: FlutterFlowTheme.of(
                                                             context)
                                                         .secondary,
@@ -3697,7 +3697,7 @@ class _CommunitySpaceWidgetState extends State<CommunitySpaceWidget> {
                                           Padding(
                                             padding:
                                                 const EdgeInsetsDirectional.fromSTEB(
-                                                    19.0, 7.0, 0.0, 18.71),
+                                                    19.0, 7.0, 0.0, 0.0),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
                                               mainAxisAlignment:
@@ -3875,7 +3875,7 @@ class _CommunitySpaceWidgetState extends State<CommunitySpaceWidget> {
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium
                                                       .override(
-                                                        fontFamily: 'Inter',
+                                                        fontFamily: 'Poppins',
                                                         fontSize: 16.0,
                                                         letterSpacing: 0.0,
                                                         fontWeight:
@@ -3911,7 +3911,7 @@ class _CommunitySpaceWidgetState extends State<CommunitySpaceWidget> {
                                                       context)
                                                   .bodyMedium
                                                   .override(
-                                                    fontFamily: 'Inter',
+                                                    fontFamily: 'Poppins',
                                                     color: FlutterFlowTheme.of(
                                                             context)
                                                         .secondary,
@@ -3924,7 +3924,7 @@ class _CommunitySpaceWidgetState extends State<CommunitySpaceWidget> {
                                           Padding(
                                             padding:
                                                 const EdgeInsetsDirectional.fromSTEB(
-                                                    19.0, 7.0, 0.0, 18.71),
+                                                    19.0, 7.0, 0.0, 0.0),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
                                               mainAxisAlignment:
@@ -4019,7 +4019,7 @@ class _CommunitySpaceWidgetState extends State<CommunitySpaceWidget> {
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
-                                          fontFamily: 'Inter',
+                                          fontFamily: 'Poppins',
                                           fontSize: 16.0,
                                           letterSpacing: 0.0,
                                           fontWeight: FontWeight.w600,
@@ -4030,13 +4030,14 @@ class _CommunitySpaceWidgetState extends State<CommunitySpaceWidget> {
                             ),
                             Padding(
                               padding: const EdgeInsetsDirectional.fromSTEB(
-                                  15.0, 0.0, 0.0, 0.0),
+                                  15.0, 0.0, 0.0, 15.0),
                               child: SingleChildScrollView(
                                 scrollDirection: Axis.horizontal,
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
                                     Container(
+                                      height: 265.0,
                                       decoration: BoxDecoration(
                                         color: FlutterFlowTheme.of(context)
                                             .secondaryBackground,
@@ -4072,7 +4073,7 @@ class _CommunitySpaceWidgetState extends State<CommunitySpaceWidget> {
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium
                                                       .override(
-                                                        fontFamily: 'Inter',
+                                                        fontFamily: 'Poppins',
                                                         fontSize: 16.0,
                                                         letterSpacing: 0.0,
                                                         fontWeight:
@@ -4090,7 +4091,7 @@ class _CommunitySpaceWidgetState extends State<CommunitySpaceWidget> {
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium
                                                       .override(
-                                                        fontFamily: 'Inter',
+                                                        fontFamily: 'Poppins',
                                                         color:
                                                             const Color(0xFF92929D),
                                                         fontSize: 12.0,
@@ -4101,7 +4102,7 @@ class _CommunitySpaceWidgetState extends State<CommunitySpaceWidget> {
                                           Padding(
                                             padding:
                                                 const EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 28.29, 0.0, 18.71),
+                                                    0.0, 28.29, 0.0, 0.0),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
                                               mainAxisAlignment:
@@ -4274,8 +4275,7 @@ class _CommunitySpaceWidgetState extends State<CommunitySpaceWidget> {
                                                             .of(context)
                                                         .titleSmall
                                                         .override(
-                                                          fontFamily:
-                                                              'Inter Tight',
+                                                          fontFamily: 'Poppins',
                                                           color: Colors.white,
                                                           fontSize: 12.0,
                                                           letterSpacing: 0.0,
@@ -4293,6 +4293,7 @@ class _CommunitySpaceWidgetState extends State<CommunitySpaceWidget> {
                                       ),
                                     ),
                                     Container(
+                                      height: 265.0,
                                       decoration: BoxDecoration(
                                         color: FlutterFlowTheme.of(context)
                                             .secondaryBackground,
@@ -4328,7 +4329,7 @@ class _CommunitySpaceWidgetState extends State<CommunitySpaceWidget> {
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium
                                                       .override(
-                                                        fontFamily: 'Inter',
+                                                        fontFamily: 'Poppins',
                                                         fontSize: 16.0,
                                                         letterSpacing: 0.0,
                                                         fontWeight:
@@ -4346,7 +4347,7 @@ class _CommunitySpaceWidgetState extends State<CommunitySpaceWidget> {
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium
                                                       .override(
-                                                        fontFamily: 'Inter',
+                                                        fontFamily: 'Poppins',
                                                         color:
                                                             const Color(0xFF92929D),
                                                         fontSize: 12.0,
@@ -4357,7 +4358,7 @@ class _CommunitySpaceWidgetState extends State<CommunitySpaceWidget> {
                                           Padding(
                                             padding:
                                                 const EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 28.29, 0.0, 18.71),
+                                                    0.0, 28.29, 0.0, 0.0),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
                                               mainAxisAlignment:
@@ -4530,8 +4531,7 @@ class _CommunitySpaceWidgetState extends State<CommunitySpaceWidget> {
                                                             .of(context)
                                                         .titleSmall
                                                         .override(
-                                                          fontFamily:
-                                                              'Inter Tight',
+                                                          fontFamily: 'Poppins',
                                                           color: Colors.white,
                                                           fontSize: 12.0,
                                                           letterSpacing: 0.0,
@@ -4549,6 +4549,7 @@ class _CommunitySpaceWidgetState extends State<CommunitySpaceWidget> {
                                       ),
                                     ),
                                     Container(
+                                      height: 265.0,
                                       decoration: BoxDecoration(
                                         color: FlutterFlowTheme.of(context)
                                             .secondaryBackground,
@@ -4584,7 +4585,7 @@ class _CommunitySpaceWidgetState extends State<CommunitySpaceWidget> {
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium
                                                       .override(
-                                                        fontFamily: 'Inter',
+                                                        fontFamily: 'Poppins',
                                                         fontSize: 16.0,
                                                         letterSpacing: 0.0,
                                                         fontWeight:
@@ -4602,7 +4603,7 @@ class _CommunitySpaceWidgetState extends State<CommunitySpaceWidget> {
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium
                                                       .override(
-                                                        fontFamily: 'Inter',
+                                                        fontFamily: 'Poppins',
                                                         color:
                                                             const Color(0xFF92929D),
                                                         fontSize: 12.0,
@@ -4613,7 +4614,7 @@ class _CommunitySpaceWidgetState extends State<CommunitySpaceWidget> {
                                           Padding(
                                             padding:
                                                 const EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 28.29, 0.0, 18.71),
+                                                    0.0, 28.29, 0.0, 0.0),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
                                               mainAxisAlignment:
@@ -4786,8 +4787,7 @@ class _CommunitySpaceWidgetState extends State<CommunitySpaceWidget> {
                                                             .of(context)
                                                         .titleSmall
                                                         .override(
-                                                          fontFamily:
-                                                              'Inter Tight',
+                                                          fontFamily: 'Poppins',
                                                           color: Colors.white,
                                                           fontSize: 12.0,
                                                           letterSpacing: 0.0,
@@ -4805,6 +4805,7 @@ class _CommunitySpaceWidgetState extends State<CommunitySpaceWidget> {
                                       ),
                                     ),
                                     Container(
+                                      height: 265.0,
                                       decoration: BoxDecoration(
                                         color: FlutterFlowTheme.of(context)
                                             .secondaryBackground,
@@ -4840,7 +4841,7 @@ class _CommunitySpaceWidgetState extends State<CommunitySpaceWidget> {
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium
                                                       .override(
-                                                        fontFamily: 'Inter',
+                                                        fontFamily: 'Poppins',
                                                         fontSize: 16.0,
                                                         letterSpacing: 0.0,
                                                         fontWeight:
@@ -4858,7 +4859,7 @@ class _CommunitySpaceWidgetState extends State<CommunitySpaceWidget> {
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium
                                                       .override(
-                                                        fontFamily: 'Inter',
+                                                        fontFamily: 'Poppins',
                                                         color:
                                                             const Color(0xFF92929D),
                                                         fontSize: 12.0,
@@ -4869,7 +4870,7 @@ class _CommunitySpaceWidgetState extends State<CommunitySpaceWidget> {
                                           Padding(
                                             padding:
                                                 const EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 28.29, 0.0, 18.71),
+                                                    0.0, 28.29, 0.0, 0.0),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
                                               mainAxisAlignment:
@@ -5042,8 +5043,7 @@ class _CommunitySpaceWidgetState extends State<CommunitySpaceWidget> {
                                                             .of(context)
                                                         .titleSmall
                                                         .override(
-                                                          fontFamily:
-                                                              'Inter Tight',
+                                                          fontFamily: 'Poppins',
                                                           color: Colors.white,
                                                           fontSize: 12.0,
                                                           letterSpacing: 0.0,

@@ -86,14 +86,14 @@ class _HomeFeedMoreWidgetState extends State<HomeFeedMoreWidget> {
                               labelStyle: FlutterFlowTheme.of(context)
                                   .labelMedium
                                   .override(
-                                    fontFamily: 'Inter',
+                                    fontFamily: 'Poppins',
                                     letterSpacing: 0.0,
                                   ),
                               hintText: 'Search',
                               hintStyle: FlutterFlowTheme.of(context)
                                   .labelMedium
                                   .override(
-                                    fontFamily: 'Inter',
+                                    fontFamily: 'Poppins',
                                     letterSpacing: 0.0,
                                   ),
                               enabledBorder: OutlineInputBorder(
@@ -135,7 +135,7 @@ class _HomeFeedMoreWidgetState extends State<HomeFeedMoreWidget> {
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
                                 .override(
-                                  fontFamily: 'Inter',
+                                  fontFamily: 'Poppins',
                                   letterSpacing: 0.0,
                                 ),
                             cursorColor:
@@ -225,7 +225,7 @@ class _HomeFeedMoreWidgetState extends State<HomeFeedMoreWidget> {
                           await authManager.signOut();
                           GoRouter.of(context).clearRedirectLocation();
 
-                          context.goNamedAuth('signupPage', context.mounted);
+                          context.goNamedAuth('loginPage', context.mounted);
                         },
                         child: Text(
                           'Menu',

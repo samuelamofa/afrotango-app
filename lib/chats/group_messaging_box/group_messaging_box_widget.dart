@@ -164,7 +164,7 @@ class _GroupMessagingBoxWidgetState extends State<GroupMessagingBoxWidget> {
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
                                                 .override(
-                                                  fontFamily: 'Inter',
+                                                  fontFamily: 'Poppins',
                                                   color: const Color(0xFF1A314D),
                                                   fontSize: 16.0,
                                                   letterSpacing: 0.0,
@@ -591,7 +591,7 @@ class _GroupMessagingBoxWidgetState extends State<GroupMessagingBoxWidget> {
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium
                                                       .override(
-                                                        fontFamily: 'Inter',
+                                                        fontFamily: 'Poppins',
                                                         letterSpacing: 0.0,
                                                       ),
                                               enabledBorder: InputBorder.none,
@@ -603,7 +603,7 @@ class _GroupMessagingBoxWidgetState extends State<GroupMessagingBoxWidget> {
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
                                                 .override(
-                                                  fontFamily: 'Inter',
+                                                  fontFamily: 'Poppins',
                                                   letterSpacing: 0.0,
                                                 ),
                                             minLines: 1,

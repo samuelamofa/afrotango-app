@@ -93,7 +93,7 @@ class _CommunityCreateWidgetState extends State<CommunityCreateWidget> {
                 child: Text(
                   'Create a Community',
                   style: FlutterFlowTheme.of(context).bodyMedium.override(
-                        fontFamily: 'Inter',
+                        fontFamily: 'Poppins',
                         fontSize: 18.0,
                         letterSpacing: 0.0,
                         fontWeight: FontWeight.bold,
@@ -173,7 +173,7 @@ class _CommunityCreateWidgetState extends State<CommunityCreateWidget> {
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
-                                        fontFamily: 'Inter',
+                                        fontFamily: 'Poppins',
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.w500,
                                       ),
@@ -207,7 +207,7 @@ class _CommunityCreateWidgetState extends State<CommunityCreateWidget> {
                   child: Text(
                     'Community Name',
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
-                          fontFamily: 'Inter',
+                          fontFamily: 'Poppins',
                           fontSize: 16.0,
                           letterSpacing: 0.0,
                           fontWeight: FontWeight.w600,
@@ -228,13 +228,13 @@ class _CommunityCreateWidgetState extends State<CommunityCreateWidget> {
                       isDense: true,
                       labelStyle:
                           FlutterFlowTheme.of(context).labelMedium.override(
-                                fontFamily: 'Inter',
+                                fontFamily: 'Poppins',
                                 letterSpacing: 0.0,
                               ),
                       hintText: 'Community Name',
                       hintStyle:
                           FlutterFlowTheme.of(context).labelMedium.override(
-                                fontFamily: 'Inter',
+                                fontFamily: 'Poppins',
                                 color: const Color(0xFF6B7280),
                                 fontSize: 15.0,
                                 letterSpacing: 0.0,
@@ -273,7 +273,7 @@ class _CommunityCreateWidgetState extends State<CommunityCreateWidget> {
                           FlutterFlowTheme.of(context).secondaryBackground,
                     ),
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
-                          fontFamily: 'Inter',
+                          fontFamily: 'Poppins',
                           letterSpacing: 0.0,
                         ),
                     cursorColor: FlutterFlowTheme.of(context).primaryText,
@@ -289,7 +289,7 @@ class _CommunityCreateWidgetState extends State<CommunityCreateWidget> {
                   child: Text(
                     'Select Category',
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
-                          fontFamily: 'Inter',
+                          fontFamily: 'Poppins',
                           fontSize: 16.0,
                           letterSpacing: 0.0,
                           fontWeight: FontWeight.w600,
@@ -314,7 +314,7 @@ class _CommunityCreateWidgetState extends State<CommunityCreateWidget> {
                   width: double.infinity,
                   height: 40.0,
                   textStyle: FlutterFlowTheme.of(context).bodyMedium.override(
-                        fontFamily: 'Inter',
+                        fontFamily: 'Poppins',
                         color: const Color(0xFF6B7280),
                         fontSize: 15.0,
                         letterSpacing: 0.0,
@@ -344,7 +344,7 @@ class _CommunityCreateWidgetState extends State<CommunityCreateWidget> {
                   child: Text(
                     'Privacy',
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
-                          fontFamily: 'Inter',
+                          fontFamily: 'Poppins',
                           fontSize: 16.0,
                           letterSpacing: 0.0,
                           fontWeight: FontWeight.w600,
@@ -363,7 +363,7 @@ class _CommunityCreateWidgetState extends State<CommunityCreateWidget> {
                   width: double.infinity,
                   height: 40.0,
                   textStyle: FlutterFlowTheme.of(context).bodyMedium.override(
-                        fontFamily: 'Inter',
+                        fontFamily: 'Poppins',
                         color: const Color(0xFF6B7280),
                         fontSize: 15.0,
                         letterSpacing: 0.0,
@@ -393,7 +393,7 @@ class _CommunityCreateWidgetState extends State<CommunityCreateWidget> {
                   child: Text(
                     'About Community',
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
-                          fontFamily: 'Inter',
+                          fontFamily: 'Poppins',
                           fontSize: 16.0,
                           letterSpacing: 0.0,
                           fontWeight: FontWeight.w600,
@@ -414,13 +414,13 @@ class _CommunityCreateWidgetState extends State<CommunityCreateWidget> {
                       isDense: true,
                       labelStyle:
                           FlutterFlowTheme.of(context).labelMedium.override(
-                                fontFamily: 'Inter',
+                                fontFamily: 'Poppins',
                                 letterSpacing: 0.0,
                               ),
                       hintText: 'Community description',
                       hintStyle:
                           FlutterFlowTheme.of(context).labelMedium.override(
-                                fontFamily: 'Inter',
+                                fontFamily: 'Poppins',
                                 color: const Color(0xFF6B7280),
                                 fontSize: 15.0,
                                 letterSpacing: 0.0,
@@ -459,7 +459,7 @@ class _CommunityCreateWidgetState extends State<CommunityCreateWidget> {
                           FlutterFlowTheme.of(context).secondaryBackground,
                     ),
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
-                          fontFamily: 'Inter',
+                          fontFamily: 'Poppins',
                           letterSpacing: 0.0,
                         ),
                     maxLength: 150,
@@ -490,7 +490,7 @@ class _CommunityCreateWidgetState extends State<CommunityCreateWidget> {
                         color: FlutterFlowTheme.of(context).primaryBackground,
                         textStyle:
                             FlutterFlowTheme.of(context).titleSmall.override(
-                                  fontFamily: 'Inter Tight',
+                                  fontFamily: 'Poppins',
                                   color: FlutterFlowTheme.of(context).primary,
                                   letterSpacing: 0.0,
                                 ),
@@ -617,7 +617,7 @@ class _CommunityCreateWidgetState extends State<CommunityCreateWidget> {
                         color: FlutterFlowTheme.of(context).primary,
                         textStyle:
                             FlutterFlowTheme.of(context).titleSmall.override(
-                                  fontFamily: 'Inter Tight',
+                                  fontFamily: 'Poppins',
                                   color: Colors.white,
                                   letterSpacing: 0.0,
                                 ),

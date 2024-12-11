@@ -81,7 +81,7 @@ class _CountrySelectWidgetState extends State<CountrySelectWidget> {
                       child: Text(
                         'Country name',
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
-                              fontFamily: 'Inter',
+                              fontFamily: 'Poppins',
                               fontSize: 18.0,
                               letterSpacing: 0.0,
                             ),
@@ -117,7 +117,7 @@ class _CountrySelectWidgetState extends State<CountrySelectWidget> {
                     options: options.toList(),
                     onSelected: onSelected,
                     textStyle: FlutterFlowTheme.of(context).bodyMedium.override(
-                          fontFamily: 'Inter',
+                          fontFamily: 'Poppins',
                           letterSpacing: 0.0,
                         ),
                     textHighlightStyle: const TextStyle(),
@@ -160,13 +160,13 @@ class _CountrySelectWidgetState extends State<CountrySelectWidget> {
                     decoration: InputDecoration(
                       labelStyle:
                           FlutterFlowTheme.of(context).labelMedium.override(
-                                fontFamily: 'Inter',
+                                fontFamily: 'Poppins',
                                 fontSize: 16.0,
                                 letterSpacing: 0.0,
                               ),
                       hintStyle:
                           FlutterFlowTheme.of(context).labelMedium.override(
-                                fontFamily: 'Inter',
+                                fontFamily: 'Poppins',
                                 letterSpacing: 0.0,
                               ),
                       enabledBorder: OutlineInputBorder(
@@ -199,7 +199,7 @@ class _CountrySelectWidgetState extends State<CountrySelectWidget> {
                       ),
                     ),
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
-                          fontFamily: 'Inter',
+                          fontFamily: 'Poppins',
                           letterSpacing: 0.0,
                         ),
                     validator:
@@ -235,7 +235,7 @@ class _CountrySelectWidgetState extends State<CountrySelectWidget> {
                         const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                     color: FlutterFlowTheme.of(context).primary,
                     textStyle: FlutterFlowTheme.of(context).titleSmall.override(
-                          fontFamily: 'Inter Tight',
+                          fontFamily: 'Poppins',
                           color: Colors.white,
                           letterSpacing: 0.0,
                         ),

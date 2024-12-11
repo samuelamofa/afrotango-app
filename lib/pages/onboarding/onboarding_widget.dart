@@ -73,7 +73,7 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                   child: Text(
                     'Welcome Home',
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
-                          fontFamily: 'Inter',
+                          fontFamily: 'Poppins',
                           fontSize: 30.0,
                           letterSpacing: 0.0,
                           fontWeight: FontWeight.w600,
@@ -85,7 +85,7 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                   child: Text(
                     'Expat',
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
-                          fontFamily: 'Inter',
+                          fontFamily: 'Poppins',
                           color: const Color(0xFF800000),
                           fontSize: 30.0,
                           letterSpacing: 0.0,
@@ -98,7 +98,7 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
             Text(
               'Hello World',
               style: FlutterFlowTheme.of(context).bodyMedium.override(
-                    fontFamily: 'Inter',
+                    fontFamily: 'Poppins',
                     letterSpacing: 0.0,
                   ),
             ),

@@ -89,14 +89,14 @@ class _MarketplaceWidgetState extends State<MarketplaceWidget> {
                                 labelStyle: FlutterFlowTheme.of(context)
                                     .labelMedium
                                     .override(
-                                      fontFamily: 'Inter',
+                                      fontFamily: 'Poppins',
                                       letterSpacing: 0.0,
                                     ),
                                 hintText: 'Search',
                                 hintStyle: FlutterFlowTheme.of(context)
                                     .labelMedium
                                     .override(
-                                      fontFamily: 'Inter',
+                                      fontFamily: 'Poppins',
                                       letterSpacing: 0.0,
                                     ),
                                 enabledBorder: OutlineInputBorder(
@@ -138,7 +138,7 @@ class _MarketplaceWidgetState extends State<MarketplaceWidget> {
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(
-                                    fontFamily: 'Inter',
+                                    fontFamily: 'Poppins',
                                     letterSpacing: 0.0,
                                   ),
                               cursorColor:
@@ -302,7 +302,7 @@ class _MarketplaceWidgetState extends State<MarketplaceWidget> {
                                     textStyle: FlutterFlowTheme.of(context)
                                         .titleSmall
                                         .override(
-                                          fontFamily: 'Inter Tight',
+                                          fontFamily: 'Poppins',
                                           color: Colors.white,
                                           letterSpacing: 0.0,
                                         ),
@@ -339,7 +339,7 @@ class _MarketplaceWidgetState extends State<MarketplaceWidget> {
                                     textStyle: FlutterFlowTheme.of(context)
                                         .titleSmall
                                         .override(
-                                          fontFamily: 'Inter Tight',
+                                          fontFamily: 'Poppins',
                                           color: Colors.black,
                                           letterSpacing: 0.0,
                                         ),
@@ -362,7 +362,7 @@ class _MarketplaceWidgetState extends State<MarketplaceWidget> {
                           'All Categories',
                           style:
                               FlutterFlowTheme.of(context).bodyMedium.override(
-                                    fontFamily: 'Inter',
+                                    fontFamily: 'Poppins',
                                     color: Colors.black,
                                     fontSize: 18.0,
                                     letterSpacing: 0.0,
@@ -517,7 +517,7 @@ class _MarketplaceWidgetState extends State<MarketplaceWidget> {
                                                 FlutterFlowTheme.of(context)
                                                     .titleSmall
                                                     .override(
-                                                      fontFamily: 'Inter Tight',
+                                                      fontFamily: 'Poppins',
                                                       color: Colors.white,
                                                       letterSpacing: 0.0,
                                                     ),

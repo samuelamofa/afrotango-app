@@ -108,7 +108,7 @@ class _HomeFeedWidgetState extends State<HomeFeedWidget> {
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(
-                                    fontFamily: 'Inter',
+                                    fontFamily: 'Poppins',
                                     color:
                                         FlutterFlowTheme.of(context).secondary,
                                     letterSpacing: 0.0,
@@ -175,7 +175,7 @@ class _HomeFeedWidgetState extends State<HomeFeedWidget> {
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
-                                        fontFamily: 'Inter',
+                                        fontFamily: 'Poppins',
                                         color: const Color(0xFFEAB308),
                                         fontSize: 10.0,
                                         letterSpacing: 0.0,
@@ -244,7 +244,7 @@ class _HomeFeedWidgetState extends State<HomeFeedWidget> {
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
-                                        fontFamily: 'Inter',
+                                        fontFamily: 'Poppins',
                                         color: const Color(0xFFEAB308),
                                         fontSize: 10.0,
                                         letterSpacing: 0.0,
@@ -293,7 +293,7 @@ class _HomeFeedWidgetState extends State<HomeFeedWidget> {
                           'Event Ad',
                           style:
                               FlutterFlowTheme.of(context).bodyMedium.override(
-                                    fontFamily: 'Inter',
+                                    fontFamily: 'Poppins',
                                     color: FlutterFlowTheme.of(context)
                                         .secondaryBackground,
                                     fontSize: 16.0,
@@ -431,14 +431,14 @@ class _HomeFeedWidgetState extends State<HomeFeedWidget> {
                               labelStyle: FlutterFlowTheme.of(context)
                                   .labelMedium
                                   .override(
-                                    fontFamily: 'Inter',
+                                    fontFamily: 'Poppins',
                                     letterSpacing: 0.0,
                                   ),
                               hintText: 'Search',
                               hintStyle: FlutterFlowTheme.of(context)
                                   .labelMedium
                                   .override(
-                                    fontFamily: 'Inter',
+                                    fontFamily: 'Poppins',
                                     letterSpacing: 0.0,
                                   ),
                               enabledBorder: OutlineInputBorder(
@@ -480,7 +480,7 @@ class _HomeFeedWidgetState extends State<HomeFeedWidget> {
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
                                 .override(
-                                  fontFamily: 'Inter',
+                                  fontFamily: 'Poppins',
                                   letterSpacing: 0.0,
                                 ),
                             cursorColor:
@@ -608,7 +608,7 @@ class _HomeFeedWidgetState extends State<HomeFeedWidget> {
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
-                                            fontFamily: 'Inter',
+                                            fontFamily: 'Poppins',
                                             color: FlutterFlowTheme.of(context)
                                                 .secondaryBackground,
                                             fontSize: 20.0,
@@ -635,7 +635,7 @@ class _HomeFeedWidgetState extends State<HomeFeedWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
-                                      fontFamily: 'Inter',
+                                      fontFamily: 'Poppins',
                                       fontSize: 16.0,
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.w600,
@@ -859,7 +859,7 @@ class _HomeFeedWidgetState extends State<HomeFeedWidget> {
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
-                                          fontFamily: 'Inter',
+                                          fontFamily: 'Poppins',
                                           fontSize: 16.0,
                                           letterSpacing: 0.0,
                                           fontWeight: FontWeight.w600,
@@ -870,7 +870,7 @@ class _HomeFeedWidgetState extends State<HomeFeedWidget> {
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
-                                          fontFamily: 'Inter',
+                                          fontFamily: 'Poppins',
                                           color: FlutterFlowTheme.of(context)
                                               .secondary,
                                           letterSpacing: 0.0,
@@ -1025,7 +1025,7 @@ class _HomeFeedWidgetState extends State<HomeFeedWidget> {
                                                               .bodyMedium
                                                               .override(
                                                                 fontFamily:
-                                                                    'Inter',
+                                                                    'Poppins',
                                                                 fontSize: 16.0,
                                                                 letterSpacing:
                                                                     0.0,
@@ -1055,7 +1055,7 @@ class _HomeFeedWidgetState extends State<HomeFeedWidget> {
                                                               .bodyMedium
                                                               .override(
                                                                 fontFamily:
-                                                                    'Inter',
+                                                                    'Poppins',
                                                                 color: const Color(
                                                                     0xFF92929D),
                                                                 fontSize: 12.0,
@@ -1269,7 +1269,7 @@ class _HomeFeedWidgetState extends State<HomeFeedWidget> {
                                                                       .titleSmall
                                                                       .override(
                                                                         fontFamily:
-                                                                            'Inter Tight',
+                                                                            'Poppins',
                                                                         color: Colors
                                                                             .white,
                                                                         fontSize:
@@ -1319,7 +1319,7 @@ class _HomeFeedWidgetState extends State<HomeFeedWidget> {
                                                                       .titleSmall
                                                                       .override(
                                                                         fontFamily:
-                                                                            'Inter Tight',
+                                                                            'Poppins',
                                                                         color: FlutterFlowTheme.of(context)
                                                                             .primary,
                                                                         fontSize:
@@ -1376,7 +1376,7 @@ class _HomeFeedWidgetState extends State<HomeFeedWidget> {
                                       textStyle: FlutterFlowTheme.of(context)
                                           .titleSmall
                                           .override(
-                                            fontFamily: 'Inter Tight',
+                                            fontFamily: 'Poppins',
                                             color: Colors.white,
                                             fontSize: 12.0,
                                             letterSpacing: 0.0,
@@ -1423,7 +1423,7 @@ class _HomeFeedWidgetState extends State<HomeFeedWidget> {
                                         textStyle: FlutterFlowTheme.of(context)
                                             .titleSmall
                                             .override(
-                                              fontFamily: 'Inter Tight',
+                                              fontFamily: 'Poppins',
                                               color: Colors.white,
                                               fontSize: 12.0,
                                               letterSpacing: 0.0,
@@ -1455,7 +1455,7 @@ class _HomeFeedWidgetState extends State<HomeFeedWidget> {
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
-                                          fontFamily: 'Inter',
+                                          fontFamily: 'Poppins',
                                           fontSize: 16.0,
                                           letterSpacing: 0.0,
                                           fontWeight: FontWeight.w600,
@@ -1466,7 +1466,7 @@ class _HomeFeedWidgetState extends State<HomeFeedWidget> {
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
-                                          fontFamily: 'Inter',
+                                          fontFamily: 'Poppins',
                                           color: FlutterFlowTheme.of(context)
                                               .secondary,
                                           letterSpacing: 0.0,
@@ -1575,7 +1575,8 @@ class _HomeFeedWidgetState extends State<HomeFeedWidget> {
                                                               .of(context)
                                                           .bodyMedium
                                                           .override(
-                                                            fontFamily: 'Inter',
+                                                            fontFamily:
+                                                                'Poppins',
                                                             fontSize: 16.0,
                                                             letterSpacing: 0.0,
                                                             fontWeight:
@@ -1599,7 +1600,8 @@ class _HomeFeedWidgetState extends State<HomeFeedWidget> {
                                                               .of(context)
                                                           .bodyMedium
                                                           .override(
-                                                            fontFamily: 'Inter',
+                                                            fontFamily:
+                                                                'Poppins',
                                                             color: const Color(
                                                                 0xFF92929D),
                                                             fontSize: 12.0,
@@ -1711,7 +1713,7 @@ class _HomeFeedWidgetState extends State<HomeFeedWidget> {
                                                                           .bodyMedium
                                                                           .override(
                                                                             fontFamily:
-                                                                                'Inter',
+                                                                                'Poppins',
                                                                             color:
                                                                                 const Color(0xFF4987FF),
                                                                             fontSize:
@@ -1769,7 +1771,7 @@ class _HomeFeedWidgetState extends State<HomeFeedWidget> {
                                       textStyle: FlutterFlowTheme.of(context)
                                           .titleSmall
                                           .override(
-                                            fontFamily: 'Inter Tight',
+                                            fontFamily: 'Poppins',
                                             color: Colors.white,
                                             fontSize: 12.0,
                                             letterSpacing: 0.0,
@@ -1810,7 +1812,7 @@ class _HomeFeedWidgetState extends State<HomeFeedWidget> {
                                         textStyle: FlutterFlowTheme.of(context)
                                             .titleSmall
                                             .override(
-                                              fontFamily: 'Inter Tight',
+                                              fontFamily: 'Poppins',
                                               color: Colors.white,
                                               fontSize: 12.0,
                                               letterSpacing: 0.0,
@@ -1842,7 +1844,7 @@ class _HomeFeedWidgetState extends State<HomeFeedWidget> {
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
-                                          fontFamily: 'Inter',
+                                          fontFamily: 'Poppins',
                                           fontSize: 16.0,
                                           letterSpacing: 0.0,
                                           fontWeight: FontWeight.w600,
@@ -1853,7 +1855,7 @@ class _HomeFeedWidgetState extends State<HomeFeedWidget> {
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
-                                          fontFamily: 'Inter',
+                                          fontFamily: 'Poppins',
                                           color: FlutterFlowTheme.of(context)
                                               .secondary,
                                           letterSpacing: 0.0,
@@ -1901,7 +1903,7 @@ class _HomeFeedWidgetState extends State<HomeFeedWidget> {
                                               rowEventRecordList[rowIndex];
                                           return Container(
                                             width: 260.0,
-                                            height: 262.71,
+                                            height: 265.0,
                                             decoration: BoxDecoration(
                                               color:
                                                   FlutterFlowTheme.of(context)
@@ -1979,7 +1981,7 @@ class _HomeFeedWidgetState extends State<HomeFeedWidget> {
                                                                       .bodyMedium
                                                                       .override(
                                                                         fontFamily:
-                                                                            'Inter',
+                                                                            'Poppins',
                                                                         color: const Color(
                                                                             0xFF92929D),
                                                                         fontSize:
@@ -2003,7 +2005,7 @@ class _HomeFeedWidgetState extends State<HomeFeedWidget> {
                                                                       .bodyMedium
                                                                       .override(
                                                                         fontFamily:
-                                                                            'Inter',
+                                                                            'Poppins',
                                                                         fontSize:
                                                                             24.0,
                                                                         letterSpacing:
@@ -2031,7 +2033,7 @@ class _HomeFeedWidgetState extends State<HomeFeedWidget> {
                                                                     .bodyMedium
                                                                     .override(
                                                                       fontFamily:
-                                                                          'Inter',
+                                                                          'Poppins',
                                                                       color: const Color(
                                                                           0xFF44444F),
                                                                       fontSize:
@@ -2063,7 +2065,7 @@ class _HomeFeedWidgetState extends State<HomeFeedWidget> {
                                                                           .bodyMedium
                                                                           .override(
                                                                             fontFamily:
-                                                                                'Inter',
+                                                                                'Poppins',
                                                                             color:
                                                                                 const Color(0xFF92929D),
                                                                             letterSpacing:
@@ -2083,7 +2085,7 @@ class _HomeFeedWidgetState extends State<HomeFeedWidget> {
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .bodyMedium
                                                                             .override(
-                                                                              fontFamily: 'Inter',
+                                                                              fontFamily: 'Poppins',
                                                                               color: const Color(0xFF92929D),
                                                                               letterSpacing: 0.0,
                                                                             ),
@@ -2102,7 +2104,7 @@ class _HomeFeedWidgetState extends State<HomeFeedWidget> {
                                                 Padding(
                                                   padding: const EdgeInsetsDirectional
                                                       .fromSTEB(
-                                                          0.0, 27.0, 0.0, 0.0),
+                                                          0.0, 18.0, 0.0, 0.0),
                                                   child: Row(
                                                     mainAxisSize:
                                                         MainAxisSize.max,
@@ -2300,7 +2302,7 @@ class _HomeFeedWidgetState extends State<HomeFeedWidget> {
                                       textStyle: FlutterFlowTheme.of(context)
                                           .titleSmall
                                           .override(
-                                            fontFamily: 'Inter Tight',
+                                            fontFamily: 'Poppins',
                                             color: Colors.white,
                                             fontSize: 12.0,
                                             letterSpacing: 0.0,
@@ -2347,7 +2349,7 @@ class _HomeFeedWidgetState extends State<HomeFeedWidget> {
                                         textStyle: FlutterFlowTheme.of(context)
                                             .titleSmall
                                             .override(
-                                              fontFamily: 'Inter Tight',
+                                              fontFamily: 'Poppins',
                                               color: Colors.white,
                                               fontSize: 12.0,
                                               letterSpacing: 0.0,
@@ -2379,7 +2381,7 @@ class _HomeFeedWidgetState extends State<HomeFeedWidget> {
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
-                                          fontFamily: 'Inter',
+                                          fontFamily: 'Poppins',
                                           fontSize: 16.0,
                                           letterSpacing: 0.0,
                                           fontWeight: FontWeight.w600,
@@ -2390,7 +2392,7 @@ class _HomeFeedWidgetState extends State<HomeFeedWidget> {
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
-                                          fontFamily: 'Inter',
+                                          fontFamily: 'Poppins',
                                           color: FlutterFlowTheme.of(context)
                                               .secondary,
                                           letterSpacing: 0.0,
@@ -2606,7 +2608,7 @@ class _HomeFeedWidgetState extends State<HomeFeedWidget> {
                                                             .bodyMedium
                                                             .override(
                                                               fontFamily:
-                                                                  'Inter',
+                                                                  'Poppins',
                                                               fontSize: 16.0,
                                                               letterSpacing:
                                                                   0.0,
@@ -2669,7 +2671,7 @@ class _HomeFeedWidgetState extends State<HomeFeedWidget> {
                                                                 .bodyMedium
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Inter',
+                                                                      'Poppins',
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .secondary,
@@ -2713,42 +2715,43 @@ class _HomeFeedWidgetState extends State<HomeFeedWidget> {
                                                                       0.0,
                                                                 ),
                                                           ),
-                                                        ],
-                                                      ),
-                                                    ),
-                                                    Align(
-                                                      alignment:
-                                                          const AlignmentDirectional(
-                                                              1.0, 0.0),
-                                                      child: Padding(
-                                                        padding:
-                                                            const EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    0.0,
-                                                                    0.0,
-                                                                    10.0,
-                                                                    0.0),
-                                                        child: Text(
-                                                          dateTimeFormat(
-                                                              "relative",
-                                                              rowAdsRecord
-                                                                  .createdTime!),
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Roboto',
-                                                                color: const Color(
-                                                                    0xFF92929D),
-                                                                fontSize: 14.0,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .normal,
+                                                          Align(
+                                                            alignment:
+                                                                const AlignmentDirectional(
+                                                                    1.0, 0.0),
+                                                            child: Padding(
+                                                              padding:
+                                                                  const EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          0.0,
+                                                                          0.0,
+                                                                          10.0,
+                                                                          0.0),
+                                                              child: Text(
+                                                                dateTimeFormat(
+                                                                    "relative",
+                                                                    rowAdsRecord
+                                                                        .createdTime!),
+                                                                style: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          'Roboto',
+                                                                      color: const Color(
+                                                                          0xFF92929D),
+                                                                      fontSize:
+                                                                          14.0,
+                                                                      letterSpacing:
+                                                                          0.0,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .normal,
+                                                                    ),
                                                               ),
-                                                        ),
+                                                            ),
+                                                          ),
+                                                        ],
                                                       ),
                                                     ),
                                                   ],
@@ -2765,7 +2768,7 @@ class _HomeFeedWidgetState extends State<HomeFeedWidget> {
                             ),
                             Padding(
                               padding: const EdgeInsetsDirectional.fromSTEB(
-                                  15.0, 31.0, 0.0, 0.0),
+                                  15.0, 30.0, 0.0, 30.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
                                 mainAxisAlignment: MainAxisAlignment.start,
@@ -2803,7 +2806,7 @@ class _HomeFeedWidgetState extends State<HomeFeedWidget> {
                                       textStyle: FlutterFlowTheme.of(context)
                                           .titleSmall
                                           .override(
-                                            fontFamily: 'Inter Tight',
+                                            fontFamily: 'Poppins',
                                             color: Colors.white,
                                             fontSize: 12.0,
                                             letterSpacing: 0.0,
@@ -2844,7 +2847,7 @@ class _HomeFeedWidgetState extends State<HomeFeedWidget> {
                                         textStyle: FlutterFlowTheme.of(context)
                                             .titleSmall
                                             .override(
-                                              fontFamily: 'Inter Tight',
+                                              fontFamily: 'Poppins',
                                               color: Colors.white,
                                               fontSize: 12.0,
                                               letterSpacing: 0.0,

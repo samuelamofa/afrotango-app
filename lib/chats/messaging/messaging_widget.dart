@@ -173,7 +173,7 @@ class _MessagingWidgetState extends State<MessagingWidget> {
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyLarge
                                                 .override(
-                                                  fontFamily: 'Inter',
+                                                  fontFamily: 'Poppins',
                                                   letterSpacing: 0.0,
                                                   fontWeight: FontWeight.w600,
                                                 ),
@@ -183,7 +183,7 @@ class _MessagingWidgetState extends State<MessagingWidget> {
                                             style: FlutterFlowTheme.of(context)
                                                 .bodySmall
                                                 .override(
-                                                  fontFamily: 'Inter',
+                                                  fontFamily: 'Poppins',
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .tertiary,
@@ -281,7 +281,7 @@ class _MessagingWidgetState extends State<MessagingWidget> {
                                                             context)
                                                         .bodyMedium
                                                         .override(
-                                                          fontFamily: 'Inter',
+                                                          fontFamily: 'Poppins',
                                                           letterSpacing: 0.0,
                                                         ),
                                                   ),
@@ -299,7 +299,7 @@ class _MessagingWidgetState extends State<MessagingWidget> {
                                                             context)
                                                         .bodySmall
                                                         .override(
-                                                          fontFamily: 'Inter',
+                                                          fontFamily: 'Poppins',
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .secondaryText,
@@ -379,7 +379,7 @@ class _MessagingWidgetState extends State<MessagingWidget> {
                                                                 .bodyMedium
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Inter',
+                                                                      'Poppins',
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .info,
@@ -406,7 +406,7 @@ class _MessagingWidgetState extends State<MessagingWidget> {
                                                                 .bodySmall
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Inter',
+                                                                      'Poppins',
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .accent4,
@@ -481,7 +481,7 @@ class _MessagingWidgetState extends State<MessagingWidget> {
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium
                                                         .override(
-                                                          fontFamily: 'Inter',
+                                                          fontFamily: 'Poppins',
                                                           letterSpacing: 0.0,
                                                         ),
                                                 enabledBorder: InputBorder.none,
@@ -494,7 +494,7 @@ class _MessagingWidgetState extends State<MessagingWidget> {
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium
                                                       .override(
-                                                        fontFamily: 'Inter',
+                                                        fontFamily: 'Poppins',
                                                         letterSpacing: 0.0,
                                                       ),
                                               minLines: 1,

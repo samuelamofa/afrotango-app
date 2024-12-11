@@ -90,14 +90,14 @@ class _CommunityWidgetState extends State<CommunityWidget> {
                             labelStyle: FlutterFlowTheme.of(context)
                                 .labelMedium
                                 .override(
-                                  fontFamily: 'Inter',
+                                  fontFamily: 'Poppins',
                                   letterSpacing: 0.0,
                                 ),
                             hintText: 'Search',
                             hintStyle: FlutterFlowTheme.of(context)
                                 .labelMedium
                                 .override(
-                                  fontFamily: 'Inter',
+                                  fontFamily: 'Poppins',
                                   letterSpacing: 0.0,
                                 ),
                             enabledBorder: OutlineInputBorder(
@@ -138,7 +138,7 @@ class _CommunityWidgetState extends State<CommunityWidget> {
                           ),
                           style:
                               FlutterFlowTheme.of(context).bodyMedium.override(
-                                    fontFamily: 'Inter',
+                                    fontFamily: 'Poppins',
                                     letterSpacing: 0.0,
                                   ),
                           cursorColor: FlutterFlowTheme.of(context).primaryText,
@@ -298,7 +298,7 @@ class _CommunityWidgetState extends State<CommunityWidget> {
                                     textStyle: FlutterFlowTheme.of(context)
                                         .titleSmall
                                         .override(
-                                          fontFamily: 'Inter Tight',
+                                          fontFamily: 'Poppins',
                                           color: Colors.white,
                                           letterSpacing: 0.0,
                                         ),
@@ -327,7 +327,7 @@ class _CommunityWidgetState extends State<CommunityWidget> {
                                     textStyle: FlutterFlowTheme.of(context)
                                         .titleSmall
                                         .override(
-                                          fontFamily: 'Inter Tight',
+                                          fontFamily: 'Poppins',
                                           color: Colors.black,
                                           letterSpacing: 0.0,
                                         ),
@@ -350,7 +350,7 @@ class _CommunityWidgetState extends State<CommunityWidget> {
                           'Explore Communities',
                           style:
                               FlutterFlowTheme.of(context).bodyMedium.override(
-                                    fontFamily: 'Inter',
+                                    fontFamily: 'Poppins',
                                     color: Colors.black,
                                     fontSize: 18.0,
                                     letterSpacing: 0.0,
@@ -473,7 +473,7 @@ class _CommunityWidgetState extends State<CommunityWidget> {
                                   textStyle: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
-                                        fontFamily: 'Inter',
+                                        fontFamily: 'Poppins',
                                         color:
                                             FlutterFlowTheme.of(context).info,
                                         fontSize: 12.0,
@@ -489,7 +489,7 @@ class _CommunityWidgetState extends State<CommunityWidget> {
                                   textStyle: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
-                                        fontFamily: 'Inter',
+                                        fontFamily: 'Poppins',
                                         color: FlutterFlowTheme.of(context)
                                             .primary,
                                         fontSize: 12.0,
@@ -623,7 +623,7 @@ class _CommunityWidgetState extends State<CommunityWidget> {
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium
                                                         .override(
-                                                          fontFamily: 'Inter',
+                                                          fontFamily: 'Poppins',
                                                           fontSize: 16.0,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
@@ -646,7 +646,7 @@ class _CommunityWidgetState extends State<CommunityWidget> {
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium
                                                         .override(
-                                                          fontFamily: 'Inter',
+                                                          fontFamily: 'Poppins',
                                                           color:
                                                               const Color(0xFF92929D),
                                                           fontSize: 12.0,
@@ -861,7 +861,7 @@ class _CommunityWidgetState extends State<CommunityWidget> {
                                                                   .titleSmall
                                                                   .override(
                                                                     fontFamily:
-                                                                        'Inter Tight',
+                                                                        'Poppins',
                                                                     color: FlutterFlowTheme.of(
                                                                             context)
                                                                         .primary,
@@ -948,7 +948,7 @@ class _CommunityWidgetState extends State<CommunityWidget> {
                                                                   .titleSmall
                                                                   .override(
                                                                     fontFamily:
-                                                                        'Inter Tight',
+                                                                        'Poppins',
                                                                     color: Colors
                                                                         .white,
                                                                     fontSize:

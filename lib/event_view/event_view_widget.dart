@@ -117,14 +117,14 @@ class _EventViewWidgetState extends State<EventViewWidget> {
                                   labelStyle: FlutterFlowTheme.of(context)
                                       .labelMedium
                                       .override(
-                                        fontFamily: 'Inter',
+                                        fontFamily: 'Poppins',
                                         letterSpacing: 0.0,
                                       ),
                                   hintText: 'Search',
                                   hintStyle: FlutterFlowTheme.of(context)
                                       .labelMedium
                                       .override(
-                                        fontFamily: 'Inter',
+                                        fontFamily: 'Poppins',
                                         letterSpacing: 0.0,
                                       ),
                                   enabledBorder: OutlineInputBorder(
@@ -166,7 +166,7 @@ class _EventViewWidgetState extends State<EventViewWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
-                                      fontFamily: 'Inter',
+                                      fontFamily: 'Poppins',
                                       letterSpacing: 0.0,
                                     ),
                                 cursorColor:
@@ -259,7 +259,7 @@ class _EventViewWidgetState extends State<EventViewWidget> {
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
-                                        fontFamily: 'Inter',
+                                        fontFamily: 'Poppins',
                                         color: const Color(0xFF1A314D),
                                         fontSize: 16.0,
                                         letterSpacing: 0.0,
@@ -394,7 +394,7 @@ class _EventViewWidgetState extends State<EventViewWidget> {
                                               FlutterFlowTheme.of(context)
                                                   .titleSmall
                                                   .override(
-                                                    fontFamily: 'Inter Tight',
+                                                    fontFamily: 'Poppins',
                                                     color: Colors.white,
                                                     fontSize: 12.0,
                                                     letterSpacing: 0.0,
@@ -485,7 +485,7 @@ class _EventViewWidgetState extends State<EventViewWidget> {
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium
                                               .override(
-                                                fontFamily: 'Inter',
+                                                fontFamily: 'Poppins',
                                                 fontSize: 13.0,
                                                 letterSpacing: 0.0,
                                               ),
@@ -549,7 +549,7 @@ class _EventViewWidgetState extends State<EventViewWidget> {
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
                                                 .override(
-                                                  fontFamily: 'Inter',
+                                                  fontFamily: 'Poppins',
                                                   color: const Color(0xFF171725),
                                                   letterSpacing: 0.0,
                                                   fontWeight: FontWeight.w500,
@@ -605,7 +605,7 @@ class _EventViewWidgetState extends State<EventViewWidget> {
                                                               .bodyMedium
                                                               .override(
                                                                 fontFamily:
-                                                                    'Inter',
+                                                                    'Poppins',
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .primary,
@@ -621,16 +621,19 @@ class _EventViewWidgetState extends State<EventViewWidget> {
                                                     ),
                                                     Text(
                                                       '${dateTimeFormat("MMMEd", eventViewEventRecord.createdTime)} at ${dateTimeFormat("jm", eventViewEventRecord.createdTime)}',
-                                                      style: FlutterFlowTheme
-                                                              .of(context)
-                                                          .bodySmall
-                                                          .override(
-                                                            fontFamily: 'Inter',
-                                                            color: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .secondaryText,
-                                                            letterSpacing: 0.0,
-                                                          ),
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodySmall
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Poppins',
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .secondaryText,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                              ),
                                                     ),
                                                   ],
                                                 ),
@@ -1026,7 +1029,7 @@ class _EventViewWidgetState extends State<EventViewWidget> {
                                                                           .bodyMedium
                                                                           .override(
                                                                             fontFamily:
-                                                                                'Inter',
+                                                                                'Poppins',
                                                                             color:
                                                                                 const Color(0xFF92929D),
                                                                             fontSize:
@@ -1049,7 +1052,7 @@ class _EventViewWidgetState extends State<EventViewWidget> {
                                                                           .bodyMedium
                                                                           .override(
                                                                             fontFamily:
-                                                                                'Inter',
+                                                                                'Poppins',
                                                                             fontSize:
                                                                                 24.0,
                                                                             letterSpacing:
@@ -1077,7 +1080,7 @@ class _EventViewWidgetState extends State<EventViewWidget> {
                                                                         .bodyMedium
                                                                         .override(
                                                                           fontFamily:
-                                                                              'Inter',
+                                                                              'Poppins',
                                                                           color:
                                                                               const Color(0xFF44444F),
                                                                           fontSize:
@@ -1105,7 +1108,7 @@ class _EventViewWidgetState extends State<EventViewWidget> {
                                                                           style: FlutterFlowTheme.of(context)
                                                                               .bodyMedium
                                                                               .override(
-                                                                                fontFamily: 'Inter',
+                                                                                fontFamily: 'Poppins',
                                                                                 color: const Color(0xFF92929D),
                                                                                 letterSpacing: 0.0,
                                                                               ),
@@ -1120,7 +1123,7 @@ class _EventViewWidgetState extends State<EventViewWidget> {
                                                                               Text(
                                                                             rowEventRecord.eventLocation,
                                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                  fontFamily: 'Inter',
+                                                                                  fontFamily: 'Poppins',
                                                                                   color: const Color(0xFF92929D),
                                                                                   letterSpacing: 0.0,
                                                                                 ),

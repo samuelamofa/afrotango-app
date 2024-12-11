@@ -119,14 +119,14 @@ class _AdviewPageWidgetState extends State<AdviewPageWidget> {
                                   labelStyle: FlutterFlowTheme.of(context)
                                       .labelMedium
                                       .override(
-                                        fontFamily: 'Inter',
+                                        fontFamily: 'Poppins',
                                         letterSpacing: 0.0,
                                       ),
                                   hintText: 'Search',
                                   hintStyle: FlutterFlowTheme.of(context)
                                       .labelMedium
                                       .override(
-                                        fontFamily: 'Inter',
+                                        fontFamily: 'Poppins',
                                         letterSpacing: 0.0,
                                       ),
                                   enabledBorder: OutlineInputBorder(
@@ -168,7 +168,7 @@ class _AdviewPageWidgetState extends State<AdviewPageWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
-                                      fontFamily: 'Inter',
+                                      fontFamily: 'Poppins',
                                       letterSpacing: 0.0,
                                     ),
                                 cursorColor:
@@ -262,7 +262,7 @@ class _AdviewPageWidgetState extends State<AdviewPageWidget> {
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
-                                        fontFamily: 'Inter',
+                                        fontFamily: 'Poppins',
                                         color: const Color(0xFF1A314D),
                                         fontSize: 16.0,
                                         letterSpacing: 0.0,
@@ -546,8 +546,7 @@ class _AdviewPageWidgetState extends State<AdviewPageWidget> {
                                                   FlutterFlowTheme.of(context)
                                                       .titleSmall
                                                       .override(
-                                                        fontFamily:
-                                                            'Inter Tight',
+                                                        fontFamily: 'Poppins',
                                                         color: Colors.white,
                                                         fontSize: 12.0,
                                                         letterSpacing: 0.0,
@@ -643,7 +642,7 @@ class _AdviewPageWidgetState extends State<AdviewPageWidget> {
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium
                                               .override(
-                                                fontFamily: 'Inter',
+                                                fontFamily: 'Poppins',
                                                 fontSize: 13.0,
                                                 letterSpacing: 0.0,
                                               ),
@@ -707,7 +706,7 @@ class _AdviewPageWidgetState extends State<AdviewPageWidget> {
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
                                                 .override(
-                                                  fontFamily: 'Inter',
+                                                  fontFamily: 'Poppins',
                                                   color: const Color(0xFF171725),
                                                   letterSpacing: 0.0,
                                                   fontWeight: FontWeight.w500,
@@ -763,7 +762,7 @@ class _AdviewPageWidgetState extends State<AdviewPageWidget> {
                                                               .bodyMedium
                                                               .override(
                                                                 fontFamily:
-                                                                    'Inter',
+                                                                    'Poppins',
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .primary,
@@ -779,16 +778,19 @@ class _AdviewPageWidgetState extends State<AdviewPageWidget> {
                                                     ),
                                                     Text(
                                                       '${dateTimeFormat("MMMEd", adviewPageAdsRecord.createdTime)} at ${dateTimeFormat("jm", adviewPageAdsRecord.createdTime)}',
-                                                      style: FlutterFlowTheme
-                                                              .of(context)
-                                                          .bodySmall
-                                                          .override(
-                                                            fontFamily: 'Inter',
-                                                            color: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .secondaryText,
-                                                            letterSpacing: 0.0,
-                                                          ),
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodySmall
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Poppins',
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .secondaryText,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                              ),
                                                     ),
                                                   ],
                                                 ),
@@ -1220,7 +1222,7 @@ class _AdviewPageWidgetState extends State<AdviewPageWidget> {
                                                             .bodyMedium
                                                             .override(
                                                               fontFamily:
-                                                                  'Inter',
+                                                                  'Poppins',
                                                               fontSize: 16.0,
                                                               letterSpacing:
                                                                   0.0,
@@ -1283,7 +1285,7 @@ class _AdviewPageWidgetState extends State<AdviewPageWidget> {
                                                                 .bodyMedium
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Inter',
+                                                                      'Poppins',
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .secondary,

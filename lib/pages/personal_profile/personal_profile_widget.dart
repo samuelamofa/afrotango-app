@@ -97,14 +97,14 @@ class _PersonalProfileWidgetState extends State<PersonalProfileWidget> {
                               labelStyle: FlutterFlowTheme.of(context)
                                   .labelMedium
                                   .override(
-                                    fontFamily: 'Inter',
+                                    fontFamily: 'Poppins',
                                     letterSpacing: 0.0,
                                   ),
                               hintText: 'Search',
                               hintStyle: FlutterFlowTheme.of(context)
                                   .labelMedium
                                   .override(
-                                    fontFamily: 'Inter',
+                                    fontFamily: 'Poppins',
                                     letterSpacing: 0.0,
                                   ),
                               enabledBorder: OutlineInputBorder(
@@ -146,7 +146,7 @@ class _PersonalProfileWidgetState extends State<PersonalProfileWidget> {
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
                                 .override(
-                                  fontFamily: 'Inter',
+                                  fontFamily: 'Poppins',
                                   letterSpacing: 0.0,
                                 ),
                             cursorColor:
@@ -435,7 +435,7 @@ class _PersonalProfileWidgetState extends State<PersonalProfileWidget> {
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium
                                                         .override(
-                                                          fontFamily: 'Inter',
+                                                          fontFamily: 'Poppins',
                                                           fontSize: 16.0,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
@@ -459,7 +459,7 @@ class _PersonalProfileWidgetState extends State<PersonalProfileWidget> {
                                                           context)
                                                       .bodyMedium
                                                       .override(
-                                                        fontFamily: 'Inter',
+                                                        fontFamily: 'Poppins',
                                                         letterSpacing: 0.0,
                                                       ),
                                                 ),
@@ -504,7 +504,7 @@ class _PersonalProfileWidgetState extends State<PersonalProfileWidget> {
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium
                                               .override(
-                                                fontFamily: 'Inter',
+                                                fontFamily: 'Poppins',
                                                 letterSpacing: 0.0,
                                               ),
                                         ),
@@ -545,7 +545,7 @@ class _PersonalProfileWidgetState extends State<PersonalProfileWidget> {
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium
                                                       .override(
-                                                        fontFamily: 'Inter',
+                                                        fontFamily: 'Poppins',
                                                         color:
                                                             const Color(0xFFAF7E00),
                                                         letterSpacing: 0.0,
@@ -562,7 +562,7 @@ class _PersonalProfileWidgetState extends State<PersonalProfileWidget> {
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium
                                                         .override(
-                                                          fontFamily: 'Inter',
+                                                          fontFamily: 'Poppins',
                                                           color:
                                                               const Color(0xFFAF7E00),
                                                           fontSize: 16.0,
@@ -613,7 +613,7 @@ class _PersonalProfileWidgetState extends State<PersonalProfileWidget> {
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
                                                 .override(
-                                                  fontFamily: 'Inter',
+                                                  fontFamily: 'Poppins',
                                                   color: const Color(0xFF92929D),
                                                   letterSpacing: 0.0,
                                                   fontWeight: FontWeight.normal,
@@ -643,7 +643,7 @@ class _PersonalProfileWidgetState extends State<PersonalProfileWidget> {
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium
                                                         .override(
-                                                          fontFamily: 'Inter',
+                                                          fontFamily: 'Poppins',
                                                           color:
                                                               const Color(0xFF44444F),
                                                           fontSize: 16.0,
@@ -672,7 +672,7 @@ class _PersonalProfileWidgetState extends State<PersonalProfileWidget> {
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
                                                 .override(
-                                                  fontFamily: 'Inter',
+                                                  fontFamily: 'Poppins',
                                                   color: const Color(0xFF92929D),
                                                   letterSpacing: 0.0,
                                                   fontWeight: FontWeight.normal,
@@ -702,7 +702,7 @@ class _PersonalProfileWidgetState extends State<PersonalProfileWidget> {
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium
                                                         .override(
-                                                          fontFamily: 'Inter',
+                                                          fontFamily: 'Poppins',
                                                           color:
                                                               const Color(0xFF44444F),
                                                           fontSize: 16.0,
@@ -744,7 +744,7 @@ class _PersonalProfileWidgetState extends State<PersonalProfileWidget> {
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
-                                          fontFamily: 'Inter',
+                                          fontFamily: 'Poppins',
                                           color: const Color(0xFF171725),
                                           letterSpacing: 0.0,
                                           fontWeight: FontWeight.w500,
@@ -796,7 +796,7 @@ class _PersonalProfileWidgetState extends State<PersonalProfileWidget> {
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
                                                 .override(
-                                                  fontFamily: 'Inter',
+                                                  fontFamily: 'Poppins',
                                                   color: const Color(0xFF171725),
                                                   letterSpacing: 0.0,
                                                 ),
@@ -855,7 +855,7 @@ class _PersonalProfileWidgetState extends State<PersonalProfileWidget> {
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium
                                                       .override(
-                                                        fontFamily: 'Inter',
+                                                        fontFamily: 'Poppins',
                                                         color:
                                                             const Color(0xFF171725),
                                                         letterSpacing: 0.0,
@@ -923,7 +923,7 @@ class _PersonalProfileWidgetState extends State<PersonalProfileWidget> {
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium
                                                         .override(
-                                                          fontFamily: 'Inter',
+                                                          fontFamily: 'Poppins',
                                                           color:
                                                               const Color(0xFF171725),
                                                           letterSpacing: 0.0,
@@ -1018,7 +1018,7 @@ class _PersonalProfileWidgetState extends State<PersonalProfileWidget> {
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
                                                 .override(
-                                                  fontFamily: 'Inter',
+                                                  fontFamily: 'Poppins',
                                                   color: const Color(0xFF171725),
                                                   letterSpacing: 0.0,
                                                   fontWeight: FontWeight.w500,
@@ -1034,7 +1034,7 @@ class _PersonalProfileWidgetState extends State<PersonalProfileWidget> {
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
                                                 .override(
-                                                  fontFamily: 'Inter',
+                                                  fontFamily: 'Poppins',
                                                   color: const Color(0xFFAF7E00),
                                                   fontSize: 12.0,
                                                   letterSpacing: 0.0,
@@ -1163,7 +1163,7 @@ class _PersonalProfileWidgetState extends State<PersonalProfileWidget> {
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
-                                          fontFamily: 'Inter',
+                                          fontFamily: 'Poppins',
                                           fontSize: 16.0,
                                           letterSpacing: 0.0,
                                           fontWeight: FontWeight.w600,
@@ -1174,7 +1174,7 @@ class _PersonalProfileWidgetState extends State<PersonalProfileWidget> {
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
-                                          fontFamily: 'Inter',
+                                          fontFamily: 'Poppins',
                                           color: FlutterFlowTheme.of(context)
                                               .secondary,
                                           letterSpacing: 0.0,
@@ -1230,7 +1230,7 @@ class _PersonalProfileWidgetState extends State<PersonalProfileWidget> {
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium
                                                       .override(
-                                                        fontFamily: 'Inter',
+                                                        fontFamily: 'Poppins',
                                                         fontSize: 16.0,
                                                         letterSpacing: 0.0,
                                                         fontWeight:
@@ -1248,7 +1248,7 @@ class _PersonalProfileWidgetState extends State<PersonalProfileWidget> {
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium
                                                       .override(
-                                                        fontFamily: 'Inter',
+                                                        fontFamily: 'Poppins',
                                                         color:
                                                             const Color(0xFF92929D),
                                                         fontSize: 12.0,
@@ -1347,7 +1347,7 @@ class _PersonalProfileWidgetState extends State<PersonalProfileWidget> {
                                                                   .bodyMedium
                                                                   .override(
                                                                     fontFamily:
-                                                                        'Inter',
+                                                                        'Poppins',
                                                                     color: const Color(
                                                                         0xFF4987FF),
                                                                     fontSize:
@@ -1412,7 +1412,7 @@ class _PersonalProfileWidgetState extends State<PersonalProfileWidget> {
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium
                                                       .override(
-                                                        fontFamily: 'Inter',
+                                                        fontFamily: 'Poppins',
                                                         fontSize: 16.0,
                                                         letterSpacing: 0.0,
                                                         fontWeight:
@@ -1430,7 +1430,7 @@ class _PersonalProfileWidgetState extends State<PersonalProfileWidget> {
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium
                                                       .override(
-                                                        fontFamily: 'Inter',
+                                                        fontFamily: 'Poppins',
                                                         color:
                                                             const Color(0xFF92929D),
                                                         fontSize: 12.0,
@@ -1529,7 +1529,7 @@ class _PersonalProfileWidgetState extends State<PersonalProfileWidget> {
                                                                   .bodyMedium
                                                                   .override(
                                                                     fontFamily:
-                                                                        'Inter',
+                                                                        'Poppins',
                                                                     color: const Color(
                                                                         0xFF4987FF),
                                                                     fontSize:
@@ -1594,7 +1594,7 @@ class _PersonalProfileWidgetState extends State<PersonalProfileWidget> {
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium
                                                       .override(
-                                                        fontFamily: 'Inter',
+                                                        fontFamily: 'Poppins',
                                                         fontSize: 16.0,
                                                         letterSpacing: 0.0,
                                                         fontWeight:
@@ -1612,7 +1612,7 @@ class _PersonalProfileWidgetState extends State<PersonalProfileWidget> {
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium
                                                       .override(
-                                                        fontFamily: 'Inter',
+                                                        fontFamily: 'Poppins',
                                                         color:
                                                             const Color(0xFF92929D),
                                                         fontSize: 12.0,
@@ -1711,7 +1711,7 @@ class _PersonalProfileWidgetState extends State<PersonalProfileWidget> {
                                                                   .bodyMedium
                                                                   .override(
                                                                     fontFamily:
-                                                                        'Inter',
+                                                                        'Poppins',
                                                                     color: const Color(
                                                                         0xFF4987FF),
                                                                     fontSize:
@@ -1776,7 +1776,7 @@ class _PersonalProfileWidgetState extends State<PersonalProfileWidget> {
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium
                                                       .override(
-                                                        fontFamily: 'Inter',
+                                                        fontFamily: 'Poppins',
                                                         fontSize: 16.0,
                                                         letterSpacing: 0.0,
                                                         fontWeight:
@@ -1794,7 +1794,7 @@ class _PersonalProfileWidgetState extends State<PersonalProfileWidget> {
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium
                                                       .override(
-                                                        fontFamily: 'Inter',
+                                                        fontFamily: 'Poppins',
                                                         color:
                                                             const Color(0xFF92929D),
                                                         fontSize: 12.0,
@@ -1893,7 +1893,7 @@ class _PersonalProfileWidgetState extends State<PersonalProfileWidget> {
                                                                   .bodyMedium
                                                                   .override(
                                                                     fontFamily:
-                                                                        'Inter',
+                                                                        'Poppins',
                                                                     color: const Color(
                                                                         0xFF4987FF),
                                                                     fontSize:
@@ -1959,7 +1959,7 @@ class _PersonalProfileWidgetState extends State<PersonalProfileWidget> {
                                       textStyle: FlutterFlowTheme.of(context)
                                           .titleSmall
                                           .override(
-                                            fontFamily: 'Inter Tight',
+                                            fontFamily: 'Poppins',
                                             color: Colors.white,
                                             fontSize: 12.0,
                                             letterSpacing: 0.0,
@@ -1989,7 +1989,7 @@ class _PersonalProfileWidgetState extends State<PersonalProfileWidget> {
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
-                                          fontFamily: 'Inter',
+                                          fontFamily: 'Poppins',
                                           fontSize: 16.0,
                                           letterSpacing: 0.0,
                                           fontWeight: FontWeight.w600,
@@ -2000,7 +2000,7 @@ class _PersonalProfileWidgetState extends State<PersonalProfileWidget> {
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
-                                          fontFamily: 'Inter',
+                                          fontFamily: 'Poppins',
                                           color: FlutterFlowTheme.of(context)
                                               .secondary,
                                           letterSpacing: 0.0,
@@ -2083,7 +2083,7 @@ class _PersonalProfileWidgetState extends State<PersonalProfileWidget> {
                                                                 .bodyMedium
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Inter',
+                                                                      'Poppins',
                                                                   color: const Color(
                                                                       0xFF92929D),
                                                                   fontSize:
@@ -2102,7 +2102,7 @@ class _PersonalProfileWidgetState extends State<PersonalProfileWidget> {
                                                                 .bodyMedium
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Inter',
+                                                                      'Poppins',
                                                                   fontSize:
                                                                       24.0,
                                                                   letterSpacing:
@@ -2129,7 +2129,7 @@ class _PersonalProfileWidgetState extends State<PersonalProfileWidget> {
                                                               .bodyMedium
                                                               .override(
                                                                 fontFamily:
-                                                                    'Inter',
+                                                                    'Poppins',
                                                                 color: const Color(
                                                                     0xFF44444F),
                                                                 fontSize: 16.0,
@@ -2160,7 +2160,7 @@ class _PersonalProfileWidgetState extends State<PersonalProfileWidget> {
                                                                     .bodyMedium
                                                                     .override(
                                                                       fontFamily:
-                                                                          'Inter',
+                                                                          'Poppins',
                                                                       color: const Color(
                                                                           0xFF92929D),
                                                                       letterSpacing:
@@ -2182,7 +2182,7 @@ class _PersonalProfileWidgetState extends State<PersonalProfileWidget> {
                                                                       .bodyMedium
                                                                       .override(
                                                                         fontFamily:
-                                                                            'Inter',
+                                                                            'Poppins',
                                                                         color: const Color(
                                                                             0xFF92929D),
                                                                         letterSpacing:
@@ -2424,7 +2424,7 @@ class _PersonalProfileWidgetState extends State<PersonalProfileWidget> {
                                                                 .bodyMedium
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Inter',
+                                                                      'Poppins',
                                                                   color: const Color(
                                                                       0xFF92929D),
                                                                   fontSize:
@@ -2443,7 +2443,7 @@ class _PersonalProfileWidgetState extends State<PersonalProfileWidget> {
                                                                 .bodyMedium
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Inter',
+                                                                      'Poppins',
                                                                   fontSize:
                                                                       24.0,
                                                                   letterSpacing:
@@ -2470,7 +2470,7 @@ class _PersonalProfileWidgetState extends State<PersonalProfileWidget> {
                                                               .bodyMedium
                                                               .override(
                                                                 fontFamily:
-                                                                    'Inter',
+                                                                    'Poppins',
                                                                 color: const Color(
                                                                     0xFF44444F),
                                                                 fontSize: 16.0,
@@ -2501,7 +2501,7 @@ class _PersonalProfileWidgetState extends State<PersonalProfileWidget> {
                                                                     .bodyMedium
                                                                     .override(
                                                                       fontFamily:
-                                                                          'Inter',
+                                                                          'Poppins',
                                                                       color: const Color(
                                                                           0xFF92929D),
                                                                       letterSpacing:
@@ -2523,7 +2523,7 @@ class _PersonalProfileWidgetState extends State<PersonalProfileWidget> {
                                                                       .bodyMedium
                                                                       .override(
                                                                         fontFamily:
-                                                                            'Inter',
+                                                                            'Poppins',
                                                                         color: const Color(
                                                                             0xFF92929D),
                                                                         letterSpacing:
@@ -2765,7 +2765,7 @@ class _PersonalProfileWidgetState extends State<PersonalProfileWidget> {
                                                                 .bodyMedium
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Inter',
+                                                                      'Poppins',
                                                                   color: const Color(
                                                                       0xFF92929D),
                                                                   fontSize:
@@ -2784,7 +2784,7 @@ class _PersonalProfileWidgetState extends State<PersonalProfileWidget> {
                                                                 .bodyMedium
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Inter',
+                                                                      'Poppins',
                                                                   fontSize:
                                                                       24.0,
                                                                   letterSpacing:
@@ -2811,7 +2811,7 @@ class _PersonalProfileWidgetState extends State<PersonalProfileWidget> {
                                                               .bodyMedium
                                                               .override(
                                                                 fontFamily:
-                                                                    'Inter',
+                                                                    'Poppins',
                                                                 color: const Color(
                                                                     0xFF44444F),
                                                                 fontSize: 16.0,
@@ -2842,7 +2842,7 @@ class _PersonalProfileWidgetState extends State<PersonalProfileWidget> {
                                                                     .bodyMedium
                                                                     .override(
                                                                       fontFamily:
-                                                                          'Inter',
+                                                                          'Poppins',
                                                                       color: const Color(
                                                                           0xFF92929D),
                                                                       letterSpacing:
@@ -2864,7 +2864,7 @@ class _PersonalProfileWidgetState extends State<PersonalProfileWidget> {
                                                                       .bodyMedium
                                                                       .override(
                                                                         fontFamily:
-                                                                            'Inter',
+                                                                            'Poppins',
                                                                         color: const Color(
                                                                             0xFF92929D),
                                                                         letterSpacing:
@@ -3106,7 +3106,7 @@ class _PersonalProfileWidgetState extends State<PersonalProfileWidget> {
                                                                 .bodyMedium
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Inter',
+                                                                      'Poppins',
                                                                   color: const Color(
                                                                       0xFF92929D),
                                                                   fontSize:
@@ -3125,7 +3125,7 @@ class _PersonalProfileWidgetState extends State<PersonalProfileWidget> {
                                                                 .bodyMedium
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Inter',
+                                                                      'Poppins',
                                                                   fontSize:
                                                                       24.0,
                                                                   letterSpacing:
@@ -3152,7 +3152,7 @@ class _PersonalProfileWidgetState extends State<PersonalProfileWidget> {
                                                               .bodyMedium
                                                               .override(
                                                                 fontFamily:
-                                                                    'Inter',
+                                                                    'Poppins',
                                                                 color: const Color(
                                                                     0xFF44444F),
                                                                 fontSize: 16.0,
@@ -3183,7 +3183,7 @@ class _PersonalProfileWidgetState extends State<PersonalProfileWidget> {
                                                                     .bodyMedium
                                                                     .override(
                                                                       fontFamily:
-                                                                          'Inter',
+                                                                          'Poppins',
                                                                       color: const Color(
                                                                           0xFF92929D),
                                                                       letterSpacing:
@@ -3205,7 +3205,7 @@ class _PersonalProfileWidgetState extends State<PersonalProfileWidget> {
                                                                       .bodyMedium
                                                                       .override(
                                                                         fontFamily:
-                                                                            'Inter',
+                                                                            'Poppins',
                                                                         color: const Color(
                                                                             0xFF92929D),
                                                                         letterSpacing:
@@ -3426,7 +3426,7 @@ class _PersonalProfileWidgetState extends State<PersonalProfileWidget> {
                                       textStyle: FlutterFlowTheme.of(context)
                                           .titleSmall
                                           .override(
-                                            fontFamily: 'Inter Tight',
+                                            fontFamily: 'Poppins',
                                             color: Colors.white,
                                             fontSize: 12.0,
                                             letterSpacing: 0.0,
@@ -3456,7 +3456,7 @@ class _PersonalProfileWidgetState extends State<PersonalProfileWidget> {
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
-                                          fontFamily: 'Inter',
+                                          fontFamily: 'Poppins',
                                           fontSize: 16.0,
                                           letterSpacing: 0.0,
                                           fontWeight: FontWeight.w600,
@@ -3467,7 +3467,7 @@ class _PersonalProfileWidgetState extends State<PersonalProfileWidget> {
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
-                                          fontFamily: 'Inter',
+                                          fontFamily: 'Poppins',
                                           color: FlutterFlowTheme.of(context)
                                               .secondary,
                                           letterSpacing: 0.0,
@@ -3590,7 +3590,7 @@ class _PersonalProfileWidgetState extends State<PersonalProfileWidget> {
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium
                                                       .override(
-                                                        fontFamily: 'Inter',
+                                                        fontFamily: 'Poppins',
                                                         fontSize: 16.0,
                                                         letterSpacing: 0.0,
                                                         fontWeight:
@@ -3626,7 +3626,7 @@ class _PersonalProfileWidgetState extends State<PersonalProfileWidget> {
                                                       context)
                                                   .bodyMedium
                                                   .override(
-                                                    fontFamily: 'Inter',
+                                                    fontFamily: 'Poppins',
                                                     color: FlutterFlowTheme.of(
                                                             context)
                                                         .secondary,
@@ -3817,7 +3817,7 @@ class _PersonalProfileWidgetState extends State<PersonalProfileWidget> {
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium
                                                       .override(
-                                                        fontFamily: 'Inter',
+                                                        fontFamily: 'Poppins',
                                                         fontSize: 16.0,
                                                         letterSpacing: 0.0,
                                                         fontWeight:
@@ -3853,7 +3853,7 @@ class _PersonalProfileWidgetState extends State<PersonalProfileWidget> {
                                                       context)
                                                   .bodyMedium
                                                   .override(
-                                                    fontFamily: 'Inter',
+                                                    fontFamily: 'Poppins',
                                                     color: FlutterFlowTheme.of(
                                                             context)
                                                         .secondary,
@@ -4044,7 +4044,7 @@ class _PersonalProfileWidgetState extends State<PersonalProfileWidget> {
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium
                                                       .override(
-                                                        fontFamily: 'Inter',
+                                                        fontFamily: 'Poppins',
                                                         fontSize: 16.0,
                                                         letterSpacing: 0.0,
                                                         fontWeight:
@@ -4080,7 +4080,7 @@ class _PersonalProfileWidgetState extends State<PersonalProfileWidget> {
                                                       context)
                                                   .bodyMedium
                                                   .override(
-                                                    fontFamily: 'Inter',
+                                                    fontFamily: 'Poppins',
                                                     color: FlutterFlowTheme.of(
                                                             context)
                                                         .secondary,
@@ -4271,7 +4271,7 @@ class _PersonalProfileWidgetState extends State<PersonalProfileWidget> {
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium
                                                       .override(
-                                                        fontFamily: 'Inter',
+                                                        fontFamily: 'Poppins',
                                                         fontSize: 16.0,
                                                         letterSpacing: 0.0,
                                                         fontWeight:
@@ -4307,7 +4307,7 @@ class _PersonalProfileWidgetState extends State<PersonalProfileWidget> {
                                                       context)
                                                   .bodyMedium
                                                   .override(
-                                                    fontFamily: 'Inter',
+                                                    fontFamily: 'Poppins',
                                                     color: FlutterFlowTheme.of(
                                                             context)
                                                         .secondary,
@@ -4437,7 +4437,7 @@ class _PersonalProfileWidgetState extends State<PersonalProfileWidget> {
                                       textStyle: FlutterFlowTheme.of(context)
                                           .titleSmall
                                           .override(
-                                            fontFamily: 'Inter Tight',
+                                            fontFamily: 'Poppins',
                                             color: Colors.white,
                                             fontSize: 12.0,
                                             letterSpacing: 0.0,

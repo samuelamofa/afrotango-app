@@ -119,14 +119,14 @@ class _MyPostWidgetState extends State<MyPostWidget>
                             labelStyle: FlutterFlowTheme.of(context)
                                 .labelMedium
                                 .override(
-                                  fontFamily: 'Inter',
+                                  fontFamily: 'Poppins',
                                   letterSpacing: 0.0,
                                 ),
                             hintText: 'Search',
                             hintStyle: FlutterFlowTheme.of(context)
                                 .labelMedium
                                 .override(
-                                  fontFamily: 'Inter',
+                                  fontFamily: 'Poppins',
                                   letterSpacing: 0.0,
                                 ),
                             enabledBorder: OutlineInputBorder(
@@ -167,7 +167,7 @@ class _MyPostWidgetState extends State<MyPostWidget>
                           ),
                           style:
                               FlutterFlowTheme.of(context).bodyMedium.override(
-                                    fontFamily: 'Inter',
+                                    fontFamily: 'Poppins',
                                     letterSpacing: 0.0,
                                   ),
                           cursorColor: FlutterFlowTheme.of(context).primaryText,
@@ -263,7 +263,7 @@ class _MyPostWidgetState extends State<MyPostWidget>
                       child: Text(
                         'My Posts',
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
-                              fontFamily: 'Inter',
+                              fontFamily: 'Poppins',
                               color: const Color(0xFF1A314D),
                               fontSize: 16.0,
                               letterSpacing: 0.0,
@@ -302,14 +302,14 @@ class _MyPostWidgetState extends State<MyPostWidget>
                             labelStyle: FlutterFlowTheme.of(context)
                                 .titleMedium
                                 .override(
-                                  fontFamily: 'Inter Tight',
+                                  fontFamily: 'Poppins',
                                   fontSize: 16.0,
                                   letterSpacing: 0.0,
                                 ),
                             unselectedLabelStyle: FlutterFlowTheme.of(context)
                                 .titleMedium
                                 .override(
-                                  fontFamily: 'Inter Tight',
+                                  fontFamily: 'Poppins',
                                   fontSize: 16.0,
                                   letterSpacing: 0.0,
                                 ),
@@ -465,7 +465,7 @@ class _MyPostWidgetState extends State<MyPostWidget>
                                                                         .bodyMedium
                                                                         .override(
                                                                           fontFamily:
-                                                                              'Inter',
+                                                                              'Poppins',
                                                                           color:
                                                                               const Color(0xFF92929D),
                                                                           fontSize:
@@ -489,7 +489,7 @@ class _MyPostWidgetState extends State<MyPostWidget>
                                                                         .bodyMedium
                                                                         .override(
                                                                           fontFamily:
-                                                                              'Inter',
+                                                                              'Poppins',
                                                                           fontSize:
                                                                               24.0,
                                                                           letterSpacing:
@@ -521,7 +521,7 @@ class _MyPostWidgetState extends State<MyPostWidget>
                                                                       .bodyMedium
                                                                       .override(
                                                                         fontFamily:
-                                                                            'Inter',
+                                                                            'Poppins',
                                                                         color: const Color(
                                                                             0xFF44444F),
                                                                         fontSize:
@@ -549,7 +549,7 @@ class _MyPostWidgetState extends State<MyPostWidget>
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .bodyMedium
                                                                             .override(
-                                                                              fontFamily: 'Inter',
+                                                                              fontFamily: 'Poppins',
                                                                               color: const Color(0xFF92929D),
                                                                               letterSpacing: 0.0,
                                                                             ),
@@ -573,7 +573,7 @@ class _MyPostWidgetState extends State<MyPostWidget>
                                                                           style: FlutterFlowTheme.of(context)
                                                                               .bodyMedium
                                                                               .override(
-                                                                                fontFamily: 'Inter',
+                                                                                fontFamily: 'Poppins',
                                                                                 color: const Color(0xFF92929D),
                                                                                 letterSpacing: 0.0,
                                                                               ),
@@ -831,8 +831,6 @@ class _MyPostWidgetState extends State<MyPostWidget>
                                       gridDelegate:
                                           const SliverGridDelegateWithFixedCrossAxisCount(
                                         crossAxisCount: 2,
-                                        crossAxisSpacing: 10.0,
-                                        mainAxisSpacing: 10.0,
                                         childAspectRatio: 1.0,
                                       ),
                                       scrollDirection: Axis.vertical,
@@ -970,7 +968,7 @@ class _MyPostWidgetState extends State<MyPostWidget>
                                                             context)
                                                         .bodyMedium
                                                         .override(
-                                                          fontFamily: 'Inter',
+                                                          fontFamily: 'Poppins',
                                                           fontSize: 14.0,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
@@ -1006,7 +1004,7 @@ class _MyPostWidgetState extends State<MyPostWidget>
                                                             context)
                                                         .bodyMedium
                                                         .override(
-                                                          fontFamily: 'Inter',
+                                                          fontFamily: 'Poppins',
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .secondary,
@@ -1029,7 +1027,7 @@ class _MyPostWidgetState extends State<MyPostWidget>
                                                             .spaceBetween,
                                                     children: [
                                                       Text(
-                                                        'Makola',
+                                                        'Ad location',
                                                         style: FlutterFlowTheme
                                                                 .of(context)
                                                             .bodyMedium

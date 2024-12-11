@@ -73,12 +73,12 @@ class _LogoHeaderWidgetState extends State<LogoHeaderWidget> {
                 decoration: InputDecoration(
                   isDense: true,
                   labelStyle: FlutterFlowTheme.of(context).labelMedium.override(
-                        fontFamily: 'Inter',
+                        fontFamily: 'Poppins',
                         letterSpacing: 0.0,
                       ),
                   hintText: 'Search',
                   hintStyle: FlutterFlowTheme.of(context).labelMedium.override(
-                        fontFamily: 'Inter',
+                        fontFamily: 'Poppins',
                         letterSpacing: 0.0,
                       ),
                   enabledBorder: OutlineInputBorder(
@@ -117,7 +117,7 @@ class _LogoHeaderWidgetState extends State<LogoHeaderWidget> {
                   ),
                 ),
                 style: FlutterFlowTheme.of(context).bodyMedium.override(
-                      fontFamily: 'Inter',
+                      fontFamily: 'Poppins',
                       letterSpacing: 0.0,
                     ),
                 cursorColor: FlutterFlowTheme.of(context).primaryText,

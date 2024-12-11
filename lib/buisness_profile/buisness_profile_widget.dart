@@ -120,14 +120,14 @@ class _BuisnessProfileWidgetState extends State<BuisnessProfileWidget> {
                                     labelStyle: FlutterFlowTheme.of(context)
                                         .labelMedium
                                         .override(
-                                          fontFamily: 'Inter',
+                                          fontFamily: 'Poppins',
                                           letterSpacing: 0.0,
                                         ),
                                     hintText: 'Search',
                                     hintStyle: FlutterFlowTheme.of(context)
                                         .labelMedium
                                         .override(
-                                          fontFamily: 'Inter',
+                                          fontFamily: 'Poppins',
                                           letterSpacing: 0.0,
                                         ),
                                     enabledBorder: OutlineInputBorder(
@@ -171,7 +171,7 @@ class _BuisnessProfileWidgetState extends State<BuisnessProfileWidget> {
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
-                                        fontFamily: 'Inter',
+                                        fontFamily: 'Poppins',
                                         letterSpacing: 0.0,
                                       ),
                                   cursorColor:
@@ -274,7 +274,7 @@ class _BuisnessProfileWidgetState extends State<BuisnessProfileWidget> {
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
-                                          fontFamily: 'Inter',
+                                          fontFamily: 'Poppins',
                                           color: const Color(0xFF1A314D),
                                           fontSize: 16.0,
                                           letterSpacing: 0.0,
@@ -342,7 +342,7 @@ class _BuisnessProfileWidgetState extends State<BuisnessProfileWidget> {
                                         textStyle: FlutterFlowTheme.of(context)
                                             .titleSmall
                                             .override(
-                                              fontFamily: 'Inter Tight',
+                                              fontFamily: 'Poppins',
                                               color: Colors.white,
                                               fontSize: 12.0,
                                               letterSpacing: 0.0,
@@ -409,7 +409,7 @@ class _BuisnessProfileWidgetState extends State<BuisnessProfileWidget> {
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium
                                               .override(
-                                                fontFamily: 'Inter',
+                                                fontFamily: 'Poppins',
                                                 color: const Color(0xFF171725),
                                                 letterSpacing: 0.0,
                                                 fontWeight: FontWeight.w500,
@@ -461,7 +461,7 @@ class _BuisnessProfileWidgetState extends State<BuisnessProfileWidget> {
                                                                 .bodyMedium
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Inter',
+                                                                      'Poppins',
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .primary,
@@ -481,7 +481,7 @@ class _BuisnessProfileWidgetState extends State<BuisnessProfileWidget> {
                                                             context)
                                                         .bodySmall
                                                         .override(
-                                                          fontFamily: 'Inter',
+                                                          fontFamily: 'Poppins',
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .secondaryText,
@@ -742,7 +742,7 @@ class _BuisnessProfileWidgetState extends State<BuisnessProfileWidget> {
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
                                                 .override(
-                                                  fontFamily: 'Inter',
+                                                  fontFamily: 'Poppins',
                                                   color: const Color(0xFF34405E),
                                                   letterSpacing: 0.0,
                                                   fontWeight: FontWeight.w500,
@@ -793,8 +793,7 @@ class _BuisnessProfileWidgetState extends State<BuisnessProfileWidget> {
                                                     FlutterFlowTheme.of(context)
                                                         .titleSmall
                                                         .override(
-                                                          fontFamily:
-                                                              'Inter Tight',
+                                                          fontFamily: 'Poppins',
                                                           color: Colors.white,
                                                           letterSpacing: 0.0,
                                                         ),
@@ -964,7 +963,7 @@ class _BuisnessProfileWidgetState extends State<BuisnessProfileWidget> {
                                                                     .bodyMedium
                                                                     .override(
                                                                       fontFamily:
-                                                                          'Inter',
+                                                                          'Poppins',
                                                                       color: const Color(
                                                                           0xFF34405E),
                                                                       fontSize:
@@ -1190,7 +1189,7 @@ class _BuisnessProfileWidgetState extends State<BuisnessProfileWidget> {
                                                             .bodyMedium
                                                             .override(
                                                               fontFamily:
-                                                                  'Inter',
+                                                                  'Poppins',
                                                               fontSize: 16.0,
                                                               letterSpacing:
                                                                   0.0,
@@ -1227,7 +1226,7 @@ class _BuisnessProfileWidgetState extends State<BuisnessProfileWidget> {
                                                                 .bodyMedium
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Inter',
+                                                                      'Poppins',
                                                                   color: const Color(
                                                                       0xFF92929D),
                                                                   fontSize:
@@ -1277,7 +1276,7 @@ class _BuisnessProfileWidgetState extends State<BuisnessProfileWidget> {
                                                                       .bodyMedium
                                                                       .override(
                                                                         fontFamily:
-                                                                            'Inter',
+                                                                            'Poppins',
                                                                         color: const Color(
                                                                             0xFF34405E),
                                                                         fontSize:
@@ -1390,7 +1389,7 @@ class _BuisnessProfileWidgetState extends State<BuisnessProfileWidget> {
                                                                           .bodyMedium
                                                                           .override(
                                                                             fontFamily:
-                                                                                'Inter',
+                                                                                'Poppins',
                                                                             color:
                                                                                 const Color(0xFF4987FF),
                                                                             fontSize:

@@ -175,7 +175,7 @@ class _SearchConnectionsCompWidgetState
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium
                                                         .override(
-                                                          fontFamily: 'Inter',
+                                                          fontFamily: 'Poppins',
                                                           letterSpacing: 0.0,
                                                         ),
                                               ),
@@ -194,7 +194,8 @@ class _SearchConnectionsCompWidgetState
                                                               .of(context)
                                                           .labelMedium
                                                           .override(
-                                                            fontFamily: 'Inter',
+                                                            fontFamily:
+                                                                'Poppins',
                                                             letterSpacing: 0.0,
                                                           ),
                                                     ),

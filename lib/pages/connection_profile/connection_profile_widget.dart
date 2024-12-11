@@ -97,7 +97,7 @@ class _ConnectionProfileWidgetState extends State<ConnectionProfileWidget> {
                       Text(
                         'Connect',
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
-                              fontFamily: 'Inter',
+                              fontFamily: 'Poppins',
                               fontSize: 18.0,
                               letterSpacing: 0.5,
                               fontWeight: FontWeight.w600,
@@ -182,14 +182,14 @@ class _ConnectionProfileWidgetState extends State<ConnectionProfileWidget> {
                                   labelStyle: FlutterFlowTheme.of(context)
                                       .labelMedium
                                       .override(
-                                        fontFamily: 'Inter',
+                                        fontFamily: 'Poppins',
                                         letterSpacing: 0.0,
                                       ),
                                   hintText: 'Search',
                                   hintStyle: FlutterFlowTheme.of(context)
                                       .labelMedium
                                       .override(
-                                        fontFamily: 'Inter',
+                                        fontFamily: 'Poppins',
                                         letterSpacing: 0.0,
                                       ),
                                   enabledBorder: OutlineInputBorder(
@@ -231,7 +231,7 @@ class _ConnectionProfileWidgetState extends State<ConnectionProfileWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
-                                      fontFamily: 'Inter',
+                                      fontFamily: 'Poppins',
                                       letterSpacing: 0.0,
                                     ),
                                 cursorColor:
@@ -303,7 +303,7 @@ class _ConnectionProfileWidgetState extends State<ConnectionProfileWidget> {
                                   15.0, 14.0, 15.0, 0.0),
                               child: Container(
                                 width: 342.86,
-                                height: 382.5,
+                                height: 420.0,
                                 decoration: BoxDecoration(
                                   color: FlutterFlowTheme.of(context)
                                       .secondaryBackground,
@@ -397,7 +397,7 @@ class _ConnectionProfileWidgetState extends State<ConnectionProfileWidget> {
                                                           context)
                                                       .bodyMedium
                                                       .override(
-                                                        fontFamily: 'Inter',
+                                                        fontFamily: 'Poppins',
                                                         fontSize: 16.0,
                                                         letterSpacing: 0.0,
                                                         fontWeight:
@@ -411,7 +411,7 @@ class _ConnectionProfileWidgetState extends State<ConnectionProfileWidget> {
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium
                                                         .override(
-                                                          fontFamily: 'Inter',
+                                                          fontFamily: 'Poppins',
                                                           letterSpacing: 0.0,
                                                         ),
                                               ),
@@ -443,7 +443,7 @@ class _ConnectionProfileWidgetState extends State<ConnectionProfileWidget> {
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
                                                 .override(
-                                                  fontFamily: 'Inter',
+                                                  fontFamily: 'Poppins',
                                                   letterSpacing: 0.0,
                                                 ),
                                           ),
@@ -485,7 +485,7 @@ class _ConnectionProfileWidgetState extends State<ConnectionProfileWidget> {
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium
                                                         .override(
-                                                          fontFamily: 'Inter',
+                                                          fontFamily: 'Poppins',
                                                           color:
                                                               const Color(0xFFAF7E00),
                                                           letterSpacing: 0.0,
@@ -503,7 +503,7 @@ class _ConnectionProfileWidgetState extends State<ConnectionProfileWidget> {
                                                           context)
                                                       .bodyMedium
                                                       .override(
-                                                        fontFamily: 'Inter',
+                                                        fontFamily: 'Poppins',
                                                         color:
                                                             const Color(0xFFAF7E00),
                                                         fontSize: 16.0,
@@ -556,7 +556,7 @@ class _ConnectionProfileWidgetState extends State<ConnectionProfileWidget> {
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium
                                                         .override(
-                                                          fontFamily: 'Inter',
+                                                          fontFamily: 'Poppins',
                                                           color:
                                                               const Color(0xFF92929D),
                                                           letterSpacing: 0.0,
@@ -574,7 +574,7 @@ class _ConnectionProfileWidgetState extends State<ConnectionProfileWidget> {
                                                           context)
                                                       .bodyMedium
                                                       .override(
-                                                        fontFamily: 'Inter',
+                                                        fontFamily: 'Poppins',
                                                         color:
                                                             const Color(0xFF44444F),
                                                         fontSize: 16.0,
@@ -604,7 +604,7 @@ class _ConnectionProfileWidgetState extends State<ConnectionProfileWidget> {
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium
                                                         .override(
-                                                          fontFamily: 'Inter',
+                                                          fontFamily: 'Poppins',
                                                           color:
                                                               const Color(0xFF92929D),
                                                           letterSpacing: 0.0,
@@ -622,7 +622,7 @@ class _ConnectionProfileWidgetState extends State<ConnectionProfileWidget> {
                                                           context)
                                                       .bodyMedium
                                                       .override(
-                                                        fontFamily: 'Inter',
+                                                        fontFamily: 'Poppins',
                                                         color:
                                                             const Color(0xFF44444F),
                                                         fontSize: 16.0,
@@ -663,7 +663,7 @@ class _ConnectionProfileWidgetState extends State<ConnectionProfileWidget> {
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(
-                                              fontFamily: 'Inter',
+                                              fontFamily: 'Poppins',
                                               color: const Color(0xFF171725),
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.w500,
@@ -712,7 +712,7 @@ class _ConnectionProfileWidgetState extends State<ConnectionProfileWidget> {
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium
                                                       .override(
-                                                        fontFamily: 'Inter',
+                                                        fontFamily: 'Poppins',
                                                         color:
                                                             const Color(0xFF171725),
                                                         letterSpacing: 0.0,
@@ -754,7 +754,7 @@ class _ConnectionProfileWidgetState extends State<ConnectionProfileWidget> {
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium
                                                       .override(
-                                                        fontFamily: 'Inter',
+                                                        fontFamily: 'Poppins',
                                                         color:
                                                             const Color(0xFF171725),
                                                         letterSpacing: 0.0,
@@ -796,7 +796,7 @@ class _ConnectionProfileWidgetState extends State<ConnectionProfileWidget> {
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium
                                                       .override(
-                                                        fontFamily: 'Inter',
+                                                        fontFamily: 'Poppins',
                                                         color:
                                                             const Color(0xFF171725),
                                                         letterSpacing: 0.0,
@@ -927,7 +927,7 @@ class _ConnectionProfileWidgetState extends State<ConnectionProfileWidget> {
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium
                                                         .override(
-                                                          fontFamily: 'Inter',
+                                                          fontFamily: 'Poppins',
                                                           color:
                                                               const Color(0xFF171725),
                                                           letterSpacing: 0.0,
@@ -946,7 +946,7 @@ class _ConnectionProfileWidgetState extends State<ConnectionProfileWidget> {
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium
                                                         .override(
-                                                          fontFamily: 'Inter',
+                                                          fontFamily: 'Poppins',
                                                           color:
                                                               const Color(0xFFAF7E00),
                                                           fontSize: 12.0,
@@ -1087,7 +1087,7 @@ class _ConnectionProfileWidgetState extends State<ConnectionProfileWidget> {
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(
-                                              fontFamily: 'Inter',
+                                              fontFamily: 'Poppins',
                                               fontSize: 16.0,
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.w600,
@@ -1098,7 +1098,7 @@ class _ConnectionProfileWidgetState extends State<ConnectionProfileWidget> {
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(
-                                              fontFamily: 'Inter',
+                                              fontFamily: 'Poppins',
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .secondary,
@@ -1209,7 +1209,7 @@ class _ConnectionProfileWidgetState extends State<ConnectionProfileWidget> {
                                                             .bodyMedium
                                                             .override(
                                                               fontFamily:
-                                                                  'Inter',
+                                                                  'Poppins',
                                                               fontSize: 16.0,
                                                               letterSpacing:
                                                                   0.0,
@@ -1234,7 +1234,7 @@ class _ConnectionProfileWidgetState extends State<ConnectionProfileWidget> {
                                                             .bodyMedium
                                                             .override(
                                                               fontFamily:
-                                                                  'Inter',
+                                                                  'Poppins',
                                                               color: const Color(
                                                                   0xFF92929D),
                                                               fontSize: 12.0,
@@ -1342,7 +1342,7 @@ class _ConnectionProfileWidgetState extends State<ConnectionProfileWidget> {
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .bodyMedium
                                                                             .override(
-                                                                              fontFamily: 'Inter',
+                                                                              fontFamily: 'Poppins',
                                                                               color: const Color(0xFF4987FF),
                                                                               fontSize: 10.0,
                                                                               letterSpacing: 0.0,
@@ -1387,7 +1387,7 @@ class _ConnectionProfileWidgetState extends State<ConnectionProfileWidget> {
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(
-                                              fontFamily: 'Inter',
+                                              fontFamily: 'Poppins',
                                               fontSize: 16.0,
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.w600,
@@ -1398,7 +1398,7 @@ class _ConnectionProfileWidgetState extends State<ConnectionProfileWidget> {
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(
-                                              fontFamily: 'Inter',
+                                              fontFamily: 'Poppins',
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .secondary,
@@ -1454,7 +1454,7 @@ class _ConnectionProfileWidgetState extends State<ConnectionProfileWidget> {
                                                   rowEventRecordList[rowIndex];
                                               return Container(
                                                 width: 260.0,
-                                                height: 262.71,
+                                                height: 265.0,
                                                 decoration: BoxDecoration(
                                                   color: FlutterFlowTheme.of(
                                                           context)
@@ -1538,7 +1538,7 @@ class _ConnectionProfileWidgetState extends State<ConnectionProfileWidget> {
                                                                           .bodyMedium
                                                                           .override(
                                                                             fontFamily:
-                                                                                'Inter',
+                                                                                'Poppins',
                                                                             color:
                                                                                 const Color(0xFF92929D),
                                                                             fontSize:
@@ -1556,7 +1556,7 @@ class _ConnectionProfileWidgetState extends State<ConnectionProfileWidget> {
                                                                           .bodyMedium
                                                                           .override(
                                                                             fontFamily:
-                                                                                'Inter',
+                                                                                'Poppins',
                                                                             fontSize:
                                                                                 24.0,
                                                                             letterSpacing:
@@ -1583,7 +1583,7 @@ class _ConnectionProfileWidgetState extends State<ConnectionProfileWidget> {
                                                                         .bodyMedium
                                                                         .override(
                                                                           fontFamily:
-                                                                              'Inter',
+                                                                              'Poppins',
                                                                           color:
                                                                               const Color(0xFF44444F),
                                                                           fontSize:
@@ -1611,7 +1611,7 @@ class _ConnectionProfileWidgetState extends State<ConnectionProfileWidget> {
                                                                           style: FlutterFlowTheme.of(context)
                                                                               .bodyMedium
                                                                               .override(
-                                                                                fontFamily: 'Inter',
+                                                                                fontFamily: 'Poppins',
                                                                                 color: const Color(0xFF92929D),
                                                                                 letterSpacing: 0.0,
                                                                               ),
@@ -1626,7 +1626,7 @@ class _ConnectionProfileWidgetState extends State<ConnectionProfileWidget> {
                                                                               Text(
                                                                             'Hartono Mall, YK',
                                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                  fontFamily: 'Inter',
+                                                                                  fontFamily: 'Poppins',
                                                                                   color: const Color(0xFF92929D),
                                                                                   letterSpacing: 0.0,
                                                                                 ),
@@ -1647,7 +1647,7 @@ class _ConnectionProfileWidgetState extends State<ConnectionProfileWidget> {
                                                           const EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
-                                                                  27.0,
+                                                                  20.0,
                                                                   0.0,
                                                                   18.71),
                                                       child: Row(
@@ -1834,7 +1834,7 @@ class _ConnectionProfileWidgetState extends State<ConnectionProfileWidget> {
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium
                                               .override(
-                                                fontFamily: 'Inter',
+                                                fontFamily: 'Poppins',
                                                 fontSize: 16.0,
                                                 letterSpacing: 0.0,
                                                 fontWeight: FontWeight.w600,
@@ -1845,7 +1845,7 @@ class _ConnectionProfileWidgetState extends State<ConnectionProfileWidget> {
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium
                                               .override(
-                                                fontFamily: 'Inter',
+                                                fontFamily: 'Poppins',
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .secondary,
@@ -2031,7 +2031,7 @@ class _ConnectionProfileWidgetState extends State<ConnectionProfileWidget> {
                                                               .bodyMedium
                                                               .override(
                                                                 fontFamily:
-                                                                    'Inter',
+                                                                    'Poppins',
                                                                 fontSize: 16.0,
                                                                 letterSpacing:
                                                                     0.0,
@@ -2080,7 +2080,7 @@ class _ConnectionProfileWidgetState extends State<ConnectionProfileWidget> {
                                                               .bodyMedium
                                                               .override(
                                                                 fontFamily:
-                                                                    'Inter',
+                                                                    'Poppins',
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .secondary,

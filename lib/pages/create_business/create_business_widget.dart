@@ -95,7 +95,7 @@ class _CreateBusinessWidgetState extends State<CreateBusinessWidget> {
           title: Text(
             'List a Business',
             style: FlutterFlowTheme.of(context).titleMedium.override(
-                  fontFamily: 'Inter Tight',
+                  fontFamily: 'Poppins',
                   letterSpacing: 0.0,
                 ),
           ),
@@ -185,7 +185,7 @@ class _CreateBusinessWidgetState extends State<CreateBusinessWidget> {
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
-                                          fontFamily: 'Inter',
+                                          fontFamily: 'Poppins',
                                           letterSpacing: 0.0,
                                           fontWeight: FontWeight.w500,
                                         ),
@@ -221,7 +221,7 @@ class _CreateBusinessWidgetState extends State<CreateBusinessWidget> {
                     child: Text(
                       'Business Name',
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
-                            fontFamily: 'Inter',
+                            fontFamily: 'Poppins',
                             fontSize: 16.0,
                             letterSpacing: 0.0,
                             fontWeight: FontWeight.w600,
@@ -243,13 +243,13 @@ class _CreateBusinessWidgetState extends State<CreateBusinessWidget> {
                         isDense: true,
                         labelStyle:
                             FlutterFlowTheme.of(context).labelMedium.override(
-                                  fontFamily: 'Inter',
+                                  fontFamily: 'Poppins',
                                   letterSpacing: 0.0,
                                 ),
                         hintText: 'Business Name',
                         hintStyle:
                             FlutterFlowTheme.of(context).labelMedium.override(
-                                  fontFamily: 'Inter',
+                                  fontFamily: 'Poppins',
                                   color: const Color(0xFF6B7280),
                                   fontSize: 15.0,
                                   letterSpacing: 0.0,
@@ -288,7 +288,7 @@ class _CreateBusinessWidgetState extends State<CreateBusinessWidget> {
                             FlutterFlowTheme.of(context).secondaryBackground,
                       ),
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
-                            fontFamily: 'Inter',
+                            fontFamily: 'Poppins',
                             letterSpacing: 0.0,
                           ),
                       cursorColor: FlutterFlowTheme.of(context).primaryText,
@@ -305,7 +305,7 @@ class _CreateBusinessWidgetState extends State<CreateBusinessWidget> {
                     child: Text(
                       'Select Category',
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
-                            fontFamily: 'Inter',
+                            fontFamily: 'Poppins',
                             fontSize: 16.0,
                             letterSpacing: 0.0,
                             fontWeight: FontWeight.w600,
@@ -340,7 +340,7 @@ class _CreateBusinessWidgetState extends State<CreateBusinessWidget> {
                     width: double.infinity,
                     height: 40.0,
                     textStyle: FlutterFlowTheme.of(context).bodyMedium.override(
-                          fontFamily: 'Inter',
+                          fontFamily: 'Poppins',
                           color: const Color(0xFF6B7280),
                           fontSize: 15.0,
                           letterSpacing: 0.0,
@@ -372,7 +372,7 @@ class _CreateBusinessWidgetState extends State<CreateBusinessWidget> {
                     child: Text(
                       'Business Description',
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
-                            fontFamily: 'Inter',
+                            fontFamily: 'Poppins',
                             fontSize: 16.0,
                             letterSpacing: 0.0,
                             fontWeight: FontWeight.w600,
@@ -394,13 +394,13 @@ class _CreateBusinessWidgetState extends State<CreateBusinessWidget> {
                         isDense: true,
                         labelStyle:
                             FlutterFlowTheme.of(context).labelMedium.override(
-                                  fontFamily: 'Inter',
+                                  fontFamily: 'Poppins',
                                   letterSpacing: 0.0,
                                 ),
                         hintText: 'Business description',
                         hintStyle:
                             FlutterFlowTheme.of(context).labelMedium.override(
-                                  fontFamily: 'Inter',
+                                  fontFamily: 'Poppins',
                                   color: const Color(0xFF6B7280),
                                   fontSize: 15.0,
                                   letterSpacing: 0.0,
@@ -439,7 +439,7 @@ class _CreateBusinessWidgetState extends State<CreateBusinessWidget> {
                             FlutterFlowTheme.of(context).secondaryBackground,
                       ),
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
-                            fontFamily: 'Inter',
+                            fontFamily: 'Poppins',
                             letterSpacing: 0.0,
                           ),
                       maxLength: 150,
@@ -457,7 +457,7 @@ class _CreateBusinessWidgetState extends State<CreateBusinessWidget> {
                     child: Text(
                       'Email',
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
-                            fontFamily: 'Inter',
+                            fontFamily: 'Poppins',
                             fontSize: 16.0,
                             letterSpacing: 0.0,
                             fontWeight: FontWeight.w600,
@@ -479,13 +479,13 @@ class _CreateBusinessWidgetState extends State<CreateBusinessWidget> {
                         isDense: true,
                         labelStyle:
                             FlutterFlowTheme.of(context).labelMedium.override(
-                                  fontFamily: 'Inter',
+                                  fontFamily: 'Poppins',
                                   letterSpacing: 0.0,
                                 ),
                         hintText: 'Email Address',
                         hintStyle:
                             FlutterFlowTheme.of(context).labelMedium.override(
-                                  fontFamily: 'Inter',
+                                  fontFamily: 'Poppins',
                                   color: const Color(0xFF6B7280),
                                   fontSize: 15.0,
                                   letterSpacing: 0.0,
@@ -524,7 +524,7 @@ class _CreateBusinessWidgetState extends State<CreateBusinessWidget> {
                             FlutterFlowTheme.of(context).secondaryBackground,
                       ),
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
-                            fontFamily: 'Inter',
+                            fontFamily: 'Poppins',
                             letterSpacing: 0.0,
                           ),
                       cursorColor: FlutterFlowTheme.of(context).primaryText,
@@ -541,7 +541,7 @@ class _CreateBusinessWidgetState extends State<CreateBusinessWidget> {
                     child: Text(
                       'Address',
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
-                            fontFamily: 'Inter',
+                            fontFamily: 'Poppins',
                             fontSize: 16.0,
                             letterSpacing: 0.0,
                             fontWeight: FontWeight.w600,
@@ -563,13 +563,13 @@ class _CreateBusinessWidgetState extends State<CreateBusinessWidget> {
                         isDense: true,
                         labelStyle:
                             FlutterFlowTheme.of(context).labelMedium.override(
-                                  fontFamily: 'Inter',
+                                  fontFamily: 'Poppins',
                                   letterSpacing: 0.0,
                                 ),
                         hintText: 'Business Address',
                         hintStyle:
                             FlutterFlowTheme.of(context).labelMedium.override(
-                                  fontFamily: 'Inter',
+                                  fontFamily: 'Poppins',
                                   color: const Color(0xFF6B7280),
                                   fontSize: 15.0,
                                   letterSpacing: 0.0,
@@ -608,7 +608,7 @@ class _CreateBusinessWidgetState extends State<CreateBusinessWidget> {
                             FlutterFlowTheme.of(context).secondaryBackground,
                       ),
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
-                            fontFamily: 'Inter',
+                            fontFamily: 'Poppins',
                             letterSpacing: 0.0,
                           ),
                       cursorColor: FlutterFlowTheme.of(context).primaryText,
@@ -625,7 +625,7 @@ class _CreateBusinessWidgetState extends State<CreateBusinessWidget> {
                     child: Text(
                       'Google map link to your business',
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
-                            fontFamily: 'Inter',
+                            fontFamily: 'Poppins',
                             fontSize: 16.0,
                             letterSpacing: 0.0,
                             fontWeight: FontWeight.w600,
@@ -647,13 +647,13 @@ class _CreateBusinessWidgetState extends State<CreateBusinessWidget> {
                         isDense: true,
                         labelStyle:
                             FlutterFlowTheme.of(context).labelMedium.override(
-                                  fontFamily: 'Inter',
+                                  fontFamily: 'Poppins',
                                   letterSpacing: 0.0,
                                 ),
                         hintText: 'Google map link',
                         hintStyle:
                             FlutterFlowTheme.of(context).labelMedium.override(
-                                  fontFamily: 'Inter',
+                                  fontFamily: 'Poppins',
                                   color: const Color(0xFF6B7280),
                                   fontSize: 15.0,
                                   letterSpacing: 0.0,
@@ -692,7 +692,7 @@ class _CreateBusinessWidgetState extends State<CreateBusinessWidget> {
                             FlutterFlowTheme.of(context).secondaryBackground,
                       ),
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
-                            fontFamily: 'Inter',
+                            fontFamily: 'Poppins',
                             letterSpacing: 0.0,
                           ),
                       cursorColor: FlutterFlowTheme.of(context).primaryText,
@@ -721,7 +721,7 @@ class _CreateBusinessWidgetState extends State<CreateBusinessWidget> {
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
-                                        fontFamily: 'Inter',
+                                        fontFamily: 'Poppins',
                                         fontSize: 16.0,
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.w600,
@@ -744,14 +744,14 @@ class _CreateBusinessWidgetState extends State<CreateBusinessWidget> {
                                     labelStyle: FlutterFlowTheme.of(context)
                                         .labelMedium
                                         .override(
-                                          fontFamily: 'Inter',
+                                          fontFamily: 'Poppins',
                                           letterSpacing: 0.0,
                                         ),
                                     hintText: 'Whatsapp Number',
                                     hintStyle: FlutterFlowTheme.of(context)
                                         .labelMedium
                                         .override(
-                                          fontFamily: 'Inter',
+                                          fontFamily: 'Poppins',
                                           color: const Color(0xFF6B7280),
                                           fontSize: 15.0,
                                           letterSpacing: 0.0,
@@ -798,7 +798,7 @@ class _CreateBusinessWidgetState extends State<CreateBusinessWidget> {
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
-                                        fontFamily: 'Inter',
+                                        fontFamily: 'Poppins',
                                         letterSpacing: 0.0,
                                       ),
                                   cursorColor:
@@ -825,7 +825,7 @@ class _CreateBusinessWidgetState extends State<CreateBusinessWidget> {
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
-                                        fontFamily: 'Inter',
+                                        fontFamily: 'Poppins',
                                         fontSize: 16.0,
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.w600,
@@ -848,14 +848,14 @@ class _CreateBusinessWidgetState extends State<CreateBusinessWidget> {
                                     labelStyle: FlutterFlowTheme.of(context)
                                         .labelMedium
                                         .override(
-                                          fontFamily: 'Inter',
+                                          fontFamily: 'Poppins',
                                           letterSpacing: 0.0,
                                         ),
                                     hintText: 'Phone Number',
                                     hintStyle: FlutterFlowTheme.of(context)
                                         .labelMedium
                                         .override(
-                                          fontFamily: 'Inter',
+                                          fontFamily: 'Poppins',
                                           color: const Color(0xFF6B7280),
                                           fontSize: 15.0,
                                           letterSpacing: 0.0,
@@ -902,7 +902,7 @@ class _CreateBusinessWidgetState extends State<CreateBusinessWidget> {
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
-                                        fontFamily: 'Inter',
+                                        fontFamily: 'Poppins',
                                         letterSpacing: 0.0,
                                       ),
                                   cursorColor:
@@ -1056,7 +1056,7 @@ class _CreateBusinessWidgetState extends State<CreateBusinessWidget> {
                           color: FlutterFlowTheme.of(context).primary,
                           textStyle:
                               FlutterFlowTheme.of(context).titleSmall.override(
-                                    fontFamily: 'Inter Tight',
+                                    fontFamily: 'Poppins',
                                     color: Colors.white,
                                     letterSpacing: 0.0,
                                   ),

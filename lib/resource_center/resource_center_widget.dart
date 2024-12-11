@@ -93,7 +93,7 @@ class _ResourceCenterWidgetState extends State<ResourceCenterWidget> {
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(
-                                    fontFamily: 'Inter',
+                                    fontFamily: 'Poppins',
                                     color: const Color(0xFF1A314D),
                                     fontSize: 16.0,
                                     letterSpacing: 0.0,
@@ -171,7 +171,7 @@ class _ResourceCenterWidgetState extends State<ResourceCenterWidget> {
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium
                                               .override(
-                                                fontFamily: 'Inter',
+                                                fontFamily: 'Poppins',
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .secondaryBackground,
@@ -210,7 +210,7 @@ class _ResourceCenterWidgetState extends State<ResourceCenterWidget> {
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium
                                               .override(
-                                                fontFamily: 'Inter',
+                                                fontFamily: 'Poppins',
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .secondaryBackground,
@@ -262,7 +262,7 @@ class _ResourceCenterWidgetState extends State<ResourceCenterWidget> {
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium
                                               .override(
-                                                fontFamily: 'Inter',
+                                                fontFamily: 'Poppins',
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .secondaryBackground,
@@ -301,7 +301,7 @@ class _ResourceCenterWidgetState extends State<ResourceCenterWidget> {
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium
                                               .override(
-                                                fontFamily: 'Inter',
+                                                fontFamily: 'Poppins',
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .secondaryBackground,
@@ -416,7 +416,7 @@ class _ResourceCenterWidgetState extends State<ResourceCenterWidget> {
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium
                                                         .override(
-                                                          fontFamily: 'Inter',
+                                                          fontFamily: 'Poppins',
                                                           letterSpacing: 0.0,
                                                         ),
                                               ),
@@ -430,7 +430,7 @@ class _ResourceCenterWidgetState extends State<ResourceCenterWidget> {
                                                     FlutterFlowTheme.of(context)
                                                         .bodySmall
                                                         .override(
-                                                          fontFamily: 'Inter',
+                                                          fontFamily: 'Poppins',
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .secondaryText,
@@ -473,7 +473,7 @@ class _ResourceCenterWidgetState extends State<ResourceCenterWidget> {
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium
                                               .override(
-                                                fontFamily: 'Inter',
+                                                fontFamily: 'Poppins',
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .info,
@@ -489,7 +489,7 @@ class _ResourceCenterWidgetState extends State<ResourceCenterWidget> {
                                           style: FlutterFlowTheme.of(context)
                                               .bodySmall
                                               .override(
-                                                fontFamily: 'Inter',
+                                                fontFamily: 'Poppins',
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .accent4,
@@ -553,7 +553,7 @@ class _ResourceCenterWidgetState extends State<ResourceCenterWidget> {
                                               FlutterFlowTheme.of(context)
                                                   .bodyMedium
                                                   .override(
-                                                    fontFamily: 'Inter',
+                                                    fontFamily: 'Poppins',
                                                     letterSpacing: 0.0,
                                                   ),
                                           enabledBorder: InputBorder.none,
@@ -564,7 +564,7 @@ class _ResourceCenterWidgetState extends State<ResourceCenterWidget> {
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(
-                                              fontFamily: 'Inter',
+                                              fontFamily: 'Poppins',
                                               letterSpacing: 0.0,
                                             ),
                                         minLines: 1,

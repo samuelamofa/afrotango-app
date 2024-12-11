@@ -119,7 +119,7 @@ class _ReviewWidgetState extends State<ReviewWidget> {
               Text(
                 'Your comments',
                 style: FlutterFlowTheme.of(context).bodyMedium.override(
-                      fontFamily: 'Inter',
+                      fontFamily: 'Poppins',
                       color: const Color(0xFF1F2937),
                       letterSpacing: 0.0,
                       fontWeight: FontWeight.w600,
@@ -141,7 +141,7 @@ class _ReviewWidgetState extends State<ReviewWidget> {
                         isDense: true,
                         labelStyle:
                             FlutterFlowTheme.of(context).labelMedium.override(
-                          fontFamily: 'Inter',
+                          fontFamily: 'Poppins',
                           letterSpacing: 0.0,
                           shadows: [
                             Shadow(
@@ -192,7 +192,7 @@ class _ReviewWidgetState extends State<ReviewWidget> {
                             FlutterFlowTheme.of(context).secondaryBackground,
                       ),
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
-                            fontFamily: 'Inter',
+                            fontFamily: 'Poppins',
                             color: const Color(0xFF6B7280),
                             letterSpacing: 0.0,
                           ),
@@ -226,7 +226,7 @@ class _ReviewWidgetState extends State<ReviewWidget> {
                         color: FlutterFlowTheme.of(context).secondaryBackground,
                         textStyle:
                             FlutterFlowTheme.of(context).titleSmall.override(
-                                  fontFamily: 'Inter Tight',
+                                  fontFamily: 'Poppins',
                                   color: const Color(0xFF1F2937),
                                   letterSpacing: 0.0,
                                 ),
@@ -277,7 +277,7 @@ class _ReviewWidgetState extends State<ReviewWidget> {
                           color: FlutterFlowTheme.of(context).primary,
                           textStyle:
                               FlutterFlowTheme.of(context).titleSmall.override(
-                                    fontFamily: 'Inter Tight',
+                                    fontFamily: 'Poppins',
                                     color: Colors.white,
                                     letterSpacing: 0.0,
                                   ),

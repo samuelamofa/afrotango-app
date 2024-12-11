@@ -167,7 +167,7 @@ class _UploadBannarImageWidgetState extends State<UploadBannarImageWidget> {
                         const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                     color: FlutterFlowTheme.of(context).alternate,
                     textStyle: FlutterFlowTheme.of(context).titleSmall.override(
-                          fontFamily: 'Inter Tight',
+                          fontFamily: 'Poppins',
                           color: FlutterFlowTheme.of(context).secondaryText,
                           letterSpacing: 0.0,
                         ),
@@ -233,7 +233,7 @@ class _UploadBannarImageWidgetState extends State<UploadBannarImageWidget> {
                         const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                     color: FlutterFlowTheme.of(context).primary,
                     textStyle: FlutterFlowTheme.of(context).titleSmall.override(
-                          fontFamily: 'Inter Tight',
+                          fontFamily: 'Poppins',
                           color: Colors.white,
                           letterSpacing: 0.0,
                         ),

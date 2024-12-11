@@ -96,7 +96,7 @@ class _AdPostCreateWidgetState extends State<AdPostCreateWidget> {
                 child: Text(
                   'Post an Ad',
                   style: FlutterFlowTheme.of(context).bodyMedium.override(
-                        fontFamily: 'Inter',
+                        fontFamily: 'Poppins',
                         fontSize: 18.0,
                         letterSpacing: 0.0,
                         fontWeight: FontWeight.bold,
@@ -176,7 +176,7 @@ class _AdPostCreateWidgetState extends State<AdPostCreateWidget> {
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
-                                        fontFamily: 'Inter',
+                                        fontFamily: 'Poppins',
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.w500,
                                       ),
@@ -210,7 +210,7 @@ class _AdPostCreateWidgetState extends State<AdPostCreateWidget> {
                   child: Text(
                     'Ad Name',
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
-                          fontFamily: 'Inter',
+                          fontFamily: 'Poppins',
                           fontSize: 16.0,
                           letterSpacing: 0.0,
                           fontWeight: FontWeight.w600,
@@ -231,13 +231,13 @@ class _AdPostCreateWidgetState extends State<AdPostCreateWidget> {
                       isDense: true,
                       labelStyle:
                           FlutterFlowTheme.of(context).labelMedium.override(
-                                fontFamily: 'Inter',
+                                fontFamily: 'Poppins',
                                 letterSpacing: 0.0,
                               ),
                       hintText: 'Ad Name',
                       hintStyle:
                           FlutterFlowTheme.of(context).labelMedium.override(
-                                fontFamily: 'Inter',
+                                fontFamily: 'Poppins',
                                 color: const Color(0xFF6B7280),
                                 fontSize: 15.0,
                                 letterSpacing: 0.0,
@@ -276,7 +276,7 @@ class _AdPostCreateWidgetState extends State<AdPostCreateWidget> {
                           FlutterFlowTheme.of(context).secondaryBackground,
                     ),
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
-                          fontFamily: 'Inter',
+                          fontFamily: 'Poppins',
                           letterSpacing: 0.0,
                         ),
                     cursorColor: FlutterFlowTheme.of(context).primaryText,
@@ -292,7 +292,7 @@ class _AdPostCreateWidgetState extends State<AdPostCreateWidget> {
                   child: Text(
                     'Select Category',
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
-                          fontFamily: 'Inter',
+                          fontFamily: 'Poppins',
                           fontSize: 16.0,
                           letterSpacing: 0.0,
                           fontWeight: FontWeight.w600,
@@ -336,7 +336,7 @@ class _AdPostCreateWidgetState extends State<AdPostCreateWidget> {
                   width: double.infinity,
                   height: 40.0,
                   textStyle: FlutterFlowTheme.of(context).bodyMedium.override(
-                        fontFamily: 'Inter',
+                        fontFamily: 'Poppins',
                         color: const Color(0xFF6B7280),
                         fontSize: 15.0,
                         letterSpacing: 0.0,
@@ -366,7 +366,7 @@ class _AdPostCreateWidgetState extends State<AdPostCreateWidget> {
                   child: Text(
                     'Description',
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
-                          fontFamily: 'Inter',
+                          fontFamily: 'Poppins',
                           fontSize: 16.0,
                           letterSpacing: 0.0,
                           fontWeight: FontWeight.w600,
@@ -387,13 +387,13 @@ class _AdPostCreateWidgetState extends State<AdPostCreateWidget> {
                       isDense: true,
                       labelStyle:
                           FlutterFlowTheme.of(context).labelMedium.override(
-                                fontFamily: 'Inter',
+                                fontFamily: 'Poppins',
                                 letterSpacing: 0.0,
                               ),
                       hintText: 'Group description',
                       hintStyle:
                           FlutterFlowTheme.of(context).labelMedium.override(
-                                fontFamily: 'Inter',
+                                fontFamily: 'Poppins',
                                 color: const Color(0xFF6B7280),
                                 fontSize: 15.0,
                                 letterSpacing: 0.0,
@@ -432,7 +432,7 @@ class _AdPostCreateWidgetState extends State<AdPostCreateWidget> {
                           FlutterFlowTheme.of(context).secondaryBackground,
                     ),
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
-                          fontFamily: 'Inter',
+                          fontFamily: 'Poppins',
                           letterSpacing: 0.0,
                         ),
                     maxLength: 150,
@@ -449,7 +449,7 @@ class _AdPostCreateWidgetState extends State<AdPostCreateWidget> {
                   child: Text(
                     'Ad Pricing',
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
-                          fontFamily: 'Inter',
+                          fontFamily: 'Poppins',
                           fontSize: 16.0,
                           letterSpacing: 0.0,
                           fontWeight: FontWeight.w600,
@@ -470,13 +470,13 @@ class _AdPostCreateWidgetState extends State<AdPostCreateWidget> {
                       isDense: true,
                       labelStyle:
                           FlutterFlowTheme.of(context).labelMedium.override(
-                                fontFamily: 'Inter',
+                                fontFamily: 'Poppins',
                                 letterSpacing: 0.0,
                               ),
                       hintText: 'Amount in GHS',
                       hintStyle:
                           FlutterFlowTheme.of(context).labelMedium.override(
-                                fontFamily: 'Inter',
+                                fontFamily: 'Poppins',
                                 color: const Color(0xFF6B7280),
                                 fontSize: 15.0,
                                 letterSpacing: 0.0,
@@ -515,7 +515,7 @@ class _AdPostCreateWidgetState extends State<AdPostCreateWidget> {
                           FlutterFlowTheme.of(context).secondaryBackground,
                     ),
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
-                          fontFamily: 'Inter',
+                          fontFamily: 'Poppins',
                           letterSpacing: 0.0,
                         ),
                     cursorColor: FlutterFlowTheme.of(context).primaryText,
@@ -547,7 +547,7 @@ class _AdPostCreateWidgetState extends State<AdPostCreateWidget> {
                           color: FlutterFlowTheme.of(context).primaryBackground,
                           textStyle:
                               FlutterFlowTheme.of(context).titleSmall.override(
-                                    fontFamily: 'Inter Tight',
+                                    fontFamily: 'Poppins',
                                     color: FlutterFlowTheme.of(context).primary,
                                     letterSpacing: 0.0,
                                   ),
@@ -676,7 +676,7 @@ class _AdPostCreateWidgetState extends State<AdPostCreateWidget> {
                           color: FlutterFlowTheme.of(context).primary,
                           textStyle:
                               FlutterFlowTheme.of(context).titleSmall.override(
-                                    fontFamily: 'Inter Tight',
+                                    fontFamily: 'Poppins',
                                     color: Colors.white,
                                     letterSpacing: 0.0,
                                   ),

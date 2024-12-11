@@ -109,7 +109,7 @@ class _YourConnectionWidgetState extends State<YourConnectionWidget>
               Text(
                 'Messages',
                 style: FlutterFlowTheme.of(context).bodyMedium.override(
-                      fontFamily: 'Inter',
+                      fontFamily: 'Poppins',
                       fontSize: 18.0,
                       letterSpacing: 0.5,
                       fontWeight: FontWeight.w600,
@@ -178,14 +178,14 @@ class _YourConnectionWidgetState extends State<YourConnectionWidget>
                             labelStyle: FlutterFlowTheme.of(context)
                                 .labelMedium
                                 .override(
-                                  fontFamily: 'Inter',
+                                  fontFamily: 'Poppins',
                                   letterSpacing: 0.0,
                                 ),
                             hintText: 'Search',
                             hintStyle: FlutterFlowTheme.of(context)
                                 .labelMedium
                                 .override(
-                                  fontFamily: 'Inter',
+                                  fontFamily: 'Poppins',
                                   letterSpacing: 0.0,
                                 ),
                             enabledBorder: OutlineInputBorder(
@@ -226,7 +226,7 @@ class _YourConnectionWidgetState extends State<YourConnectionWidget>
                           ),
                           style:
                               FlutterFlowTheme.of(context).bodyMedium.override(
-                                    fontFamily: 'Inter',
+                                    fontFamily: 'Poppins',
                                     letterSpacing: 0.0,
                                   ),
                           cursorColor: FlutterFlowTheme.of(context).primaryText,
@@ -304,14 +304,14 @@ class _YourConnectionWidgetState extends State<YourConnectionWidget>
                             labelStyle: FlutterFlowTheme.of(context)
                                 .titleMedium
                                 .override(
-                                  fontFamily: 'Inter Tight',
+                                  fontFamily: 'Poppins',
                                   fontSize: 13.0,
                                   letterSpacing: 0.0,
                                 ),
                             unselectedLabelStyle: FlutterFlowTheme.of(context)
                                 .titleMedium
                                 .override(
-                                  fontFamily: 'Inter Tight',
+                                  fontFamily: 'Poppins',
                                   fontSize: 13.0,
                                   letterSpacing: 0.0,
                                 ),
@@ -378,7 +378,7 @@ class _YourConnectionWidgetState extends State<YourConnectionWidget>
                                                               .labelMedium
                                                               .override(
                                                                 fontFamily:
-                                                                    'Inter',
+                                                                    'Poppins',
                                                                 letterSpacing:
                                                                     0.0,
                                                               ),
@@ -390,7 +390,7 @@ class _YourConnectionWidgetState extends State<YourConnectionWidget>
                                                               .labelMedium
                                                               .override(
                                                                 fontFamily:
-                                                                    'Inter',
+                                                                    'Poppins',
                                                                 color: const Color(
                                                                     0xFF92929D),
                                                                 letterSpacing:
@@ -451,7 +451,7 @@ class _YourConnectionWidgetState extends State<YourConnectionWidget>
                                                             context)
                                                         .bodyMedium
                                                         .override(
-                                                          fontFamily: 'Inter',
+                                                          fontFamily: 'Poppins',
                                                           letterSpacing: 0.0,
                                                         ),
                                                     cursorColor:
@@ -527,7 +527,7 @@ class _YourConnectionWidgetState extends State<YourConnectionWidget>
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(
-                                              fontFamily: 'Inter',
+                                              fontFamily: 'Poppins',
                                               fontSize: 18.0,
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.w600,
@@ -979,7 +979,7 @@ class _YourConnectionWidgetState extends State<YourConnectionWidget>
                                                               .labelMedium
                                                               .override(
                                                                 fontFamily:
-                                                                    'Inter',
+                                                                    'Poppins',
                                                                 letterSpacing:
                                                                     0.0,
                                                               ),
@@ -991,7 +991,7 @@ class _YourConnectionWidgetState extends State<YourConnectionWidget>
                                                               .labelMedium
                                                               .override(
                                                                 fontFamily:
-                                                                    'Inter',
+                                                                    'Poppins',
                                                                 color: const Color(
                                                                     0xFF92929D),
                                                                 letterSpacing:
@@ -1052,7 +1052,7 @@ class _YourConnectionWidgetState extends State<YourConnectionWidget>
                                                             context)
                                                         .bodyMedium
                                                         .override(
-                                                          fontFamily: 'Inter',
+                                                          fontFamily: 'Poppins',
                                                           letterSpacing: 0.0,
                                                         ),
                                                     cursorColor:
@@ -1128,7 +1128,7 @@ class _YourConnectionWidgetState extends State<YourConnectionWidget>
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(
-                                              fontFamily: 'Inter',
+                                              fontFamily: 'Poppins',
                                               fontSize: 18.0,
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.w600,

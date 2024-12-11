@@ -133,7 +133,7 @@ class _AboutCommunityWidgetState extends State<AboutCommunityWidget> {
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(
-                                    fontFamily: 'Inter',
+                                    fontFamily: 'Poppins',
                                     color: const Color(0xFF1A314D),
                                     fontSize: 16.0,
                                     letterSpacing: 0.0,
@@ -146,7 +146,7 @@ class _AboutCommunityWidgetState extends State<AboutCommunityWidget> {
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
                                 .override(
-                                  fontFamily: 'Inter',
+                                  fontFamily: 'Poppins',
                                   color: const Color(0xFF1A314D),
                                   fontSize: 16.0,
                                   letterSpacing: 0.0,
@@ -348,7 +348,7 @@ class _AboutCommunityWidgetState extends State<AboutCommunityWidget> {
                                           },
                                           text: 'View members',
                                           options: FFButtonOptions(
-                                            width: 114.0,
+                                            width: 135.0,
                                             height: 35.0,
                                             padding:
                                                 const EdgeInsetsDirectional.fromSTEB(
@@ -362,7 +362,7 @@ class _AboutCommunityWidgetState extends State<AboutCommunityWidget> {
                                                 FlutterFlowTheme.of(context)
                                                     .titleSmall
                                                     .override(
-                                                      fontFamily: 'Inter Tight',
+                                                      fontFamily: 'Poppins',
                                                       color: Colors.white,
                                                       fontSize: 10.0,
                                                       letterSpacing: 0.0,
@@ -423,7 +423,7 @@ class _AboutCommunityWidgetState extends State<AboutCommunityWidget> {
                                   15.0, 14.5, 15.0, 0.0),
                               child: Container(
                                 width: double.infinity,
-                                height: 298.0,
+                                height: 310.0,
                                 decoration: BoxDecoration(
                                   color: FlutterFlowTheme.of(context)
                                       .secondaryBackground,
@@ -467,7 +467,7 @@ class _AboutCommunityWidgetState extends State<AboutCommunityWidget> {
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
                                                 .override(
-                                                  fontFamily: 'Inter',
+                                                  fontFamily: 'Poppins',
                                                   color: const Color(0xFF171725),
                                                   letterSpacing: 0.0,
                                                   fontWeight: FontWeight.w500,
@@ -522,7 +522,7 @@ class _AboutCommunityWidgetState extends State<AboutCommunityWidget> {
                                                               .bodyMedium
                                                               .override(
                                                                 fontFamily:
-                                                                    'Inter',
+                                                                    'Poppins',
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .primary,
@@ -538,16 +538,19 @@ class _AboutCommunityWidgetState extends State<AboutCommunityWidget> {
                                                     ),
                                                     Text(
                                                       '${dateTimeFormat("MMMEd", aboutCommunityCommunitiesRecord.createdTime)} at ${dateTimeFormat("jm", aboutCommunityCommunitiesRecord.createdTime)}',
-                                                      style: FlutterFlowTheme
-                                                              .of(context)
-                                                          .bodySmall
-                                                          .override(
-                                                            fontFamily: 'Inter',
-                                                            color: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .secondaryText,
-                                                            letterSpacing: 0.0,
-                                                          ),
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodySmall
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Poppins',
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .secondaryText,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                              ),
                                                     ),
                                                   ],
                                                 ),
@@ -780,7 +783,7 @@ class _AboutCommunityWidgetState extends State<AboutCommunityWidget> {
                             ),
                             Padding(
                               padding: const EdgeInsetsDirectional.fromSTEB(
-                                  15.0, 14.5, 15.0, 0.0),
+                                  15.0, 15.0, 15.0, 15.0),
                               child: Container(
                                 width: double.infinity,
                                 height: 243.0,
@@ -801,7 +804,7 @@ class _AboutCommunityWidgetState extends State<AboutCommunityWidget> {
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(
-                                              fontFamily: 'Inter',
+                                              fontFamily: 'Poppins',
                                               color: const Color(0xFF171725),
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.w500,
@@ -829,7 +832,7 @@ class _AboutCommunityWidgetState extends State<AboutCommunityWidget> {
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium
                                               .override(
-                                                fontFamily: 'Inter',
+                                                fontFamily: 'Poppins',
                                                 letterSpacing: 0.0,
                                               ),
                                         ),

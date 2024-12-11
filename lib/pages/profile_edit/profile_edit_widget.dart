@@ -149,7 +149,7 @@ class _ProfileEditWidgetState extends State<ProfileEditWidget> {
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
                                 .override(
-                                  fontFamily: 'Inter',
+                                  fontFamily: 'Poppins',
                                   color: const Color(0xFF1A314D),
                                   fontSize: 16.0,
                                   letterSpacing: 0.0,
@@ -193,7 +193,7 @@ class _ProfileEditWidgetState extends State<ProfileEditWidget> {
                                   textStyle: FlutterFlowTheme.of(context)
                                       .titleSmall
                                       .override(
-                                        fontFamily: 'Inter Tight',
+                                        fontFamily: 'Poppins',
                                         color: Colors.white,
                                         fontSize: 12.0,
                                         letterSpacing: 0.0,
@@ -378,7 +378,7 @@ class _ProfileEditWidgetState extends State<ProfileEditWidget> {
                                       textStyle: FlutterFlowTheme.of(context)
                                           .titleSmall
                                           .override(
-                                            fontFamily: 'Inter Tight',
+                                            fontFamily: 'Poppins',
                                             color: Colors.white,
                                             fontSize: 14.0,
                                             letterSpacing: 0.0,
@@ -436,7 +436,7 @@ class _ProfileEditWidgetState extends State<ProfileEditWidget> {
                                       textStyle: FlutterFlowTheme.of(context)
                                           .titleSmall
                                           .override(
-                                            fontFamily: 'Inter Tight',
+                                            fontFamily: 'Poppins',
                                             color: Colors.white,
                                             fontSize: 14.0,
                                             letterSpacing: 0.0,
@@ -470,7 +470,7 @@ class _ProfileEditWidgetState extends State<ProfileEditWidget> {
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
-                                        fontFamily: 'Inter',
+                                        fontFamily: 'Poppins',
                                         fontSize: 14.0,
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.w500,
@@ -489,7 +489,7 @@ class _ProfileEditWidgetState extends State<ProfileEditWidget> {
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
-                                        fontFamily: 'Inter',
+                                        fontFamily: 'Poppins',
                                         color: const Color(0xFF1F2937),
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.w600,
@@ -512,14 +512,14 @@ class _ProfileEditWidgetState extends State<ProfileEditWidget> {
                                         labelStyle: FlutterFlowTheme.of(context)
                                             .labelMedium
                                             .override(
-                                              fontFamily: 'Inter',
+                                              fontFamily: 'Poppins',
                                               letterSpacing: 0.0,
                                             ),
                                         hintText: 'First Name',
                                         hintStyle: FlutterFlowTheme.of(context)
                                             .labelMedium
                                             .override(
-                                              fontFamily: 'Inter',
+                                              fontFamily: 'Poppins',
                                               color: const Color(0xFF6B7280),
                                               fontSize: 15.0,
                                               letterSpacing: 0.0,
@@ -566,7 +566,7 @@ class _ProfileEditWidgetState extends State<ProfileEditWidget> {
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
-                                            fontFamily: 'Inter',
+                                            fontFamily: 'Poppins',
                                             letterSpacing: 0.0,
                                           ),
                                       cursorColor: FlutterFlowTheme.of(context)
@@ -585,7 +585,7 @@ class _ProfileEditWidgetState extends State<ProfileEditWidget> {
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
-                                        fontFamily: 'Inter',
+                                        fontFamily: 'Poppins',
                                         color: const Color(0xFF1F2937),
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.w600,
@@ -608,14 +608,14 @@ class _ProfileEditWidgetState extends State<ProfileEditWidget> {
                                         labelStyle: FlutterFlowTheme.of(context)
                                             .labelMedium
                                             .override(
-                                              fontFamily: 'Inter',
+                                              fontFamily: 'Poppins',
                                               letterSpacing: 0.0,
                                             ),
                                         hintText: 'Other Name',
                                         hintStyle: FlutterFlowTheme.of(context)
                                             .labelMedium
                                             .override(
-                                              fontFamily: 'Inter',
+                                              fontFamily: 'Poppins',
                                               color: const Color(0xFF6B7280),
                                               fontSize: 15.0,
                                               letterSpacing: 0.0,
@@ -662,7 +662,7 @@ class _ProfileEditWidgetState extends State<ProfileEditWidget> {
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
-                                            fontFamily: 'Inter',
+                                            fontFamily: 'Poppins',
                                             letterSpacing: 0.0,
                                           ),
                                       cursorColor: FlutterFlowTheme.of(context)
@@ -681,7 +681,7 @@ class _ProfileEditWidgetState extends State<ProfileEditWidget> {
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
-                                        fontFamily: 'Inter',
+                                        fontFamily: 'Poppins',
                                         color: const Color(0xFF1F2937),
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.w600,
@@ -704,14 +704,14 @@ class _ProfileEditWidgetState extends State<ProfileEditWidget> {
                                         labelStyle: FlutterFlowTheme.of(context)
                                             .labelMedium
                                             .override(
-                                              fontFamily: 'Inter',
+                                              fontFamily: 'Poppins',
                                               letterSpacing: 0.0,
                                             ),
                                         hintText: 'Last Name',
                                         hintStyle: FlutterFlowTheme.of(context)
                                             .labelMedium
                                             .override(
-                                              fontFamily: 'Inter',
+                                              fontFamily: 'Poppins',
                                               color: const Color(0xFF6B7280),
                                               fontSize: 15.0,
                                               letterSpacing: 0.0,
@@ -758,7 +758,7 @@ class _ProfileEditWidgetState extends State<ProfileEditWidget> {
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
-                                            fontFamily: 'Inter',
+                                            fontFamily: 'Poppins',
                                             letterSpacing: 0.0,
                                           ),
                                       cursorColor: FlutterFlowTheme.of(context)
@@ -777,7 +777,7 @@ class _ProfileEditWidgetState extends State<ProfileEditWidget> {
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
-                                        fontFamily: 'Inter',
+                                        fontFamily: 'Poppins',
                                         color: const Color(0xFF1F2937),
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.w600,
@@ -812,7 +812,7 @@ class _ProfileEditWidgetState extends State<ProfileEditWidget> {
                                               FlutterFlowTheme.of(context)
                                                   .headlineLarge
                                                   .override(
-                                                    fontFamily: 'Inter Tight',
+                                                    fontFamily: 'Poppins',
                                                     fontSize: 32.0,
                                                     letterSpacing: 0.0,
                                                     fontWeight: FontWeight.w600,
@@ -885,7 +885,7 @@ class _ProfileEditWidgetState extends State<ProfileEditWidget> {
                                                       context)
                                                   .bodyMedium
                                                   .override(
-                                                    fontFamily: 'Inter',
+                                                    fontFamily: 'Poppins',
                                                     color: const Color(0xFF6B7280),
                                                     fontSize: 15.0,
                                                     letterSpacing: 0.0,
@@ -917,7 +917,7 @@ class _ProfileEditWidgetState extends State<ProfileEditWidget> {
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
-                                        fontFamily: 'Inter',
+                                        fontFamily: 'Poppins',
                                         color: const Color(0xFF1F2937),
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.w600,
@@ -938,7 +938,7 @@ class _ProfileEditWidgetState extends State<ProfileEditWidget> {
                                   textStyle: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
-                                        fontFamily: 'Inter',
+                                        fontFamily: 'Poppins',
                                         color: const Color(0xFF6B7280),
                                         fontSize: 15.0,
                                         letterSpacing: 0.0,
@@ -970,7 +970,7 @@ class _ProfileEditWidgetState extends State<ProfileEditWidget> {
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
-                                        fontFamily: 'Inter',
+                                        fontFamily: 'Poppins',
                                         color: const Color(0xFF1F2937),
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.w600,
@@ -1044,7 +1044,7 @@ class _ProfileEditWidgetState extends State<ProfileEditWidget> {
                                                             context)
                                                         .bodyMedium
                                                         .override(
-                                                          fontFamily: 'Inter',
+                                                          fontFamily: 'Poppins',
                                                           color:
                                                               const Color(0xFF6B7280),
                                                           fontSize: 15.0,
@@ -1074,7 +1074,7 @@ class _ProfileEditWidgetState extends State<ProfileEditWidget> {
                                                             context)
                                                         .bodyMedium
                                                         .override(
-                                                          fontFamily: 'Inter',
+                                                          fontFamily: 'Poppins',
                                                           color:
                                                               const Color(0xFF6B7280),
                                                           fontSize: 15.0,
@@ -1110,7 +1110,7 @@ class _ProfileEditWidgetState extends State<ProfileEditWidget> {
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
-                                        fontFamily: 'Inter',
+                                        fontFamily: 'Poppins',
                                         fontSize: 14.0,
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.w500,
@@ -1129,7 +1129,7 @@ class _ProfileEditWidgetState extends State<ProfileEditWidget> {
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
-                                        fontFamily: 'Inter',
+                                        fontFamily: 'Poppins',
                                         color: const Color(0xFF1F2937),
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.w600,
@@ -1152,14 +1152,14 @@ class _ProfileEditWidgetState extends State<ProfileEditWidget> {
                                         labelStyle: FlutterFlowTheme.of(context)
                                             .labelMedium
                                             .override(
-                                              fontFamily: 'Inter',
+                                              fontFamily: 'Poppins',
                                               letterSpacing: 0.0,
                                             ),
                                         hintText: 'Write your description here',
                                         hintStyle: FlutterFlowTheme.of(context)
                                             .labelMedium
                                             .override(
-                                              fontFamily: 'Inter',
+                                              fontFamily: 'Poppins',
                                               color: const Color(0xFF6B7280),
                                               fontSize: 15.0,
                                               letterSpacing: 0.0,
@@ -1204,7 +1204,7 @@ class _ProfileEditWidgetState extends State<ProfileEditWidget> {
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
-                                            fontFamily: 'Inter',
+                                            fontFamily: 'Poppins',
                                             letterSpacing: 0.0,
                                           ),
                                       maxLength: 150,
@@ -1226,7 +1226,7 @@ class _ProfileEditWidgetState extends State<ProfileEditWidget> {
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
-                                        fontFamily: 'Inter',
+                                        fontFamily: 'Poppins',
                                         fontSize: 14.0,
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.w500,
@@ -1245,7 +1245,7 @@ class _ProfileEditWidgetState extends State<ProfileEditWidget> {
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
-                                        fontFamily: 'Inter',
+                                        fontFamily: 'Poppins',
                                         color: const Color(0xFF1F2937),
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.w600,
@@ -1285,7 +1285,7 @@ class _ProfileEditWidgetState extends State<ProfileEditWidget> {
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
                                                 .override(
-                                                  fontFamily: 'Inter',
+                                                  fontFamily: 'Poppins',
                                                   color: const Color(0xFF6B7280),
                                                   fontSize: 15.0,
                                                   letterSpacing: 0.0,
@@ -1326,14 +1326,14 @@ class _ProfileEditWidgetState extends State<ProfileEditWidget> {
                                                     FlutterFlowTheme.of(context)
                                                         .labelMedium
                                                         .override(
-                                                          fontFamily: 'Inter',
+                                                          fontFamily: 'Poppins',
                                                           letterSpacing: 0.0,
                                                         ),
                                                 hintStyle:
                                                     FlutterFlowTheme.of(context)
                                                         .labelMedium
                                                         .override(
-                                                          fontFamily: 'Inter',
+                                                          fontFamily: 'Poppins',
                                                           letterSpacing: 0.0,
                                                         ),
                                                 enabledBorder: InputBorder.none,
@@ -1350,7 +1350,7 @@ class _ProfileEditWidgetState extends State<ProfileEditWidget> {
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium
                                                       .override(
-                                                        fontFamily: 'Inter',
+                                                        fontFamily: 'Poppins',
                                                         color:
                                                             const Color(0xFF6B7280),
                                                         fontSize: 16.0,
@@ -1378,7 +1378,7 @@ class _ProfileEditWidgetState extends State<ProfileEditWidget> {
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
-                                        fontFamily: 'Inter',
+                                        fontFamily: 'Poppins',
                                         color: const Color(0xFF1F2937),
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.w600,
@@ -1401,14 +1401,14 @@ class _ProfileEditWidgetState extends State<ProfileEditWidget> {
                                       labelStyle: FlutterFlowTheme.of(context)
                                           .labelMedium
                                           .override(
-                                            fontFamily: 'Inter',
+                                            fontFamily: 'Poppins',
                                             letterSpacing: 0.0,
                                           ),
                                       hintText: 'Email',
                                       hintStyle: FlutterFlowTheme.of(context)
                                           .labelMedium
                                           .override(
-                                            fontFamily: 'Inter',
+                                            fontFamily: 'Poppins',
                                             color: const Color(0xFF6B7280),
                                             fontSize: 15.0,
                                             letterSpacing: 0.0,
@@ -1453,7 +1453,7 @@ class _ProfileEditWidgetState extends State<ProfileEditWidget> {
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
-                                          fontFamily: 'Inter',
+                                          fontFamily: 'Poppins',
                                           letterSpacing: 0.0,
                                         ),
                                     keyboardType: TextInputType.emailAddress,
@@ -1472,7 +1472,7 @@ class _ProfileEditWidgetState extends State<ProfileEditWidget> {
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
-                                        fontFamily: 'Inter',
+                                        fontFamily: 'Poppins',
                                         color: const Color(0xFF1F2937),
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.w600,
@@ -1495,14 +1495,14 @@ class _ProfileEditWidgetState extends State<ProfileEditWidget> {
                                         labelStyle: FlutterFlowTheme.of(context)
                                             .labelMedium
                                             .override(
-                                              fontFamily: 'Inter',
+                                              fontFamily: 'Poppins',
                                               letterSpacing: 0.0,
                                             ),
                                         hintText: 'Accra, Ghana',
                                         hintStyle: FlutterFlowTheme.of(context)
                                             .labelMedium
                                             .override(
-                                              fontFamily: 'Inter',
+                                              fontFamily: 'Poppins',
                                               color: const Color(0xFF6B7280),
                                               fontSize: 15.0,
                                               letterSpacing: 0.0,
@@ -1547,7 +1547,7 @@ class _ProfileEditWidgetState extends State<ProfileEditWidget> {
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
-                                            fontFamily: 'Inter',
+                                            fontFamily: 'Poppins',
                                             letterSpacing: 0.0,
                                           ),
                                       cursorColor: FlutterFlowTheme.of(context)
@@ -1566,7 +1566,7 @@ class _ProfileEditWidgetState extends State<ProfileEditWidget> {
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
-                                        fontFamily: 'Inter',
+                                        fontFamily: 'Poppins',
                                         color: const Color(0xFF1F2937),
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.w600,
@@ -1589,14 +1589,14 @@ class _ProfileEditWidgetState extends State<ProfileEditWidget> {
                                         labelStyle: FlutterFlowTheme.of(context)
                                             .labelMedium
                                             .override(
-                                              fontFamily: 'Inter',
+                                              fontFamily: 'Poppins',
                                               letterSpacing: 0.0,
                                             ),
                                         hintText: 'Website',
                                         hintStyle: FlutterFlowTheme.of(context)
                                             .labelMedium
                                             .override(
-                                              fontFamily: 'Inter',
+                                              fontFamily: 'Poppins',
                                               color: const Color(0xFF6B7280),
                                               fontSize: 15.0,
                                               letterSpacing: 0.0,
@@ -1641,7 +1641,7 @@ class _ProfileEditWidgetState extends State<ProfileEditWidget> {
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
-                                            fontFamily: 'Inter',
+                                            fontFamily: 'Poppins',
                                             letterSpacing: 0.0,
                                           ),
                                       cursorColor: FlutterFlowTheme.of(context)
@@ -1660,7 +1660,7 @@ class _ProfileEditWidgetState extends State<ProfileEditWidget> {
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
-                                        fontFamily: 'Inter',
+                                        fontFamily: 'Poppins',
                                         color: const Color(0xFF1F2937),
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.w600,
@@ -1683,14 +1683,14 @@ class _ProfileEditWidgetState extends State<ProfileEditWidget> {
                                         labelStyle: FlutterFlowTheme.of(context)
                                             .labelMedium
                                             .override(
-                                              fontFamily: 'Inter',
+                                              fontFamily: 'Poppins',
                                               letterSpacing: 0.0,
                                             ),
                                         hintText: 'Facebook Link',
                                         hintStyle: FlutterFlowTheme.of(context)
                                             .labelMedium
                                             .override(
-                                              fontFamily: 'Inter',
+                                              fontFamily: 'Poppins',
                                               color: const Color(0xFF6B7280),
                                               fontSize: 15.0,
                                               letterSpacing: 0.0,
@@ -1735,7 +1735,7 @@ class _ProfileEditWidgetState extends State<ProfileEditWidget> {
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
-                                            fontFamily: 'Inter',
+                                            fontFamily: 'Poppins',
                                             letterSpacing: 0.0,
                                           ),
                                       cursorColor: FlutterFlowTheme.of(context)
@@ -1754,7 +1754,7 @@ class _ProfileEditWidgetState extends State<ProfileEditWidget> {
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
-                                        fontFamily: 'Inter',
+                                        fontFamily: 'Poppins',
                                         color: const Color(0xFF1F2937),
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.w600,
@@ -1777,14 +1777,14 @@ class _ProfileEditWidgetState extends State<ProfileEditWidget> {
                                         labelStyle: FlutterFlowTheme.of(context)
                                             .labelMedium
                                             .override(
-                                              fontFamily: 'Inter',
+                                              fontFamily: 'Poppins',
                                               letterSpacing: 0.0,
                                             ),
                                         hintText: 'Whatsapp Link',
                                         hintStyle: FlutterFlowTheme.of(context)
                                             .labelMedium
                                             .override(
-                                              fontFamily: 'Inter',
+                                              fontFamily: 'Poppins',
                                               color: const Color(0xFF6B7280),
                                               fontSize: 15.0,
                                               letterSpacing: 0.0,
@@ -1829,7 +1829,7 @@ class _ProfileEditWidgetState extends State<ProfileEditWidget> {
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
-                                            fontFamily: 'Inter',
+                                            fontFamily: 'Poppins',
                                             letterSpacing: 0.0,
                                           ),
                                       cursorColor: FlutterFlowTheme.of(context)
@@ -1849,7 +1849,7 @@ class _ProfileEditWidgetState extends State<ProfileEditWidget> {
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
-                                        fontFamily: 'Inter',
+                                        fontFamily: 'Poppins',
                                         color: const Color(0xFF1F2937),
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.w600,
@@ -1872,14 +1872,14 @@ class _ProfileEditWidgetState extends State<ProfileEditWidget> {
                                         labelStyle: FlutterFlowTheme.of(context)
                                             .labelMedium
                                             .override(
-                                              fontFamily: 'Inter',
+                                              fontFamily: 'Poppins',
                                               letterSpacing: 0.0,
                                             ),
                                         hintText: 'Snapchat Link',
                                         hintStyle: FlutterFlowTheme.of(context)
                                             .labelMedium
                                             .override(
-                                              fontFamily: 'Inter',
+                                              fontFamily: 'Poppins',
                                               color: const Color(0xFF6B7280),
                                               fontSize: 15.0,
                                               letterSpacing: 0.0,
@@ -1924,7 +1924,7 @@ class _ProfileEditWidgetState extends State<ProfileEditWidget> {
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
-                                            fontFamily: 'Inter',
+                                            fontFamily: 'Poppins',
                                             letterSpacing: 0.0,
                                           ),
                                       cursorColor: FlutterFlowTheme.of(context)
@@ -1944,7 +1944,7 @@ class _ProfileEditWidgetState extends State<ProfileEditWidget> {
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
-                                        fontFamily: 'Inter',
+                                        fontFamily: 'Poppins',
                                         color: const Color(0xFF1F2937),
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.w600,
@@ -1967,14 +1967,14 @@ class _ProfileEditWidgetState extends State<ProfileEditWidget> {
                                         labelStyle: FlutterFlowTheme.of(context)
                                             .labelMedium
                                             .override(
-                                              fontFamily: 'Inter',
+                                              fontFamily: 'Poppins',
                                               letterSpacing: 0.0,
                                             ),
                                         hintText: 'Instagram Link',
                                         hintStyle: FlutterFlowTheme.of(context)
                                             .labelMedium
                                             .override(
-                                              fontFamily: 'Inter',
+                                              fontFamily: 'Poppins',
                                               color: const Color(0xFF6B7280),
                                               fontSize: 15.0,
                                               letterSpacing: 0.0,
@@ -2019,7 +2019,7 @@ class _ProfileEditWidgetState extends State<ProfileEditWidget> {
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
-                                            fontFamily: 'Inter',
+                                            fontFamily: 'Poppins',
                                             letterSpacing: 0.0,
                                           ),
                                       cursorColor: FlutterFlowTheme.of(context)
