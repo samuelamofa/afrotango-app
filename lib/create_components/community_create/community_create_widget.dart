@@ -563,26 +563,37 @@ class _CommunityCreateWidgetState extends State<CommunityCreateWidget> {
 
                           var communitiesRecordReference =
                               CommunitiesRecord.collection.doc();
-                          await communitiesRecordReference
-                              .set(createCommunitiesRecordData(
-                            communityName: _model.textController1.text,
-                            createdUserRef: currentUserReference,
-                            communityImage: _model.uploadedFileUrl2,
-                            communityCategory: _model.dropDownValue1,
-                            aboutCommunity: _model.textController2.text,
-                            createdTime: getCurrentTimestamp,
-                          ));
+                          await communitiesRecordReference.set({
+                            ...createCommunitiesRecordData(
+                              communityName: _model.textController1.text,
+                              createdUserRef: currentUserReference,
+                              communityImage: _model.uploadedFileUrl2,
+                              communityCategory: _model.dropDownValue1,
+                              aboutCommunity: _model.textController2.text,
+                              createdTime: getCurrentTimestamp,
+                            ),
+                            ...mapToFirestore(
+                              {
+                                'joinedUsersRef': [currentUserReference],
+                              },
+                            ),
+                          });
                           _model.communitiesDoc =
-                              CommunitiesRecord.getDocumentFromData(
-                                  createCommunitiesRecordData(
-                                    communityName: _model.textController1.text,
-                                    createdUserRef: currentUserReference,
-                                    communityImage: _model.uploadedFileUrl2,
-                                    communityCategory: _model.dropDownValue1,
-                                    aboutCommunity: _model.textController2.text,
-                                    createdTime: getCurrentTimestamp,
-                                  ),
-                                  communitiesRecordReference);
+                              CommunitiesRecord.getDocumentFromData({
+                            ...createCommunitiesRecordData(
+                              communityName: _model.textController1.text,
+                              createdUserRef: currentUserReference,
+                              communityImage: _model.uploadedFileUrl2,
+                              communityCategory: _model.dropDownValue1,
+                              aboutCommunity: _model.textController2.text,
+                              createdTime: getCurrentTimestamp,
+                            ),
+                            ...mapToFirestore(
+                              {
+                                'joinedUsersRef': [currentUserReference],
+                              },
+                            ),
+                          }, communitiesRecordReference);
 
                           await currentUserReference!.update({
                             ...mapToFirestore(
@@ -590,6 +601,20 @@ class _CommunityCreateWidgetState extends State<CommunityCreateWidget> {
                                 'communities_created_ref':
                                     FieldValue.arrayUnion(
                                         [_model.communitiesDoc?.reference]),
+                              },
+                            ),
+                          });
+
+                          await ChatRecord.collection.doc().set({
+                            ...createChatRecordData(
+                              groupBool: true,
+                              lastMessage: 'Just started messaging!',
+                              timeStamps: getCurrentTimestamp,
+                              communityRef: _model.communitiesDoc?.reference,
+                            ),
+                            ...mapToFirestore(
+                              {
+                                'userIds': [currentUserReference],
                               },
                             ),
                           });
@@ -614,7 +639,7 @@ class _CommunityCreateWidgetState extends State<CommunityCreateWidget> {
                             25.0, 0.0, 25.0, 0.0),
                         iconPadding:
                             const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                        color: FlutterFlowTheme.of(context).primary,
+                        color: FlutterFlowTheme.of(context).secondary,
                         textStyle:
                             FlutterFlowTheme.of(context).titleSmall.override(
                                   fontFamily: 'Poppins',

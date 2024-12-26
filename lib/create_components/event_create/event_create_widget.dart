@@ -374,8 +374,8 @@ class _EventCreateWidgetState extends State<EventCreateWidget> {
                                 final datePickedDate = await showDatePicker(
                                   context: context,
                                   initialDate: getCurrentTimestamp,
-                                  firstDate: DateTime(1900),
-                                  lastDate: getCurrentTimestamp,
+                                  firstDate: getCurrentTimestamp,
+                                  lastDate: DateTime(2050),
                                   builder: (context, child) {
                                     return wrapInMaterialDatePickerTheme(
                                       context,
@@ -442,7 +442,10 @@ class _EventCreateWidgetState extends State<EventCreateWidget> {
                                       padding: const EdgeInsetsDirectional.fromSTEB(
                                           15.0, 0.0, 0.0, 0.0),
                                       child: Text(
-                                        'DD/MM/YYYY',
+                                        valueOrDefault<String>(
+                                          _model.datePicked?.toString(),
+                                          'DD/MM/YYYY',
+                                        ),
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(
@@ -801,7 +804,7 @@ class _EventCreateWidgetState extends State<EventCreateWidget> {
                             25.0, 0.0, 25.0, 0.0),
                         iconPadding:
                             const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                        color: FlutterFlowTheme.of(context).primary,
+                        color: FlutterFlowTheme.of(context).secondary,
                         textStyle:
                             FlutterFlowTheme.of(context).titleSmall.override(
                                   fontFamily: 'Poppins',

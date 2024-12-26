@@ -1,4 +1,4 @@
-# AFRO TANGO
+# Afro Tango
 
 A new Flutter project.
 

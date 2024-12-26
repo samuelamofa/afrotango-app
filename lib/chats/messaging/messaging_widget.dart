@@ -1,9 +1,11 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/backend/push_notifications/push_notifications_util.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'messaging_model.dart';
 export 'messaging_model.dart';
 
@@ -29,6 +31,16 @@ class _MessagingWidgetState extends State<MessagingWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => MessagingModel());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      await Future.delayed(const Duration(milliseconds: 1000));
+      await _model.columnscroll?.animateTo(
+        _model.columnscroll!.position.maxScrollExtent,
+        duration: const Duration(milliseconds: 100),
+        curve: Curves.ease,
+      );
+    });
 
     _model.textController ??= TextEditingController();
     _model.textFieldFocusNode ??= FocusNode();
@@ -69,7 +81,10 @@ class _MessagingWidgetState extends State<MessagingWidget> {
         final messagingChatRecord = snapshot.data!;
 
         return GestureDetector(
-          onTap: () => FocusScope.of(context).unfocus(),
+          onTap: () {
+            FocusScope.of(context).unfocus();
+            FocusManager.instance.primaryFocus?.unfocus();
+          },
           child: Scaffold(
             key: scaffoldKey,
             backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
@@ -214,6 +229,8 @@ class _MessagingWidgetState extends State<MessagingWidget> {
                     child: StreamBuilder<List<MessageRecord>>(
                       stream: queryMessageRecord(
                         parent: widget.chatRef,
+                        queryBuilder: (messageRecord) =>
+                            messageRecord.orderBy('timeStamp'),
                       ),
                       builder: (context, snapshot) {
                         // Customize what your widget looks like when it's loading.
@@ -237,6 +254,7 @@ class _MessagingWidgetState extends State<MessagingWidget> {
                           controller: _model.columnscroll,
                           child: Column(
                             mainAxisSize: MainAxisSize.min,
+                            mainAxisAlignment: MainAxisAlignment.start,
                             children: List.generate(
                                 columnscrollMessageRecordList.length,
                                 (columnscrollIndex) {
@@ -245,6 +263,7 @@ class _MessagingWidgetState extends State<MessagingWidget> {
                                       columnscrollIndex];
                               return Column(
                                 mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
                                   if (columnscrollMessageRecord.uidOfSender !=
                                       currentUserReference)
@@ -313,17 +332,15 @@ class _MessagingWidgetState extends State<MessagingWidget> {
                                         ),
                                       ],
                                     ),
-                                  Container(
-                                    width:
-                                        MediaQuery.sizeOf(context).width * 1.0,
-                                    decoration: BoxDecoration(
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryBackground,
-                                    ),
-                                    child: Visibility(
-                                      visible: columnscrollMessageRecord
-                                              .uidOfSender ==
-                                          currentUserReference,
+                                  if (columnscrollMessageRecord.uidOfSender ==
+                                      currentUserReference)
+                                    Container(
+                                      width: MediaQuery.sizeOf(context).width *
+                                          1.0,
+                                      decoration: BoxDecoration(
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryBackground,
+                                      ),
                                       child: Align(
                                         alignment:
                                             const AlignmentDirectional(1.0, 0.0),
@@ -425,7 +442,6 @@ class _MessagingWidgetState extends State<MessagingWidget> {
                                         ),
                                       ),
                                     ),
-                                  ),
                                 ],
                               );
                             }).divide(const SizedBox(height: 16.0)),
@@ -537,6 +553,23 @@ class _MessagingWidgetState extends State<MessagingWidget> {
                                       lastMessage: _model.textController.text,
                                       timeStamps: getCurrentTimestamp,
                                     ));
+                                    triggerPushNotification(
+                                      notificationTitle:
+                                          'You have a new message!',
+                                      notificationText:
+                                          _model.textController.text,
+                                      notificationSound: 'default',
+                                      userRefs: [
+                                        functions.generateOtherUserRef(
+                                            currentUserReference!,
+                                            messagingChatRecord.userIds
+                                                .toList())
+                                      ],
+                                      initialPageName: 'messaging',
+                                      parameterData: {
+                                        'chatRef': widget.chatRef,
+                                      },
+                                    );
                                     safeSetState(() {
                                       _model.textController?.clear();
                                     });

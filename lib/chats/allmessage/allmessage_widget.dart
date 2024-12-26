@@ -1,6 +1,7 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
-import '/components/nav_bar_widget.dart';
+import '/create_components/logo_header/logo_header_widget.dart';
+import '/create_components/nav_bar/nav_bar_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
@@ -25,9 +26,6 @@ class _AllmessageWidgetState extends State<AllmessageWidget> {
     super.initState();
     _model = createModel(context, () => AllmessageModel());
 
-    _model.searchBarTextController ??= TextEditingController();
-    _model.searchBarFocusNode ??= FocusNode();
-
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
@@ -41,7 +39,10 @@ class _AllmessageWidgetState extends State<AllmessageWidget> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => FocusScope.of(context).unfocus(),
+      onTap: () {
+        FocusScope.of(context).unfocus();
+        FocusManager.instance.primaryFocus?.unfocus();
+      },
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
@@ -50,141 +51,10 @@ class _AllmessageWidgetState extends State<AllmessageWidget> {
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
-              Container(
-                width: double.infinity,
-                height: 50.0,
-                decoration: BoxDecoration(
-                  color: FlutterFlowTheme.of(context).secondaryBackground,
-                ),
-                child: Row(
-                  mainAxisSize: MainAxisSize.max,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding:
-                          const EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 21.0, 0.0),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(8.0),
-                        child: Image.asset(
-                          'assets/images/AFRO_T_1.1.1.png',
-                          width: 35.0,
-                          height: 35.0,
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                    ),
-                    Expanded(
-                      child: SizedBox(
-                        width: 200.0,
-                        child: TextFormField(
-                          controller: _model.searchBarTextController,
-                          focusNode: _model.searchBarFocusNode,
-                          autofocus: false,
-                          obscureText: false,
-                          decoration: InputDecoration(
-                            isDense: true,
-                            labelStyle: FlutterFlowTheme.of(context)
-                                .labelMedium
-                                .override(
-                                  fontFamily: 'Poppins',
-                                  letterSpacing: 0.0,
-                                ),
-                            hintText: 'Search',
-                            hintStyle: FlutterFlowTheme.of(context)
-                                .labelMedium
-                                .override(
-                                  fontFamily: 'Poppins',
-                                  letterSpacing: 0.0,
-                                ),
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: const BorderSide(
-                                color: Color(0xFFE5E5E7),
-                                width: 1.0,
-                              ),
-                              borderRadius: BorderRadius.circular(43.0),
-                            ),
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: const BorderSide(
-                                color: Color(0x00000000),
-                                width: 1.0,
-                              ),
-                              borderRadius: BorderRadius.circular(43.0),
-                            ),
-                            errorBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: FlutterFlowTheme.of(context).error,
-                                width: 1.0,
-                              ),
-                              borderRadius: BorderRadius.circular(43.0),
-                            ),
-                            focusedErrorBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: FlutterFlowTheme.of(context).error,
-                                width: 1.0,
-                              ),
-                              borderRadius: BorderRadius.circular(43.0),
-                            ),
-                            filled: true,
-                            fillColor: FlutterFlowTheme.of(context)
-                                .secondaryBackground,
-                            prefixIcon: const Icon(
-                              Icons.search,
-                              size: 24.0,
-                            ),
-                          ),
-                          style:
-                              FlutterFlowTheme.of(context).bodyMedium.override(
-                                    fontFamily: 'Poppins',
-                                    letterSpacing: 0.0,
-                                  ),
-                          cursorColor: FlutterFlowTheme.of(context).primaryText,
-                          validator: _model.searchBarTextControllerValidator
-                              .asValidator(context),
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding:
-                          const EdgeInsetsDirectional.fromSTEB(22.0, 0.0, 24.0, 0.0),
-                      child: Stack(
-                        alignment: const AlignmentDirectional(1.4, -1.7),
-                        children: [
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(8.0),
-                            child: Image.asset(
-                              'assets/images/Group_18910.png',
-                              width: 34.0,
-                              height: 34.0,
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                          Container(
-                            width: 18.0,
-                            height: 18.0,
-                            decoration: const BoxDecoration(
-                              color: Color(0xFFFEFFDC),
-                              shape: BoxShape.circle,
-                            ),
-                            alignment: const AlignmentDirectional(0.0, 0.0),
-                            child: Text(
-                              '9',
-                              textAlign: TextAlign.center,
-                              style: FlutterFlowTheme.of(context)
-                                  .bodyMedium
-                                  .override(
-                                    fontFamily: 'Inter',
-                                    color:
-                                        FlutterFlowTheme.of(context).secondary,
-                                    fontSize: 10.0,
-                                    letterSpacing: 0.0,
-                                  ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
+              wrapWithModel(
+                model: _model.logoHeaderModel,
+                updateCallback: () => safeSetState(() {}),
+                child: const LogoHeaderWidget(),
               ),
               wrapWithModel(
                 model: _model.navBarModel,
@@ -245,10 +115,12 @@ class _AllmessageWidgetState extends State<AllmessageWidget> {
               ),
               StreamBuilder<List<ChatRecord>>(
                 stream: queryChatRecord(
-                  queryBuilder: (chatRecord) => chatRecord.where(
-                    'userIds',
-                    arrayContains: currentUserReference,
-                  ),
+                  queryBuilder: (chatRecord) => chatRecord
+                      .where(
+                        'userIds',
+                        arrayContains: currentUserReference,
+                      )
+                      .orderBy('timeStamps', descending: true),
                 ),
                 builder: (context, snapshot) {
                   // Customize what your widget looks like when it's loading.
@@ -267,381 +139,351 @@ class _AllmessageWidgetState extends State<AllmessageWidget> {
                   }
                   List<ChatRecord> columnChatRecordList = snapshot.data!;
 
-                  return SingleChildScrollView(
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: List.generate(columnChatRecordList.length,
-                          (columnIndex) {
-                        final columnChatRecord =
-                            columnChatRecordList[columnIndex];
-                        return Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
-                              16.0, 0.0, 16.0, 0.0),
-                          child: ListView(
-                            padding: EdgeInsets.zero,
-                            primary: false,
-                            shrinkWrap: true,
-                            scrollDirection: Axis.vertical,
-                            children: [
-                              if (columnChatRecord.messageBool == true)
-                                StreamBuilder<UsersRecord>(
-                                  stream: UsersRecord.getDocument(
-                                      functions.generateOtherUserRef(
-                                          currentUserReference!,
-                                          columnChatRecord.userIds.toList())),
-                                  builder: (context, snapshot) {
-                                    // Customize what your widget looks like when it's loading.
-                                    if (!snapshot.hasData) {
-                                      return Center(
-                                        child: SizedBox(
-                                          width: 50.0,
-                                          height: 50.0,
-                                          child: CircularProgressIndicator(
-                                            valueColor:
-                                                AlwaysStoppedAnimation<Color>(
-                                              FlutterFlowTheme.of(context)
-                                                  .primary,
+                  return RefreshIndicator(
+                    onRefresh: () async {
+                      safeSetState(() {});
+                    },
+                    child: SingleChildScrollView(
+                      primary: false,
+                      physics: const AlwaysScrollableScrollPhysics(),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: List.generate(columnChatRecordList.length,
+                            (columnIndex) {
+                          final columnChatRecord =
+                              columnChatRecordList[columnIndex];
+                          return Padding(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                16.0, 0.0, 16.0, 0.0),
+                            child: ListView(
+                              padding: EdgeInsets.zero,
+                              primary: false,
+                              shrinkWrap: true,
+                              scrollDirection: Axis.vertical,
+                              children: [
+                                if (columnChatRecord.messageBool == true)
+                                  StreamBuilder<UsersRecord>(
+                                    stream: UsersRecord.getDocument(
+                                        functions.generateOtherUserRef(
+                                            currentUserReference!,
+                                            columnChatRecord.userIds.toList())),
+                                    builder: (context, snapshot) {
+                                      // Customize what your widget looks like when it's loading.
+                                      if (!snapshot.hasData) {
+                                        return Center(
+                                          child: SizedBox(
+                                            width: 50.0,
+                                            height: 50.0,
+                                            child: CircularProgressIndicator(
+                                              valueColor:
+                                                  AlwaysStoppedAnimation<Color>(
+                                                FlutterFlowTheme.of(context)
+                                                    .primary,
+                                              ),
                                             ),
                                           ),
-                                        ),
-                                      );
-                                    }
-
-                                    final containerUsersRecord = snapshot.data!;
-
-                                    return InkWell(
-                                      splashColor: Colors.transparent,
-                                      focusColor: Colors.transparent,
-                                      hoverColor: Colors.transparent,
-                                      highlightColor: Colors.transparent,
-                                      onTap: () async {
-                                        context.pushNamed(
-                                          'messaging',
-                                          queryParameters: {
-                                            'chatRef': serializeParam(
-                                              columnChatRecord.reference,
-                                              ParamType.DocumentReference,
-                                            ),
-                                          }.withoutNulls,
                                         );
-                                      },
-                                      child: Container(
-                                        width: double.infinity,
-                                        decoration: BoxDecoration(
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryBackground,
-                                        ),
-                                        child: Padding(
-                                          padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
-                                                  16.0, 16.0, 16.0, 16.0),
-                                          child: Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            children: [
-                                              Container(
-                                                width: 56.0,
-                                                height: 56.0,
-                                                decoration: BoxDecoration(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .primaryBackground,
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          28.0),
-                                                ),
-                                                child: ClipRRect(
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          28.0),
-                                                  child: Image.network(
-                                                    containerUsersRecord
-                                                        .photoUrl,
-                                                    width: 56.0,
-                                                    height: 56.0,
-                                                    fit: BoxFit.cover,
-                                                  ),
-                                                ),
+                                      }
+
+                                      final containerUsersRecord =
+                                          snapshot.data!;
+
+                                      return InkWell(
+                                        splashColor: Colors.transparent,
+                                        focusColor: Colors.transparent,
+                                        hoverColor: Colors.transparent,
+                                        highlightColor: Colors.transparent,
+                                        onTap: () async {
+                                          context.pushNamed(
+                                            'messaging',
+                                            queryParameters: {
+                                              'chatRef': serializeParam(
+                                                columnChatRecord.reference,
+                                                ParamType.DocumentReference,
                                               ),
-                                              Expanded(
-                                                child: Column(
-                                                  mainAxisSize:
-                                                      MainAxisSize.min,
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.start,
-                                                  children: [
-                                                    Row(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .spaceBetween,
-                                                      children: [
-                                                        Text(
-                                                          '${containerUsersRecord.firstName} ${containerUsersRecord.lastName}',
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .bodyLarge
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Poppins',
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w600,
-                                                              ),
-                                                        ),
-                                                        Text(
-                                                          dateTimeFormat(
-                                                              "relative",
-                                                              columnChatRecord
-                                                                  .timeStamps!),
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .bodySmall
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Poppins',
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .secondaryText,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                              ),
-                                                        ),
-                                                      ],
-                                                    ),
-                                                    Text(
-                                                      columnChatRecord
-                                                          .lastMessage
-                                                          .maybeHandleOverflow(
-                                                        maxChars: 30,
-                                                        replacement: '…',
-                                                      ),
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Poppins',
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .secondaryText,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                              ),
-                                                    ),
-                                                  ],
-                                                ),
-                                              ),
-                                            ].divide(const SizedBox(width: 12.0)),
+                                            }.withoutNulls,
+                                          );
+                                        },
+                                        child: Container(
+                                          width: double.infinity,
+                                          decoration: BoxDecoration(
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryBackground,
                                           ),
-                                        ),
-                                      ),
-                                    );
-                                  },
-                                ),
-                              if (columnChatRecord.groupBool == true)
-                                Container(
-                                  width: double.infinity,
-                                  decoration: BoxDecoration(
-                                    color: FlutterFlowTheme.of(context)
-                                        .secondaryBackground,
-                                  ),
-                                  child: Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
-                                        16.0, 16.0, 16.0, 16.0),
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: [
-                                        Container(
-                                          width: 56.0,
-                                          height: 56.0,
-                                          decoration: const BoxDecoration(),
-                                          child: Stack(
-                                            children: [
-                                              Align(
-                                                alignment: const AlignmentDirectional(
-                                                    -1.0, -1.0),
-                                                child: ClipRRect(
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          28.0),
-                                                  child: Image.asset(
-                                                    'assets/images/Media_6.png',
-                                                    width: 30.0,
-                                                    height: 30.0,
-                                                    fit: BoxFit.cover,
+                                          child: Padding(
+                                            padding:
+                                                const EdgeInsetsDirectional.fromSTEB(
+                                                    16.0, 16.0, 16.0, 16.0),
+                                            child: Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              children: [
+                                                Container(
+                                                  width: 56.0,
+                                                  height: 56.0,
+                                                  decoration: BoxDecoration(
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .primaryBackground,
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            28.0),
                                                   ),
-                                                ),
-                                              ),
-                                              Align(
-                                                alignment: const AlignmentDirectional(
-                                                    1.0, -1.0),
-                                                child: Padding(
-                                                  padding: const EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          5.0, 0.0, 0.0, 0.0),
                                                   child: ClipRRect(
                                                     borderRadius:
                                                         BorderRadius.circular(
                                                             28.0),
-                                                    child: Image.asset(
-                                                      'assets/images/Media_5.png',
-                                                      width: 30.0,
-                                                      height: 30.0,
+                                                    child: Image.network(
+                                                      containerUsersRecord
+                                                          .photoUrl,
+                                                      width: 56.0,
+                                                      height: 56.0,
                                                       fit: BoxFit.cover,
                                                     ),
                                                   ),
                                                 ),
-                                              ),
-                                              Align(
-                                                alignment: const AlignmentDirectional(
-                                                    -1.0, 1.0),
-                                                child: ClipRRect(
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          28.0),
-                                                  child: Image.asset(
-                                                    'assets/images/Media_3.png',
-                                                    width: 30.0,
-                                                    height: 30.0,
-                                                    fit: BoxFit.cover,
+                                                Expanded(
+                                                  child: Column(
+                                                    mainAxisSize:
+                                                        MainAxisSize.min,
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .start,
+                                                    children: [
+                                                      Row(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .spaceBetween,
+                                                        children: [
+                                                          Text(
+                                                            '${containerUsersRecord.firstName} ${containerUsersRecord.lastName}',
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .bodyLarge
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Poppins',
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w600,
+                                                                ),
+                                                          ),
+                                                          Text(
+                                                            dateTimeFormat(
+                                                                "relative",
+                                                                columnChatRecord
+                                                                    .timeStamps!),
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .bodySmall
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Poppins',
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .secondaryText,
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                      Text(
+                                                        columnChatRecord
+                                                            .lastMessage
+                                                            .maybeHandleOverflow(
+                                                          maxChars: 30,
+                                                          replacement: '…',
+                                                        ),
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Poppins',
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .secondaryText,
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                ),
+                                                      ),
+                                                    ],
                                                   ),
                                                 ),
+                                              ].divide(const SizedBox(width: 12.0)),
+                                            ),
+                                          ),
+                                        ),
+                                      );
+                                    },
+                                  ),
+                                if (columnChatRecord.groupBool == true)
+                                  StreamBuilder<CommunitiesRecord>(
+                                    stream: CommunitiesRecord.getDocument(
+                                        columnChatRecord.communityRef!),
+                                    builder: (context, snapshot) {
+                                      // Customize what your widget looks like when it's loading.
+                                      if (!snapshot.hasData) {
+                                        return Center(
+                                          child: SizedBox(
+                                            width: 50.0,
+                                            height: 50.0,
+                                            child: CircularProgressIndicator(
+                                              valueColor:
+                                                  AlwaysStoppedAnimation<Color>(
+                                                FlutterFlowTheme.of(context)
+                                                    .primary,
                                               ),
-                                              Align(
-                                                alignment: const AlignmentDirectional(
-                                                    1.0, 1.0),
-                                                child: Container(
-                                                  width: 30.0,
-                                                  height: 30.0,
-                                                  decoration: BoxDecoration(
-                                                    gradient: const LinearGradient(
-                                                      colors: [
-                                                        Color(0xFFFEB828),
-                                                        Color(0xFF634E22)
-                                                      ],
-                                                      stops: [0.0, 1.0],
-                                                      begin:
-                                                          AlignmentDirectional(
-                                                              0.0, -1.0),
-                                                      end: AlignmentDirectional(
-                                                          0, 1.0),
-                                                    ),
+                                            ),
+                                          ),
+                                        );
+                                      }
+
+                                      final containerCommunitiesRecord =
+                                          snapshot.data!;
+
+                                      return InkWell(
+                                        splashColor: Colors.transparent,
+                                        focusColor: Colors.transparent,
+                                        hoverColor: Colors.transparent,
+                                        highlightColor: Colors.transparent,
+                                        onTap: () async {
+                                          context.pushNamed(
+                                            'groupMessagingBox',
+                                            queryParameters: {
+                                              'chatRef': serializeParam(
+                                                columnChatRecord.reference,
+                                                ParamType.DocumentReference,
+                                              ),
+                                            }.withoutNulls,
+                                          );
+                                        },
+                                        child: Container(
+                                          width: double.infinity,
+                                          decoration: BoxDecoration(
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryBackground,
+                                          ),
+                                          child: Padding(
+                                            padding:
+                                                const EdgeInsetsDirectional.fromSTEB(
+                                                    16.0, 16.0, 16.0, 16.0),
+                                            child: Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              children: [
+                                                Container(
+                                                  width: 56.0,
+                                                  height: 56.0,
+                                                  decoration: const BoxDecoration(),
+                                                  child: ClipRRect(
                                                     borderRadius:
                                                         BorderRadius.circular(
                                                             28.0),
-                                                  ),
-                                                  alignment:
-                                                      const AlignmentDirectional(
-                                                          0.0, 0.0),
-                                                  child: Text(
-                                                    '+5',
-                                                    textAlign: TextAlign.start,
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily: 'Poppins',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .secondaryBackground,
-                                                          fontSize: 10.0,
-                                                          letterSpacing: 0.0,
-                                                          fontWeight:
-                                                              FontWeight.w500,
-                                                        ),
+                                                    child: Image.network(
+                                                      containerCommunitiesRecord
+                                                          .communityImage,
+                                                      width: 56.0,
+                                                      height: 56.0,
+                                                      fit: BoxFit.cover,
+                                                    ),
                                                   ),
                                                 ),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                        Expanded(
-                                          child: Column(
-                                            mainAxisSize: MainAxisSize.min,
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              Row(
-                                                mainAxisSize: MainAxisSize.max,
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceBetween,
-                                                children: [
-                                                  Text(
-                                                    'Golf Community',
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodyLarge
-                                                        .override(
-                                                          fontFamily: 'Poppins',
-                                                          letterSpacing: 0.0,
-                                                          fontWeight:
-                                                              FontWeight.w600,
-                                                        ),
+                                                Expanded(
+                                                  child: Column(
+                                                    mainAxisSize:
+                                                        MainAxisSize.min,
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .start,
+                                                    children: [
+                                                      Row(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .spaceBetween,
+                                                        children: [
+                                                          Text(
+                                                            containerCommunitiesRecord
+                                                                .communityName
+                                                                .maybeHandleOverflow(
+                                                              maxChars: 15,
+                                                              replacement: '…',
+                                                            ),
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .bodyLarge
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Poppins',
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w600,
+                                                                ),
+                                                          ),
+                                                          Text(
+                                                            dateTimeFormat(
+                                                                "relative",
+                                                                columnChatRecord
+                                                                    .timeStamps!),
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .bodySmall
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Poppins',
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .secondaryText,
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                      Text(
+                                                        columnChatRecord
+                                                            .lastMessage,
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Poppins',
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primary,
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .normal,
+                                                                ),
+                                                      ),
+                                                    ],
                                                   ),
-                                                  Text(
-                                                    '1h ago',
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodySmall
-                                                        .override(
-                                                          fontFamily: 'Poppins',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .secondaryText,
-                                                          letterSpacing: 0.0,
-                                                        ),
-                                                  ),
-                                                ],
-                                              ),
-                                              Text(
-                                                'The project files have been uploaded to...',
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily: 'Poppins',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .primary,
-                                                          letterSpacing: 0.0,
-                                                          fontWeight:
-                                                              FontWeight.w600,
-                                                        ),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                        Container(
-                                          width: 10.0,
-                                          height: 10.0,
-                                          decoration: const BoxDecoration(
-                                            gradient: LinearGradient(
-                                              colors: [
-                                                Color(0xFFFEB828),
-                                                Color(0xFF634E22)
-                                              ],
-                                              stops: [0.0, 1.0],
-                                              begin: AlignmentDirectional(
-                                                  0.0, -1.0),
-                                              end: AlignmentDirectional(0, 1.0),
+                                                ),
+                                              ].divide(const SizedBox(width: 12.0)),
                                             ),
-                                            shape: BoxShape.circle,
                                           ),
                                         ),
-                                      ].divide(const SizedBox(width: 12.0)),
-                                    ),
+                                      );
+                                    },
                                   ),
-                                ),
-                            ],
-                          ),
-                        );
-                      }),
+                              ],
+                            ),
+                          );
+                        }),
+                      ),
                     ),
                   );
                 },

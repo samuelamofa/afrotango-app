@@ -159,6 +159,21 @@ class UsersRecord extends FirestoreRecord {
   String get countryName => _countryName ?? '';
   bool hasCountryName() => _countryName != null;
 
+  // "chatIds" field.
+  List<String>? _chatIds;
+  List<String> get chatIds => _chatIds ?? const [];
+  bool hasChatIds() => _chatIds != null;
+
+  // "createdProfileBool" field.
+  bool? _createdProfileBool;
+  bool get createdProfileBool => _createdProfileBool ?? false;
+  bool hasCreatedProfileBool() => _createdProfileBool != null;
+
+  // "profession" field.
+  String? _profession;
+  String get profession => _profession ?? '';
+  bool hasProfession() => _profession != null;
+
   void _initializeFields() {
     _email = snapshotData['email'] as String?;
     _displayName = snapshotData['display_name'] as String?;
@@ -189,6 +204,9 @@ class UsersRecord extends FirestoreRecord {
     _favourites = getDataList(snapshotData['favourites']);
     _chatUserRef = getDataList(snapshotData['chatUserRef']);
     _countryName = snapshotData['country_name'] as String?;
+    _chatIds = getDataList(snapshotData['chatIds']);
+    _createdProfileBool = snapshotData['createdProfileBool'] as bool?;
+    _profession = snapshotData['profession'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -245,6 +263,8 @@ Map<String, dynamic> createUsersRecordData({
   String? bannerImage,
   String? countryFlag,
   String? countryName,
+  bool? createdProfileBool,
+  String? profession,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -268,6 +288,8 @@ Map<String, dynamic> createUsersRecordData({
       'banner_image': bannerImage,
       'country_flag': countryFlag,
       'country_name': countryName,
+      'createdProfileBool': createdProfileBool,
+      'profession': profession,
     }.withoutNulls,
   );
 
@@ -308,7 +330,10 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         listEquality.equals(e1?.joinedCommunities, e2?.joinedCommunities) &&
         listEquality.equals(e1?.favourites, e2?.favourites) &&
         listEquality.equals(e1?.chatUserRef, e2?.chatUserRef) &&
-        e1?.countryName == e2?.countryName;
+        e1?.countryName == e2?.countryName &&
+        listEquality.equals(e1?.chatIds, e2?.chatIds) &&
+        e1?.createdProfileBool == e2?.createdProfileBool &&
+        e1?.profession == e2?.profession;
   }
 
   @override
@@ -340,7 +365,10 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e?.joinedCommunities,
         e?.favourites,
         e?.chatUserRef,
-        e?.countryName
+        e?.countryName,
+        e?.chatIds,
+        e?.createdProfileBool,
+        e?.profession
       ]);
 
   @override

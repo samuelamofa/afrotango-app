@@ -8,7 +8,10 @@ import 'auth/firebase_auth/auth_util.dart';
 
 import 'backend/push_notifications/push_notifications_util.dart';
 import 'backend/firebase/firebase_config.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
 import 'flutter_flow/flutter_flow_util.dart';
+import 'package:floating_bottom_navigation_bar/floating_bottom_navigation_bar.dart';
+import 'index.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -79,7 +82,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
-      title: 'AFRO TANGO',
+      title: 'Afro Tango',
       localizationsDelegates: const [
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
@@ -92,6 +95,190 @@ class _MyAppState extends State<MyApp> {
       ),
       themeMode: _themeMode,
       routerConfig: _router,
+    );
+  }
+}
+
+class NavBarPage extends StatefulWidget {
+  const NavBarPage({super.key, this.initialPage, this.page});
+
+  final String? initialPage;
+  final Widget? page;
+
+  @override
+  _NavBarPageState createState() => _NavBarPageState();
+}
+
+/// This is the private State class that goes with NavBarPage.
+class _NavBarPageState extends State<NavBarPage> {
+  String _currentPageName = 'homepage2';
+  late Widget? _currentPage;
+
+  @override
+  void initState() {
+    super.initState();
+    _currentPageName = widget.initialPage ?? _currentPageName;
+    _currentPage = widget.page;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final tabs = {
+      'homepage2': const Homepage2Widget(),
+      'BusinessDirectory': const BusinessDirectoryWidget(),
+      'yourConnection': const YourConnectionWidget(),
+      'Community': const CommunityWidget(),
+      'homeFeedMore': const HomeFeedMoreWidget(),
+    };
+    final currentIndex = tabs.keys.toList().indexOf(_currentPageName);
+
+    final MediaQueryData queryData = MediaQuery.of(context);
+
+    return Scaffold(
+      body: MediaQuery(
+          data: queryData
+              .removeViewInsets(removeBottom: true)
+              .removeViewPadding(removeBottom: true),
+          child: _currentPage ?? tabs[_currentPageName]!),
+      extendBody: true,
+      bottomNavigationBar: FloatingNavbar(
+        currentIndex: currentIndex,
+        onTap: (i) => safeSetState(() {
+          _currentPage = null;
+          _currentPageName = tabs.keys.toList()[i];
+        }),
+        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+        selectedItemColor: FlutterFlowTheme.of(context).secondary,
+        unselectedItemColor: FlutterFlowTheme.of(context).primary,
+        selectedBackgroundColor: const Color(0x00000000),
+        borderRadius: 0.0,
+        itemBorderRadius: 8.0,
+        margin: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+        padding: const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 20.0),
+        width: double.infinity,
+        elevation: 10.0,
+        items: [
+          FloatingNavbarItem(
+            customWidget: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(
+                  currentIndex == 0 ? Icons.home : Icons.home_outlined,
+                  color: currentIndex == 0
+                      ? FlutterFlowTheme.of(context).secondary
+                      : FlutterFlowTheme.of(context).primary,
+                  size: currentIndex == 0 ? 24.0 : 24.0,
+                ),
+                Text(
+                  'Home',
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(
+                    color: currentIndex == 0
+                        ? FlutterFlowTheme.of(context).secondary
+                        : FlutterFlowTheme.of(context).primary,
+                    fontSize: 11.0,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          FloatingNavbarItem(
+            customWidget: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(
+                  Icons.business_center_outlined,
+                  color: currentIndex == 1
+                      ? FlutterFlowTheme.of(context).secondary
+                      : FlutterFlowTheme.of(context).primary,
+                ),
+                Text(
+                  'Businesses',
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(
+                    color: currentIndex == 1
+                        ? FlutterFlowTheme.of(context).secondary
+                        : FlutterFlowTheme.of(context).primary,
+                    fontSize: 11.0,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          FloatingNavbarItem(
+            customWidget: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(
+                  Icons.people,
+                  color: currentIndex == 2
+                      ? FlutterFlowTheme.of(context).secondary
+                      : FlutterFlowTheme.of(context).primary,
+                  size: 24.0,
+                ),
+                Text(
+                  'Connections',
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(
+                    color: currentIndex == 2
+                        ? FlutterFlowTheme.of(context).secondary
+                        : FlutterFlowTheme.of(context).primary,
+                    fontSize: 11.0,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          FloatingNavbarItem(
+            customWidget: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(
+                  Icons.groups_rounded,
+                  color: currentIndex == 3
+                      ? FlutterFlowTheme.of(context).secondary
+                      : FlutterFlowTheme.of(context).primary,
+                  size: 24.0,
+                ),
+                Text(
+                  'Communities',
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(
+                    color: currentIndex == 3
+                        ? FlutterFlowTheme.of(context).secondary
+                        : FlutterFlowTheme.of(context).primary,
+                    fontSize: 11.0,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          FloatingNavbarItem(
+            customWidget: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(
+                  Icons.keyboard_control_outlined,
+                  color: currentIndex == 4
+                      ? FlutterFlowTheme.of(context).secondary
+                      : FlutterFlowTheme.of(context).primary,
+                  size: 24.0,
+                ),
+                Text(
+                  'More',
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(
+                    color: currentIndex == 4
+                        ? FlutterFlowTheme.of(context).secondary
+                        : FlutterFlowTheme.of(context).primary,
+                    fontSize: 11.0,
+                  ),
+                ),
+              ],
+            ),
+          )
+        ],
+      ),
     );
   }
 }

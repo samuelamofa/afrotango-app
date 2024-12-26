@@ -51,6 +51,11 @@ class CommunitiesRecord extends FirestoreRecord {
   List<DocumentReference> get joinedUsersRef => _joinedUsersRef ?? const [];
   bool hasJoinedUsersRef() => _joinedUsersRef != null;
 
+  // "chatRef" field.
+  DocumentReference? _chatRef;
+  DocumentReference? get chatRef => _chatRef;
+  bool hasChatRef() => _chatRef != null;
+
   void _initializeFields() {
     _communityName = snapshotData['community_name'] as String?;
     _createdUserRef = snapshotData['createdUserRef'] as DocumentReference?;
@@ -59,6 +64,7 @@ class CommunitiesRecord extends FirestoreRecord {
     _aboutCommunity = snapshotData['about_community'] as String?;
     _createdTime = snapshotData['created_time'] as DateTime?;
     _joinedUsersRef = getDataList(snapshotData['joinedUsersRef']);
+    _chatRef = snapshotData['chatRef'] as DocumentReference?;
   }
 
   static CollectionReference get collection =>
@@ -102,6 +108,7 @@ Map<String, dynamic> createCommunitiesRecordData({
   String? communityCategory,
   String? aboutCommunity,
   DateTime? createdTime,
+  DocumentReference? chatRef,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -111,6 +118,7 @@ Map<String, dynamic> createCommunitiesRecordData({
       'community_category': communityCategory,
       'about_community': aboutCommunity,
       'created_time': createdTime,
+      'chatRef': chatRef,
     }.withoutNulls,
   );
 
@@ -129,7 +137,8 @@ class CommunitiesRecordDocumentEquality implements Equality<CommunitiesRecord> {
         e1?.communityCategory == e2?.communityCategory &&
         e1?.aboutCommunity == e2?.aboutCommunity &&
         e1?.createdTime == e2?.createdTime &&
-        listEquality.equals(e1?.joinedUsersRef, e2?.joinedUsersRef);
+        listEquality.equals(e1?.joinedUsersRef, e2?.joinedUsersRef) &&
+        e1?.chatRef == e2?.chatRef;
   }
 
   @override
@@ -140,7 +149,8 @@ class CommunitiesRecordDocumentEquality implements Equality<CommunitiesRecord> {
         e?.communityCategory,
         e?.aboutCommunity,
         e?.createdTime,
-        e?.joinedUsersRef
+        e?.joinedUsersRef,
+        e?.chatRef
       ]);
 
   @override

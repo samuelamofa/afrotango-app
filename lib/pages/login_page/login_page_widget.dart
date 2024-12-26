@@ -1,6 +1,7 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'login_page_model.dart';
@@ -42,7 +43,10 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => FocusScope.of(context).unfocus(),
+      onTap: () {
+        FocusScope.of(context).unfocus();
+        FocusManager.instance.primaryFocus?.unfocus();
+      },
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
@@ -75,6 +79,34 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
+                        Padding(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              0.0, 0.0, 0.0, 25.0),
+                          child: BackdropFilter(
+                            filter: ImageFilter.blur(
+                              sigmaX: 2.0,
+                              sigmaY: 2.0,
+                            ),
+                            child: Container(
+                              decoration: const BoxDecoration(
+                                color: Color(0x21FFFFFF),
+                                shape: BoxShape.circle,
+                              ),
+                              child: Container(
+                                width: 80.0,
+                                height: 80.0,
+                                clipBehavior: Clip.antiAlias,
+                                decoration: const BoxDecoration(
+                                  shape: BoxShape.circle,
+                                ),
+                                child: Image.asset(
+                                  'assets/images/AFRO_TANGO_LOGO_ONLY.png',
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
                         ClipRRect(
                           borderRadius: BorderRadius.circular(0.0),
                           child: BackdropFilter(
@@ -84,7 +116,6 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                             ),
                             child: Container(
                               width: 361.0,
-                              height: 523.0,
                               decoration: BoxDecoration(
                                 color: const Color(0x21FFFFFF),
                                 borderRadius: BorderRadius.circular(30.0),
@@ -365,69 +396,59 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                   ),
                                   Padding(
                                     padding: const EdgeInsetsDirectional.fromSTEB(
-                                        17.0, 30.0, 0.0, 0.0),
+                                        0.0, 30.0, 0.0, 0.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceEvenly,
                                       children: [
-                                        Padding(
-                                          padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 0.0, 34.0, 0.0),
-                                          child: InkWell(
-                                            splashColor: Colors.transparent,
-                                            focusColor: Colors.transparent,
-                                            hoverColor: Colors.transparent,
-                                            highlightColor: Colors.transparent,
-                                            onTap: () async {
-                                              GoRouter.of(context)
-                                                  .prepareAuthEvent();
+                                        FFButtonWidget(
+                                          onPressed: () async {
+                                            GoRouter.of(context)
+                                                .prepareAuthEvent();
 
-                                              final user = await authManager
-                                                  .signInWithEmail(
-                                                context,
-                                                _model.emailTextController.text,
-                                                _model.passwordTextController
-                                                    .text,
-                                              );
-                                              if (user == null) {
-                                                return;
-                                              }
+                                            final user = await authManager
+                                                .signInWithEmail(
+                                              context,
+                                              _model.emailTextController.text,
+                                              _model
+                                                  .passwordTextController.text,
+                                            );
+                                            if (user == null) {
+                                              return;
+                                            }
 
-                                              context.goNamedAuth(
-                                                  'homeFeed', context.mounted);
-                                            },
-                                            child: Container(
-                                              width: 166.0,
-                                              height: 48.0,
-                                              decoration: BoxDecoration(
-                                                borderRadius:
-                                                    BorderRadius.circular(32.0),
-                                                border: Border.all(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
+                                            context.goNamedAuth(
+                                                'homepage2', context.mounted);
+                                          },
+                                          text: 'Log In',
+                                          options: FFButtonOptions(
+                                            width: 166.0,
+                                            height: 48.0,
+                                            padding:
+                                                const EdgeInsetsDirectional.fromSTEB(
+                                                    16.0, 0.0, 16.0, 0.0),
+                                            iconPadding:
+                                                const EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 0.0, 0.0),
+                                            color: Colors.transparent,
+                                            textStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .titleSmall
+                                                    .override(
+                                                      fontFamily: 'Poppins',
+                                                      color: Colors.white,
+                                                      fontSize: 14.0,
+                                                      letterSpacing: 0.0,
+                                                    ),
+                                            elevation: 0.0,
+                                            borderSide: BorderSide(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
                                                       .secondaryBackground,
-                                                ),
-                                              ),
-                                              child: Align(
-                                                alignment: const AlignmentDirectional(
-                                                    0.0, 0.0),
-                                                child: Text(
-                                                  'Log In',
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily: 'Poppins',
-                                                        color: FlutterFlowTheme
-                                                                .of(context)
-                                                            .secondaryBackground,
-                                                        letterSpacing: 0.0,
-                                                        fontWeight:
-                                                            FontWeight.w600,
-                                                      ),
-                                                ),
-                                              ),
                                             ),
+                                            borderRadius:
+                                                BorderRadius.circular(32.0),
                                           ),
                                         ),
                                         InkWell(

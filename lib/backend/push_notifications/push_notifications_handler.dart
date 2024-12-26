@@ -76,7 +76,8 @@ class _PushNotificationsHandlerState extends State<PushNotificationsHandler> {
           child: Center(
             child: Image.asset(
               'assets/images/AFRO_T_1.1.1.png',
-              width: 100.0,
+              width: 170.0,
+              height: 170.0,
               fit: BoxFit.cover,
             ),
           ),
@@ -105,7 +106,6 @@ class ParameterData {
 
 final parametersBuilderMap =
     <String, Future<ParameterData> Function(Map<String, dynamic>)>{
-  'onboarding': ParameterData.none(),
   'loginPage': ParameterData.none(),
   'signupPage': ParameterData.none(),
   'forgetPassword': ParameterData.none(),
@@ -154,7 +154,11 @@ final parametersBuilderMap =
       ),
   'Community': ParameterData.none(),
   'myCommunities': ParameterData.none(),
-  'communitySpace': ParameterData.none(),
+  'communitySpace': (data) async => ParameterData(
+        allParams: {
+          'communityRef': getParameter<DocumentReference>(data, 'communityRef'),
+        },
+      ),
   'aboutCommunity': (data) async => ParameterData(
         allParams: {
           'communityRef': getParameter<DocumentReference>(data, 'communityRef'),
@@ -174,7 +178,13 @@ final parametersBuilderMap =
         },
       ),
   'CreateBusiness': ParameterData.none(),
-  'groupMessagingBoxCopy': ParameterData.none(),
+  'createProfile': ParameterData.none(),
+  'homepage2': ParameterData.none(),
+  'searchResult': (data) async => ParameterData(
+        allParams: {
+          'searchText': getParameter<String>(data, 'searchText'),
+        },
+      ),
 };
 
 Map<String, dynamic> getInitialParameterData(Map<String, dynamic> data) {
