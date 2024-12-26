@@ -1,4 +1,4 @@
-import '/components/logo_header_widget.dart';
+import '/create_components/logo_header/logo_header_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'group_messaging_box_widget.dart' show GroupMessagingBoxWidget;
 import 'package:flutter/material.dart';

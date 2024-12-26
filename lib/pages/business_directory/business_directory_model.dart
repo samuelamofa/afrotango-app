@@ -1,5 +1,4 @@
 import '/backend/backend.dart';
-import '/components/nav_bar_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/form_field_controller.dart';
 import 'business_directory_widget.dart' show BusinessDirectoryWidget;
@@ -20,12 +19,6 @@ class BusinessDirectoryModel extends FlutterFlowModel<BusinessDirectoryWidget> {
 
   ///  State fields for stateful widgets in this page.
 
-  // State field(s) for searchBar widget.
-  FocusNode? searchBarFocusNode;
-  TextEditingController? searchBarTextController;
-  String? Function(BuildContext, String?)? searchBarTextControllerValidator;
-  // Model for NavBar component.
-  late NavBarModel navBarModel;
   // State field(s) for ChoiceChips widget.
   FormFieldController<List<String>>? choiceChipsValueController;
   String? get choiceChipsValue =>
@@ -64,15 +57,8 @@ class BusinessDirectoryModel extends FlutterFlowModel<BusinessDirectoryWidget> {
   List<BusinessRecord>? personalCareServices;
 
   @override
-  void initState(BuildContext context) {
-    navBarModel = createModel(context, () => NavBarModel());
-  }
+  void initState(BuildContext context) {}
 
   @override
-  void dispose() {
-    searchBarFocusNode?.dispose();
-    searchBarTextController?.dispose();
-
-    navBarModel.dispose();
-  }
+  void dispose() {}
 }

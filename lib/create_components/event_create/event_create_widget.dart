@@ -97,7 +97,7 @@ class _EventCreateWidgetState extends State<EventCreateWidget> {
                 child: Text(
                   'Create Event',
                   style: FlutterFlowTheme.of(context).bodyMedium.override(
-                        fontFamily: 'Inter',
+                        fontFamily: 'Poppins',
                         fontSize: 18.0,
                         letterSpacing: 0.0,
                         fontWeight: FontWeight.bold,
@@ -177,7 +177,7 @@ class _EventCreateWidgetState extends State<EventCreateWidget> {
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
-                                        fontFamily: 'Inter',
+                                        fontFamily: 'Poppins',
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.w500,
                                       ),
@@ -211,7 +211,7 @@ class _EventCreateWidgetState extends State<EventCreateWidget> {
                   child: Text(
                     'Event Name',
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
-                          fontFamily: 'Inter',
+                          fontFamily: 'Poppins',
                           fontSize: 16.0,
                           letterSpacing: 0.0,
                           fontWeight: FontWeight.w600,
@@ -232,13 +232,13 @@ class _EventCreateWidgetState extends State<EventCreateWidget> {
                       isDense: true,
                       labelStyle:
                           FlutterFlowTheme.of(context).labelMedium.override(
-                                fontFamily: 'Inter',
+                                fontFamily: 'Poppins',
                                 letterSpacing: 0.0,
                               ),
                       hintText: 'Event Name',
                       hintStyle:
                           FlutterFlowTheme.of(context).labelMedium.override(
-                                fontFamily: 'Inter',
+                                fontFamily: 'Poppins',
                                 color: const Color(0xFF6B7280),
                                 fontSize: 15.0,
                                 letterSpacing: 0.0,
@@ -277,7 +277,7 @@ class _EventCreateWidgetState extends State<EventCreateWidget> {
                           FlutterFlowTheme.of(context).secondaryBackground,
                     ),
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
-                          fontFamily: 'Inter',
+                          fontFamily: 'Poppins',
                           letterSpacing: 0.0,
                         ),
                     cursorColor: FlutterFlowTheme.of(context).primaryText,
@@ -293,7 +293,7 @@ class _EventCreateWidgetState extends State<EventCreateWidget> {
                   child: Text(
                     'Select Category',
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
-                          fontFamily: 'Inter',
+                          fontFamily: 'Poppins',
                           fontSize: 16.0,
                           letterSpacing: 0.0,
                           fontWeight: FontWeight.w600,
@@ -312,7 +312,7 @@ class _EventCreateWidgetState extends State<EventCreateWidget> {
                   width: double.infinity,
                   height: 40.0,
                   textStyle: FlutterFlowTheme.of(context).bodyMedium.override(
-                        fontFamily: 'Inter',
+                        fontFamily: 'Poppins',
                         color: const Color(0xFF6B7280),
                         fontSize: 15.0,
                         letterSpacing: 0.0,
@@ -354,7 +354,7 @@ class _EventCreateWidgetState extends State<EventCreateWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
-                                      fontFamily: 'Inter',
+                                      fontFamily: 'Poppins',
                                       fontSize: 16.0,
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.w600,
@@ -374,8 +374,8 @@ class _EventCreateWidgetState extends State<EventCreateWidget> {
                                 final datePickedDate = await showDatePicker(
                                   context: context,
                                   initialDate: getCurrentTimestamp,
-                                  firstDate: DateTime(1900),
-                                  lastDate: getCurrentTimestamp,
+                                  firstDate: getCurrentTimestamp,
+                                  lastDate: DateTime(2050),
                                   builder: (context, child) {
                                     return wrapInMaterialDatePickerTheme(
                                       context,
@@ -388,7 +388,7 @@ class _EventCreateWidgetState extends State<EventCreateWidget> {
                                           FlutterFlowTheme.of(context)
                                               .headlineLarge
                                               .override(
-                                                fontFamily: 'Inter Tight',
+                                                fontFamily: 'Poppins',
                                                 fontSize: 32.0,
                                                 letterSpacing: 0.0,
                                                 fontWeight: FontWeight.w600,
@@ -442,11 +442,14 @@ class _EventCreateWidgetState extends State<EventCreateWidget> {
                                       padding: const EdgeInsetsDirectional.fromSTEB(
                                           15.0, 0.0, 0.0, 0.0),
                                       child: Text(
-                                        'DD/MM/YYYY',
+                                        valueOrDefault<String>(
+                                          _model.datePicked?.toString(),
+                                          'DD/MM/YYYY',
+                                        ),
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(
-                                              fontFamily: 'Inter',
+                                              fontFamily: 'Poppins',
                                               color: const Color(0xFF6B7280),
                                               fontSize: 14.0,
                                               letterSpacing: 0.0,
@@ -485,7 +488,7 @@ class _EventCreateWidgetState extends State<EventCreateWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
-                                      fontFamily: 'Inter',
+                                      fontFamily: 'Poppins',
                                       fontSize: 16.0,
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.w600,
@@ -508,14 +511,14 @@ class _EventCreateWidgetState extends State<EventCreateWidget> {
                                   labelStyle: FlutterFlowTheme.of(context)
                                       .labelMedium
                                       .override(
-                                        fontFamily: 'Inter',
+                                        fontFamily: 'Poppins',
                                         letterSpacing: 0.0,
                                       ),
                                   hintText: 'Location',
                                   hintStyle: FlutterFlowTheme.of(context)
                                       .labelMedium
                                       .override(
-                                        fontFamily: 'Inter',
+                                        fontFamily: 'Poppins',
                                         color: const Color(0xFF6B7280),
                                         fontSize: 15.0,
                                         letterSpacing: 0.0,
@@ -556,7 +559,7 @@ class _EventCreateWidgetState extends State<EventCreateWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
-                                      fontFamily: 'Inter',
+                                      fontFamily: 'Poppins',
                                       letterSpacing: 0.0,
                                     ),
                                 cursorColor:
@@ -579,7 +582,7 @@ class _EventCreateWidgetState extends State<EventCreateWidget> {
                   child: Text(
                     'Description',
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
-                          fontFamily: 'Inter',
+                          fontFamily: 'Poppins',
                           fontSize: 16.0,
                           letterSpacing: 0.0,
                           fontWeight: FontWeight.w600,
@@ -600,13 +603,13 @@ class _EventCreateWidgetState extends State<EventCreateWidget> {
                       isDense: true,
                       labelStyle:
                           FlutterFlowTheme.of(context).labelMedium.override(
-                                fontFamily: 'Inter',
+                                fontFamily: 'Poppins',
                                 letterSpacing: 0.0,
                               ),
                       hintText: 'Event description',
                       hintStyle:
                           FlutterFlowTheme.of(context).labelMedium.override(
-                                fontFamily: 'Inter',
+                                fontFamily: 'Poppins',
                                 color: const Color(0xFF6B7280),
                                 fontSize: 15.0,
                                 letterSpacing: 0.0,
@@ -645,7 +648,7 @@ class _EventCreateWidgetState extends State<EventCreateWidget> {
                           FlutterFlowTheme.of(context).secondaryBackground,
                     ),
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
-                          fontFamily: 'Inter',
+                          fontFamily: 'Poppins',
                           letterSpacing: 0.0,
                         ),
                     maxLength: 150,
@@ -676,7 +679,7 @@ class _EventCreateWidgetState extends State<EventCreateWidget> {
                         color: FlutterFlowTheme.of(context).primaryBackground,
                         textStyle:
                             FlutterFlowTheme.of(context).titleSmall.override(
-                                  fontFamily: 'Inter Tight',
+                                  fontFamily: 'Poppins',
                                   color: FlutterFlowTheme.of(context).primary,
                                   letterSpacing: 0.0,
                                 ),
@@ -801,10 +804,10 @@ class _EventCreateWidgetState extends State<EventCreateWidget> {
                             25.0, 0.0, 25.0, 0.0),
                         iconPadding:
                             const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                        color: FlutterFlowTheme.of(context).primary,
+                        color: FlutterFlowTheme.of(context).secondary,
                         textStyle:
                             FlutterFlowTheme.of(context).titleSmall.override(
-                                  fontFamily: 'Inter Tight',
+                                  fontFamily: 'Poppins',
                                   color: Colors.white,
                                   letterSpacing: 0.0,
                                 ),

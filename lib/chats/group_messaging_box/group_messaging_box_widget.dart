@@ -1,7 +1,8 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/firebase_storage/storage.dart';
-import '/components/logo_header_widget.dart';
+import '/backend/push_notifications/push_notifications_util.dart';
+import '/create_components/logo_header/logo_header_widget.dart';
 import '/flutter_flow/flutter_flow_expanded_image_view.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -73,7 +74,10 @@ class _GroupMessagingBoxWidgetState extends State<GroupMessagingBoxWidget> {
         final groupMessagingBoxChatRecord = snapshot.data!;
 
         return GestureDetector(
-          onTap: () => FocusScope.of(context).unfocus(),
+          onTap: () {
+            FocusScope.of(context).unfocus();
+            FocusManager.instance.primaryFocus?.unfocus();
+          },
           child: Scaffold(
             key: scaffoldKey,
             backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
@@ -164,7 +168,7 @@ class _GroupMessagingBoxWidgetState extends State<GroupMessagingBoxWidget> {
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
                                                 .override(
-                                                  fontFamily: 'Inter',
+                                                  fontFamily: 'Poppins',
                                                   color: const Color(0xFF1A314D),
                                                   fontSize: 16.0,
                                                   letterSpacing: 0.0,
@@ -224,6 +228,8 @@ class _GroupMessagingBoxWidgetState extends State<GroupMessagingBoxWidget> {
                     child: StreamBuilder<List<GroupMessageRecord>>(
                       stream: queryGroupMessageRecord(
                         parent: widget.chatRef,
+                        queryBuilder: (groupMessageRecord) =>
+                            groupMessageRecord.orderBy('timeStamp'),
                       ),
                       builder: (context, snapshot) {
                         // Customize what your widget looks like when it's loading.
@@ -505,6 +511,7 @@ class _GroupMessagingBoxWidgetState extends State<GroupMessagingBoxWidget> {
                                                 await selectMediaWithSourceBottomSheet(
                                               context: context,
                                               allowPhoto: true,
+                                              allowVideo: true,
                                             );
                                             if (selectedMedia != null &&
                                                 selectedMedia.every((m) =>
@@ -591,7 +598,7 @@ class _GroupMessagingBoxWidgetState extends State<GroupMessagingBoxWidget> {
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium
                                                       .override(
-                                                        fontFamily: 'Inter',
+                                                        fontFamily: 'Poppins',
                                                         letterSpacing: 0.0,
                                                       ),
                                               enabledBorder: InputBorder.none,
@@ -603,7 +610,7 @@ class _GroupMessagingBoxWidgetState extends State<GroupMessagingBoxWidget> {
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
                                                 .override(
-                                                  fontFamily: 'Inter',
+                                                  fontFamily: 'Poppins',
                                                   letterSpacing: 0.0,
                                                 ),
                                             minLines: 1,
@@ -650,6 +657,21 @@ class _GroupMessagingBoxWidgetState extends State<GroupMessagingBoxWidget> {
                                                 _model.textController.text,
                                             timeStamps: getCurrentTimestamp,
                                           ));
+                                          triggerPushNotification(
+                                            notificationTitle:
+                                                'You have a new group message!',
+                                            notificationText:
+                                                _model.textController.text,
+                                            userRefs:
+                                                groupMessagingBoxChatRecord
+                                                    .userIds
+                                                    .toList(),
+                                            initialPageName:
+                                                'groupMessagingBox',
+                                            parameterData: {
+                                              'chatRef': widget.chatRef,
+                                            },
+                                          );
                                           safeSetState(() {
                                             _model.textController?.clear();
                                           });
@@ -685,6 +707,21 @@ class _GroupMessagingBoxWidgetState extends State<GroupMessagingBoxWidget> {
                                                 _model.textController.text,
                                             timeStamps: getCurrentTimestamp,
                                           ));
+                                          triggerPushNotification(
+                                            notificationTitle:
+                                                'You have a new group message!',
+                                            notificationText:
+                                                _model.textController.text,
+                                            userRefs:
+                                                groupMessagingBoxChatRecord
+                                                    .userIds
+                                                    .toList(),
+                                            initialPageName:
+                                                'groupMessagingBox',
+                                            parameterData: {
+                                              'chatRef': widget.chatRef,
+                                            },
+                                          );
                                           safeSetState(() {
                                             _model.textController?.clear();
                                           });

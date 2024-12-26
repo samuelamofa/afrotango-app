@@ -5,7 +5,10 @@ import 'package:provider/provider.dart';
 
 import '/auth/base_auth_user_provider.dart';
 
+import '/backend/push_notifications/push_notifications_handler.dart'
+    show PushNotificationsHandler;
 import '/index.dart';
+import '/main.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 
@@ -13,6 +16,8 @@ export 'package:go_router/go_router.dart';
 export 'serialization_util.dart';
 
 const kTransitionInfoKey = '__transition_info__';
+
+GlobalKey<NavigatorState> appNavigatorKey = GlobalKey<NavigatorState>();
 
 class AppStateNotifier extends ChangeNotifier {
   AppStateNotifier._();
@@ -71,19 +76,15 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       initialLocation: '/',
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
+      navigatorKey: appNavigatorKey,
       errorBuilder: (context, state) =>
-          appStateNotifier.loggedIn ? const HomeFeedWidget() : const SignupPageWidget(),
+          appStateNotifier.loggedIn ? const NavBarPage() : const LoginPageWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
           builder: (context, _) =>
-              appStateNotifier.loggedIn ? const HomeFeedWidget() : const SignupPageWidget(),
-        ),
-        FFRoute(
-          name: 'onboarding',
-          path: '/onboarding',
-          builder: (context, params) => const OnboardingWidget(),
+              appStateNotifier.loggedIn ? const NavBarPage() : const LoginPageWidget(),
         ),
         FFRoute(
           name: 'loginPage',
@@ -103,22 +104,33 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'homeFeedMore',
           path: '/homeFeedMore',
-          builder: (context, params) => const HomeFeedMoreWidget(),
+          builder: (context, params) => params.isEmpty
+              ? const NavBarPage(initialPage: 'homeFeedMore')
+              : const NavBarPage(
+                  initialPage: 'homeFeedMore',
+                  page: HomeFeedMoreWidget(),
+                ),
         ),
         FFRoute(
           name: 'personalProfile',
           path: '/profile',
-          builder: (context, params) => const PersonalProfileWidget(),
+          builder: (context, params) => const NavBarPage(
+            initialPage: '',
+            page: PersonalProfileWidget(),
+          ),
         ),
         FFRoute(
           name: 'connectionProfile',
           path: '/connectionprofile',
-          builder: (context, params) => ConnectionProfileWidget(
-            userRef: params.getParam(
-              'userRef',
-              ParamType.DocumentReference,
-              isList: false,
-              collectionNamePath: ['users'],
+          builder: (context, params) => NavBarPage(
+            initialPage: '',
+            page: ConnectionProfileWidget(
+              userRef: params.getParam(
+                'userRef',
+                ParamType.DocumentReference,
+                isList: false,
+                collectionNamePath: ['users'],
+              ),
             ),
           ),
         ),
@@ -130,16 +142,19 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'myPost',
           path: '/mypost',
-          builder: (context, params) => MyPostWidget(
-            adsBool: params.getParam(
-              'adsBool',
-              ParamType.bool,
+          builder: (context, params) => NavBarPage(
+            initialPage: '',
+            page: MyPostWidget(
+              adsBool: params.getParam(
+                'adsBool',
+                ParamType.bool,
+              ),
             ),
           ),
         ),
         FFRoute(
           name: 'homeFeed',
-          path: '/home2',
+          path: '/home',
           requireAuth: true,
           builder: (context, params) => const HomeFeedWidget(),
         ),
@@ -156,17 +171,25 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'BusinessDirectory',
           path: '/BusinessDirectory',
-          builder: (context, params) => const BusinessDirectoryWidget(),
+          builder: (context, params) => params.isEmpty
+              ? const NavBarPage(initialPage: 'BusinessDirectory')
+              : const NavBarPage(
+                  initialPage: 'BusinessDirectory',
+                  page: BusinessDirectoryWidget(),
+                ),
         ),
         FFRoute(
           name: 'BuisnessProfile',
           path: '/buisnessProfile',
-          builder: (context, params) => BuisnessProfileWidget(
-            businessRef: params.getParam(
-              'businessRef',
-              ParamType.DocumentReference,
-              isList: false,
-              collectionNamePath: ['business'],
+          builder: (context, params) => NavBarPage(
+            initialPage: '',
+            page: BuisnessProfileWidget(
+              businessRef: params.getParam(
+                'businessRef',
+                ParamType.DocumentReference,
+                isList: false,
+                collectionNamePath: ['business'],
+              ),
             ),
           ),
         ),
@@ -214,46 +237,75 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'yourConnection',
           path: '/yourConnection',
-          builder: (context, params) => YourConnectionWidget(
-            allConnectionBool: params.getParam(
-              'allConnectionBool',
-              ParamType.bool,
-            ),
-          ),
+          builder: (context, params) => params.isEmpty
+              ? const NavBarPage(initialPage: 'yourConnection')
+              : NavBarPage(
+                  initialPage: 'yourConnection',
+                  page: YourConnectionWidget(
+                    allConnectionBool: params.getParam(
+                      'allConnectionBool',
+                      ParamType.bool,
+                    ),
+                  ),
+                ),
         ),
         FFRoute(
           name: 'Community',
           path: '/community',
-          builder: (context, params) => const CommunityWidget(),
+          builder: (context, params) => params.isEmpty
+              ? const NavBarPage(initialPage: 'Community')
+              : const NavBarPage(
+                  initialPage: 'Community',
+                  page: CommunityWidget(),
+                ),
         ),
         FFRoute(
           name: 'myCommunities',
           path: '/mycommunity',
-          builder: (context, params) => const MyCommunitiesWidget(),
+          builder: (context, params) => const NavBarPage(
+            initialPage: '',
+            page: MyCommunitiesWidget(),
+          ),
         ),
         FFRoute(
           name: 'communitySpace',
           path: '/communityspace',
           requireAuth: true,
-          builder: (context, params) => const CommunitySpaceWidget(),
+          builder: (context, params) => NavBarPage(
+            initialPage: '',
+            page: CommunitySpaceWidget(
+              communityRef: params.getParam(
+                'communityRef',
+                ParamType.DocumentReference,
+                isList: false,
+                collectionNamePath: ['communities'],
+              ),
+            ),
+          ),
         ),
         FFRoute(
           name: 'aboutCommunity',
           path: '/aboutcommunity',
           requireAuth: true,
-          builder: (context, params) => AboutCommunityWidget(
-            communityRef: params.getParam(
-              'communityRef',
-              ParamType.DocumentReference,
-              isList: false,
-              collectionNamePath: ['communities'],
+          builder: (context, params) => NavBarPage(
+            initialPage: '',
+            page: AboutCommunityWidget(
+              communityRef: params.getParam(
+                'communityRef',
+                ParamType.DocumentReference,
+                isList: false,
+                collectionNamePath: ['communities'],
+              ),
             ),
           ),
         ),
         FFRoute(
           name: 'Marketplace',
           path: '/marketplace',
-          builder: (context, params) => const MarketplaceWidget(),
+          builder: (context, params) => const NavBarPage(
+            initialPage: '',
+            page: MarketplaceWidget(),
+          ),
         ),
         FFRoute(
           name: 'ResourceCenter',
@@ -263,19 +315,25 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'adviewPage',
           path: '/adviewPage',
-          builder: (context, params) => AdviewPageWidget(
-            adPostRef: params.getParam(
-              'adPostRef',
-              ParamType.DocumentReference,
-              isList: false,
-              collectionNamePath: ['ads'],
+          builder: (context, params) => NavBarPage(
+            initialPage: '',
+            page: AdviewPageWidget(
+              adPostRef: params.getParam(
+                'adPostRef',
+                ParamType.DocumentReference,
+                isList: false,
+                collectionNamePath: ['ads'],
+              ),
             ),
           ),
         ),
         FFRoute(
           name: 'events',
           path: '/events',
-          builder: (context, params) => const EventsWidget(),
+          builder: (context, params) => const NavBarPage(
+            initialPage: '',
+            page: EventsWidget(),
+          ),
         ),
         FFRoute(
           name: 'eventView',
@@ -295,9 +353,29 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => const CreateBusinessWidget(),
         ),
         FFRoute(
-          name: 'groupMessagingBoxCopy',
-          path: '/groupmessagingBoxk',
-          builder: (context, params) => const GroupMessagingBoxCopyWidget(),
+          name: 'createProfile',
+          path: '/createProfile',
+          builder: (context, params) => const CreateProfileWidget(),
+        ),
+        FFRoute(
+          name: 'homepage2',
+          path: '/homepage2',
+          builder: (context, params) => params.isEmpty
+              ? const NavBarPage(initialPage: 'homepage2')
+              : const NavBarPage(
+                  initialPage: 'homepage2',
+                  page: Homepage2Widget(),
+                ),
+        ),
+        FFRoute(
+          name: 'searchResult',
+          path: '/searchResult',
+          builder: (context, params) => SearchResultWidget(
+            searchText: params.getParam(
+              'searchText',
+              ParamType.String,
+            ),
+          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
@@ -468,7 +546,7 @@ class FFRoute {
 
           if (requireAuth && !appStateNotifier.loggedIn) {
             appStateNotifier.setRedirectLocationIfUnset(state.uri.toString());
-            return '/signup';
+            return '/login';
           }
           return null;
         },
@@ -483,17 +561,17 @@ class FFRoute {
               : builder(context, ffParams);
           final child = appStateNotifier.loading
               ? Container(
-                  color: FlutterFlowTheme.of(context).primaryBackground,
+                  color: FlutterFlowTheme.of(context).secondaryBackground,
                   child: Center(
                     child: Image.asset(
                       'assets/images/AFRO_T_1.1.1.png',
-                      width: 100.0,
-                      height: 100.0,
-                      fit: BoxFit.contain,
+                      width: 170.0,
+                      height: 170.0,
+                      fit: BoxFit.cover,
                     ),
                   ),
                 )
-              : page;
+              : PushNotificationsHandler(child: page);
 
           final transitionInfo = state.transitionInfo;
           return transitionInfo.hasTransition

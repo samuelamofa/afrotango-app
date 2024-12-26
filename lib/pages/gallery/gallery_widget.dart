@@ -1,4 +1,5 @@
-import '/components/nav_bar_widget.dart';
+import '/create_components/logo_header/logo_header_widget.dart';
+import '/create_components/nav_bar/nav_bar_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
@@ -23,9 +24,6 @@ class _GalleryWidgetState extends State<GalleryWidget>
     super.initState();
     _model = createModel(context, () => GalleryModel());
 
-    _model.searchBarTextController ??= TextEditingController();
-    _model.searchBarFocusNode ??= FocusNode();
-
     _model.tabBarController = TabController(
       vsync: this,
       length: 2,
@@ -44,7 +42,10 @@ class _GalleryWidgetState extends State<GalleryWidget>
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => FocusScope.of(context).unfocus(),
+      onTap: () {
+        FocusScope.of(context).unfocus();
+        FocusManager.instance.primaryFocus?.unfocus();
+      },
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
@@ -53,141 +54,10 @@ class _GalleryWidgetState extends State<GalleryWidget>
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
-              Container(
-                width: double.infinity,
-                height: 50.0,
-                decoration: BoxDecoration(
-                  color: FlutterFlowTheme.of(context).secondaryBackground,
-                ),
-                child: Row(
-                  mainAxisSize: MainAxisSize.max,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding:
-                          const EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 21.0, 0.0),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(8.0),
-                        child: Image.asset(
-                          'assets/images/AFRO_T_1.1.1.png',
-                          width: 35.0,
-                          height: 35.0,
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                    ),
-                    Expanded(
-                      child: SizedBox(
-                        width: 200.0,
-                        child: TextFormField(
-                          controller: _model.searchBarTextController,
-                          focusNode: _model.searchBarFocusNode,
-                          autofocus: false,
-                          obscureText: false,
-                          decoration: InputDecoration(
-                            isDense: true,
-                            labelStyle: FlutterFlowTheme.of(context)
-                                .labelMedium
-                                .override(
-                                  fontFamily: 'Inter',
-                                  letterSpacing: 0.0,
-                                ),
-                            hintText: 'Search',
-                            hintStyle: FlutterFlowTheme.of(context)
-                                .labelMedium
-                                .override(
-                                  fontFamily: 'Inter',
-                                  letterSpacing: 0.0,
-                                ),
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: const BorderSide(
-                                color: Color(0xFFE5E5E7),
-                                width: 1.0,
-                              ),
-                              borderRadius: BorderRadius.circular(43.0),
-                            ),
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: const BorderSide(
-                                color: Color(0x00000000),
-                                width: 1.0,
-                              ),
-                              borderRadius: BorderRadius.circular(43.0),
-                            ),
-                            errorBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: FlutterFlowTheme.of(context).error,
-                                width: 1.0,
-                              ),
-                              borderRadius: BorderRadius.circular(43.0),
-                            ),
-                            focusedErrorBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: FlutterFlowTheme.of(context).error,
-                                width: 1.0,
-                              ),
-                              borderRadius: BorderRadius.circular(43.0),
-                            ),
-                            filled: true,
-                            fillColor: FlutterFlowTheme.of(context)
-                                .secondaryBackground,
-                            prefixIcon: const Icon(
-                              Icons.search,
-                              size: 24.0,
-                            ),
-                          ),
-                          style:
-                              FlutterFlowTheme.of(context).bodyMedium.override(
-                                    fontFamily: 'Inter',
-                                    letterSpacing: 0.0,
-                                  ),
-                          cursorColor: FlutterFlowTheme.of(context).primaryText,
-                          validator: _model.searchBarTextControllerValidator
-                              .asValidator(context),
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding:
-                          const EdgeInsetsDirectional.fromSTEB(22.0, 0.0, 24.0, 0.0),
-                      child: Stack(
-                        alignment: const AlignmentDirectional(1.4, -1.7),
-                        children: [
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(8.0),
-                            child: Image.asset(
-                              'assets/images/Group_18910.png',
-                              width: 34.0,
-                              height: 34.0,
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                          Container(
-                            width: 18.0,
-                            height: 18.0,
-                            decoration: const BoxDecoration(
-                              color: Color(0xFFFEFFDC),
-                              shape: BoxShape.circle,
-                            ),
-                            alignment: const AlignmentDirectional(0.0, 0.0),
-                            child: Text(
-                              '9',
-                              textAlign: TextAlign.center,
-                              style: FlutterFlowTheme.of(context)
-                                  .bodyMedium
-                                  .override(
-                                    fontFamily: 'Inter',
-                                    color:
-                                        FlutterFlowTheme.of(context).secondary,
-                                    fontSize: 10.0,
-                                    letterSpacing: 0.0,
-                                  ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
+              wrapWithModel(
+                model: _model.logoHeaderModel,
+                updateCallback: () => safeSetState(() {}),
+                child: const LogoHeaderWidget(),
               ),
               wrapWithModel(
                 model: _model.navBarModel,
@@ -223,7 +93,7 @@ class _GalleryWidgetState extends State<GalleryWidget>
                       child: Text(
                         'Gallery',
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
-                              fontFamily: 'Inter',
+                              fontFamily: 'Poppins',
                               color: const Color(0xFF1A314D),
                               fontSize: 16.0,
                               letterSpacing: 0.0,
@@ -252,14 +122,14 @@ class _GalleryWidgetState extends State<GalleryWidget>
                             labelStyle: FlutterFlowTheme.of(context)
                                 .titleMedium
                                 .override(
-                                  fontFamily: 'Inter Tight',
+                                  fontFamily: 'Poppins',
                                   fontSize: 16.0,
                                   letterSpacing: 0.0,
                                 ),
                             unselectedLabelStyle: FlutterFlowTheme.of(context)
                                 .titleMedium
                                 .override(
-                                  fontFamily: 'Inter Tight',
+                                  fontFamily: 'Poppins',
                                   fontSize: 16.0,
                                   letterSpacing: 0.0,
                                 ),
