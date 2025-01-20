@@ -49,8 +49,6 @@ class _CreateBusinessWidgetState extends State<CreateBusinessWidget> {
 
     _model.textController7 ??= TextEditingController();
     _model.textFieldFocusNode7 ??= FocusNode();
-
-    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -69,9 +67,9 @@ class _CreateBusinessWidgetState extends State<CreateBusinessWidget> {
       },
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
+        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         appBar: AppBar(
-          backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
+          backgroundColor: FlutterFlowTheme.of(context).secondary,
           automaticallyImplyLeading: false,
           leading: FlutterFlowIconButton(
             borderColor: Colors.transparent,
@@ -80,25 +78,18 @@ class _CreateBusinessWidgetState extends State<CreateBusinessWidget> {
             buttonSize: 54.0,
             icon: Icon(
               Icons.arrow_back_rounded,
-              color: FlutterFlowTheme.of(context).primary,
+              color: FlutterFlowTheme.of(context).secondaryBackground,
               size: 24.0,
             ),
             onPressed: () async {
-              context.pushNamed(
-                'BusinessDirectory',
-                extra: <String, dynamic>{
-                  kTransitionInfoKey: const TransitionInfo(
-                    hasTransition: true,
-                    transitionType: PageTransitionType.leftToRight,
-                  ),
-                },
-              );
+              context.pop();
             },
           ),
           title: Text(
             'List a Business',
             style: FlutterFlowTheme.of(context).titleMedium.override(
                   fontFamily: 'Poppins',
+                  color: FlutterFlowTheme.of(context).secondaryBackground,
                   letterSpacing: 0.0,
                 ),
           ),

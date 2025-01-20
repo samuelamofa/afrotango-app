@@ -2,7 +2,6 @@ import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/firebase_storage/storage.dart';
 import '/backend/push_notifications/push_notifications_util.dart';
-import '/create_components/logo_header/logo_header_widget.dart';
 import '/flutter_flow/flutter_flow_expanded_image_view.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -37,8 +36,6 @@ class _GroupMessagingBoxWidgetState extends State<GroupMessagingBoxWidget> {
 
     _model.textController ??= TextEditingController();
     _model.textFieldFocusNode ??= FocusNode();
-
-    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -90,11 +87,6 @@ class _GroupMessagingBoxWidgetState extends State<GroupMessagingBoxWidget> {
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       children: [
-                        wrapWithModel(
-                          model: _model.logoHeaderModel,
-                          updateCallback: () => safeSetState(() {}),
-                          child: const LogoHeaderWidget(),
-                        ),
                         Container(
                           decoration: const BoxDecoration(
                             color: Colors.white,
@@ -365,14 +357,16 @@ class _GroupMessagingBoxWidgetState extends State<GroupMessagingBoxWidget> {
                                                                   FlutterFlowExpandedImageView(
                                                                 image: Image
                                                                     .network(
-                                                                  'https://picsum.photos/seed/144/600',
+                                                                  columnScrollGroupMessageRecord
+                                                                      .image,
                                                                   fit: BoxFit
                                                                       .contain,
                                                                 ),
                                                                 allowRotation:
                                                                     false,
                                                                 tag:
-                                                                    'imageTag2',
+                                                                    columnScrollGroupMessageRecord
+                                                                        .image,
                                                                 useHeroAnimation:
                                                                     true,
                                                               ),
@@ -380,7 +374,9 @@ class _GroupMessagingBoxWidgetState extends State<GroupMessagingBoxWidget> {
                                                           );
                                                         },
                                                         child: Hero(
-                                                          tag: 'imageTag2',
+                                                          tag:
+                                                              columnScrollGroupMessageRecord
+                                                                  .image,
                                                           transitionOnUserGestures:
                                                               true,
                                                           child: ClipRRect(
@@ -390,7 +386,8 @@ class _GroupMessagingBoxWidgetState extends State<GroupMessagingBoxWidget> {
                                                                         8.0),
                                                             child:
                                                                 Image.network(
-                                                              'https://picsum.photos/seed/144/600',
+                                                              columnScrollGroupMessageRecord
+                                                                  .image,
                                                               width: 200.0,
                                                               height: 200.0,
                                                               fit: BoxFit.cover,
@@ -510,6 +507,8 @@ class _GroupMessagingBoxWidgetState extends State<GroupMessagingBoxWidget> {
                                             final selectedMedia =
                                                 await selectMediaWithSourceBottomSheet(
                                               context: context,
+                                              maxWidth: 630.00,
+                                              maxHeight: 1200.00,
                                               allowPhoto: true,
                                               allowVideo: true,
                                             );

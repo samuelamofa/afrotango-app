@@ -11,7 +11,6 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:flutter_app_badger/flutter_app_badger.dart';
 import 'home_feed_model.dart';
 export 'home_feed_model.dart';
 
@@ -48,12 +47,7 @@ class _HomeFeedWidgetState extends State<HomeFeedWidget> {
           },
         );
       }
-      if (isiOS) {
-        FlutterAppBadger.updateBadgeCount(0);
-      }
     });
-
-    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -1374,7 +1368,7 @@ class _HomeFeedWidgetState extends State<HomeFeedWidget> {
                                                                               0.0),
                                                                           child:
                                                                               Icon(
-                                                                            FFIcons.kwhatsapp121,
+                                                                            FFIcons.kwhatsapp,
                                                                             color:
                                                                                 FlutterFlowTheme.of(context).primaryText,
                                                                             size:

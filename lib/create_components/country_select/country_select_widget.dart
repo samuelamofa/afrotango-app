@@ -34,8 +34,6 @@ class _CountrySelectWidgetState extends State<CountrySelectWidget> {
     _model = createModel(context, () => CountrySelectModel());
 
     _model.textController ??= TextEditingController();
-
-    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -219,6 +217,7 @@ class _CountrySelectWidgetState extends State<CountrySelectWidget> {
 
                     await currentUserReference!.update(createUsersRecordData(
                       countryName: FFAppState().countryName,
+                      countryCode: functions.dialCode(FFAppState().countryName),
                     ));
                     if ((_model.textFieldFocusNode?.hasFocus ?? false)) {
                       return;

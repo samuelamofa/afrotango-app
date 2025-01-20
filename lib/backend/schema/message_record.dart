@@ -35,6 +35,11 @@ class MessageRecord extends FirestoreRecord {
   String get nameOfSender => _nameOfSender ?? '';
   bool hasNameOfSender() => _nameOfSender != null;
 
+  // "image" field.
+  String? _image;
+  String get image => _image ?? '';
+  bool hasImage() => _image != null;
+
   DocumentReference get parentReference => reference.parent.parent!;
 
   void _initializeFields() {
@@ -42,6 +47,7 @@ class MessageRecord extends FirestoreRecord {
     _timeStamp = snapshotData['timeStamp'] as DateTime?;
     _uidOfSender = snapshotData['uidOfSender'] as DocumentReference?;
     _nameOfSender = snapshotData['nameOfSender'] as String?;
+    _image = snapshotData['image'] as String?;
   }
 
   static Query<Map<String, dynamic>> collection([DocumentReference? parent]) =>
@@ -88,6 +94,7 @@ Map<String, dynamic> createMessageRecordData({
   DateTime? timeStamp,
   DocumentReference? uidOfSender,
   String? nameOfSender,
+  String? image,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -95,6 +102,7 @@ Map<String, dynamic> createMessageRecordData({
       'timeStamp': timeStamp,
       'uidOfSender': uidOfSender,
       'nameOfSender': nameOfSender,
+      'image': image,
     }.withoutNulls,
   );
 
@@ -109,12 +117,13 @@ class MessageRecordDocumentEquality implements Equality<MessageRecord> {
     return e1?.text == e2?.text &&
         e1?.timeStamp == e2?.timeStamp &&
         e1?.uidOfSender == e2?.uidOfSender &&
-        e1?.nameOfSender == e2?.nameOfSender;
+        e1?.nameOfSender == e2?.nameOfSender &&
+        e1?.image == e2?.image;
   }
 
   @override
   int hash(MessageRecord? e) => const ListEquality()
-      .hash([e?.text, e?.timeStamp, e?.uidOfSender, e?.nameOfSender]);
+      .hash([e?.text, e?.timeStamp, e?.uidOfSender, e?.nameOfSender, e?.image]);
 
   @override
   bool isValidKey(Object? o) => o is MessageRecord;

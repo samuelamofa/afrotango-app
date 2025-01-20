@@ -24,8 +24,6 @@ class _ResourceCenterWidgetState extends State<ResourceCenterWidget> {
 
     _model.textController ??= TextEditingController();
     _model.textFieldFocusNode ??= FocusNode();
-
-    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override

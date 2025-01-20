@@ -30,8 +30,6 @@ class _SignupPageWidgetState extends State<SignupPageWidget> {
 
     _model.passwordTextController ??= TextEditingController();
     _model.passwordFocusNode ??= FocusNode();
-
-    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -80,34 +78,6 @@ class _SignupPageWidgetState extends State<SignupPageWidget> {
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 25.0),
-                          child: BackdropFilter(
-                            filter: ImageFilter.blur(
-                              sigmaX: 2.0,
-                              sigmaY: 2.0,
-                            ),
-                            child: Container(
-                              decoration: const BoxDecoration(
-                                color: Color(0x21FFFFFF),
-                                shape: BoxShape.circle,
-                              ),
-                              child: Container(
-                                width: 80.0,
-                                height: 80.0,
-                                clipBehavior: Clip.antiAlias,
-                                decoration: const BoxDecoration(
-                                  shape: BoxShape.circle,
-                                ),
-                                child: Image.asset(
-                                  'assets/images/AFRO_TANGO_LOGO_ONLY.png',
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
                         ClipRRect(
                           borderRadius: BorderRadius.circular(0.0),
                           child: BackdropFilter(
@@ -421,8 +391,8 @@ class _SignupPageWidgetState extends State<SignupPageWidget> {
                                                     getCurrentTimestamp,
                                               ));
 
-                                          context.goNamedAuth(
-                                              'homepage2', context.mounted);
+                                          context.pushNamedAuth(
+                                              'createProfile', context.mounted);
                                         },
                                         text: 'Sign Up',
                                         options: FFButtonOptions(

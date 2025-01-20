@@ -82,8 +82,6 @@ class _CreateProfileWidgetState extends State<CreateProfileWidget> {
     _model.textController13 ??= TextEditingController(
         text: valueOrDefault(currentUserDocument?.instagram, ''));
     _model.textFieldFocusNode11 ??= FocusNode();
-
-    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -102,7 +100,7 @@ class _CreateProfileWidgetState extends State<CreateProfileWidget> {
       },
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
+        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         body: SafeArea(
           top: true,
           child: Column(
@@ -114,7 +112,7 @@ class _CreateProfileWidgetState extends State<CreateProfileWidget> {
                 child: Container(
                   width: MediaQuery.sizeOf(context).width * 1.0,
                   decoration: BoxDecoration(
-                    color: FlutterFlowTheme.of(context).secondaryBackground,
+                    color: FlutterFlowTheme.of(context).primaryBackground,
                   ),
                   child: Padding(
                     padding:
@@ -163,7 +161,7 @@ class _CreateProfileWidgetState extends State<CreateProfileWidget> {
                                     profession: _model.textController4.text,
                                   ));
 
-                                  context.pushNamed('homeFeed');
+                                  context.pushNamed('homePage3');
                                 },
                                 text: 'Save',
                                 options: FFButtonOptions(
@@ -1965,7 +1963,7 @@ class _CreateProfileWidgetState extends State<CreateProfileWidget> {
                                                     fontFamily: 'Poppins',
                                                     letterSpacing: 0.0,
                                                   ),
-                                          hintText: 'Whatsapp Link',
+                                          hintText: 'WhatsApp Number',
                                           hintStyle:
                                               FlutterFlowTheme.of(context)
                                                   .labelMedium

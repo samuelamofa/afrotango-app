@@ -30,8 +30,6 @@ class _UploadBannarImageWidgetState extends State<UploadBannarImageWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => UploadBannarImageModel());
-
-    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override

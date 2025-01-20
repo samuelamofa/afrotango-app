@@ -26,8 +26,6 @@ class _SideMenuWidgetState extends State<SideMenuWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => SideMenuModel());
-
-    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override

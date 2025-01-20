@@ -66,6 +66,11 @@ class ChatRecord extends FirestoreRecord {
   String get chatId => _chatId ?? '';
   bool hasChatId() => _chatId != null;
 
+  // "readby" field.
+  List<DocumentReference>? _readby;
+  List<DocumentReference> get readby => _readby ?? const [];
+  bool hasReadby() => _readby != null;
+
   void _initializeFields() {
     _userIds = getDataList(snapshotData['userIds']);
     _messageBool = snapshotData['messageBool'] as bool?;
@@ -77,6 +82,7 @@ class ChatRecord extends FirestoreRecord {
     _timeStamps = snapshotData['timeStamps'] as DateTime?;
     _communityRef = snapshotData['communityRef'] as DocumentReference?;
     _chatId = snapshotData['chatId'] as String?;
+    _readby = getDataList(snapshotData['readby']);
   }
 
   static CollectionReference get collection =>
@@ -153,7 +159,8 @@ class ChatRecordDocumentEquality implements Equality<ChatRecord> {
         listEquality.equals(e1?.userNames, e2?.userNames) &&
         e1?.timeStamps == e2?.timeStamps &&
         e1?.communityRef == e2?.communityRef &&
-        e1?.chatId == e2?.chatId;
+        e1?.chatId == e2?.chatId &&
+        listEquality.equals(e1?.readby, e2?.readby);
   }
 
   @override
@@ -167,7 +174,8 @@ class ChatRecordDocumentEquality implements Equality<ChatRecord> {
         e?.userNames,
         e?.timeStamps,
         e?.communityRef,
-        e?.chatId
+        e?.chatId,
+        e?.readby
       ]);
 
   @override

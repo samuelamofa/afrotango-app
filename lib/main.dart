@@ -111,7 +111,7 @@ class NavBarPage extends StatefulWidget {
 
 /// This is the private State class that goes with NavBarPage.
 class _NavBarPageState extends State<NavBarPage> {
-  String _currentPageName = 'homepage2';
+  String _currentPageName = 'homePage3';
   late Widget? _currentPage;
 
   @override
@@ -124,11 +124,11 @@ class _NavBarPageState extends State<NavBarPage> {
   @override
   Widget build(BuildContext context) {
     final tabs = {
-      'homepage2': const Homepage2Widget(),
-      'BusinessDirectory': const BusinessDirectoryWidget(),
+      'homePage3': const HomePage3Widget(),
       'yourConnection': const YourConnectionWidget(),
       'Community': const CommunityWidget(),
-      'homeFeedMore': const HomeFeedMoreWidget(),
+      'BusinessDirectory': const BusinessDirectoryWidget(),
+      'events': const EventsWidget(),
     };
     final currentIndex = tabs.keys.toList().indexOf(_currentPageName);
 
@@ -148,7 +148,7 @@ class _NavBarPageState extends State<NavBarPage> {
           _currentPageName = tabs.keys.toList()[i];
         }),
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-        selectedItemColor: FlutterFlowTheme.of(context).secondary,
+        selectedItemColor: const Color(0xFFDD9F00),
         unselectedItemColor: FlutterFlowTheme.of(context).primary,
         selectedBackgroundColor: const Color(0x00000000),
         borderRadius: 0.0,
@@ -156,48 +156,25 @@ class _NavBarPageState extends State<NavBarPage> {
         margin: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
         padding: const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 20.0),
         width: double.infinity,
-        elevation: 10.0,
+        elevation: 5.0,
         items: [
           FloatingNavbarItem(
             customWidget: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Icon(
-                  currentIndex == 0 ? Icons.home : Icons.home_outlined,
+                  Icons.home_outlined,
                   color: currentIndex == 0
-                      ? FlutterFlowTheme.of(context).secondary
+                      ? const Color(0xFFDD9F00)
                       : FlutterFlowTheme.of(context).primary,
-                  size: currentIndex == 0 ? 24.0 : 24.0,
+                  size: 24.0,
                 ),
                 Text(
                   'Home',
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
                     color: currentIndex == 0
-                        ? FlutterFlowTheme.of(context).secondary
-                        : FlutterFlowTheme.of(context).primary,
-                    fontSize: 11.0,
-                  ),
-                ),
-              ],
-            ),
-          ),
-          FloatingNavbarItem(
-            customWidget: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Icon(
-                  Icons.business_center_outlined,
-                  color: currentIndex == 1
-                      ? FlutterFlowTheme.of(context).secondary
-                      : FlutterFlowTheme.of(context).primary,
-                ),
-                Text(
-                  'Businesses',
-                  overflow: TextOverflow.ellipsis,
-                  style: TextStyle(
-                    color: currentIndex == 1
-                        ? FlutterFlowTheme.of(context).secondary
+                        ? const Color(0xFFDD9F00)
                         : FlutterFlowTheme.of(context).primary,
                     fontSize: 11.0,
                   ),
@@ -211,17 +188,17 @@ class _NavBarPageState extends State<NavBarPage> {
               children: [
                 Icon(
                   Icons.people,
-                  color: currentIndex == 2
-                      ? FlutterFlowTheme.of(context).secondary
+                  color: currentIndex == 1
+                      ? const Color(0xFFDD9F00)
                       : FlutterFlowTheme.of(context).primary,
                   size: 24.0,
                 ),
                 Text(
-                  'Connections',
+                  'People',
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
-                    color: currentIndex == 2
-                        ? FlutterFlowTheme.of(context).secondary
+                    color: currentIndex == 1
+                        ? const Color(0xFFDD9F00)
                         : FlutterFlowTheme.of(context).primary,
                     fontSize: 11.0,
                   ),
@@ -235,17 +212,17 @@ class _NavBarPageState extends State<NavBarPage> {
               children: [
                 Icon(
                   Icons.groups_rounded,
-                  color: currentIndex == 3
-                      ? FlutterFlowTheme.of(context).secondary
+                  color: currentIndex == 2
+                      ? const Color(0xFFDD9F00)
                       : FlutterFlowTheme.of(context).primary,
                   size: 24.0,
                 ),
                 Text(
-                  'Communities',
+                  'Groups',
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
-                    color: currentIndex == 3
-                        ? FlutterFlowTheme.of(context).secondary
+                    color: currentIndex == 2
+                        ? const Color(0xFFDD9F00)
                         : FlutterFlowTheme.of(context).primary,
                     fontSize: 11.0,
                   ),
@@ -258,18 +235,41 @@ class _NavBarPageState extends State<NavBarPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Icon(
-                  Icons.keyboard_control_outlined,
+                  Icons.business_center_outlined,
+                  color: currentIndex == 3
+                      ? const Color(0xFFDD9F00)
+                      : FlutterFlowTheme.of(context).primary,
+                ),
+                Text(
+                  'Businesses',
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(
+                    color: currentIndex == 3
+                        ? const Color(0xFFDD9F00)
+                        : FlutterFlowTheme.of(context).primary,
+                    fontSize: 11.0,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          FloatingNavbarItem(
+            customWidget: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(
+                  FFIcons.kevent,
                   color: currentIndex == 4
-                      ? FlutterFlowTheme.of(context).secondary
+                      ? const Color(0xFFDD9F00)
                       : FlutterFlowTheme.of(context).primary,
                   size: 24.0,
                 ),
                 Text(
-                  'More',
+                  'Events',
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
                     color: currentIndex == 4
-                        ? FlutterFlowTheme.of(context).secondary
+                        ? const Color(0xFFDD9F00)
                         : FlutterFlowTheme.of(context).primary,
                     fontSize: 11.0,
                   ),

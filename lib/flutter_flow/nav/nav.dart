@@ -104,12 +104,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'homeFeedMore',
           path: '/homeFeedMore',
-          builder: (context, params) => params.isEmpty
-              ? const NavBarPage(initialPage: 'homeFeedMore')
-              : const NavBarPage(
-                  initialPage: 'homeFeedMore',
-                  page: HomeFeedMoreWidget(),
-                ),
+          builder: (context, params) => const HomeFeedMoreWidget(),
         ),
         FFRoute(
           name: 'personalProfile',
@@ -330,10 +325,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'events',
           path: '/events',
-          builder: (context, params) => const NavBarPage(
-            initialPage: '',
-            page: EventsWidget(),
-          ),
+          builder: (context, params) => params.isEmpty
+              ? const NavBarPage(initialPage: 'events')
+              : const EventsWidget(),
         ),
         FFRoute(
           name: 'eventView',
@@ -358,22 +352,42 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => const CreateProfileWidget(),
         ),
         FFRoute(
-          name: 'homepage2',
-          path: '/homepage2',
-          builder: (context, params) => params.isEmpty
-              ? const NavBarPage(initialPage: 'homepage2')
-              : const NavBarPage(
-                  initialPage: 'homepage2',
-                  page: Homepage2Widget(),
-                ),
-        ),
-        FFRoute(
           name: 'searchResult',
           path: '/searchResult',
           builder: (context, params) => SearchResultWidget(
             searchText: params.getParam(
               'searchText',
               ParamType.String,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: 'homePage3',
+          path: '/homePage3',
+          builder: (context, params) => params.isEmpty
+              ? const NavBarPage(initialPage: 'homePage3')
+              : const HomePage3Widget(),
+        ),
+        FFRoute(
+          name: 'Feed',
+          path: '/feed',
+          builder: (context, params) => const FeedWidget(),
+        ),
+        FFRoute(
+          name: 'Feed2',
+          path: '/feed2',
+          builder: (context, params) => const Feed2Widget(),
+        ),
+        FFRoute(
+          name: 'Marketplace1',
+          path: '/marketplace1',
+          builder: (context, params) => NavBarPage(
+            initialPage: '',
+            page: Marketplace1Widget(
+              categoryName: params.getParam(
+                'categoryName',
+                ParamType.String,
+              ),
             ),
           ),
         )

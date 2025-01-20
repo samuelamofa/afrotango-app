@@ -24,8 +24,6 @@ class _NavBarWidgetState extends State<NavBarWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => NavBarModel());
-
-    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -80,21 +78,17 @@ class _NavBarWidgetState extends State<NavBarWidget> {
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(0.0),
-                          child: Image.asset(
-                            'assets/images/home-5-fill.png',
-                            width: 24.0,
-                            height: 24.0,
-                            fit: BoxFit.cover,
-                          ),
+                        Icon(
+                          FFIcons.khome,
+                          color: FlutterFlowTheme.of(context).primaryText,
+                          size: 30.0,
                         ),
                         Text(
                           'Home',
                           style:
                               FlutterFlowTheme.of(context).bodyMedium.override(
                                     fontFamily: 'Poppins',
-                                    fontSize: 9.0,
+                                    fontSize: 12.0,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.w500,
                                   ),
@@ -124,20 +118,16 @@ class _NavBarWidgetState extends State<NavBarWidget> {
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      ClipRRect(
-                        borderRadius: BorderRadius.circular(0.0),
-                        child: Image.asset(
-                          'assets/images/Group.png',
-                          width: 24.0,
-                          height: 24.0,
-                          fit: BoxFit.cover,
-                        ),
+                      Icon(
+                        Icons.people_alt,
+                        color: FlutterFlowTheme.of(context).primaryText,
+                        size: 30.0,
                       ),
                       Text(
-                        'Connections',
+                        'People',
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                               fontFamily: 'Poppins',
-                              fontSize: 9.0,
+                              fontSize: 12.0,
                               letterSpacing: 0.0,
                               fontWeight: FontWeight.w500,
                             ),
@@ -166,20 +156,16 @@ class _NavBarWidgetState extends State<NavBarWidget> {
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      ClipRRect(
-                        borderRadius: BorderRadius.circular(0.0),
-                        child: Image.asset(
-                          'assets/images/Vector.png',
-                          width: 24.0,
-                          height: 24.0,
-                          fit: BoxFit.cover,
-                        ),
+                      Icon(
+                        FFIcons.kgroup,
+                        color: FlutterFlowTheme.of(context).primaryText,
+                        size: 30.0,
                       ),
                       Text(
-                        'Communities',
+                        'Groups',
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                               fontFamily: 'Poppins',
-                              fontSize: 9.0,
+                              fontSize: 12.0,
                               letterSpacing: 0.0,
                               fontWeight: FontWeight.w500,
                             ),
@@ -208,20 +194,16 @@ class _NavBarWidgetState extends State<NavBarWidget> {
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      ClipRRect(
-                        borderRadius: BorderRadius.circular(0.0),
-                        child: Image.asset(
-                          'assets/images/store-3-line.png',
-                          width: 24.0,
-                          height: 24.0,
-                          fit: BoxFit.cover,
-                        ),
+                      Icon(
+                        FFIcons.kstoreMallDirectory,
+                        color: FlutterFlowTheme.of(context).primaryText,
+                        size: 30.0,
                       ),
                       Text(
                         'Marketplace',
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                               fontFamily: 'Poppins',
-                              fontSize: 9.0,
+                              fontSize: 12.0,
                               letterSpacing: 0.0,
                               fontWeight: FontWeight.w500,
                             ),
@@ -251,21 +233,17 @@ class _NavBarWidgetState extends State<NavBarWidget> {
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(0.0),
-                          child: Image.asset(
-                            'assets/images/more-fill.png',
-                            width: 24.0,
-                            height: 24.0,
-                            fit: BoxFit.cover,
-                          ),
+                        Icon(
+                          FFIcons.kmoreHoriz,
+                          color: FlutterFlowTheme.of(context).primaryText,
+                          size: 30.0,
                         ),
                         Text(
                           'More',
                           style:
                               FlutterFlowTheme.of(context).bodyMedium.override(
                                     fontFamily: 'Poppins',
-                                    fontSize: 9.0,
+                                    fontSize: 12.0,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.w500,
                                   ),

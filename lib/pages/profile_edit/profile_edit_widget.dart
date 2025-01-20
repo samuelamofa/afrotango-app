@@ -71,19 +71,17 @@ class _ProfileEditWidgetState extends State<ProfileEditWidget> {
         text: valueOrDefault(currentUserDocument?.facebook, ''));
     _model.textFieldFocusNode8 ??= FocusNode();
 
-    _model.textController11 ??= TextEditingController(
-        text: valueOrDefault(currentUserDocument?.whatsapp, ''));
-    _model.textFieldFocusNode9 ??= FocusNode();
+    _model.phoneNumTextController ??=
+        TextEditingController(text: currentPhoneNumber);
+    _model.phoneNumFocusNode ??= FocusNode();
 
     _model.textController12 ??= TextEditingController(
         text: valueOrDefault(currentUserDocument?.snapchat, ''));
-    _model.textFieldFocusNode10 ??= FocusNode();
+    _model.textFieldFocusNode9 ??= FocusNode();
 
     _model.textController13 ??= TextEditingController(
         text: valueOrDefault(currentUserDocument?.instagram, ''));
-    _model.textFieldFocusNode11 ??= FocusNode();
-
-    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
+    _model.textFieldFocusNode10 ??= FocusNode();
   }
 
   @override
@@ -181,7 +179,8 @@ class _ProfileEditWidgetState extends State<ProfileEditWidget> {
                                     city: _model.textController8.text,
                                     website: _model.textController9.text,
                                     facebook: _model.textController10.text,
-                                    whatsapp: _model.textController11.text,
+                                    whatsapp:
+                                        '${functions.removeFristletter(valueOrDefault(currentUserDocument?.countryCode, ''))}${_model.phoneNumTextController.text}',
                                     snapchat: _model.textController12.text,
                                     instagram: _model.textController13.text,
                                     profession: _model.textController4.text,
@@ -2007,87 +2006,137 @@ class _ProfileEditWidgetState extends State<ProfileEditWidget> {
                                   Padding(
                                     padding: const EdgeInsetsDirectional.fromSTEB(
                                         24.0, 0.0, 24.0, 27.0),
-                                    child: AuthUserStreamWidget(
-                                      builder: (context) => SizedBox(
-                                        width: double.infinity,
-                                        child: TextFormField(
-                                          controller: _model.textController11,
-                                          focusNode: _model.textFieldFocusNode9,
-                                          autofocus: false,
-                                          obscureText: false,
-                                          decoration: InputDecoration(
-                                            isDense: true,
-                                            labelStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .labelMedium
-                                                    .override(
-                                                      fontFamily: 'Poppins',
-                                                      letterSpacing: 0.0,
-                                                    ),
-                                            hintText: 'Whatsapp Link',
-                                            hintStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .labelMedium
-                                                    .override(
-                                                      fontFamily: 'Poppins',
-                                                      color: const Color(0xFF6B7280),
-                                                      fontSize: 15.0,
-                                                      letterSpacing: 0.0,
-                                                      fontWeight:
-                                                          FontWeight.w500,
-                                                    ),
-                                            enabledBorder: OutlineInputBorder(
-                                              borderSide: const BorderSide(
-                                                color: Color(0xFF6B7280),
-                                                width: 1.0,
-                                              ),
-                                              borderRadius:
-                                                  BorderRadius.circular(999.0),
-                                            ),
-                                            focusedBorder: OutlineInputBorder(
-                                              borderSide: const BorderSide(
-                                                color: Color(0x00000000),
-                                                width: 1.0,
-                                              ),
-                                              borderRadius:
-                                                  BorderRadius.circular(999.0),
-                                            ),
-                                            errorBorder: OutlineInputBorder(
-                                              borderSide: BorderSide(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .error,
-                                                width: 1.0,
-                                              ),
-                                              borderRadius:
-                                                  BorderRadius.circular(999.0),
-                                            ),
-                                            focusedErrorBorder:
-                                                OutlineInputBorder(
-                                              borderSide: BorderSide(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .error,
-                                                width: 1.0,
-                                              ),
-                                              borderRadius:
-                                                  BorderRadius.circular(999.0),
-                                            ),
-                                            filled: true,
-                                          ),
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium
-                                              .override(
-                                                fontFamily: 'Poppins',
-                                                letterSpacing: 0.0,
-                                              ),
-                                          cursorColor:
-                                              FlutterFlowTheme.of(context)
-                                                  .primaryText,
-                                          validator: _model
-                                              .textController11Validator
-                                              .asValidator(context),
+                                    child: Container(
+                                      width: double.infinity,
+                                      height: 40.0,
+                                      decoration: BoxDecoration(
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryBackground,
+                                        borderRadius:
+                                            BorderRadius.circular(999.0),
+                                        border: Border.all(
+                                          color: const Color(0xFF6B7280),
                                         ),
+                                      ),
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        children: [
+                                          if (responsiveVisibility(
+                                            context: context,
+                                            phone: false,
+                                            tablet: false,
+                                            tabletLandscape: false,
+                                            desktop: false,
+                                          ))
+                                            Padding(
+                                              padding: const EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      15.0, 0.0, 0.0, 0.0),
+                                              child: AuthUserStreamWidget(
+                                                builder: (context) => Text(
+                                                  valueOrDefault<String>(
+                                                    functions.dialCode(
+                                                        valueOrDefault(
+                                                            currentUserDocument
+                                                                ?.countryName,
+                                                            '')),
+                                                    '+233',
+                                                  ),
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Poppins',
+                                                        color:
+                                                            const Color(0xFF6B7280),
+                                                        fontSize: 15.0,
+                                                        letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FontWeight.w500,
+                                                      ),
+                                                ),
+                                              ),
+                                            ),
+                                          Expanded(
+                                            child: Padding(
+                                              padding: const EdgeInsetsDirectional
+                                                  .fromSTEB(4.0, 0.0, 8.0, 0.0),
+                                              child: AuthUserStreamWidget(
+                                                builder: (context) =>
+                                                    TextFormField(
+                                                  controller: _model
+                                                      .phoneNumTextController,
+                                                  focusNode:
+                                                      _model.phoneNumFocusNode,
+                                                  onChanged: (_) =>
+                                                      EasyDebounce.debounce(
+                                                    '_model.phoneNumTextController',
+                                                    const Duration(
+                                                        milliseconds: 2000),
+                                                    () async {
+                                                      await currentUserReference!
+                                                          .update(
+                                                              createUsersRecordData(
+                                                        phoneNumber: _model
+                                                            .phoneNumTextController
+                                                            .text,
+                                                      ));
+                                                    },
+                                                  ),
+                                                  autofocus: false,
+                                                  obscureText: false,
+                                                  decoration: InputDecoration(
+                                                    labelStyle: FlutterFlowTheme
+                                                            .of(context)
+                                                        .labelMedium
+                                                        .override(
+                                                          fontFamily: 'Poppins',
+                                                          letterSpacing: 0.0,
+                                                        ),
+                                                    hintStyle: FlutterFlowTheme
+                                                            .of(context)
+                                                        .labelMedium
+                                                        .override(
+                                                          fontFamily: 'Poppins',
+                                                          letterSpacing: 0.0,
+                                                        ),
+                                                    enabledBorder:
+                                                        InputBorder.none,
+                                                    focusedBorder:
+                                                        InputBorder.none,
+                                                    errorBorder:
+                                                        InputBorder.none,
+                                                    focusedErrorBorder:
+                                                        InputBorder.none,
+                                                    contentPadding:
+                                                        const EdgeInsetsDirectional
+                                                            .fromSTEB(0.0, 0.0,
+                                                                0.0, 10.0),
+                                                  ),
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Poppins',
+                                                        color:
+                                                            const Color(0xFF6B7280),
+                                                        fontSize: 16.0,
+                                                        letterSpacing: 0.0,
+                                                      ),
+                                                  keyboardType:
+                                                      const TextInputType
+                                                          .numberWithOptions(
+                                                          decimal: true),
+                                                  validator: _model
+                                                      .phoneNumTextControllerValidator
+                                                      .asValidator(context),
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ],
                                       ),
                                     ),
                                   ),
@@ -2114,8 +2163,7 @@ class _ProfileEditWidgetState extends State<ProfileEditWidget> {
                                         width: double.infinity,
                                         child: TextFormField(
                                           controller: _model.textController12,
-                                          focusNode:
-                                              _model.textFieldFocusNode10,
+                                          focusNode: _model.textFieldFocusNode9,
                                           autofocus: false,
                                           obscureText: false,
                                           decoration: InputDecoration(
@@ -2218,7 +2266,7 @@ class _ProfileEditWidgetState extends State<ProfileEditWidget> {
                                         child: TextFormField(
                                           controller: _model.textController13,
                                           focusNode:
-                                              _model.textFieldFocusNode11,
+                                              _model.textFieldFocusNode10,
                                           autofocus: false,
                                           obscureText: false,
                                           decoration: InputDecoration(

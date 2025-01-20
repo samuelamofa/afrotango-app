@@ -77,16 +77,16 @@ class ProfileEditModel extends FlutterFlowModel<ProfileEditWidget> {
   FocusNode? textFieldFocusNode8;
   TextEditingController? textController10;
   String? Function(BuildContext, String?)? textController10Validator;
+  // State field(s) for PhoneNum widget.
+  FocusNode? phoneNumFocusNode;
+  TextEditingController? phoneNumTextController;
+  String? Function(BuildContext, String?)? phoneNumTextControllerValidator;
   // State field(s) for TextField widget.
   FocusNode? textFieldFocusNode9;
-  TextEditingController? textController11;
-  String? Function(BuildContext, String?)? textController11Validator;
-  // State field(s) for TextField widget.
-  FocusNode? textFieldFocusNode10;
   TextEditingController? textController12;
   String? Function(BuildContext, String?)? textController12Validator;
   // State field(s) for TextField widget.
-  FocusNode? textFieldFocusNode11;
+  FocusNode? textFieldFocusNode10;
   TextEditingController? textController13;
   String? Function(BuildContext, String?)? textController13Validator;
 
@@ -130,13 +130,13 @@ class ProfileEditModel extends FlutterFlowModel<ProfileEditWidget> {
     textFieldFocusNode8?.dispose();
     textController10?.dispose();
 
-    textFieldFocusNode9?.dispose();
-    textController11?.dispose();
+    phoneNumFocusNode?.dispose();
+    phoneNumTextController?.dispose();
 
-    textFieldFocusNode10?.dispose();
+    textFieldFocusNode9?.dispose();
     textController12?.dispose();
 
-    textFieldFocusNode11?.dispose();
+    textFieldFocusNode10?.dispose();
     textController13?.dispose();
   }
 }

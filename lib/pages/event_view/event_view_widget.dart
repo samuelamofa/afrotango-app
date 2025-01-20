@@ -5,6 +5,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'event_view_model.dart';
 export 'event_view_model.dart';
 
@@ -29,8 +30,6 @@ class _EventViewWidgetState extends State<EventViewWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => EventViewModel());
-
-    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -48,7 +47,7 @@ class _EventViewWidgetState extends State<EventViewWidget> {
         // Customize what your widget looks like when it's loading.
         if (!snapshot.hasData) {
           return Scaffold(
-            backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
+            backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
             body: Center(
               child: SizedBox(
                 width: 50.0,
@@ -72,9 +71,9 @@ class _EventViewWidgetState extends State<EventViewWidget> {
           },
           child: Scaffold(
             key: scaffoldKey,
-            backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
+            backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
             appBar: AppBar(
-              backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
+              backgroundColor: FlutterFlowTheme.of(context).secondary,
               automaticallyImplyLeading: false,
               leading: FlutterFlowIconButton(
                 borderColor: Colors.transparent,
@@ -83,7 +82,7 @@ class _EventViewWidgetState extends State<EventViewWidget> {
                 buttonSize: 54.0,
                 icon: Icon(
                   Icons.arrow_back_rounded,
-                  color: FlutterFlowTheme.of(context).secondary,
+                  color: FlutterFlowTheme.of(context).secondaryBackground,
                   size: 24.0,
                 ),
                 onPressed: () async {
@@ -94,6 +93,7 @@ class _EventViewWidgetState extends State<EventViewWidget> {
                 'Event Details',
                 style: FlutterFlowTheme.of(context).titleMedium.override(
                       fontFamily: 'Poppins',
+                      color: FlutterFlowTheme.of(context).secondaryBackground,
                       letterSpacing: 0.0,
                     ),
               ),
@@ -118,7 +118,7 @@ class _EventViewWidgetState extends State<EventViewWidget> {
                         children: [
                           Padding(
                             padding: const EdgeInsetsDirectional.fromSTEB(
-                                15.0, 32.0, 15.0, 0.0),
+                                15.0, 15.0, 15.0, 0.0),
                             child: Container(
                               width: double.infinity,
                               height: 261.0,
@@ -161,7 +161,7 @@ class _EventViewWidgetState extends State<EventViewWidget> {
                                               const EdgeInsetsDirectional.fromSTEB(
                                                   7.0, 10.29, 0.0, 0.0),
                                           child: Container(
-                                            width: 98.0,
+                                            width: 120.0,
                                             height: 28.0,
                                             decoration: BoxDecoration(
                                               color: const Color(0xFFFEF9C3),
@@ -184,21 +184,23 @@ class _EventViewWidgetState extends State<EventViewWidget> {
                                                     ),
                                                   ),
                                                 ),
-                                                Text(
-                                                  eventViewEventRecord
-                                                      .eventCategory,
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily: 'Inter',
-                                                        color:
-                                                            const Color(0xFFEAB308),
-                                                        fontSize: 12.0,
-                                                        letterSpacing: 0.0,
-                                                        fontWeight:
-                                                            FontWeight.normal,
-                                                      ),
+                                                Flexible(
+                                                  child: Text(
+                                                    eventViewEventRecord
+                                                        .eventCategory,
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily: 'Inter',
+                                                          color:
+                                                              const Color(0xFFEAB308),
+                                                          fontSize: 12.0,
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FontWeight.normal,
+                                                        ),
+                                                  ),
                                                 ),
                                               ],
                                             ),
@@ -245,7 +247,7 @@ class _EventViewWidgetState extends State<EventViewWidget> {
                           ),
                           Padding(
                             padding: const EdgeInsetsDirectional.fromSTEB(
-                                15.0, 18.0, 0.0, 0.0),
+                                21.0, 18.0, 0.0, 0.0),
                             child: Text(
                               eventViewEventRecord.eventName,
                               style: FlutterFlowTheme.of(context)
@@ -260,7 +262,7 @@ class _EventViewWidgetState extends State<EventViewWidget> {
                           ),
                           Padding(
                             padding: const EdgeInsetsDirectional.fromSTEB(
-                                15.0, 18.0, 0.0, 0.0),
+                                21.0, 18.0, 0.0, 0.0),
                             child: Text(
                               dateTimeFormat(
                                   "yMMMd", eventViewEventRecord.eventDate!),
@@ -278,7 +280,7 @@ class _EventViewWidgetState extends State<EventViewWidget> {
                           ),
                           Padding(
                             padding: const EdgeInsetsDirectional.fromSTEB(
-                                15.0, 27.0, 15.0, 0.0),
+                                21.0, 27.0, 21.0, 0.0),
                             child: Container(
                               width: double.infinity,
                               height: 243.0,
@@ -289,7 +291,7 @@ class _EventViewWidgetState extends State<EventViewWidget> {
                               ),
                               child: Padding(
                                 padding: const EdgeInsetsDirectional.fromSTEB(
-                                    21.0, 15.0, 21.0, 0.0),
+                                    15.0, 15.0, 15.0, 0.0),
                                 child: Column(
                                   mainAxisSize: MainAxisSize.max,
                                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -572,18 +574,32 @@ class _EventViewWidgetState extends State<EventViewWidget> {
                                               padding: const EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       17.91, 0.0, 0.0, 0.0),
-                                              child: Text(
-                                                containerUsersRecord
-                                                    .phoneNumber,
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily: 'Poppins',
-                                                          color:
-                                                              const Color(0xFF171725),
-                                                          letterSpacing: 0.0,
-                                                        ),
+                                              child: InkWell(
+                                                splashColor: Colors.transparent,
+                                                focusColor: Colors.transparent,
+                                                hoverColor: Colors.transparent,
+                                                highlightColor:
+                                                    Colors.transparent,
+                                                onTap: () async {
+                                                  await launchUrl(Uri(
+                                                    scheme: 'tel',
+                                                    path: containerUsersRecord
+                                                        .phoneNumber,
+                                                  ));
+                                                },
+                                                child: Text(
+                                                  containerUsersRecord
+                                                      .phoneNumber,
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Poppins',
+                                                        color:
+                                                            const Color(0xFF171725),
+                                                        letterSpacing: 0.0,
+                                                      ),
+                                                ),
                                               ),
                                             ),
                                           ],
@@ -609,7 +625,7 @@ class _EventViewWidgetState extends State<EventViewWidget> {
                                                         .whatsapp);
                                               },
                                               child: Icon(
-                                                FFIcons.kwhatsapp121,
+                                                FFIcons.kwhatsapp,
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .secondary,
@@ -666,7 +682,7 @@ class _EventViewWidgetState extends State<EventViewWidget> {
                                                         .instagram);
                                               },
                                               child: Icon(
-                                                FFIcons.kinstagramFilled,
+                                                FFIcons.kinstagram2,
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .secondary,

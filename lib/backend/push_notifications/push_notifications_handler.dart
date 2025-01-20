@@ -179,10 +179,17 @@ final parametersBuilderMap =
       ),
   'CreateBusiness': ParameterData.none(),
   'createProfile': ParameterData.none(),
-  'homepage2': ParameterData.none(),
   'searchResult': (data) async => ParameterData(
         allParams: {
           'searchText': getParameter<String>(data, 'searchText'),
+        },
+      ),
+  'homePage3': ParameterData.none(),
+  'Feed': ParameterData.none(),
+  'Feed2': ParameterData.none(),
+  'Marketplace1': (data) async => ParameterData(
+        allParams: {
+          'categoryName': getParameter<String>(data, 'categoryName'),
         },
       ),
 };

@@ -42,5 +42,8 @@ export '/pages/create_business/create_business_widget.dart'
     show CreateBusinessWidget;
 export '/pages/create_profile/create_profile_widget.dart'
     show CreateProfileWidget;
-export '/new_pages/homepage2/homepage2_widget.dart' show Homepage2Widget;
 export '/pages/search_result/search_result_widget.dart' show SearchResultWidget;
+export '/new_pages/home_page3/home_page3_widget.dart' show HomePage3Widget;
+export '/feed/feed_widget.dart' show FeedWidget;
+export '/feed2/feed2_widget.dart' show Feed2Widget;
+export '/pages/marketplace1/marketplace1_widget.dart' show Marketplace1Widget;

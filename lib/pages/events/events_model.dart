@@ -1,9 +1,6 @@
-import '/backend/backend.dart';
-import '/create_components/logo_header/logo_header_widget.dart';
+import '/flutter_flow/flutter_flow_calendar.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/form_field_controller.dart';
 import 'events_widget.dart' show EventsWidget;
-import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 
 class EventsModel extends FlutterFlowModel<EventsWidget> {
@@ -19,34 +16,46 @@ class EventsModel extends FlutterFlowModel<EventsWidget> {
           int index, Function(DocumentReference) updateFn) =>
       eventList[index] = updateFn(eventList[index]);
 
+  List<String> category = [];
+  void addToCategory(String item) => category.add(item);
+  void removeFromCategory(String item) => category.remove(item);
+  void removeAtIndexFromCategory(int index) => category.removeAt(index);
+  void insertAtIndexInCategory(int index, String item) =>
+      category.insert(index, item);
+  void updateCategoryAtIndex(int index, Function(String) updateFn) =>
+      category[index] = updateFn(category[index]);
+
+  DateTime? eventdate;
+
   ///  State fields for stateful widgets in this page.
 
-  // Model for LogoHeader component.
-  late LogoHeaderModel logoHeaderModel;
-  // State field(s) for ChoiceChips widget.
-  FormFieldController<List<String>>? choiceChipsValueController;
-  String? get choiceChipsValue =>
-      choiceChipsValueController?.value?.firstOrNull;
-  set choiceChipsValue(String? val) =>
-      choiceChipsValueController?.value = val != null ? [val] : [];
-  // Stores action output result for [Firestore Query - Query a collection] action in ChoiceChips widget.
-  List<EventRecord>? all;
-  // Stores action output result for [Firestore Query - Query a collection] action in ChoiceChips widget.
-  List<EventRecord>? sports;
-  // Stores action output result for [Firestore Query - Query a collection] action in ChoiceChips widget.
-  List<EventRecord>? cooking;
-  // Stores action output result for [Firestore Query - Query a collection] action in ChoiceChips widget.
-  List<EventRecord>? business;
-  // Stores action output result for [Firestore Query - Query a collection] action in ChoiceChips widget.
-  List<EventRecord>? party;
+  // State field(s) for searchBar widget.
+  FocusNode? searchBarFocusNode1;
+  TextEditingController? searchBarTextController1;
+  String? Function(BuildContext, String?)? searchBarTextController1Validator;
+  // State field(s) for Calendar widget.
+  DateTimeRange? calendarSelectedDay;
+  // State field(s) for searchBar widget.
+  FocusNode? searchBarFocusNode2;
+  TextEditingController? searchBarTextController2;
+  String? Function(BuildContext, String?)? searchBarTextController2Validator;
+  // Stores action output result for [Alert Dialog - Custom Dialog] action in Image widget.
+  List<String>? eventfilters;
 
   @override
   void initState(BuildContext context) {
-    logoHeaderModel = createModel(context, () => LogoHeaderModel());
+    calendarSelectedDay = DateTimeRange(
+      start: DateTime.now().startOfDay,
+      end: DateTime.now().endOfDay,
+    );
   }
 
   @override
   void dispose() {
-    logoHeaderModel.dispose();
+    searchBarFocusNode1?.dispose();
+    searchBarTextController1?.dispose();
+
+    searchBarFocusNode2?.dispose();
+    searchBarTextController2?.dispose();
   }
 }

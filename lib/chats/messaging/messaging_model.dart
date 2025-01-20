@@ -7,6 +7,11 @@ class MessagingModel extends FlutterFlowModel<MessagingWidget> {
 
   // State field(s) for Columnscroll widget.
   ScrollController? columnscroll;
+  bool isDataUploading = false;
+  FFUploadedFile uploadedLocalFile =
+      FFUploadedFile(bytes: Uint8List.fromList([]));
+  String uploadedFileUrl = '';
+
   // State field(s) for TextField widget.
   FocusNode? textFieldFocusNode;
   TextEditingController? textController;
