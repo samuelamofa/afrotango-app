@@ -33,8 +33,6 @@ class _SearchConnectionsCompWidgetState
   void initState() {
     super.initState();
     _model = createModel(context, () => SearchConnectionsCompModel());
-
-    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override

@@ -33,8 +33,6 @@ class _ReviewWidgetState extends State<ReviewWidget> {
 
     _model.textController ??= TextEditingController();
     _model.textFieldFocusNode ??= FocusNode();
-
-    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -128,7 +126,7 @@ class _ReviewWidgetState extends State<ReviewWidget> {
                       fontWeight: FontWeight.w600,
                     ),
               ),
-              Expanded(
+              Flexible(
                 flex: 1,
                 child: Padding(
                   padding:
@@ -208,17 +206,66 @@ class _ReviewWidgetState extends State<ReviewWidget> {
                   ),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 100.0, 0.0, 0.0),
-                child: Row(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    FFButtonWidget(
+              Row(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  FFButtonWidget(
+                    onPressed: () async {
+                      context.safePop();
+                    },
+                    text: 'Cancel',
+                    options: FFButtonOptions(
+                      width: 114.0,
+                      height: 38.0,
+                      padding:
+                          const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                      iconPadding:
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                      color: FlutterFlowTheme.of(context).secondaryBackground,
+                      textStyle:
+                          FlutterFlowTheme.of(context).titleSmall.override(
+                                fontFamily: 'Poppins',
+                                color: const Color(0xFF1F2937),
+                                letterSpacing: 0.0,
+                              ),
+                      elevation: 0.0,
+                      borderSide: const BorderSide(
+                        color: Color(0xFFE5E7EB),
+                      ),
+                      borderRadius: BorderRadius.circular(40.0),
+                    ),
+                  ),
+                  Padding(
+                    padding:
+                        const EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
+                    child: FFButtonWidget(
                       onPressed: () async {
-                        context.safePop();
+                        await ReviewsRecord.createDoc(widget.businessRef!)
+                            .set(createReviewsRecordData(
+                          reviewText: _model.textController.text,
+                          createdUserRef: currentUserReference,
+                          ratingsCountValue: _model.ratingBarValue,
+                          createdTime: getCurrentTimestamp,
+                        ));
+
+                        context.goNamed(
+                          'BuisnessProfile',
+                          queryParameters: {
+                            'businessRef': serializeParam(
+                              widget.businessRef,
+                              ParamType.DocumentReference,
+                            ),
+                          }.withoutNulls,
+                          extra: <String, dynamic>{
+                            kTransitionInfoKey: const TransitionInfo(
+                              hasTransition: true,
+                              transitionType: PageTransitionType.leftToRight,
+                            ),
+                          },
+                        );
                       },
-                      text: 'Cancel',
+                      text: 'Submit',
                       options: FFButtonOptions(
                         width: 114.0,
                         height: 38.0,
@@ -226,71 +273,19 @@ class _ReviewWidgetState extends State<ReviewWidget> {
                             16.0, 0.0, 16.0, 0.0),
                         iconPadding:
                             const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                        color: FlutterFlowTheme.of(context).secondaryBackground,
+                        color: FlutterFlowTheme.of(context).secondary,
                         textStyle:
                             FlutterFlowTheme.of(context).titleSmall.override(
                                   fontFamily: 'Poppins',
-                                  color: const Color(0xFF1F2937),
+                                  color: Colors.white,
                                   letterSpacing: 0.0,
                                 ),
                         elevation: 0.0,
-                        borderSide: const BorderSide(
-                          color: Color(0xFFE5E7EB),
-                        ),
                         borderRadius: BorderRadius.circular(40.0),
                       ),
                     ),
-                    Padding(
-                      padding:
-                          const EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
-                      child: FFButtonWidget(
-                        onPressed: () async {
-                          await ReviewsRecord.createDoc(widget.businessRef!)
-                              .set(createReviewsRecordData(
-                            reviewText: _model.textController.text,
-                            createdUserRef: currentUserReference,
-                            ratingsCountValue: _model.ratingBarValue,
-                            createdTime: getCurrentTimestamp,
-                          ));
-
-                          context.goNamed(
-                            'BuisnessProfile',
-                            queryParameters: {
-                              'businessRef': serializeParam(
-                                widget.businessRef,
-                                ParamType.DocumentReference,
-                              ),
-                            }.withoutNulls,
-                            extra: <String, dynamic>{
-                              kTransitionInfoKey: const TransitionInfo(
-                                hasTransition: true,
-                                transitionType: PageTransitionType.leftToRight,
-                              ),
-                            },
-                          );
-                        },
-                        text: 'Submit',
-                        options: FFButtonOptions(
-                          width: 114.0,
-                          height: 38.0,
-                          padding: const EdgeInsetsDirectional.fromSTEB(
-                              16.0, 0.0, 16.0, 0.0),
-                          iconPadding: const EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 0.0),
-                          color: FlutterFlowTheme.of(context).secondary,
-                          textStyle:
-                              FlutterFlowTheme.of(context).titleSmall.override(
-                                    fontFamily: 'Poppins',
-                                    color: Colors.white,
-                                    letterSpacing: 0.0,
-                                  ),
-                          elevation: 0.0,
-                          borderRadius: BorderRadius.circular(40.0),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ],
           ),

@@ -25,8 +25,6 @@ class _MyCommunitiesWidgetState extends State<MyCommunitiesWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => MyCommunitiesModel());
-
-    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -47,7 +45,7 @@ class _MyCommunitiesWidgetState extends State<MyCommunitiesWidget> {
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
         appBar: AppBar(
-          backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
+          backgroundColor: FlutterFlowTheme.of(context).secondary,
           automaticallyImplyLeading: false,
           leading: FlutterFlowIconButton(
             borderColor: Colors.transparent,
@@ -56,7 +54,7 @@ class _MyCommunitiesWidgetState extends State<MyCommunitiesWidget> {
             buttonSize: 54.0,
             icon: Icon(
               Icons.arrow_back_rounded,
-              color: FlutterFlowTheme.of(context).secondary,
+              color: FlutterFlowTheme.of(context).secondaryBackground,
               size: 24.0,
             ),
             onPressed: () async {
@@ -67,6 +65,7 @@ class _MyCommunitiesWidgetState extends State<MyCommunitiesWidget> {
             'My Communities',
             style: FlutterFlowTheme.of(context).titleMedium.override(
                   fontFamily: 'Poppins',
+                  color: FlutterFlowTheme.of(context).secondaryBackground,
                   letterSpacing: 0.0,
                 ),
           ),
@@ -242,19 +241,17 @@ class _MyCommunitiesWidgetState extends State<MyCommunitiesWidget> {
                                   );
                                 }
                                 List<CommunitiesRecord>
-                                    listViewCommunitiesRecordList =
+                                    columnCommunitiesRecordList =
                                     snapshot.data!;
 
-                                return ListView.builder(
-                                  padding: EdgeInsets.zero,
-                                  shrinkWrap: true,
-                                  scrollDirection: Axis.vertical,
-                                  itemCount:
-                                      listViewCommunitiesRecordList.length,
-                                  itemBuilder: (context, listViewIndex) {
-                                    final listViewCommunitiesRecord =
-                                        listViewCommunitiesRecordList[
-                                            listViewIndex];
+                                return Column(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: List.generate(
+                                      columnCommunitiesRecordList.length,
+                                      (columnIndex) {
+                                    final columnCommunitiesRecord =
+                                        columnCommunitiesRecordList[
+                                            columnIndex];
                                     return Padding(
                                       padding: const EdgeInsetsDirectional.fromSTEB(
                                           24.0, 31.0, 24.0, 0.0),
@@ -268,7 +265,7 @@ class _MyCommunitiesWidgetState extends State<MyCommunitiesWidget> {
                                             'aboutCommunity',
                                             queryParameters: {
                                               'communityRef': serializeParam(
-                                                listViewCommunitiesRecord
+                                                columnCommunitiesRecord
                                                     .reference,
                                                 ParamType.DocumentReference,
                                               ),
@@ -305,7 +302,7 @@ class _MyCommunitiesWidgetState extends State<MyCommunitiesWidget> {
                                                       Radius.circular(15.0),
                                                 ),
                                                 child: Image.network(
-                                                  listViewCommunitiesRecord
+                                                  columnCommunitiesRecord
                                                       .communityImage,
                                                   width: double.infinity,
                                                   height: 135.0,
@@ -317,7 +314,7 @@ class _MyCommunitiesWidgetState extends State<MyCommunitiesWidget> {
                                                     .fromSTEB(
                                                         19.0, 8.61, 0.0, 4.0),
                                                 child: Text(
-                                                  listViewCommunitiesRecord
+                                                  columnCommunitiesRecord
                                                       .communityName,
                                                   style: FlutterFlowTheme.of(
                                                           context)
@@ -336,7 +333,7 @@ class _MyCommunitiesWidgetState extends State<MyCommunitiesWidget> {
                                                     .fromSTEB(
                                                         19.0, 0.0, 0.0, 0.0),
                                                 child: Text(
-                                                  listViewCommunitiesRecord
+                                                  columnCommunitiesRecord
                                                       .aboutCommunity,
                                                   style: FlutterFlowTheme.of(
                                                           context)
@@ -386,7 +383,7 @@ class _MyCommunitiesWidgetState extends State<MyCommunitiesWidget> {
                                                                         3.71),
                                                             child: Stack(
                                                               children: [
-                                                                if (listViewCommunitiesRecord
+                                                                if (columnCommunitiesRecord
                                                                         .joinedUsersRef
                                                                         .firstOrNull !=
                                                                     null)
@@ -399,7 +396,7 @@ class _MyCommunitiesWidgetState extends State<MyCommunitiesWidget> {
                                                                             0.0),
                                                                     child: StreamBuilder<
                                                                         UsersRecord>(
-                                                                      stream: UsersRecord.getDocument(listViewCommunitiesRecord
+                                                                      stream: UsersRecord.getDocument(columnCommunitiesRecord
                                                                           .joinedUsersRef
                                                                           .firstOrNull!),
                                                                       builder:
@@ -442,7 +439,7 @@ class _MyCommunitiesWidgetState extends State<MyCommunitiesWidget> {
                                                                       },
                                                                     ),
                                                                   ),
-                                                                if (listViewCommunitiesRecord
+                                                                if (columnCommunitiesRecord
                                                                         .joinedUsersRef
                                                                         .elementAtOrNull(
                                                                             1) !=
@@ -456,7 +453,7 @@ class _MyCommunitiesWidgetState extends State<MyCommunitiesWidget> {
                                                                             0.0),
                                                                     child: StreamBuilder<
                                                                         UsersRecord>(
-                                                                      stream: UsersRecord.getDocument(listViewCommunitiesRecord
+                                                                      stream: UsersRecord.getDocument(columnCommunitiesRecord
                                                                           .joinedUsersRef
                                                                           .elementAtOrNull(
                                                                               1)!),
@@ -500,7 +497,7 @@ class _MyCommunitiesWidgetState extends State<MyCommunitiesWidget> {
                                                                       },
                                                                     ),
                                                                   ),
-                                                                if (listViewCommunitiesRecord
+                                                                if (columnCommunitiesRecord
                                                                         .joinedUsersRef
                                                                         .elementAtOrNull(
                                                                             2) !=
@@ -514,7 +511,7 @@ class _MyCommunitiesWidgetState extends State<MyCommunitiesWidget> {
                                                                             0.0),
                                                                     child: StreamBuilder<
                                                                         UsersRecord>(
-                                                                      stream: UsersRecord.getDocument(listViewCommunitiesRecord
+                                                                      stream: UsersRecord.getDocument(columnCommunitiesRecord
                                                                           .joinedUsersRef
                                                                           .elementAtOrNull(
                                                                               2)!),
@@ -558,7 +555,7 @@ class _MyCommunitiesWidgetState extends State<MyCommunitiesWidget> {
                                                                       },
                                                                     ),
                                                                   ),
-                                                                if (listViewCommunitiesRecord
+                                                                if (columnCommunitiesRecord
                                                                         .joinedUsersRef
                                                                         .elementAtOrNull(
                                                                             3) !=
@@ -572,7 +569,7 @@ class _MyCommunitiesWidgetState extends State<MyCommunitiesWidget> {
                                                                             0.0),
                                                                     child: StreamBuilder<
                                                                         UsersRecord>(
-                                                                      stream: UsersRecord.getDocument(listViewCommunitiesRecord
+                                                                      stream: UsersRecord.getDocument(columnCommunitiesRecord
                                                                           .joinedUsersRef
                                                                           .elementAtOrNull(
                                                                               3)!),
@@ -629,7 +626,7 @@ class _MyCommunitiesWidgetState extends State<MyCommunitiesWidget> {
                                                                         0.0),
                                                             child: Text(
                                                               '${formatNumber(
-                                                                listViewCommunitiesRecord
+                                                                columnCommunitiesRecord
                                                                     .joinedUsersRef
                                                                     .length,
                                                                 formatType:
@@ -673,7 +670,7 @@ class _MyCommunitiesWidgetState extends State<MyCommunitiesWidget> {
                                                             queryParameters: {
                                                               'communityRef':
                                                                   serializeParam(
-                                                                listViewCommunitiesRecord
+                                                                columnCommunitiesRecord
                                                                     .reference,
                                                                 ParamType
                                                                     .DocumentReference,
@@ -734,7 +731,7 @@ class _MyCommunitiesWidgetState extends State<MyCommunitiesWidget> {
                                         ),
                                       ),
                                     );
-                                  },
+                                  }),
                                 );
                               },
                             ),

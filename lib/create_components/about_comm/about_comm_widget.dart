@@ -30,8 +30,6 @@ class _AboutCommWidgetState extends State<AboutCommWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => AboutCommModel());
-
-    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override

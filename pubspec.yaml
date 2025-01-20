@@ -29,6 +29,7 @@ dependencies:
     sdk: flutter
   aligned_dialog: 0.0.6
   auto_size_text: 3.0.0
+  barcode_widget: 2.0.3
   cached_network_image: 3.4.1
   cached_network_image_platform_interface: 4.1.1
   cached_network_image_web: 1.3.1
@@ -60,7 +61,7 @@ dependencies:
   firebase_storage_web: 3.10.5
   floating_bottom_navigation_bar: 1.5.2
   flutter_animate: 4.5.0
-  flutter_app_badger: 1.5.0
+  flutter_barcode_scanner: ^2.0.0
   flutter_cache_manager: 3.4.1
   flutter_native_splash: 2.4.1
   flutter_plugin_android_lifecycle: 2.0.20
@@ -97,7 +98,9 @@ dependencies:
   photo_view: 0.15.0
   plugin_platform_interface: 2.1.8
   provider: 6.1.2
+  qr_flutter: ^4.0.0
   rxdart: 0.27.7
+  share: ^2.0.4
   shared_preferences: 2.3.2
   shared_preferences_android: 2.3.2
   shared_preferences_foundation: 2.5.2
@@ -112,6 +115,7 @@ dependencies:
   sqflite_common: 2.5.4+3
   stream_transform: 2.1.0
   substring_highlight: 1.0.33
+  table_calendar: 3.1.1
   text_search: 1.0.1
   timeago: 3.6.1
   universal_io: 2.2.2
@@ -180,12 +184,12 @@ flutter:
     - assets/jsons/
 
   fonts:
-    - family: MyFlutterApp
+    - family: IconsPack2
       fonts:
-        - asset: assets/fonts/MyFlutterApp.ttf
-    - family: SosIcon
+        - asset: assets/fonts/IconsPack2.ttf
+    - family: IconsPack1
       fonts:
-        - asset: assets/fonts/SosIcon.ttf
+        - asset: assets/fonts/IconsPack1.ttf
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

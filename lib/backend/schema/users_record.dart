@@ -174,6 +174,11 @@ class UsersRecord extends FirestoreRecord {
   String get profession => _profession ?? '';
   bool hasProfession() => _profession != null;
 
+  // "country_code" field.
+  String? _countryCode;
+  String get countryCode => _countryCode ?? '';
+  bool hasCountryCode() => _countryCode != null;
+
   void _initializeFields() {
     _email = snapshotData['email'] as String?;
     _displayName = snapshotData['display_name'] as String?;
@@ -207,6 +212,7 @@ class UsersRecord extends FirestoreRecord {
     _chatIds = getDataList(snapshotData['chatIds']);
     _createdProfileBool = snapshotData['createdProfileBool'] as bool?;
     _profession = snapshotData['profession'] as String?;
+    _countryCode = snapshotData['country_code'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -265,6 +271,7 @@ Map<String, dynamic> createUsersRecordData({
   String? countryName,
   bool? createdProfileBool,
   String? profession,
+  String? countryCode,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -290,6 +297,7 @@ Map<String, dynamic> createUsersRecordData({
       'country_name': countryName,
       'createdProfileBool': createdProfileBool,
       'profession': profession,
+      'country_code': countryCode,
     }.withoutNulls,
   );
 
@@ -333,7 +341,8 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e1?.countryName == e2?.countryName &&
         listEquality.equals(e1?.chatIds, e2?.chatIds) &&
         e1?.createdProfileBool == e2?.createdProfileBool &&
-        e1?.profession == e2?.profession;
+        e1?.profession == e2?.profession &&
+        e1?.countryCode == e2?.countryCode;
   }
 
   @override
@@ -368,7 +377,8 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e?.countryName,
         e?.chatIds,
         e?.createdProfileBool,
-        e?.profession
+        e?.profession,
+        e?.countryCode
       ]);
 
   @override

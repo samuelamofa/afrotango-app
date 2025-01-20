@@ -1,7 +1,7 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/push_notifications/push_notifications_util.dart';
-import '/create_components/logo_header/logo_header_widget.dart';
+import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
@@ -33,8 +33,6 @@ class _ConnectionProfileWidgetState extends State<ConnectionProfileWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => ConnectionProfileModel());
-
-    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -52,7 +50,7 @@ class _ConnectionProfileWidgetState extends State<ConnectionProfileWidget> {
         // Customize what your widget looks like when it's loading.
         if (!snapshot.hasData) {
           return Scaffold(
-            backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
+            backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
             body: Center(
               child: SizedBox(
                 width: 50.0,
@@ -76,12 +74,12 @@ class _ConnectionProfileWidgetState extends State<ConnectionProfileWidget> {
           },
           child: Scaffold(
             key: scaffoldKey,
-            backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
+            backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
             floatingActionButton: Visibility(
               visible: !(currentUserDocument?.connections.toList() ?? [])
                   .contains(widget.userRef),
-              child: Align(
-                alignment: const AlignmentDirectional(1.0, 1.0),
+              child: Padding(
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 150.0),
                 child: AuthUserStreamWidget(
                   builder: (context) => FloatingActionButton.extended(
                     onPressed: () async {
@@ -177,6 +175,35 @@ class _ConnectionProfileWidgetState extends State<ConnectionProfileWidget> {
                 ),
               ),
             ),
+            appBar: AppBar(
+              backgroundColor: FlutterFlowTheme.of(context).secondary,
+              automaticallyImplyLeading: false,
+              leading: FlutterFlowIconButton(
+                borderColor: Colors.transparent,
+                borderRadius: 30.0,
+                borderWidth: 1.0,
+                buttonSize: 54.0,
+                icon: Icon(
+                  Icons.arrow_back_rounded,
+                  color: FlutterFlowTheme.of(context).secondaryBackground,
+                  size: 24.0,
+                ),
+                onPressed: () async {
+                  context.pop();
+                },
+              ),
+              title: Text(
+                'Connection Profile',
+                style: FlutterFlowTheme.of(context).titleMedium.override(
+                      fontFamily: 'Poppins',
+                      color: FlutterFlowTheme.of(context).secondaryBackground,
+                      letterSpacing: 0.0,
+                    ),
+              ),
+              actions: const [],
+              centerTitle: true,
+              elevation: 2.0,
+            ),
             body: SafeArea(
               top: true,
               child: Container(
@@ -190,11 +217,6 @@ class _ConnectionProfileWidgetState extends State<ConnectionProfileWidget> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    wrapWithModel(
-                      model: _model.logoHeaderModel,
-                      updateCallback: () => safeSetState(() {}),
-                      child: const LogoHeaderWidget(),
-                    ),
                     Flexible(
                       child: RefreshIndicator(
                         onRefresh: () async {
@@ -217,8 +239,8 @@ class _ConnectionProfileWidgetState extends State<ConnectionProfileWidget> {
                                     color: FlutterFlowTheme.of(context)
                                         .secondaryBackground,
                                     borderRadius: const BorderRadius.only(
-                                      bottomLeft: Radius.circular(0.0),
-                                      bottomRight: Radius.circular(0.0),
+                                      bottomLeft: Radius.circular(15.0),
+                                      bottomRight: Radius.circular(15.0),
                                       topLeft: Radius.circular(15.0),
                                       topRight: Radius.circular(15.0),
                                     ),
@@ -298,7 +320,7 @@ class _ConnectionProfileWidgetState extends State<ConnectionProfileWidget> {
                                               child: Padding(
                                                 padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
-                                                        70.0, 170.0, 0.0, 0.0),
+                                                        70.0, 175.0, 0.0, 0.0),
                                                 child: Container(
                                                   width: 30.0,
                                                   height: 30.0,
@@ -391,6 +413,104 @@ class _ConnectionProfileWidgetState extends State<ConnectionProfileWidget> {
                                           decoration: const BoxDecoration(
                                             color: Color(0xFFE2E2EA),
                                           ),
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 15.0, 0.0, 0.0),
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceEvenly,
+                                          children: [
+                                            if (connectionProfileUsersRecord
+                                                        .whatsapp !=
+                                                    '')
+                                              InkWell(
+                                                splashColor: Colors.transparent,
+                                                focusColor: Colors.transparent,
+                                                hoverColor: Colors.transparent,
+                                                highlightColor:
+                                                    Colors.transparent,
+                                                onTap: () async {
+                                                  await launchURL(
+                                                      'https://wa.me/${connectionProfileUsersRecord.whatsapp}');
+                                                },
+                                                child: Icon(
+                                                  FFIcons.kwhatsapp,
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .secondary,
+                                                  size: 24.0,
+                                                ),
+                                              ),
+                                            if (connectionProfileUsersRecord
+                                                        .facebook !=
+                                                    '')
+                                              InkWell(
+                                                splashColor: Colors.transparent,
+                                                focusColor: Colors.transparent,
+                                                hoverColor: Colors.transparent,
+                                                highlightColor:
+                                                    Colors.transparent,
+                                                onTap: () async {
+                                                  await launchURL(
+                                                      connectionProfileUsersRecord
+                                                          .facebook);
+                                                },
+                                                child: Icon(
+                                                  Icons.facebook,
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .secondary,
+                                                  size: 24.0,
+                                                ),
+                                              ),
+                                            if (connectionProfileUsersRecord
+                                                        .snapchat !=
+                                                    '')
+                                              InkWell(
+                                                splashColor: Colors.transparent,
+                                                focusColor: Colors.transparent,
+                                                hoverColor: Colors.transparent,
+                                                highlightColor:
+                                                    Colors.transparent,
+                                                onTap: () async {
+                                                  await launchURL(
+                                                      connectionProfileUsersRecord
+                                                          .snapchat);
+                                                },
+                                                child: Icon(
+                                                  FFIcons.ksnapchatGhost,
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .secondary,
+                                                  size: 24.0,
+                                                ),
+                                              ),
+                                            if (connectionProfileUsersRecord
+                                                        .instagram !=
+                                                    '')
+                                              InkWell(
+                                                splashColor: Colors.transparent,
+                                                focusColor: Colors.transparent,
+                                                hoverColor: Colors.transparent,
+                                                highlightColor:
+                                                    Colors.transparent,
+                                                onTap: () async {
+                                                  await launchURL(
+                                                      connectionProfileUsersRecord
+                                                          .instagram);
+                                                },
+                                                child: Icon(
+                                                  FFIcons.kinstagram2,
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .secondary,
+                                                  size: 24.0,
+                                                ),
+                                              ),
+                                          ],
                                         ),
                                       ),
                                       Row(
@@ -548,7 +668,7 @@ class _ConnectionProfileWidgetState extends State<ConnectionProfileWidget> {
                                     15.0, 14.5, 15.0, 0.0),
                                 child: Container(
                                   width: double.infinity,
-                                  height: 265.71,
+                                  height: 200.0,
                                   decoration: BoxDecoration(
                                     color: FlutterFlowTheme.of(context)
                                         .secondaryBackground,
@@ -651,18 +771,30 @@ class _ConnectionProfileWidgetState extends State<ConnectionProfileWidget> {
                                               padding: const EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       17.91, 0.0, 0.0, 0.0),
-                                              child: Text(
-                                                connectionProfileUsersRecord
-                                                    .website,
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily: 'Poppins',
-                                                          color:
-                                                              const Color(0xFF171725),
-                                                          letterSpacing: 0.0,
-                                                        ),
+                                              child: InkWell(
+                                                splashColor: Colors.transparent,
+                                                focusColor: Colors.transparent,
+                                                hoverColor: Colors.transparent,
+                                                highlightColor:
+                                                    Colors.transparent,
+                                                onTap: () async {
+                                                  await launchURL(
+                                                      connectionProfileUsersRecord
+                                                          .website);
+                                                },
+                                                child: Text(
+                                                  connectionProfileUsersRecord
+                                                      .website,
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Poppins',
+                                                        color:
+                                                            const Color(0xFF171725),
+                                                        letterSpacing: 0.0,
+                                                      ),
+                                                ),
                                               ),
                                             ),
                                           ],
@@ -693,132 +825,37 @@ class _ConnectionProfileWidgetState extends State<ConnectionProfileWidget> {
                                               padding: const EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       17.91, 0.0, 0.0, 0.0),
-                                              child: InkWell(
-                                                splashColor: Colors.transparent,
-                                                focusColor: Colors.transparent,
-                                                hoverColor: Colors.transparent,
-                                                highlightColor:
-                                                    Colors.transparent,
-                                                onTap: () async {
-                                                  await launchUrl(Uri(
-                                                    scheme: 'tel',
-                                                    path: currentPhoneNumber,
-                                                  ));
-                                                },
-                                                child: Text(
-                                                  connectionProfileUsersRecord
-                                                      .phoneNumber,
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily: 'Poppins',
-                                                        color:
-                                                            const Color(0xFF171725),
-                                                        letterSpacing: 0.0,
-                                                      ),
+                                              child: AuthUserStreamWidget(
+                                                builder: (context) => InkWell(
+                                                  splashColor:
+                                                      Colors.transparent,
+                                                  focusColor:
+                                                      Colors.transparent,
+                                                  hoverColor:
+                                                      Colors.transparent,
+                                                  highlightColor:
+                                                      Colors.transparent,
+                                                  onTap: () async {
+                                                    await launchUrl(Uri(
+                                                      scheme: 'tel',
+                                                      path: currentPhoneNumber,
+                                                    ));
+                                                  },
+                                                  child: Text(
+                                                    currentPhoneNumber,
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily: 'Poppins',
+                                                          color:
+                                                              const Color(0xFF171725),
+                                                          letterSpacing: 0.0,
+                                                        ),
+                                                  ),
                                                 ),
                                               ),
                                             ),
-                                          ],
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 40.0, 0.0, 0.0),
-                                        child: Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceEvenly,
-                                          children: [
-                                            if (connectionProfileUsersRecord
-                                                        .whatsapp !=
-                                                    '')
-                                              InkWell(
-                                                splashColor: Colors.transparent,
-                                                focusColor: Colors.transparent,
-                                                hoverColor: Colors.transparent,
-                                                highlightColor:
-                                                    Colors.transparent,
-                                                onTap: () async {
-                                                  await launchURL(
-                                                      connectionProfileUsersRecord
-                                                          .whatsapp);
-                                                },
-                                                child: Icon(
-                                                  FFIcons.kwhatsapp121,
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .secondary,
-                                                  size: 24.0,
-                                                ),
-                                              ),
-                                            if (connectionProfileUsersRecord
-                                                        .facebook !=
-                                                    '')
-                                              InkWell(
-                                                splashColor: Colors.transparent,
-                                                focusColor: Colors.transparent,
-                                                hoverColor: Colors.transparent,
-                                                highlightColor:
-                                                    Colors.transparent,
-                                                onTap: () async {
-                                                  await launchURL(
-                                                      connectionProfileUsersRecord
-                                                          .facebook);
-                                                },
-                                                child: Icon(
-                                                  Icons.facebook,
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .secondary,
-                                                  size: 24.0,
-                                                ),
-                                              ),
-                                            if (connectionProfileUsersRecord
-                                                        .snapchat !=
-                                                    '')
-                                              InkWell(
-                                                splashColor: Colors.transparent,
-                                                focusColor: Colors.transparent,
-                                                hoverColor: Colors.transparent,
-                                                highlightColor:
-                                                    Colors.transparent,
-                                                onTap: () async {
-                                                  await launchURL(
-                                                      connectionProfileUsersRecord
-                                                          .snapchat);
-                                                },
-                                                child: Icon(
-                                                  FFIcons.ksnapchatGhost,
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .secondary,
-                                                  size: 24.0,
-                                                ),
-                                              ),
-                                            if (connectionProfileUsersRecord
-                                                        .instagram !=
-                                                    '')
-                                              InkWell(
-                                                splashColor: Colors.transparent,
-                                                focusColor: Colors.transparent,
-                                                hoverColor: Colors.transparent,
-                                                highlightColor:
-                                                    Colors.transparent,
-                                                onTap: () async {
-                                                  await launchURL(
-                                                      connectionProfileUsersRecord
-                                                          .instagram);
-                                                },
-                                                child: Icon(
-                                                  FFIcons.kinstagramFilled,
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .secondary,
-                                                  size: 24.0,
-                                                ),
-                                              ),
                                           ],
                                         ),
                                       ),
@@ -826,186 +863,183 @@ class _ConnectionProfileWidgetState extends State<ConnectionProfileWidget> {
                                   ),
                                 ),
                               ),
-                              if (currentUserEmail == '')
-                                Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
-                                      15.0, 5.36, 15.0, 0.0),
-                                  child: Container(
-                                    width: 342.86,
-                                    height: 272.14,
-                                    decoration: BoxDecoration(
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryBackground,
-                                    ),
-                                    child: Column(
-                                      mainAxisSize: MainAxisSize.max,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Padding(
-                                          padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 10.17, 0.0, 0.0),
-                                          child: Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
-                                            children: [
-                                              Padding(
-                                                padding: const EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        16.07, 0.0, 0.0, 0.0),
-                                                child: Text(
-                                                  'Photos and Videos',
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily: 'Poppins',
-                                                        color:
-                                                            const Color(0xFF171725),
-                                                        letterSpacing: 0.0,
-                                                        fontWeight:
-                                                            FontWeight.w500,
-                                                      ),
-                                                ),
-                                              ),
-                                              Padding(
-                                                padding: const EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        0.0, 0.0, 21.87, 0.0),
-                                                child: Text(
-                                                  'See all',
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily: 'Poppins',
-                                                        color:
-                                                            const Color(0xFFAF7E00),
-                                                        fontSize: 12.0,
-                                                        letterSpacing: 0.0,
-                                                        fontWeight:
-                                                            FontWeight.w500,
-                                                      ),
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                        Padding(
-                                          padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
-                                                  16.7, 10.71, 16.7, 0.0),
-                                          child: Container(
-                                            width: double.infinity,
-                                            height: 1.0,
-                                            decoration: const BoxDecoration(
-                                              color: Color(0xFFE2E2EA),
-                                            ),
-                                          ),
-                                        ),
-                                        Column(
+                              Padding(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    15.0, 5.36, 15.0, 0.0),
+                                child: Container(
+                                  width: 342.86,
+                                  height: 272.14,
+                                  decoration: BoxDecoration(
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryBackground,
+                                  ),
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.max,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 10.17, 0.0, 0.0),
+                                        child: Row(
                                           mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
                                           children: [
                                             Padding(
                                               padding: const EdgeInsetsDirectional
                                                   .fromSTEB(
-                                                      16.07, 10.71, 16.07, 0.0),
-                                              child: Row(
-                                                mainAxisSize: MainAxisSize.max,
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceBetween,
-                                                children: [
-                                                  ClipRRect(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            15.0),
-                                                    child: Image.asset(
-                                                      'assets/images/Media_1.png',
-                                                      width: 96.43,
-                                                      height: 96.43,
-                                                      fit: BoxFit.cover,
-                                                    ),
-                                                  ),
-                                                  ClipRRect(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            15.0),
-                                                    child: Image.asset(
-                                                      'assets/images/Media_2.png',
-                                                      width: 96.43,
-                                                      height: 96.43,
-                                                      fit: BoxFit.cover,
-                                                    ),
-                                                  ),
-                                                  ClipRRect(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            15.0),
-                                                    child: Image.asset(
-                                                      'assets/images/Media_3.png',
-                                                      width: 96.43,
-                                                      height: 96.43,
-                                                      fit: BoxFit.cover,
-                                                    ),
-                                                  ),
-                                                ],
+                                                      16.07, 0.0, 0.0, 0.0),
+                                              child: Text(
+                                                'Photos and Videos',
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily: 'Poppins',
+                                                          color:
+                                                              const Color(0xFF171725),
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                        ),
                                               ),
                                             ),
                                             Padding(
                                               padding: const EdgeInsetsDirectional
                                                   .fromSTEB(
-                                                      16.07, 10.71, 16.07, 0.0),
-                                              child: Row(
-                                                mainAxisSize: MainAxisSize.max,
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceBetween,
-                                                children: [
-                                                  ClipRRect(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            15.0),
-                                                    child: Image.asset(
-                                                      'assets/images/Media_4.png',
-                                                      width: 96.43,
-                                                      height: 96.43,
-                                                      fit: BoxFit.cover,
-                                                    ),
-                                                  ),
-                                                  ClipRRect(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            15.0),
-                                                    child: Image.asset(
-                                                      'assets/images/Media_5.png',
-                                                      width: 96.43,
-                                                      height: 96.43,
-                                                      fit: BoxFit.cover,
-                                                    ),
-                                                  ),
-                                                  ClipRRect(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            15.0),
-                                                    child: Image.asset(
-                                                      'assets/images/Media_6.png',
-                                                      width: 96.43,
-                                                      height: 96.43,
-                                                      fit: BoxFit.cover,
-                                                    ),
-                                                  ),
-                                                ],
+                                                      0.0, 0.0, 21.87, 0.0),
+                                              child: Text(
+                                                'See all',
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily: 'Poppins',
+                                                          color:
+                                                              const Color(0xFFAF7E00),
+                                                          fontSize: 12.0,
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                        ),
                                               ),
                                             ),
                                           ],
                                         ),
-                                      ],
-                                    ),
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                            16.7, 10.71, 16.7, 0.0),
+                                        child: Container(
+                                          width: double.infinity,
+                                          height: 1.0,
+                                          decoration: const BoxDecoration(
+                                            color: Color(0xFFE2E2EA),
+                                          ),
+                                        ),
+                                      ),
+                                      Column(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          Padding(
+                                            padding:
+                                                const EdgeInsetsDirectional.fromSTEB(
+                                                    16.07, 10.71, 16.07, 0.0),
+                                            child: Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              children: [
+                                                ClipRRect(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          15.0),
+                                                  child: Image.asset(
+                                                    'assets/images/Media_1.png',
+                                                    width: 96.43,
+                                                    height: 96.43,
+                                                    fit: BoxFit.cover,
+                                                  ),
+                                                ),
+                                                ClipRRect(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          15.0),
+                                                  child: Image.asset(
+                                                    'assets/images/Media_2.png',
+                                                    width: 96.43,
+                                                    height: 96.43,
+                                                    fit: BoxFit.cover,
+                                                  ),
+                                                ),
+                                                ClipRRect(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          15.0),
+                                                  child: Image.asset(
+                                                    'assets/images/Media_3.png',
+                                                    width: 96.43,
+                                                    height: 96.43,
+                                                    fit: BoxFit.cover,
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                          Padding(
+                                            padding:
+                                                const EdgeInsetsDirectional.fromSTEB(
+                                                    16.07, 10.71, 16.07, 0.0),
+                                            child: Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              children: [
+                                                ClipRRect(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          15.0),
+                                                  child: Image.asset(
+                                                    'assets/images/Media_4.png',
+                                                    width: 96.43,
+                                                    height: 96.43,
+                                                    fit: BoxFit.cover,
+                                                  ),
+                                                ),
+                                                ClipRRect(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          15.0),
+                                                  child: Image.asset(
+                                                    'assets/images/Media_5.png',
+                                                    width: 96.43,
+                                                    height: 96.43,
+                                                    fit: BoxFit.cover,
+                                                  ),
+                                                ),
+                                                ClipRRect(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          15.0),
+                                                  child: Image.asset(
+                                                    'assets/images/Media_6.png',
+                                                    width: 96.43,
+                                                    height: 96.43,
+                                                    fit: BoxFit.cover,
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
                                   ),
                                 ),
+                              ),
                               Column(
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
@@ -1093,7 +1127,7 @@ class _ConnectionProfileWidgetState extends State<ConnectionProfileWidget> {
                                                         rowIndex];
                                                 return Container(
                                                   width: 260.0,
-                                                  height: 262.0,
+                                                  height: 254.0,
                                                   decoration: BoxDecoration(
                                                     color: FlutterFlowTheme.of(
                                                             context)
@@ -1109,28 +1143,52 @@ class _ConnectionProfileWidgetState extends State<ConnectionProfileWidget> {
                                                         CrossAxisAlignment
                                                             .start,
                                                     children: [
-                                                      ClipRRect(
-                                                        borderRadius:
-                                                            const BorderRadius.only(
-                                                          bottomLeft:
-                                                              Radius.circular(
-                                                                  0.0),
-                                                          bottomRight:
-                                                              Radius.circular(
-                                                                  0.0),
-                                                          topLeft:
-                                                              Radius.circular(
-                                                                  15.0),
-                                                          topRight:
-                                                              Radius.circular(
-                                                                  15.0),
-                                                        ),
-                                                        child: Image.network(
-                                                          rowBusinessRecord
-                                                              .businessImage,
-                                                          width: 260.0,
-                                                          height: 135.0,
-                                                          fit: BoxFit.cover,
+                                                      InkWell(
+                                                        splashColor:
+                                                            Colors.transparent,
+                                                        focusColor:
+                                                            Colors.transparent,
+                                                        hoverColor:
+                                                            Colors.transparent,
+                                                        highlightColor:
+                                                            Colors.transparent,
+                                                        onTap: () async {
+                                                          context.pushNamed(
+                                                            'BuisnessProfile',
+                                                            queryParameters: {
+                                                              'businessRef':
+                                                                  serializeParam(
+                                                                rowBusinessRecord
+                                                                    .reference,
+                                                                ParamType
+                                                                    .DocumentReference,
+                                                              ),
+                                                            }.withoutNulls,
+                                                          );
+                                                        },
+                                                        child: ClipRRect(
+                                                          borderRadius:
+                                                              const BorderRadius.only(
+                                                            bottomLeft:
+                                                                Radius.circular(
+                                                                    0.0),
+                                                            bottomRight:
+                                                                Radius.circular(
+                                                                    0.0),
+                                                            topLeft:
+                                                                Radius.circular(
+                                                                    15.0),
+                                                            topRight:
+                                                                Radius.circular(
+                                                                    15.0),
+                                                          ),
+                                                          child: Image.network(
+                                                            rowBusinessRecord
+                                                                .businessImage,
+                                                            width: 260.0,
+                                                            height: 135.0,
+                                                            fit: BoxFit.cover,
+                                                          ),
                                                         ),
                                                       ),
                                                       Padding(
@@ -1195,7 +1253,7 @@ class _ConnectionProfileWidgetState extends State<ConnectionProfileWidget> {
                                                                     0.0,
                                                                     28.29,
                                                                     0.0,
-                                                                    18.71),
+                                                                    0.0),
                                                         child: Row(
                                                           mainAxisSize:
                                                               MainAxisSize.max,
@@ -1203,151 +1261,150 @@ class _ConnectionProfileWidgetState extends State<ConnectionProfileWidget> {
                                                               MainAxisAlignment
                                                                   .spaceAround,
                                                           children: [
-                                                            Padding(
-                                                              padding:
-                                                                  const EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          0.0,
-                                                                          0.0,
-                                                                          39.0,
-                                                                          0.0),
-                                                              child: Column(
-                                                                mainAxisSize:
-                                                                    MainAxisSize
-                                                                        .max,
-                                                                mainAxisAlignment:
-                                                                    MainAxisAlignment
-                                                                        .center,
-                                                                children: [
-                                                                  Row(
-                                                                    mainAxisSize:
-                                                                        MainAxisSize
-                                                                            .min,
-                                                                    mainAxisAlignment:
-                                                                        MainAxisAlignment
-                                                                            .spaceAround,
-                                                                    children: [
-                                                                      if (rowBusinessRecord.businessPhone !=
-                                                                              '')
-                                                                        Padding(
-                                                                          padding: const EdgeInsetsDirectional.fromSTEB(
-                                                                              26.0,
-                                                                              0.0,
-                                                                              0.0,
-                                                                              0.0),
+                                                            Column(
+                                                              mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .max,
+                                                              mainAxisAlignment:
+                                                                  MainAxisAlignment
+                                                                      .center,
+                                                              children: [
+                                                                Row(
+                                                                  mainAxisSize:
+                                                                      MainAxisSize
+                                                                          .min,
+                                                                  mainAxisAlignment:
+                                                                      MainAxisAlignment
+                                                                          .spaceAround,
+                                                                  children: [
+                                                                    if (rowBusinessRecord.businessPhone !=
+                                                                            '')
+                                                                      Padding(
+                                                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                            26.0,
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0),
+                                                                        child:
+                                                                            InkWell(
+                                                                          splashColor:
+                                                                              Colors.transparent,
+                                                                          focusColor:
+                                                                              Colors.transparent,
+                                                                          hoverColor:
+                                                                              Colors.transparent,
+                                                                          highlightColor:
+                                                                              Colors.transparent,
+                                                                          onTap:
+                                                                              () async {
+                                                                            await launchUrl(Uri(
+                                                                              scheme: 'tel',
+                                                                              path: rowBusinessRecord.businessPhone,
+                                                                            ));
+                                                                          },
                                                                           child:
-                                                                              InkWell(
-                                                                            splashColor:
-                                                                                Colors.transparent,
-                                                                            focusColor:
-                                                                                Colors.transparent,
-                                                                            hoverColor:
-                                                                                Colors.transparent,
-                                                                            highlightColor:
-                                                                                Colors.transparent,
-                                                                            onTap:
-                                                                                () async {
-                                                                              await launchUrl(Uri(
-                                                                                scheme: 'tel',
-                                                                                path: rowBusinessRecord.businessPhone,
-                                                                              ));
-                                                                            },
-                                                                            child:
-                                                                                Icon(
-                                                                              Icons.call,
-                                                                              color: FlutterFlowTheme.of(context).primaryText,
-                                                                              size: 18.0,
-                                                                            ),
+                                                                              Icon(
+                                                                            Icons.call,
+                                                                            color:
+                                                                                FlutterFlowTheme.of(context).primaryText,
+                                                                            size:
+                                                                                18.0,
                                                                           ),
                                                                         ),
-                                                                      if (rowBusinessRecord.businessWhatsapp !=
-                                                                              '')
-                                                                        Padding(
-                                                                          padding: const EdgeInsetsDirectional.fromSTEB(
-                                                                              24.0,
-                                                                              0.0,
-                                                                              0.0,
-                                                                              0.0),
+                                                                      ),
+                                                                    if (rowBusinessRecord.businessWhatsapp !=
+                                                                            '')
+                                                                      Padding(
+                                                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                            24.0,
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0),
+                                                                        child:
+                                                                            InkWell(
+                                                                          splashColor:
+                                                                              Colors.transparent,
+                                                                          focusColor:
+                                                                              Colors.transparent,
+                                                                          hoverColor:
+                                                                              Colors.transparent,
+                                                                          highlightColor:
+                                                                              Colors.transparent,
+                                                                          onTap:
+                                                                              () async {
+                                                                            await launchURL(rowBusinessRecord.businessWhatsapp);
+                                                                          },
                                                                           child:
-                                                                              InkWell(
-                                                                            splashColor:
-                                                                                Colors.transparent,
-                                                                            focusColor:
-                                                                                Colors.transparent,
-                                                                            hoverColor:
-                                                                                Colors.transparent,
-                                                                            highlightColor:
-                                                                                Colors.transparent,
-                                                                            onTap:
-                                                                                () async {
-                                                                              await launchURL(rowBusinessRecord.businessWhatsapp);
-                                                                            },
-                                                                            child:
-                                                                                Icon(
-                                                                              FFIcons.kwhatsapp121,
-                                                                              color: FlutterFlowTheme.of(context).primaryText,
-                                                                              size: 18.0,
-                                                                            ),
+                                                                              Icon(
+                                                                            FFIcons.kwhatsapp,
+                                                                            color:
+                                                                                FlutterFlowTheme.of(context).primaryText,
+                                                                            size:
+                                                                                18.0,
                                                                           ),
                                                                         ),
-                                                                      if (rowBusinessRecord.businessEmail !=
-                                                                              '')
-                                                                        Padding(
-                                                                          padding: const EdgeInsetsDirectional.fromSTEB(
-                                                                              24.0,
-                                                                              0.0,
-                                                                              0.0,
-                                                                              0.0),
+                                                                      ),
+                                                                    if (rowBusinessRecord.businessEmail !=
+                                                                            '')
+                                                                      Padding(
+                                                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                            24.0,
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0),
+                                                                        child:
+                                                                            InkWell(
+                                                                          splashColor:
+                                                                              Colors.transparent,
+                                                                          focusColor:
+                                                                              Colors.transparent,
+                                                                          hoverColor:
+                                                                              Colors.transparent,
+                                                                          highlightColor:
+                                                                              Colors.transparent,
+                                                                          onTap:
+                                                                              () async {
+                                                                            await launchUrl(Uri(
+                                                                              scheme: 'mailto',
+                                                                              path: rowBusinessRecord.businessEmail,
+                                                                            ));
+                                                                          },
                                                                           child:
-                                                                              InkWell(
-                                                                            splashColor:
-                                                                                Colors.transparent,
-                                                                            focusColor:
-                                                                                Colors.transparent,
-                                                                            hoverColor:
-                                                                                Colors.transparent,
-                                                                            highlightColor:
-                                                                                Colors.transparent,
-                                                                            onTap:
-                                                                                () async {
-                                                                              await launchUrl(Uri(
-                                                                                scheme: 'mailto',
-                                                                                path: rowBusinessRecord.businessEmail,
-                                                                              ));
-                                                                            },
-                                                                            child:
-                                                                                Icon(
-                                                                              Icons.mail,
-                                                                              color: FlutterFlowTheme.of(context).primaryText,
-                                                                              size: 18.0,
-                                                                            ),
+                                                                              Icon(
+                                                                            Icons.mail,
+                                                                            color:
+                                                                                FlutterFlowTheme.of(context).primaryText,
+                                                                            size:
+                                                                                18.0,
                                                                           ),
                                                                         ),
-                                                                      if (rowBusinessRecord.businessMap !=
-                                                                              '')
-                                                                        Padding(
-                                                                          padding: const EdgeInsetsDirectional.fromSTEB(
-                                                                              42.0,
-                                                                              0.0,
-                                                                              0.0,
-                                                                              0.0),
-                                                                          child:
-                                                                              Text(
-                                                                            'view in map',
-                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                  fontFamily: 'Poppins',
-                                                                                  color: const Color(0xFF4987FF),
-                                                                                  fontSize: 10.0,
-                                                                                  letterSpacing: 0.0,
-                                                                                  fontWeight: FontWeight.w600,
-                                                                                  decoration: TextDecoration.underline,
-                                                                                ),
-                                                                          ),
+                                                                      ),
+                                                                    if (rowBusinessRecord.businessMap !=
+                                                                            '')
+                                                                      Padding(
+                                                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                            42.0,
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0),
+                                                                        child:
+                                                                            Text(
+                                                                          'view in map',
+                                                                          style: FlutterFlowTheme.of(context)
+                                                                              .bodyMedium
+                                                                              .override(
+                                                                                fontFamily: 'Poppins',
+                                                                                color: const Color(0xFF4987FF),
+                                                                                fontSize: 10.0,
+                                                                                letterSpacing: 0.0,
+                                                                                fontWeight: FontWeight.w600,
+                                                                                decoration: TextDecoration.underline,
+                                                                              ),
                                                                         ),
-                                                                    ],
-                                                                  ),
-                                                                ],
-                                                              ),
+                                                                      ),
+                                                                  ],
+                                                                ),
+                                                              ],
                                                             ),
                                                           ],
                                                         ),
@@ -1458,166 +1515,184 @@ class _ConnectionProfileWidgetState extends State<ConnectionProfileWidget> {
                                                         BorderRadius.circular(
                                                             15.0),
                                                   ),
-                                                  child: Column(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .start,
-                                                    children: [
-                                                      ClipRRect(
-                                                        borderRadius:
-                                                            const BorderRadius.only(
-                                                          bottomLeft:
-                                                              Radius.circular(
-                                                                  0.0),
-                                                          bottomRight:
-                                                              Radius.circular(
-                                                                  0.0),
-                                                          topLeft:
-                                                              Radius.circular(
-                                                                  15.0),
-                                                          topRight:
-                                                              Radius.circular(
-                                                                  15.0),
+                                                  child: InkWell(
+                                                    splashColor:
+                                                        Colors.transparent,
+                                                    focusColor:
+                                                        Colors.transparent,
+                                                    hoverColor:
+                                                        Colors.transparent,
+                                                    highlightColor:
+                                                        Colors.transparent,
+                                                    onTap: () async {
+                                                      context.pushNamed(
+                                                        'eventView',
+                                                        queryParameters: {
+                                                          'eventRef':
+                                                              serializeParam(
+                                                            rowEventRecord
+                                                                .reference,
+                                                            ParamType
+                                                                .DocumentReference,
+                                                          ),
+                                                        }.withoutNulls,
+                                                      );
+                                                    },
+                                                    child: Column(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .start,
+                                                      children: [
+                                                        ClipRRect(
+                                                          borderRadius:
+                                                              const BorderRadius.only(
+                                                            bottomLeft:
+                                                                Radius.circular(
+                                                                    0.0),
+                                                            bottomRight:
+                                                                Radius.circular(
+                                                                    0.0),
+                                                            topLeft:
+                                                                Radius.circular(
+                                                                    15.0),
+                                                            topRight:
+                                                                Radius.circular(
+                                                                    15.0),
+                                                          ),
+                                                          child: Image.network(
+                                                            rowEventRecord
+                                                                .eventImage,
+                                                            width: 260.0,
+                                                            height: 135.0,
+                                                            fit: BoxFit.cover,
+                                                          ),
                                                         ),
-                                                        child: Image.network(
-                                                          rowEventRecord
-                                                              .eventImage,
-                                                          width: 260.0,
-                                                          height: 135.0,
-                                                          fit: BoxFit.cover,
-                                                        ),
-                                                      ),
-                                                      Expanded(
-                                                        child: Column(
-                                                          mainAxisSize:
-                                                              MainAxisSize.max,
-                                                          crossAxisAlignment:
-                                                              CrossAxisAlignment
-                                                                  .start,
-                                                          children: [
-                                                            Expanded(
-                                                              child: Padding(
-                                                                padding:
-                                                                    const EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            15.0,
-                                                                            0.0,
-                                                                            0.0,
-                                                                            0.0),
-                                                                child: Row(
-                                                                  mainAxisSize:
-                                                                      MainAxisSize
-                                                                          .max,
-                                                                  mainAxisAlignment:
-                                                                      MainAxisAlignment
-                                                                          .start,
-                                                                  children: [
-                                                                    Padding(
-                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
-                                                                          0.0,
-                                                                          9.0,
+                                                        Expanded(
+                                                          child: Column(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            crossAxisAlignment:
+                                                                CrossAxisAlignment
+                                                                    .start,
+                                                            children: [
+                                                              Expanded(
+                                                                child: Padding(
+                                                                  padding: const EdgeInsetsDirectional
+                                                                      .fromSTEB(
                                                                           15.0,
+                                                                          0.0,
+                                                                          0.0,
                                                                           0.0),
-                                                                      child:
-                                                                          Column(
-                                                                        mainAxisSize:
-                                                                            MainAxisSize.max,
-                                                                        crossAxisAlignment:
-                                                                            CrossAxisAlignment.start,
-                                                                        children: [
-                                                                          Text(
-                                                                            'APR',
-                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                  fontFamily: 'Poppins',
-                                                                                  color: const Color(0xFF92929D),
-                                                                                  fontSize: 12.0,
-                                                                                  letterSpacing: 0.0,
-                                                                                  fontWeight: FontWeight.w600,
-                                                                                ),
-                                                                          ),
-                                                                          Text(
-                                                                            '27',
-                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                  fontFamily: 'Poppins',
-                                                                                  fontSize: 24.0,
-                                                                                  letterSpacing: 0.0,
-                                                                                  fontWeight: FontWeight.w600,
-                                                                                ),
-                                                                          ),
-                                                                        ],
-                                                                      ),
-                                                                    ),
-                                                                    Expanded(
-                                                                      child:
-                                                                          Column(
-                                                                        mainAxisSize:
-                                                                            MainAxisSize.max,
-                                                                        mainAxisAlignment:
-                                                                            MainAxisAlignment.center,
-                                                                        crossAxisAlignment:
-                                                                            CrossAxisAlignment.start,
-                                                                        children: [
-                                                                          Flexible(
-                                                                            child:
-                                                                                Text(
-                                                                              rowEventRecord.eventName.maybeHandleOverflow(
-                                                                                maxChars: 20,
-                                                                                replacement: '…',
-                                                                              ),
+                                                                  child: Row(
+                                                                    mainAxisSize:
+                                                                        MainAxisSize
+                                                                            .max,
+                                                                    mainAxisAlignment:
+                                                                        MainAxisAlignment
+                                                                            .start,
+                                                                    children: [
+                                                                      Padding(
+                                                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                            0.0,
+                                                                            9.0,
+                                                                            15.0,
+                                                                            0.0),
+                                                                        child:
+                                                                            Column(
+                                                                          mainAxisSize:
+                                                                              MainAxisSize.max,
+                                                                          crossAxisAlignment:
+                                                                              CrossAxisAlignment.start,
+                                                                          children: [
+                                                                            Text(
+                                                                              'APR',
                                                                               style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                     fontFamily: 'Poppins',
-                                                                                    color: const Color(0xFF44444F),
-                                                                                    fontSize: 16.0,
+                                                                                    color: const Color(0xFF92929D),
+                                                                                    fontSize: 12.0,
                                                                                     letterSpacing: 0.0,
                                                                                     fontWeight: FontWeight.w600,
                                                                                   ),
                                                                             ),
-                                                                          ),
-                                                                          Padding(
-                                                                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                                                                0.0,
-                                                                                3.71,
-                                                                                0.0,
-                                                                                0.0),
-                                                                            child:
-                                                                                Row(
-                                                                              mainAxisSize: MainAxisSize.max,
-                                                                              children: [
-                                                                                Text(
-                                                                                  'Thu 10:00',
-                                                                                  style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                        fontFamily: 'Poppins',
-                                                                                        color: const Color(0xFF92929D),
-                                                                                        letterSpacing: 0.0,
-                                                                                      ),
+                                                                            Text(
+                                                                              '27',
+                                                                              style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                    fontFamily: 'Poppins',
+                                                                                    fontSize: 24.0,
+                                                                                    letterSpacing: 0.0,
+                                                                                    fontWeight: FontWeight.w600,
+                                                                                  ),
+                                                                            ),
+                                                                          ],
+                                                                        ),
+                                                                      ),
+                                                                      Expanded(
+                                                                        child:
+                                                                            Column(
+                                                                          mainAxisSize:
+                                                                              MainAxisSize.max,
+                                                                          mainAxisAlignment:
+                                                                              MainAxisAlignment.center,
+                                                                          crossAxisAlignment:
+                                                                              CrossAxisAlignment.start,
+                                                                          children: [
+                                                                            Flexible(
+                                                                              child: Text(
+                                                                                rowEventRecord.eventName.maybeHandleOverflow(
+                                                                                  maxChars: 20,
+                                                                                  replacement: '…',
                                                                                 ),
-                                                                                Padding(
-                                                                                  padding: const EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
-                                                                                  child: Text(
-                                                                                    rowEventRecord.eventLocation,
+                                                                                style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                      fontFamily: 'Poppins',
+                                                                                      color: const Color(0xFF44444F),
+                                                                                      fontSize: 16.0,
+                                                                                      letterSpacing: 0.0,
+                                                                                      fontWeight: FontWeight.w600,
+                                                                                    ),
+                                                                              ),
+                                                                            ),
+                                                                            Padding(
+                                                                              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 3.71, 0.0, 0.0),
+                                                                              child: Row(
+                                                                                mainAxisSize: MainAxisSize.max,
+                                                                                children: [
+                                                                                  Text(
+                                                                                    'Thu 10:00',
                                                                                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                           fontFamily: 'Poppins',
                                                                                           color: const Color(0xFF92929D),
                                                                                           letterSpacing: 0.0,
                                                                                         ),
                                                                                   ),
-                                                                                ),
-                                                                              ],
+                                                                                  Padding(
+                                                                                    padding: const EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
+                                                                                    child: Text(
+                                                                                      rowEventRecord.eventLocation,
+                                                                                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                            fontFamily: 'Poppins',
+                                                                                            color: const Color(0xFF92929D),
+                                                                                            letterSpacing: 0.0,
+                                                                                          ),
+                                                                                    ),
+                                                                                  ),
+                                                                                ],
+                                                                              ),
                                                                             ),
-                                                                          ),
-                                                                        ],
+                                                                          ],
+                                                                        ),
                                                                       ),
-                                                                    ),
-                                                                  ],
+                                                                    ],
+                                                                  ),
                                                                 ),
                                                               ),
-                                                            ),
-                                                          ],
+                                                            ],
+                                                          ),
                                                         ),
-                                                      ),
-                                                    ],
+                                                      ],
+                                                    ),
                                                   ),
                                                 );
                                               }).divide(const SizedBox(width: 10.0)),
@@ -1728,271 +1803,285 @@ class _ConnectionProfileWidgetState extends State<ConnectionProfileWidget> {
                                                           BorderRadius.circular(
                                                               15.0),
                                                     ),
-                                                    child: Column(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      crossAxisAlignment:
-                                                          CrossAxisAlignment
-                                                              .start,
-                                                      children: [
-                                                        Stack(
-                                                          children: [
-                                                            ClipRRect(
-                                                              borderRadius:
-                                                                  const BorderRadius
-                                                                      .only(
-                                                                bottomLeft: Radius
-                                                                    .circular(
-                                                                        0.0),
-                                                                bottomRight: Radius
-                                                                    .circular(
-                                                                        0.0),
-                                                                topLeft: Radius
-                                                                    .circular(
-                                                                        15.0),
-                                                                topRight: Radius
-                                                                    .circular(
-                                                                        15.0),
-                                                              ),
-                                                              child:
-                                                                  Image.network(
-                                                                rowAdsRecord
-                                                                    .adImage,
-                                                                width: 232.0,
-                                                                height: 140.0,
-                                                                fit: BoxFit
-                                                                    .cover,
-                                                              ),
+                                                    child: InkWell(
+                                                      splashColor:
+                                                          Colors.transparent,
+                                                      focusColor:
+                                                          Colors.transparent,
+                                                      hoverColor:
+                                                          Colors.transparent,
+                                                      highlightColor:
+                                                          Colors.transparent,
+                                                      onTap: () async {
+                                                        context.pushNamed(
+                                                          'adviewPage',
+                                                          queryParameters: {
+                                                            'adPostRef':
+                                                                serializeParam(
+                                                              rowAdsRecord
+                                                                  .reference,
+                                                              ParamType
+                                                                  .DocumentReference,
                                                             ),
-                                                            Padding(
-                                                              padding:
-                                                                  const EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          7.0,
-                                                                          10.29,
-                                                                          0.0,
-                                                                          0.0),
-                                                              child: Container(
-                                                                width: 98.0,
-                                                                height: 28.0,
-                                                                decoration:
-                                                                    BoxDecoration(
-                                                                  color: const Color(
-                                                                      0xFFFEF9C3),
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
-                                                                              999.0),
-                                                                ),
-                                                                child: Row(
-                                                                  mainAxisSize:
-                                                                      MainAxisSize
-                                                                          .max,
-                                                                  children: [
-                                                                    Padding(
-                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
-                                                                          10.0,
-                                                                          0.0,
-                                                                          5.0,
-                                                                          0.0),
-                                                                      child:
-                                                                          Container(
-                                                                        width:
-                                                                            6.0,
-                                                                        height:
-                                                                            6.0,
-                                                                        decoration:
-                                                                            const BoxDecoration(
-                                                                          color:
-                                                                              Color(0xFFEAB308),
-                                                                          shape:
-                                                                              BoxShape.circle,
-                                                                        ),
-                                                                      ),
-                                                                    ),
-                                                                    Text(
-                                                                      rowAdsRecord
-                                                                          .adCategory,
-                                                                      style: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .bodyMedium
-                                                                          .override(
-                                                                            fontFamily:
-                                                                                'Inter',
-                                                                            color:
-                                                                                const Color(0xFFEAB308),
-                                                                            fontSize:
-                                                                                12.0,
-                                                                            letterSpacing:
-                                                                                0.0,
-                                                                            fontWeight:
-                                                                                FontWeight.normal,
-                                                                          ),
-                                                                    ),
-                                                                  ],
-                                                                ),
-                                                              ),
-                                                            ),
-                                                          ],
-                                                        ),
-                                                        Padding(
-                                                          padding:
-                                                              const EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      19.0,
-                                                                      15.0,
-                                                                      0.0,
-                                                                      4.0),
-                                                          child: Text(
-                                                            rowAdsRecord
-                                                                .adsName,
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Poppins',
-                                                                  fontSize:
-                                                                      16.0,
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w600,
-                                                                ),
-                                                          ),
-                                                        ),
-                                                        Padding(
-                                                          padding:
-                                                              const EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      19.0,
-                                                                      0.0,
-                                                                      0.0,
-                                                                      0.0),
-                                                          child: Text(
-                                                            rowAdsRecord
-                                                                .adDescription,
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Poppins',
-                                                                  color: const Color(
-                                                                      0xFF92929D),
-                                                                  fontSize:
-                                                                      12.0,
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                ),
-                                                          ),
-                                                        ),
-                                                        Padding(
-                                                          padding:
-                                                              const EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      19.0,
-                                                                      15.0,
-                                                                      0.0,
-                                                                      0.0),
-                                                          child: Text(
-                                                            'GHS${rowAdsRecord.adPricing.toString()}',
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Poppins',
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .secondary,
-                                                                  fontSize:
-                                                                      16.0,
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w600,
-                                                                ),
-                                                          ),
-                                                        ),
-                                                        Padding(
-                                                          padding:
-                                                              const EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      19.0,
-                                                                      7.0,
-                                                                      0.0,
-                                                                      18.71),
-                                                          child: Row(
-                                                            mainAxisSize:
-                                                                MainAxisSize
-                                                                    .max,
-                                                            mainAxisAlignment:
-                                                                MainAxisAlignment
-                                                                    .start,
+                                                          }.withoutNulls,
+                                                        );
+                                                      },
+                                                      child: Column(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        crossAxisAlignment:
+                                                            CrossAxisAlignment
+                                                                .start,
+                                                        children: [
+                                                          Stack(
                                                             children: [
-                                                              Column(
-                                                                mainAxisSize:
-                                                                    MainAxisSize
-                                                                        .max,
-                                                                mainAxisAlignment:
-                                                                    MainAxisAlignment
-                                                                        .center,
-                                                                crossAxisAlignment:
-                                                                    CrossAxisAlignment
-                                                                        .start,
-                                                                children: [
-                                                                  Row(
+                                                              ClipRRect(
+                                                                borderRadius:
+                                                                    const BorderRadius
+                                                                        .only(
+                                                                  bottomLeft: Radius
+                                                                      .circular(
+                                                                          0.0),
+                                                                  bottomRight: Radius
+                                                                      .circular(
+                                                                          0.0),
+                                                                  topLeft: Radius
+                                                                      .circular(
+                                                                          15.0),
+                                                                  topRight: Radius
+                                                                      .circular(
+                                                                          15.0),
+                                                                ),
+                                                                child: Image
+                                                                    .network(
+                                                                  rowAdsRecord
+                                                                      .adImage,
+                                                                  width: 232.0,
+                                                                  height: 140.0,
+                                                                  fit: BoxFit
+                                                                      .cover,
+                                                                ),
+                                                              ),
+                                                              Padding(
+                                                                padding: const EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        7.0,
+                                                                        10.29,
+                                                                        0.0,
+                                                                        0.0),
+                                                                child:
+                                                                    Container(
+                                                                  width: 98.0,
+                                                                  height: 28.0,
+                                                                  decoration:
+                                                                      BoxDecoration(
+                                                                    color: const Color(
+                                                                        0xFFFEF9C3),
+                                                                    borderRadius:
+                                                                        BorderRadius.circular(
+                                                                            999.0),
+                                                                  ),
+                                                                  child: Row(
                                                                     mainAxisSize:
                                                                         MainAxisSize
-                                                                            .min,
-                                                                    mainAxisAlignment:
-                                                                        MainAxisAlignment
-                                                                            .start,
+                                                                            .max,
                                                                     children: [
+                                                                      Padding(
+                                                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                            10.0,
+                                                                            0.0,
+                                                                            5.0,
+                                                                            0.0),
+                                                                        child:
+                                                                            Container(
+                                                                          width:
+                                                                              6.0,
+                                                                          height:
+                                                                              6.0,
+                                                                          decoration:
+                                                                              const BoxDecoration(
+                                                                            color:
+                                                                                Color(0xFFEAB308),
+                                                                            shape:
+                                                                                BoxShape.circle,
+                                                                          ),
+                                                                        ),
+                                                                      ),
                                                                       Text(
-                                                                        connectionProfileUsersRecord
-                                                                            .firstName,
+                                                                        rowAdsRecord
+                                                                            .adCategory,
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .bodyMedium
                                                                             .override(
-                                                                              fontFamily: 'Roboto',
-                                                                              color: const Color(0xFF92929D),
+                                                                              fontFamily: 'Inter',
+                                                                              color: const Color(0xFFEAB308),
+                                                                              fontSize: 12.0,
                                                                               letterSpacing: 0.0,
+                                                                              fontWeight: FontWeight.normal,
                                                                             ),
                                                                       ),
-                                                                      Padding(
-                                                                        padding: const EdgeInsetsDirectional.fromSTEB(
-                                                                            81.0,
-                                                                            0.0,
-                                                                            0.0,
-                                                                            0.0),
-                                                                        child:
-                                                                            Text(
-                                                                          dateTimeFormat(
-                                                                              "relative",
-                                                                              rowAdsRecord.createdTime!),
+                                                                    ],
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                          Padding(
+                                                            padding:
+                                                                const EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        19.0,
+                                                                        15.0,
+                                                                        0.0,
+                                                                        4.0),
+                                                            child: Text(
+                                                              rowAdsRecord
+                                                                  .adsName,
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyMedium
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Poppins',
+                                                                    fontSize:
+                                                                        16.0,
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w600,
+                                                                  ),
+                                                            ),
+                                                          ),
+                                                          Padding(
+                                                            padding:
+                                                                const EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        19.0,
+                                                                        0.0,
+                                                                        0.0,
+                                                                        0.0),
+                                                            child: Text(
+                                                              rowAdsRecord
+                                                                  .adDescription,
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyMedium
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Poppins',
+                                                                    color: const Color(
+                                                                        0xFF92929D),
+                                                                    fontSize:
+                                                                        12.0,
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                  ),
+                                                            ),
+                                                          ),
+                                                          Padding(
+                                                            padding:
+                                                                const EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        19.0,
+                                                                        15.0,
+                                                                        0.0,
+                                                                        0.0),
+                                                            child: Text(
+                                                              'GHS${rowAdsRecord.adPricing.toString()}',
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyMedium
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Poppins',
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .secondary,
+                                                                    fontSize:
+                                                                        16.0,
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w600,
+                                                                  ),
+                                                            ),
+                                                          ),
+                                                          Padding(
+                                                            padding:
+                                                                const EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        19.0,
+                                                                        7.0,
+                                                                        0.0,
+                                                                        18.71),
+                                                            child: Row(
+                                                              mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .max,
+                                                              mainAxisAlignment:
+                                                                  MainAxisAlignment
+                                                                      .start,
+                                                              children: [
+                                                                Column(
+                                                                  mainAxisSize:
+                                                                      MainAxisSize
+                                                                          .max,
+                                                                  mainAxisAlignment:
+                                                                      MainAxisAlignment
+                                                                          .center,
+                                                                  crossAxisAlignment:
+                                                                      CrossAxisAlignment
+                                                                          .start,
+                                                                  children: [
+                                                                    Row(
+                                                                      mainAxisSize:
+                                                                          MainAxisSize
+                                                                              .min,
+                                                                      mainAxisAlignment:
+                                                                          MainAxisAlignment
+                                                                              .start,
+                                                                      children: [
+                                                                        Text(
+                                                                          connectionProfileUsersRecord
+                                                                              .firstName,
                                                                           style: FlutterFlowTheme.of(context)
                                                                               .bodyMedium
                                                                               .override(
                                                                                 fontFamily: 'Roboto',
                                                                                 color: const Color(0xFF92929D),
-                                                                                fontSize: 14.0,
                                                                                 letterSpacing: 0.0,
-                                                                                fontWeight: FontWeight.normal,
                                                                               ),
                                                                         ),
-                                                                      ),
-                                                                    ],
-                                                                  ),
-                                                                ],
-                                                              ),
-                                                            ],
+                                                                        Padding(
+                                                                          padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                              81.0,
+                                                                              0.0,
+                                                                              0.0,
+                                                                              0.0),
+                                                                          child:
+                                                                              Text(
+                                                                            dateTimeFormat("relative",
+                                                                                rowAdsRecord.createdTime!),
+                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                  fontFamily: 'Roboto',
+                                                                                  color: const Color(0xFF92929D),
+                                                                                  fontSize: 14.0,
+                                                                                  letterSpacing: 0.0,
+                                                                                  fontWeight: FontWeight.normal,
+                                                                                ),
+                                                                          ),
+                                                                        ),
+                                                                      ],
+                                                                    ),
+                                                                  ],
+                                                                ),
+                                                              ],
+                                                            ),
                                                           ),
-                                                        ),
-                                                      ],
+                                                        ],
+                                                      ),
                                                     ),
                                                   );
                                                 }).divide(

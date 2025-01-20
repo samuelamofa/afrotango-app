@@ -1,5 +1,4 @@
 import '/backend/backend.dart';
-import '/create_components/logo_header/logo_header_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'your_connection_widget.dart' show YourConnectionWidget;
 import 'package:flutter/material.dart';
@@ -20,13 +19,16 @@ class YourConnectionModel extends FlutterFlowModel<YourConnectionWidget> {
 
   ///  State fields for stateful widgets in this page.
 
-  // Model for LogoHeader component.
-  late LogoHeaderModel logoHeaderModel;
   // State field(s) for TabBar widget.
   TabController? tabBarController;
   int get tabBarCurrentIndex =>
       tabBarController != null ? tabBarController!.index : 0;
 
+  // State field(s) for allTextField widget.
+  FocusNode? allTextFieldFocusNode;
+  TextEditingController? allTextFieldTextController;
+  String? Function(BuildContext, String?)? allTextFieldTextControllerValidator;
+  List<UsersRecord> simpleSearchResults = [];
   // State field(s) for myTextField widget.
   FocusNode? myTextFieldFocusNode;
   TextEditingController? myTextFieldTextController;
@@ -37,25 +39,17 @@ class YourConnectionModel extends FlutterFlowModel<YourConnectionWidget> {
   ChatRecord? queryChatref1;
   // Stores action output result for [Backend Call - Create Document] action in IconButton widget.
   ChatRecord? newChatRef1;
-  // State field(s) for allTextField widget.
-  FocusNode? allTextFieldFocusNode;
-  TextEditingController? allTextFieldTextController;
-  String? Function(BuildContext, String?)? allTextFieldTextControllerValidator;
-  List<UsersRecord> simpleSearchResults = [];
 
   @override
-  void initState(BuildContext context) {
-    logoHeaderModel = createModel(context, () => LogoHeaderModel());
-  }
+  void initState(BuildContext context) {}
 
   @override
   void dispose() {
-    logoHeaderModel.dispose();
     tabBarController?.dispose();
-    myTextFieldFocusNode?.dispose();
-    myTextFieldTextController?.dispose();
-
     allTextFieldFocusNode?.dispose();
     allTextFieldTextController?.dispose();
+
+    myTextFieldFocusNode?.dispose();
+    myTextFieldTextController?.dispose();
   }
 }

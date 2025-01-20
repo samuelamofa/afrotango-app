@@ -1,9 +1,5 @@
-import '/backend/backend.dart';
-import '/create_components/logo_header/logo_header_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/form_field_controller.dart';
 import 'community_widget.dart' show CommunityWidget;
-import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 
 class CommunityModel extends FlutterFlowModel<CommunityWidget> {
@@ -22,36 +18,37 @@ class CommunityModel extends FlutterFlowModel<CommunityWidget> {
           int index, Function(DocumentReference) updateFn) =>
       listOfCommunities[index] = updateFn(listOfCommunities[index]);
 
+  List<String> category = [];
+  void addToCategory(String item) => category.add(item);
+  void removeFromCategory(String item) => category.remove(item);
+  void removeAtIndexFromCategory(int index) => category.removeAt(index);
+  void insertAtIndexInCategory(int index, String item) =>
+      category.insert(index, item);
+  void updateCategoryAtIndex(int index, Function(String) updateFn) =>
+      category[index] = updateFn(category[index]);
+
   ///  State fields for stateful widgets in this page.
 
-  // Model for LogoHeader component.
-  late LogoHeaderModel logoHeaderModel;
-  // State field(s) for ChoiceChips widget.
-  FormFieldController<List<String>>? choiceChipsValueController;
-  String? get choiceChipsValue =>
-      choiceChipsValueController?.value?.firstOrNull;
-  set choiceChipsValue(String? val) =>
-      choiceChipsValueController?.value = val != null ? [val] : [];
-  // Stores action output result for [Firestore Query - Query a collection] action in ChoiceChips widget.
-  List<CommunitiesRecord>? all;
-  // Stores action output result for [Firestore Query - Query a collection] action in ChoiceChips widget.
-  List<CommunitiesRecord>? professionals;
-  // Stores action output result for [Firestore Query - Query a collection] action in ChoiceChips widget.
-  List<CommunitiesRecord>? officialGovernment;
-  // Stores action output result for [Firestore Query - Query a collection] action in ChoiceChips widget.
-  List<CommunitiesRecord>? commercial;
-  // Stores action output result for [Firestore Query - Query a collection] action in ChoiceChips widget.
-  List<CommunitiesRecord>? religion;
-  // Stores action output result for [Firestore Query - Query a collection] action in ChoiceChips widget.
-  List<CommunitiesRecord>? scholars;
+  // State field(s) for searchBar widget.
+  FocusNode? searchBarFocusNode1;
+  TextEditingController? searchBarTextController1;
+  String? Function(BuildContext, String?)? searchBarTextController1Validator;
+  // State field(s) for searchBar widget.
+  FocusNode? searchBarFocusNode2;
+  TextEditingController? searchBarTextController2;
+  String? Function(BuildContext, String?)? searchBarTextController2Validator;
+  // Stores action output result for [Alert Dialog - Custom Dialog] action in Image widget.
+  List<String>? communityfilters;
 
   @override
-  void initState(BuildContext context) {
-    logoHeaderModel = createModel(context, () => LogoHeaderModel());
-  }
+  void initState(BuildContext context) {}
 
   @override
   void dispose() {
-    logoHeaderModel.dispose();
+    searchBarFocusNode1?.dispose();
+    searchBarTextController1?.dispose();
+
+    searchBarFocusNode2?.dispose();
+    searchBarTextController2?.dispose();
   }
 }

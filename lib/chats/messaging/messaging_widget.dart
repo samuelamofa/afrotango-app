@@ -1,8 +1,11 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/backend/firebase_storage/storage.dart';
 import '/backend/push_notifications/push_notifications_util.dart';
+import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/upload_data.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -10,7 +13,6 @@ import 'messaging_model.dart';
 export 'messaging_model.dart';
 
 class MessagingWidget extends StatefulWidget {
-  /// create an in app messaging box for text messages of connections
   const MessagingWidget({
     super.key,
     required this.chatRef,
@@ -34,6 +36,13 @@ class _MessagingWidgetState extends State<MessagingWidget> {
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
+      await widget.chatRef!.update({
+        ...mapToFirestore(
+          {
+            'readby': FieldValue.arrayRemove([currentUserReference]),
+          },
+        ),
+      });
       await Future.delayed(const Duration(milliseconds: 1000));
       await _model.columnscroll?.animateTo(
         _model.columnscroll!.position.maxScrollExtent,
@@ -44,8 +53,6 @@ class _MessagingWidgetState extends State<MessagingWidget> {
 
     _model.textController ??= TextEditingController();
     _model.textFieldFocusNode ??= FocusNode();
-
-    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -63,7 +70,7 @@ class _MessagingWidgetState extends State<MessagingWidget> {
         // Customize what your widget looks like when it's loading.
         if (!snapshot.hasData) {
           return Scaffold(
-            backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
+            backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
             body: Center(
               child: SizedBox(
                 width: 50.0,
@@ -87,7 +94,7 @@ class _MessagingWidgetState extends State<MessagingWidget> {
           },
           child: Scaffold(
             key: scaffoldKey,
-            backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
+            backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
             body: SafeArea(
               top: true,
               child: Stack(
@@ -124,7 +131,7 @@ class _MessagingWidgetState extends State<MessagingWidget> {
                             height: 80.0,
                             decoration: BoxDecoration(
                               color: FlutterFlowTheme.of(context)
-                                  .secondaryBackground,
+                                  .primaryBackground,
                             ),
                             child: Padding(
                               padding: const EdgeInsetsDirectional.fromSTEB(
@@ -147,6 +154,17 @@ class _MessagingWidgetState extends State<MessagingWidget> {
                                           highlightColor: Colors.transparent,
                                           onTap: () async {
                                             context.safePop();
+
+                                            await widget.chatRef!.update({
+                                              ...mapToFirestore(
+                                                {
+                                                  'readby':
+                                                      FieldValue.arrayRemove([
+                                                    currentUserReference
+                                                  ]),
+                                                },
+                                              ),
+                                            });
                                           },
                                           child: Icon(
                                             Icons.arrow_back,
@@ -193,18 +211,24 @@ class _MessagingWidgetState extends State<MessagingWidget> {
                                                   fontWeight: FontWeight.w600,
                                                 ),
                                           ),
-                                          Text(
-                                            'Online',
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodySmall
-                                                .override(
-                                                  fontFamily: 'Poppins',
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .tertiary,
-                                                  letterSpacing: 0.0,
-                                                ),
-                                          ),
+                                          if (messagingChatRecord.readby
+                                                  .contains(containerUsersRecord
+                                                      .reference) ==
+                                              true)
+                                            Text(
+                                              'Online',
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodySmall
+                                                      .override(
+                                                        fontFamily: 'Poppins',
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .tertiary,
+                                                        letterSpacing: 0.0,
+                                                      ),
+                                            ),
                                         ],
                                       ),
                                     ].divide(const SizedBox(width: 12.0)),
@@ -224,8 +248,8 @@ class _MessagingWidgetState extends State<MessagingWidget> {
                     ),
                   ),
                   Padding(
-                    padding:
-                        const EdgeInsetsDirectional.fromSTEB(16.0, 85.0, 16.0, 120.0),
+                    padding: const EdgeInsetsDirectional.fromSTEB(
+                        16.0, 100.0, 16.0, 120.0),
                     child: StreamBuilder<List<MessageRecord>>(
                       stream: queryMessageRecord(
                         parent: widget.chatRef,
@@ -272,61 +296,88 @@ class _MessagingWidgetState extends State<MessagingWidget> {
                                       mainAxisAlignment:
                                           MainAxisAlignment.start,
                                       children: [
-                                        Container(
-                                          width: 270.0,
-                                          decoration: BoxDecoration(
-                                            color: FlutterFlowTheme.of(context)
-                                                .secondaryBackground,
-                                            borderRadius:
-                                                BorderRadius.circular(12.0),
-                                          ),
-                                          child: Padding(
-                                            padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
-                                                    12.0, 12.0, 12.0, 12.0),
-                                            child: Column(
-                                              mainAxisSize: MainAxisSize.min,
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                Padding(
-                                                  padding: const EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          4.0, 0.0, 4.0, 0.0),
-                                                  child: Text(
-                                                    columnscrollMessageRecord
-                                                        .text,
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily: 'Poppins',
-                                                          letterSpacing: 0.0,
-                                                        ),
+                                        Padding(
+                                          padding:
+                                              const EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 0.0, 0.0, 10.0),
+                                          child: Container(
+                                            width: 270.0,
+                                            decoration: BoxDecoration(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryBackground,
+                                              borderRadius:
+                                                  BorderRadius.circular(12.0),
+                                            ),
+                                            child: Padding(
+                                              padding: const EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      12.0, 12.0, 12.0, 12.0),
+                                              child: Column(
+                                                mainAxisSize: MainAxisSize.min,
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: [
+                                                  Padding(
+                                                    padding:
+                                                        const EdgeInsetsDirectional
+                                                            .fromSTEB(4.0, 0.0,
+                                                                4.0, 0.0),
+                                                    child: Text(
+                                                      columnscrollMessageRecord
+                                                          .text,
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .bodyMedium
+                                                          .override(
+                                                            fontFamily:
+                                                                'Poppins',
+                                                            letterSpacing: 0.0,
+                                                          ),
+                                                    ),
                                                   ),
-                                                ),
-                                                Padding(
-                                                  padding: const EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          4.0, 8.0, 4.0, 0.0),
-                                                  child: Text(
-                                                    dateTimeFormat(
-                                                        "relative",
+                                                  if (columnscrollMessageRecord
+                                                              .image !=
+                                                          '')
+                                                    ClipRRect(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              8.0),
+                                                      child: Image.network(
                                                         columnscrollMessageRecord
-                                                            .timeStamp!),
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodySmall
-                                                        .override(
-                                                          fontFamily: 'Poppins',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .secondaryText,
-                                                          letterSpacing: 0.0,
-                                                        ),
+                                                            .image,
+                                                        width: 200.0,
+                                                        height: 200.0,
+                                                        fit: BoxFit.cover,
+                                                      ),
+                                                    ),
+                                                  Padding(
+                                                    padding:
+                                                        const EdgeInsetsDirectional
+                                                            .fromSTEB(4.0, 8.0,
+                                                                4.0, 0.0),
+                                                    child: Text(
+                                                      dateTimeFormat(
+                                                          "relative",
+                                                          columnscrollMessageRecord
+                                                              .timeStamp!),
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodySmall
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Poppins',
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .secondaryText,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                              ),
+                                                    ),
                                                   ),
-                                                ),
-                                              ],
+                                                ],
+                                              ),
                                             ),
                                           ),
                                         ),
@@ -337,10 +388,7 @@ class _MessagingWidgetState extends State<MessagingWidget> {
                                     Container(
                                       width: MediaQuery.sizeOf(context).width *
                                           1.0,
-                                      decoration: BoxDecoration(
-                                        color: FlutterFlowTheme.of(context)
-                                            .secondaryBackground,
-                                      ),
+                                      decoration: const BoxDecoration(),
                                       child: Align(
                                         alignment:
                                             const AlignmentDirectional(1.0, 0.0),
@@ -356,9 +404,7 @@ class _MessagingWidgetState extends State<MessagingWidget> {
                                                         150.0, 0.0, 0.0, 0.0),
                                                 child: Container(
                                                   decoration: BoxDecoration(
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .primary,
+                                                    color: const Color(0xFFDDDDDD),
                                                     borderRadius:
                                                         BorderRadius.circular(
                                                             12.0),
@@ -399,12 +445,29 @@ class _MessagingWidgetState extends State<MessagingWidget> {
                                                                       'Poppins',
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
-                                                                      .info,
+                                                                      .primary,
                                                                   letterSpacing:
                                                                       0.0,
                                                                 ),
                                                           ),
                                                         ),
+                                                        if (columnscrollMessageRecord
+                                                                    .image !=
+                                                                '')
+                                                          ClipRRect(
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8.0),
+                                                            child:
+                                                                Image.network(
+                                                              columnscrollMessageRecord
+                                                                  .image,
+                                                              width: 200.0,
+                                                              height: 200.0,
+                                                              fit: BoxFit.cover,
+                                                            ),
+                                                          ),
                                                         Padding(
                                                           padding:
                                                               const EdgeInsetsDirectional
@@ -426,7 +489,7 @@ class _MessagingWidgetState extends State<MessagingWidget> {
                                                                       'Poppins',
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
-                                                                      .accent4,
+                                                                      .primary,
                                                                   letterSpacing:
                                                                       0.0,
                                                                 ),
@@ -480,6 +543,92 @@ class _MessagingWidgetState extends State<MessagingWidget> {
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
+                                        InkWell(
+                                          splashColor: Colors.transparent,
+                                          focusColor: Colors.transparent,
+                                          hoverColor: Colors.transparent,
+                                          highlightColor: Colors.transparent,
+                                          onTap: () async {
+                                            final selectedMedia =
+                                                await selectMediaWithSourceBottomSheet(
+                                              context: context,
+                                              maxWidth: 630.00,
+                                              maxHeight: 1200.00,
+                                              allowPhoto: true,
+                                              allowVideo: true,
+                                            );
+                                            if (selectedMedia != null &&
+                                                selectedMedia.every((m) =>
+                                                    validateFileFormat(
+                                                        m.storagePath,
+                                                        context))) {
+                                              safeSetState(() => _model
+                                                  .isDataUploading = true);
+                                              var selectedUploadedFiles =
+                                                  <FFUploadedFile>[];
+
+                                              var downloadUrls = <String>[];
+                                              try {
+                                                selectedUploadedFiles =
+                                                    selectedMedia
+                                                        .map((m) =>
+                                                            FFUploadedFile(
+                                                              name: m
+                                                                  .storagePath
+                                                                  .split('/')
+                                                                  .last,
+                                                              bytes: m.bytes,
+                                                              height: m
+                                                                  .dimensions
+                                                                  ?.height,
+                                                              width: m
+                                                                  .dimensions
+                                                                  ?.width,
+                                                              blurHash:
+                                                                  m.blurHash,
+                                                            ))
+                                                        .toList();
+
+                                                downloadUrls =
+                                                    (await Future.wait(
+                                                  selectedMedia.map(
+                                                    (m) async =>
+                                                        await uploadData(
+                                                            m.storagePath,
+                                                            m.bytes),
+                                                  ),
+                                                ))
+                                                        .where((u) => u != null)
+                                                        .map((u) => u!)
+                                                        .toList();
+                                              } finally {
+                                                _model.isDataUploading = false;
+                                              }
+                                              if (selectedUploadedFiles
+                                                          .length ==
+                                                      selectedMedia.length &&
+                                                  downloadUrls.length ==
+                                                      selectedMedia.length) {
+                                                safeSetState(() {
+                                                  _model.uploadedLocalFile =
+                                                      selectedUploadedFiles
+                                                          .first;
+                                                  _model.uploadedFileUrl =
+                                                      downloadUrls.first;
+                                                });
+                                              } else {
+                                                safeSetState(() {});
+                                                return;
+                                              }
+                                            }
+                                          },
+                                          child: Icon(
+                                            Icons.attach_file,
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryText,
+                                            size: 24.0,
+                                          ),
+                                        ),
                                         Expanded(
                                           child: Padding(
                                             padding:
@@ -546,13 +695,30 @@ class _MessagingWidgetState extends State<MessagingWidget> {
                                       nameOfSender: valueOrDefault(
                                           currentUserDocument?.firstName, ''),
                                       text: _model.textController.text,
+                                      image: _model.uploadedFileUrl,
                                     ));
+
+                                    await widget.chatRef!.update({
+                                      ...mapToFirestore(
+                                        {
+                                          'readby': FieldValue.arrayUnion(
+                                              [currentUserReference]),
+                                        },
+                                      ),
+                                    });
 
                                     await widget.chatRef!
                                         .update(createChatRecordData(
                                       lastMessage: _model.textController.text,
                                       timeStamps: getCurrentTimestamp,
                                     ));
+                                    safeSetState(() {
+                                      _model.isDataUploading = false;
+                                      _model.uploadedLocalFile = FFUploadedFile(
+                                          bytes: Uint8List.fromList([]));
+                                      _model.uploadedFileUrl = '';
+                                    });
+
                                     triggerPushNotification(
                                       notificationTitle:
                                           'You have a new message!',
@@ -593,6 +759,59 @@ class _MessagingWidgetState extends State<MessagingWidget> {
                       ),
                     ),
                   ),
+                  if (_model.uploadedFileUrl != '')
+                    Align(
+                      alignment: const AlignmentDirectional(0.0, 1.0),
+                      child: Padding(
+                        padding: const EdgeInsetsDirectional.fromSTEB(
+                            0.0, 0.0, 0.0, 150.0),
+                        child: Container(
+                          width: MediaQuery.sizeOf(context).width * 1.0,
+                          height: 250.0,
+                          decoration: const BoxDecoration(),
+                          child: Stack(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    20.0, 0.0, 20.0, 0.0),
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(12.0),
+                                  child: Image.network(
+                                    _model.uploadedFileUrl,
+                                    width:
+                                        MediaQuery.sizeOf(context).width * 1.0,
+                                    height: 240.0,
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                              ),
+                              Align(
+                                alignment: const AlignmentDirectional(0.81, -0.92),
+                                child: FlutterFlowIconButton(
+                                  borderRadius: 30.0,
+                                  buttonSize: 40.0,
+                                  fillColor:
+                                      FlutterFlowTheme.of(context).alternate,
+                                  icon: Icon(
+                                    Icons.delete_forever,
+                                    color: FlutterFlowTheme.of(context).primary,
+                                    size: 24.0,
+                                  ),
+                                  onPressed: () async {
+                                    safeSetState(() {
+                                      _model.isDataUploading = false;
+                                      _model.uploadedLocalFile = FFUploadedFile(
+                                          bytes: Uint8List.fromList([]));
+                                      _model.uploadedFileUrl = '';
+                                    });
+                                  },
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
                 ],
               ),
             ),

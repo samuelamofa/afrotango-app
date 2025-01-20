@@ -30,8 +30,6 @@ class _LogoHeaderWidgetState extends State<LogoHeaderWidget> {
 
     _model.searchBarTextController ??= TextEditingController();
     _model.searchBarFocusNode ??= FocusNode();
-
-    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -63,7 +61,7 @@ class _LogoHeaderWidgetState extends State<LogoHeaderWidget> {
                 hoverColor: Colors.transparent,
                 highlightColor: Colors.transparent,
                 onTap: () async {
-                  context.pushNamed('homepage2');
+                  context.pushNamed('homePage3');
                 },
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(8.0),

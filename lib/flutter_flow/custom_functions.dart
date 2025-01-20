@@ -691,3 +691,12 @@ String? dialCode(String? countryName) {
 
   return null;
 }
+
+String? removeFristletter(String? dialcode) {
+  // remove first letter from string value
+  if (dialcode == null || dialcode.isEmpty) {
+    return dialcode;
+  }
+
+  return dialcode.substring(1);
+}
