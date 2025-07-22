@@ -16,6 +16,13 @@
 	<string>Afro Tango</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
+	<key>CFBundleLocalizations</key>
+	<array>
+		<string>en</string>
+		<string>fr</string>
+		<string>es</string>
+		<string>pt</string>
+	</array>
 
 	<key>CFBundleShortVersionString</key>
 	<string>$(FLUTTER_BUILD_NAME)</string>
@@ -28,7 +35,7 @@
             <string>Editor</string>
             <key>CFBundleURLSchemes</key>
             <array>
-                <!--FF_REVERSED_CLIENT_ID-->
+                <string>com.googleusercontent.apps.766518736455-mp6edsjsoif2csdqlkt0i947k7t2ucq5</string>
                 
             </array>
         </dict>
@@ -37,7 +44,7 @@
         <key>CFBundleTypeRole</key>
         <string>Editor</string>
         <key>CFBundleURLName</key>
-        <string>afrotango.com</string>
+        <string>afrotango.app</string>
         <key>CFBundleURLSchemes</key>
         <array>
         <string>afrotango</string>
@@ -55,16 +62,18 @@
 
 	<key>NSCameraUsageDescription</key>
     <string>In order to take a picture or video, this app requires permission to access the camera.</string>
-	<key>NSMicrophoneUsageDescription</key>
-    <string>In order to record audio for video, this app requires permission to access the microphone.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
     <string>In order to upload data, this app requires permission to access the photo library.</string>
+	<key>NSMicrophoneUsageDescription</key>
+    <string>the app requires your microphone access to  record your voice</string>
 
     <key>UIBackgroundModes</key>
     <array>
         <string>fetch</string>
         <string>remote-notification</string>
+        <string>audio</string>
     </array>
+
 
 
 	<key>UILaunchStoryboardName</key>

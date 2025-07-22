@@ -7,12 +7,41 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:766518736455:android:25d0d3c129cdb0c223e362",
+        "mobilesdk_app_id": "1:766518736455:android:8b24d86c3c1876eb23e362",
         "android_client_info": {
-          "package_name": "com.mycompany.afrotango"
+          "package_name": "com.afrotango.com.afrotango"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "766518736455-0voov5jde3ppet53ivkoulcr29aof7l2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.afrotango.com.afrotango",
+            "certificate_hash": "9bbb3186b2189ef16d8f272bdab59362c395cbb4"
+          }
+        },
+        {
+          "client_id": "766518736455-1ku5n9rq83oot0n0gq35139cb0in6q13.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.afrotango.com.afrotango",
+            "certificate_hash": "4a817cd8f421ca73592639d216f20102c9df506c"
+          }
+        },
+        {
+          "client_id": "766518736455-jrk9nvcplpdg2h62ul5a9am4t19j9hhi.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.afrotango.com.afrotango",
+            "certificate_hash": "42cc784dd25bad74ccc3b2380c0ff992585f51da"
+          }
+        },
+        {
+          "client_id": "766518736455-bvim7aq2pjp0dnh08j92sr2tbbpopvp6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyCifzx1LBkjoScKaQvoqTTIY6NbpZweNnc"
@@ -20,7 +49,79 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "766518736455-bvim7aq2pjp0dnh08j92sr2tbbpopvp6.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "766518736455-mp6edsjsoif2csdqlkt0i947k7t2ucq5.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.mycompany.afrotango"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:766518736455:android:25d0d3c129cdb0c223e362",
+        "android_client_info": {
+          "package_name": "com.mycompany.afrotango"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "766518736455-dpjcnhsed6lngjh52mejmo46fc02irtm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mycompany.afrotango",
+            "certificate_hash": "42cc784dd25bad74ccc3b2380c0ff992585f51da"
+          }
+        },
+        {
+          "client_id": "766518736455-kfkqfjs299173l12nkq2ougkg6keg69k.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mycompany.afrotango",
+            "certificate_hash": "9bbb3186b2189ef16d8f272bdab59362c395cbb4"
+          }
+        },
+        {
+          "client_id": "766518736455-q60t6sg9rup0gp08f33fvton7p5llkg3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mycompany.afrotango",
+            "certificate_hash": "4a817cd8f421ca73592639d216f20102c9df506c"
+          }
+        },
+        {
+          "client_id": "766518736455-bvim7aq2pjp0dnh08j92sr2tbbpopvp6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCifzx1LBkjoScKaQvoqTTIY6NbpZweNnc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "766518736455-bvim7aq2pjp0dnh08j92sr2tbbpopvp6.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "766518736455-mp6edsjsoif2csdqlkt0i947k7t2ucq5.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.mycompany.afrotango"
+              }
+            }
+          ]
         }
       }
     }

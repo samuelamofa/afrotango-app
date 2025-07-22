@@ -10,9 +10,9 @@ import '/flutter_flow/flutter_flow_util.dart';
 
 class UsersRecord extends FirestoreRecord {
   UsersRecord._(
-    super.reference,
-    super.data,
-  ) {
+    DocumentReference reference,
+    Map<String, dynamic> data,
+  ) : super(reference, data) {
     _initializeFields();
   }
 
@@ -46,12 +46,6 @@ class UsersRecord extends FirestoreRecord {
   String get phoneNumber => _phoneNumber ?? '';
   bool hasPhoneNumber() => _phoneNumber != null;
 
-  // "communities_created_ref" field.
-  List<DocumentReference>? _communitiesCreatedRef;
-  List<DocumentReference> get communitiesCreatedRef =>
-      _communitiesCreatedRef ?? const [];
-  bool hasCommunitiesCreatedRef() => _communitiesCreatedRef != null;
-
   // "business_created_ref" field.
   List<DocumentReference>? _businessCreatedRef;
   List<DocumentReference> get businessCreatedRef =>
@@ -62,11 +56,6 @@ class UsersRecord extends FirestoreRecord {
   List<DocumentReference>? _eventCreatedRef;
   List<DocumentReference> get eventCreatedRef => _eventCreatedRef ?? const [];
   bool hasEventCreatedRef() => _eventCreatedRef != null;
-
-  // "ads_created_ref" field.
-  List<DocumentReference>? _adsCreatedRef;
-  List<DocumentReference> get adsCreatedRef => _adsCreatedRef ?? const [];
-  bool hasAdsCreatedRef() => _adsCreatedRef != null;
 
   // "first_name" field.
   String? _firstName;
@@ -113,11 +102,6 @@ class UsersRecord extends FirestoreRecord {
   String get whatsapp => _whatsapp ?? '';
   bool hasWhatsapp() => _whatsapp != null;
 
-  // "snapchat" field.
-  String? _snapchat;
-  String get snapchat => _snapchat ?? '';
-  bool hasSnapchat() => _snapchat != null;
-
   // "instagram" field.
   String? _instagram;
   String get instagram => _instagram ?? '';
@@ -137,12 +121,6 @@ class UsersRecord extends FirestoreRecord {
   String? _countryFlag;
   String get countryFlag => _countryFlag ?? '';
   bool hasCountryFlag() => _countryFlag != null;
-
-  // "joined_communities" field.
-  List<DocumentReference>? _joinedCommunities;
-  List<DocumentReference> get joinedCommunities =>
-      _joinedCommunities ?? const [];
-  bool hasJoinedCommunities() => _joinedCommunities != null;
 
   // "favourites" field.
   List<DocumentReference>? _favourites;
@@ -179,6 +157,76 @@ class UsersRecord extends FirestoreRecord {
   String get countryCode => _countryCode ?? '';
   bool hasCountryCode() => _countryCode != null;
 
+  // "snapchat" field.
+  String? _snapchat;
+  String get snapchat => _snapchat ?? '';
+  bool hasSnapchat() => _snapchat != null;
+
+  // "gender" field.
+  String? _gender;
+  String get gender => _gender ?? '';
+  bool hasGender() => _gender != null;
+
+  // "twitter" field.
+  String? _twitter;
+  String get twitter => _twitter ?? '';
+  bool hasTwitter() => _twitter != null;
+
+  // "dob" field.
+  String? _dob;
+  String get dob => _dob ?? '';
+  bool hasDob() => _dob != null;
+
+  // "Favoritevent" field.
+  List<DocumentReference>? _favoritevent;
+  List<DocumentReference> get favoritevent => _favoritevent ?? const [];
+  bool hasFavoritevent() => _favoritevent != null;
+
+  // "address" field.
+  String? _address;
+  String get address => _address ?? '';
+  bool hasAddress() => _address != null;
+
+  // "zipp" field.
+  String? _zipp;
+  String get zipp => _zipp ?? '';
+  bool hasZipp() => _zipp != null;
+
+  // "state" field.
+  String? _state;
+  String get state => _state ?? '';
+  bool hasState() => _state != null;
+
+  // "completed" field.
+  bool? _completed;
+  bool get completed => _completed ?? false;
+  bool hasCompleted() => _completed != null;
+
+  // "catigory" field.
+  List<String>? _catigory;
+  List<String> get catigory => _catigory ?? const [];
+  bool hasCatigory() => _catigory != null;
+
+  // "followers" field.
+  List<DocumentReference>? _followers;
+  List<DocumentReference> get followers => _followers ?? const [];
+  bool hasFollowers() => _followers != null;
+
+  // "iD_verify" field.
+  bool? _iDVerify;
+  bool get iDVerify => _iDVerify ?? false;
+  bool hasIDVerify() => _iDVerify != null;
+
+  // "admin" field.
+  bool? _admin;
+  bool get admin => _admin ?? false;
+  bool hasAdmin() => _admin != null;
+
+  // "carear" field.
+  String? _carear;
+  String get carear => _carear ?? '';
+  bool hasCarear() => _carear != null;
+
   void _initializeFields() {
     _email = snapshotData['email'] as String?;
     _displayName = snapshotData['display_name'] as String?;
@@ -186,11 +234,8 @@ class UsersRecord extends FirestoreRecord {
     _uid = snapshotData['uid'] as String?;
     _createdTime = snapshotData['created_time'] as DateTime?;
     _phoneNumber = snapshotData['phone_number'] as String?;
-    _communitiesCreatedRef =
-        getDataList(snapshotData['communities_created_ref']);
     _businessCreatedRef = getDataList(snapshotData['business_created_ref']);
     _eventCreatedRef = getDataList(snapshotData['event_created_ref']);
-    _adsCreatedRef = getDataList(snapshotData['ads_created_ref']);
     _firstName = snapshotData['first_name'] as String?;
     _otherName = snapshotData['other_name'] as String?;
     _lastName = snapshotData['last_name'] as String?;
@@ -200,12 +245,10 @@ class UsersRecord extends FirestoreRecord {
     _website = snapshotData['website'] as String?;
     _facebook = snapshotData['facebook'] as String?;
     _whatsapp = snapshotData['whatsapp'] as String?;
-    _snapchat = snapshotData['snapchat'] as String?;
     _instagram = snapshotData['instagram'] as String?;
     _bannerImage = snapshotData['banner_image'] as String?;
     _connections = getDataList(snapshotData['connections']);
     _countryFlag = snapshotData['country_flag'] as String?;
-    _joinedCommunities = getDataList(snapshotData['joined_communities']);
     _favourites = getDataList(snapshotData['favourites']);
     _chatUserRef = getDataList(snapshotData['chatUserRef']);
     _countryName = snapshotData['country_name'] as String?;
@@ -213,6 +256,20 @@ class UsersRecord extends FirestoreRecord {
     _createdProfileBool = snapshotData['createdProfileBool'] as bool?;
     _profession = snapshotData['profession'] as String?;
     _countryCode = snapshotData['country_code'] as String?;
+    _snapchat = snapshotData['snapchat'] as String?;
+    _gender = snapshotData['gender'] as String?;
+    _twitter = snapshotData['twitter'] as String?;
+    _dob = snapshotData['dob'] as String?;
+    _favoritevent = getDataList(snapshotData['Favoritevent']);
+    _address = snapshotData['address'] as String?;
+    _zipp = snapshotData['zipp'] as String?;
+    _state = snapshotData['state'] as String?;
+    _completed = snapshotData['completed'] as bool?;
+    _catigory = getDataList(snapshotData['catigory']);
+    _followers = getDataList(snapshotData['followers']);
+    _iDVerify = snapshotData['iD_verify'] as bool?;
+    _admin = snapshotData['admin'] as bool?;
+    _carear = snapshotData['carear'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -264,7 +321,6 @@ Map<String, dynamic> createUsersRecordData({
   String? website,
   String? facebook,
   String? whatsapp,
-  String? snapchat,
   String? instagram,
   String? bannerImage,
   String? countryFlag,
@@ -272,6 +328,17 @@ Map<String, dynamic> createUsersRecordData({
   bool? createdProfileBool,
   String? profession,
   String? countryCode,
+  String? snapchat,
+  String? gender,
+  String? twitter,
+  String? dob,
+  String? address,
+  String? zipp,
+  String? state,
+  bool? completed,
+  bool? iDVerify,
+  bool? admin,
+  String? carear,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -290,7 +357,6 @@ Map<String, dynamic> createUsersRecordData({
       'website': website,
       'facebook': facebook,
       'whatsapp': whatsapp,
-      'snapchat': snapchat,
       'instagram': instagram,
       'banner_image': bannerImage,
       'country_flag': countryFlag,
@@ -298,6 +364,17 @@ Map<String, dynamic> createUsersRecordData({
       'createdProfileBool': createdProfileBool,
       'profession': profession,
       'country_code': countryCode,
+      'snapchat': snapchat,
+      'gender': gender,
+      'twitter': twitter,
+      'dob': dob,
+      'address': address,
+      'zipp': zipp,
+      'state': state,
+      'completed': completed,
+      'iD_verify': iDVerify,
+      'admin': admin,
+      'carear': carear,
     }.withoutNulls,
   );
 
@@ -316,11 +393,8 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e1?.uid == e2?.uid &&
         e1?.createdTime == e2?.createdTime &&
         e1?.phoneNumber == e2?.phoneNumber &&
-        listEquality.equals(
-            e1?.communitiesCreatedRef, e2?.communitiesCreatedRef) &&
         listEquality.equals(e1?.businessCreatedRef, e2?.businessCreatedRef) &&
         listEquality.equals(e1?.eventCreatedRef, e2?.eventCreatedRef) &&
-        listEquality.equals(e1?.adsCreatedRef, e2?.adsCreatedRef) &&
         e1?.firstName == e2?.firstName &&
         e1?.otherName == e2?.otherName &&
         e1?.lastName == e2?.lastName &&
@@ -330,19 +404,31 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e1?.website == e2?.website &&
         e1?.facebook == e2?.facebook &&
         e1?.whatsapp == e2?.whatsapp &&
-        e1?.snapchat == e2?.snapchat &&
         e1?.instagram == e2?.instagram &&
         e1?.bannerImage == e2?.bannerImage &&
         listEquality.equals(e1?.connections, e2?.connections) &&
         e1?.countryFlag == e2?.countryFlag &&
-        listEquality.equals(e1?.joinedCommunities, e2?.joinedCommunities) &&
         listEquality.equals(e1?.favourites, e2?.favourites) &&
         listEquality.equals(e1?.chatUserRef, e2?.chatUserRef) &&
         e1?.countryName == e2?.countryName &&
         listEquality.equals(e1?.chatIds, e2?.chatIds) &&
         e1?.createdProfileBool == e2?.createdProfileBool &&
         e1?.profession == e2?.profession &&
-        e1?.countryCode == e2?.countryCode;
+        e1?.countryCode == e2?.countryCode &&
+        e1?.snapchat == e2?.snapchat &&
+        e1?.gender == e2?.gender &&
+        e1?.twitter == e2?.twitter &&
+        e1?.dob == e2?.dob &&
+        listEquality.equals(e1?.favoritevent, e2?.favoritevent) &&
+        e1?.address == e2?.address &&
+        e1?.zipp == e2?.zipp &&
+        e1?.state == e2?.state &&
+        e1?.completed == e2?.completed &&
+        listEquality.equals(e1?.catigory, e2?.catigory) &&
+        listEquality.equals(e1?.followers, e2?.followers) &&
+        e1?.iDVerify == e2?.iDVerify &&
+        e1?.admin == e2?.admin &&
+        e1?.carear == e2?.carear;
   }
 
   @override
@@ -353,10 +439,8 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e?.uid,
         e?.createdTime,
         e?.phoneNumber,
-        e?.communitiesCreatedRef,
         e?.businessCreatedRef,
         e?.eventCreatedRef,
-        e?.adsCreatedRef,
         e?.firstName,
         e?.otherName,
         e?.lastName,
@@ -366,19 +450,31 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e?.website,
         e?.facebook,
         e?.whatsapp,
-        e?.snapchat,
         e?.instagram,
         e?.bannerImage,
         e?.connections,
         e?.countryFlag,
-        e?.joinedCommunities,
         e?.favourites,
         e?.chatUserRef,
         e?.countryName,
         e?.chatIds,
         e?.createdProfileBool,
         e?.profession,
-        e?.countryCode
+        e?.countryCode,
+        e?.snapchat,
+        e?.gender,
+        e?.twitter,
+        e?.dob,
+        e?.favoritevent,
+        e?.address,
+        e?.zipp,
+        e?.state,
+        e?.completed,
+        e?.catigory,
+        e?.followers,
+        e?.iDVerify,
+        e?.admin,
+        e?.carear
       ]);
 
   @override

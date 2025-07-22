@@ -10,9 +10,9 @@ import '/flutter_flow/flutter_flow_util.dart';
 
 class EventRecord extends FirestoreRecord {
   EventRecord._(
-    super.reference,
-    super.data,
-  ) {
+    DocumentReference reference,
+    Map<String, dynamic> data,
+  ) : super(reference, data) {
     _initializeFields();
   }
 
@@ -61,6 +61,36 @@ class EventRecord extends FirestoreRecord {
   List<DocumentReference> get joinedUsersRef => _joinedUsersRef ?? const [];
   bool hasJoinedUsersRef() => _joinedUsersRef != null;
 
+  // "country" field.
+  String? _country;
+  String get country => _country ?? '';
+  bool hasCountry() => _country != null;
+
+  // "EndDate" field.
+  DateTime? _endDate;
+  DateTime? get endDate => _endDate;
+  bool hasEndDate() => _endDate != null;
+
+  // "price" field.
+  double? _price;
+  double get price => _price ?? 0.0;
+  bool hasPrice() => _price != null;
+
+  // "catigory" field.
+  DocumentReference? _catigory;
+  DocumentReference? get catigory => _catigory;
+  bool hasCatigory() => _catigory != null;
+
+  // "paid" field.
+  bool? _paid;
+  bool get paid => _paid ?? false;
+  bool hasPaid() => _paid != null;
+
+  // "number_attendants" field.
+  int? _numberAttendants;
+  int get numberAttendants => _numberAttendants ?? 0;
+  bool hasNumberAttendants() => _numberAttendants != null;
+
   void _initializeFields() {
     _eventName = snapshotData['event_name'] as String?;
     _createdUserRef = snapshotData['createdUserRef'] as DocumentReference?;
@@ -71,6 +101,12 @@ class EventRecord extends FirestoreRecord {
     _eventLocation = snapshotData['event_location'] as String?;
     _eventDescription = snapshotData['event_description'] as String?;
     _joinedUsersRef = getDataList(snapshotData['joinedUsersRef']);
+    _country = snapshotData['country'] as String?;
+    _endDate = snapshotData['EndDate'] as DateTime?;
+    _price = castToType<double>(snapshotData['price']);
+    _catigory = snapshotData['catigory'] as DocumentReference?;
+    _paid = snapshotData['paid'] as bool?;
+    _numberAttendants = castToType<int>(snapshotData['number_attendants']);
   }
 
   static CollectionReference get collection =>
@@ -115,6 +151,12 @@ Map<String, dynamic> createEventRecordData({
   DateTime? eventDate,
   String? eventLocation,
   String? eventDescription,
+  String? country,
+  DateTime? endDate,
+  double? price,
+  DocumentReference? catigory,
+  bool? paid,
+  int? numberAttendants,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -126,6 +168,12 @@ Map<String, dynamic> createEventRecordData({
       'event_date': eventDate,
       'event_location': eventLocation,
       'event_description': eventDescription,
+      'country': country,
+      'EndDate': endDate,
+      'price': price,
+      'catigory': catigory,
+      'paid': paid,
+      'number_attendants': numberAttendants,
     }.withoutNulls,
   );
 
@@ -146,7 +194,13 @@ class EventRecordDocumentEquality implements Equality<EventRecord> {
         e1?.eventDate == e2?.eventDate &&
         e1?.eventLocation == e2?.eventLocation &&
         e1?.eventDescription == e2?.eventDescription &&
-        listEquality.equals(e1?.joinedUsersRef, e2?.joinedUsersRef);
+        listEquality.equals(e1?.joinedUsersRef, e2?.joinedUsersRef) &&
+        e1?.country == e2?.country &&
+        e1?.endDate == e2?.endDate &&
+        e1?.price == e2?.price &&
+        e1?.catigory == e2?.catigory &&
+        e1?.paid == e2?.paid &&
+        e1?.numberAttendants == e2?.numberAttendants;
   }
 
   @override
@@ -159,7 +213,13 @@ class EventRecordDocumentEquality implements Equality<EventRecord> {
         e?.eventDate,
         e?.eventLocation,
         e?.eventDescription,
-        e?.joinedUsersRef
+        e?.joinedUsersRef,
+        e?.country,
+        e?.endDate,
+        e?.price,
+        e?.catigory,
+        e?.paid,
+        e?.numberAttendants
       ]);
 
   @override

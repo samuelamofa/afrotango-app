@@ -11,11 +11,18 @@ import 'package:intl/intl.dart';
 import 'package:json_path/json_path.dart';
 import 'package:timeago/timeago.dart' as timeago;
 import 'package:url_launcher/url_launcher.dart';
+import 'package:cross_file/cross_file.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:record/record.dart';
+import 'uploaded_file.dart';
+import 'platform_utils/platform_util.dart';
+import 'package:file_saver/file_saver.dart';
+import 'package:http/http.dart' as http;
+import 'package:mime/mime.dart' as mime;
 
 import '../main.dart';
 
 
-export 'keep_alive_wrapper.dart';
 export 'lat_lng.dart';
 export 'place.dart';
 export 'uploaded_file.dart';
@@ -29,16 +36,31 @@ export 'package:cloud_firestore/cloud_firestore.dart'
     show DocumentReference, FirebaseFirestore;
 export 'package:page_transition/page_transition.dart';
 export 'custom_icons.dart' show FFIcons;
+export 'internationalization.dart' show FFLocalizations;
 export 'nav/nav.dart';
+
+final RouteObserver<ModalRoute> routeObserver = RouteObserver<ModalRoute>();
 
 T valueOrDefault<T>(T? value, T defaultValue) =>
     (value is String && value.isEmpty) || value == null ? defaultValue : value;
+
+void _setTimeagoLocales() {
+  timeago.setLocaleMessages('en', timeago.EnMessages());
+  timeago.setLocaleMessages('en_short', timeago.EnShortMessages());
+  timeago.setLocaleMessages('fr', timeago.FrMessages());
+  timeago.setLocaleMessages('fr_short', timeago.FrShortMessages());
+  timeago.setLocaleMessages('es', timeago.EsMessages());
+  timeago.setLocaleMessages('es_short', timeago.EsShortMessages());
+  timeago.setLocaleMessages('pt', timeago.PtBrMessages());
+  timeago.setLocaleMessages('pt_short', timeago.PtBrShortMessages());
+}
 
 String dateTimeFormat(String format, DateTime? dateTime, {String? locale}) {
   if (dateTime == null) {
     return '';
   }
   if (format == 'relative') {
+    _setTimeagoLocales();
     return timeago.format(dateTime, locale: locale, allowFromNow: true);
   }
   return DateFormat(format, locale).format(dateTime);
@@ -61,7 +83,7 @@ Theme wrapInMaterialDatePickerTheme(
   final dateTimeMaterialStateForegroundColor =
       WidgetStateProperty.resolveWith((states) {
     if (states.contains(WidgetState.disabled)) {
-      return pickerForegroundColor.withOpacity(0.60);
+      return pickerForegroundColor.applyAlpha(0.60);
     }
     if (states.contains(WidgetState.selected)) {
       return selectedDateTimeForegroundColor;
@@ -85,7 +107,7 @@ Theme wrapInMaterialDatePickerTheme(
       colorScheme: baseTheme.colorScheme.copyWith(
         onSurface: pickerForegroundColor,
       ),
-      disabledColor: pickerForegroundColor.withOpacity(0.3),
+      disabledColor: pickerForegroundColor.applyAlpha(0.3),
       textTheme: baseTheme.textTheme.copyWith(
         headlineSmall: headerTextStyle,
         headlineMedium: headerTextStyle,
@@ -100,11 +122,11 @@ Theme wrapInMaterialDatePickerTheme(
             ),
             overlayColor: WidgetStateProperty.resolveWith((states) {
               if (states.contains(WidgetState.hovered)) {
-                return actionButtonForegroundColor.withOpacity(0.04);
+                return actionButtonForegroundColor.applyAlpha(0.04);
               }
               if (states.contains(WidgetState.focused) ||
                   states.contains(WidgetState.pressed)) {
-                return actionButtonForegroundColor.withOpacity(0.12);
+                return actionButtonForegroundColor.applyAlpha(0.12);
               }
               return null;
             })),
@@ -154,11 +176,11 @@ Theme wrapInMaterialTimePickerTheme(
             ),
             overlayColor: WidgetStateProperty.resolveWith((states) {
               if (states.contains(WidgetState.hovered)) {
-                return actionButtonForegroundColor.withOpacity(0.04);
+                return actionButtonForegroundColor.applyAlpha(0.04);
               }
               if (states.contains(WidgetState.focused) ||
                   states.contains(WidgetState.pressed)) {
-                return actionButtonForegroundColor.withOpacity(0.12);
+                return actionButtonForegroundColor.applyAlpha(0.12);
               }
               return null;
             })),
@@ -195,6 +217,79 @@ Future launchURL(String url) async {
     await launchUrl(uri);
   } catch (e) {
     throw 'Could not launch $uri: $e';
+  }
+}
+
+String? getExtensionFromFilename(String filename) {
+  return filename.contains('.') ? filename.split('.').last : null;
+}
+
+/*
+ * Downloads/Saves a file from a URL or file bytes. If the filename contains an
+ * extension (e.g. 'file.pdf'), the extension will be used to determine the
+ * file type, otherwise the response header (url case) or file header bytes will
+ * be used to infer the file's type. 
+ */
+Future downloadFile({
+  required String filename,
+  String? url,
+  FFUploadedFile? uploadedFile,
+}) async {
+  var bytes = uploadedFile?.bytes;
+  var extension = getExtensionFromFilename(filename) ??
+      getExtensionFromFilename(uploadedFile?.name ?? '');
+
+  if (url == null && bytes == null) {
+    throw 'No file/url to download';
+  }
+  if (url != null && bytes != null) {
+    throw 'Only one of url or bytes can be provided';
+  }
+
+  String? mimeType;
+
+  // First, check if the extension is specified in the filename to avoid needing
+  // to scan the file to determine the mime type and extension
+  mimeType = mime.lookupMimeType(filename) ??
+      mime.lookupMimeType(uploadedFile?.name ?? '');
+
+  // If a URL is provided, download the file and determine the mime type from
+  // the response headers.
+  if (url != null && url.isNotEmpty) {
+    final response = await http.get(Uri.parse(url));
+    bytes = response.bodyBytes;
+    mimeType ??= response.headers['content-type'];
+  }
+
+  // If a file is provided and the filename does not have an extension, scan the
+  // file header bytes to determine the mime type and extension.
+  if (bytes != null && bytes.isNotEmpty) {
+    // Grab the first 32 bytes of the file to determine the mime type
+    if (mimeType == null) {
+      final headerBytes = bytes.take(32).toList();
+      mimeType ??= mime.lookupMimeType(filename, headerBytes: headerBytes);
+    }
+  }
+
+  MimeType mimeTypeObj =
+      MimeType.values.firstWhereOrNull((e) => e.type == mimeType) ??
+          MimeType.other;
+
+  if (kIsWeb) {
+    await FileSaver.instance.saveFile(
+      bytes: bytes,
+      name: filename.substring(0,
+          filename.contains('.') ? filename.lastIndexOf('.') : filename.length),
+      ext: extension ?? mime.extensionFromMime(mimeType ?? ''),
+      mimeType: mimeTypeObj,
+    );
+  } else {
+    await FileSaver.instance.saveAs(
+      bytes: bytes,
+      name: filename,
+      ext: extension ?? mime.extensionFromMime(mimeType ?? ''),
+      mimeType: mimeTypeObj,
+    );
   }
 }
 
@@ -419,6 +514,9 @@ extension StringDocRef on String {
   DocumentReference get ref => FirebaseFirestore.instance.doc(this);
 }
 
+void setAppLanguage(BuildContext context, String language) =>
+    MyApp.of(context).setLocale(language);
+
 void setDarkModeSetting(BuildContext context, ThemeMode themeMode) =>
     MyApp.of(context).setThemeMode(themeMode);
 
@@ -434,12 +532,12 @@ void showSnackbar(
       content: Row(
         children: [
           if (loading)
-            const Padding(
+            Padding(
               padding: EdgeInsetsDirectional.only(end: 10.0),
-              child: SizedBox(
+              child: Container(
                 height: 20,
                 width: 20,
-                child: CircularProgressIndicator(
+                child: const CircularProgressIndicator(
                   color: Colors.white,
                 ),
               ),
@@ -457,6 +555,19 @@ extension FFStringExt on String {
       maxChars != null && length > maxChars
           ? replaceRange(maxChars, null, replacement)
           : this;
+
+  String toCapitalization(TextCapitalization textCapitalization) {
+    switch (textCapitalization) {
+      case TextCapitalization.none:
+        return this;
+      case TextCapitalization.words:
+        return split(' ').map(toBeginningOfSentenceCase).join(' ');
+      case TextCapitalization.sentences:
+        return toBeginningOfSentenceCase(this);
+      case TextCapitalization.characters:
+        return toUpperCase();
+    }
+  }
 }
 
 extension ListFilterExt<T> on Iterable<T?> {
@@ -511,6 +622,69 @@ extension StatefulWidgetExtensions on State<StatefulWidget> {
   }
 }
 
+Future<void> startAudioRecording(
+  BuildContext context, {
+  required AudioRecorder audioRecorder,
+}) async {
+  if (await audioRecorder.hasPermission()) {
+    final String path;
+    final AudioEncoder encoder;
+    if (kIsWeb) {
+      path = '';
+      final userAgent = getUserAgent();
+      // Safari browsers don't support opus encoding, so we fall back to wav.
+      // All other browsers use opus for smaller file sizes.
+      if (userAgent.contains('safari') && !userAgent.contains('chrome')) {
+        encoder = AudioEncoder.wav;
+      } else {
+        encoder = AudioEncoder.opus;
+      }
+    } else {
+      final dir = await getApplicationDocumentsDirectory();
+      path = '${dir.path}/audio_${DateTime.now().millisecondsSinceEpoch}.m4a';
+      encoder = AudioEncoder.aacLc;
+    }
+    await audioRecorder.start(
+      RecordConfig(encoder: encoder),
+      path: path,
+    );
+  } else {
+    if (!context.mounted) {
+      return;
+    }
+    showSnackbar(
+      context,
+      'You have not provided permission to record audio.',
+    );
+  }
+}
+
+Future<void> stopAudioRecording({
+  required AudioRecorder? audioRecorder,
+  required String audioName,
+  required Function(String?, FFUploadedFile) onRecordingComplete,
+}) async {
+  if (audioRecorder == null) {
+    return;
+  }
+  final recordedPath = await audioRecorder.stop();
+  final recordedFilePath = !kIsWeb && (Platform.isIOS || Platform.isMacOS)
+      ? 'file://$recordedPath'
+      : recordedPath;
+  if (recordedFilePath == null) {
+    return;
+  }
+
+  final recordedFileBytes = FFUploadedFile(
+    name: '$audioName.m4a',
+    bytes: await XFile(recordedPath!).readAsBytes(),
+  );
+  onRecordingComplete(
+    recordedFilePath,
+    recordedFileBytes,
+  );
+}
+
 // For iOS 16 and below, set the status bar color to match the app's theme.
 // https://github.com/flutter/flutter/issues/41067
 Brightness? _lastBrightness;
@@ -530,17 +704,8 @@ void fixStatusBarOniOS16AndBelow(BuildContext context) {
   }
 }
 
-extension ListUniqueExt<T> on Iterable<T> {
-  List<T> unique(dynamic Function(T) getKey) {
-    var distinctSet = <dynamic>{};
-    var distinctList = <T>[];
-    for (var item in this) {
-      if (distinctSet.add(getKey(item))) {
-        distinctList.add(item);
-      }
-    }
-    return distinctList;
-  }
+extension ColorOpacityExt on Color {
+  Color applyAlpha(double val) => withValues(alpha: val);
 }
 
 String roundTo(double value, int decimalPoints) {
@@ -579,3 +744,21 @@ double computeGradientAlignmentY(double evaluatedAngle) {
   }
   return double.parse(roundTo(y, 2));
 }
+
+extension ListUniqueExt<T> on Iterable<T> {
+  List<T> unique(dynamic Function(T) getKey) {
+    var distinctSet = <dynamic>{};
+    var distinctList = <T>[];
+    for (var item in this) {
+      if (distinctSet.add(getKey(item))) {
+        distinctList.add(item);
+      }
+    }
+    return distinctList;
+  }
+}
+
+String getCurrentRoute(BuildContext context) =>
+    context.mounted ? MyApp.of(context).getRoute() : '';
+List<String> getCurrentRouteStack(BuildContext context) =>
+    context.mounted ? MyApp.of(context).getRouteStack() : [];

@@ -1,0 +1,344 @@
+import '/backend/backend.dart';
+import '/flutter_flow/flutter_flow_icon_button.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
+import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
+import 'package:easy_debounce/easy_debounce.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'search_filter_model.dart';
+export 'search_filter_model.dart';
+
+class SearchFilterWidget extends StatefulWidget {
+  const SearchFilterWidget({super.key});
+
+  static String routeName = 'searchFilter';
+  static String routePath = 'searchFilter';
+
+  @override
+  State<SearchFilterWidget> createState() => _SearchFilterWidgetState();
+}
+
+class _SearchFilterWidgetState extends State<SearchFilterWidget> {
+  late SearchFilterModel _model;
+
+  final scaffoldKey = GlobalKey<ScaffoldState>();
+
+  @override
+  void initState() {
+    super.initState();
+    _model = createModel(context, () => SearchFilterModel());
+
+    _model.textController ??= TextEditingController();
+    _model.textFieldFocusNode ??= FocusNode();
+  }
+
+  @override
+  void dispose() {
+    _model.dispose();
+
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        FocusScope.of(context).unfocus();
+        FocusManager.instance.primaryFocus?.unfocus();
+      },
+      child: Scaffold(
+        key: scaffoldKey,
+        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+        appBar: AppBar(
+          backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+          automaticallyImplyLeading: false,
+          leading: FlutterFlowIconButton(
+            borderColor: Colors.transparent,
+            borderRadius: 30.0,
+            borderWidth: 1.0,
+            buttonSize: 54.0,
+            icon: Icon(
+              Icons.arrow_back_ios_new,
+              color: FlutterFlowTheme.of(context).primary,
+              size: 24.0,
+            ),
+            onPressed: () async {
+              context.pop();
+            },
+          ),
+          title: Padding(
+            padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 10.0),
+            child: Container(
+              decoration: BoxDecoration(
+                color: FlutterFlowTheme.of(context).secondaryBackground,
+                borderRadius: BorderRadius.circular(20.0),
+              ),
+              child: Row(
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  FlutterFlowIconButton(
+                    borderRadius: 8.0,
+                    buttonSize: 40.0,
+                    icon: Icon(
+                      Icons.search_sharp,
+                      color: FlutterFlowTheme.of(context).primary,
+                      size: 24.0,
+                    ),
+                    onPressed: () {
+                      print('IconButton pressed ...');
+                    },
+                  ),
+                  Expanded(
+                    child: Container(
+                      width: 200.0,
+                      child: TextFormField(
+                        controller: _model.textController,
+                        focusNode: _model.textFieldFocusNode,
+                        onChanged: (_) => EasyDebounce.debounce(
+                          '_model.textController',
+                          Duration(milliseconds: 2000),
+                          () => safeSetState(() {}),
+                        ),
+                        autofocus: false,
+                        textInputAction: TextInputAction.done,
+                        obscureText: false,
+                        decoration: InputDecoration(
+                          isDense: true,
+                          labelStyle:
+                              FlutterFlowTheme.of(context).labelMedium.override(
+                                    font: GoogleFonts.poppins(
+                                      fontWeight: FlutterFlowTheme.of(context)
+                                          .labelMedium
+                                          .fontWeight,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .labelMedium
+                                          .fontStyle,
+                                    ),
+                                    letterSpacing: 0.0,
+                                    fontWeight: FlutterFlowTheme.of(context)
+                                        .labelMedium
+                                        .fontWeight,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .labelMedium
+                                        .fontStyle,
+                                  ),
+                          hintText: FFLocalizations.of(context).getText(
+                            'srkulkeo' /* search people */,
+                          ),
+                          hintStyle:
+                              FlutterFlowTheme.of(context).labelMedium.override(
+                                    font: GoogleFonts.poppins(
+                                      fontWeight: FlutterFlowTheme.of(context)
+                                          .labelMedium
+                                          .fontWeight,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .labelMedium
+                                          .fontStyle,
+                                    ),
+                                    letterSpacing: 0.0,
+                                    fontWeight: FlutterFlowTheme.of(context)
+                                        .labelMedium
+                                        .fontWeight,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .labelMedium
+                                        .fontStyle,
+                                  ),
+                          enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Color(0x00000000),
+                              width: 1.0,
+                            ),
+                            borderRadius: BorderRadius.circular(20.0),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Color(0x00000000),
+                              width: 1.0,
+                            ),
+                            borderRadius: BorderRadius.circular(20.0),
+                          ),
+                          errorBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: FlutterFlowTheme.of(context).error,
+                              width: 1.0,
+                            ),
+                            borderRadius: BorderRadius.circular(20.0),
+                          ),
+                          focusedErrorBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: FlutterFlowTheme.of(context).error,
+                              width: 1.0,
+                            ),
+                            borderRadius: BorderRadius.circular(20.0),
+                          ),
+                          filled: true,
+                          fillColor:
+                              FlutterFlowTheme.of(context).secondaryBackground,
+                          suffixIcon: _model.textController!.text.isNotEmpty
+                              ? InkWell(
+                                  onTap: () async {
+                                    _model.textController?.clear();
+                                    safeSetState(() {});
+                                  },
+                                  child: Icon(
+                                    Icons.clear,
+                                    color: FlutterFlowTheme.of(context).primary,
+                                    size: 22,
+                                  ),
+                                )
+                              : null,
+                        ),
+                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                              font: GoogleFonts.poppins(
+                                fontWeight: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .fontWeight,
+                                fontStyle: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .fontStyle,
+                              ),
+                              letterSpacing: 0.0,
+                              fontWeight: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .fontWeight,
+                              fontStyle: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .fontStyle,
+                            ),
+                        cursorColor: FlutterFlowTheme.of(context).primaryText,
+                        validator:
+                            _model.textControllerValidator.asValidator(context),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          actions: [],
+          centerTitle: false,
+          elevation: 1.0,
+        ),
+        body: SingleChildScrollView(
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              Builder(
+                builder: (context) {
+                  final getProfessionsList =
+                      functions.getProfessionsList().toList();
+
+                  return ListView.builder(
+                    padding: EdgeInsets.fromLTRB(
+                      0,
+                      20.0,
+                      0,
+                      20.0,
+                    ),
+                    primary: false,
+                    shrinkWrap: true,
+                    scrollDirection: Axis.vertical,
+                    itemCount: getProfessionsList.length,
+                    itemBuilder: (context, getProfessionsListIndex) {
+                      final getProfessionsListItem =
+                          getProfessionsList[getProfessionsListIndex];
+                      return StreamBuilder<List<UsersRecord>>(
+                        stream: queryUsersRecord(
+                          queryBuilder: (usersRecord) => usersRecord.where(
+                            'profession',
+                            isEqualTo: getProfessionsListItem,
+                          ),
+                        ),
+                        builder: (context, snapshot) {
+                          // Customize what your widget looks like when it's loading.
+                          if (!snapshot.hasData) {
+                            return Center(
+                              child: SizedBox(
+                                width: 40.0,
+                                height: 40.0,
+                                child: SpinKitThreeBounce(
+                                  color: Color(0x51000000),
+                                  size: 40.0,
+                                ),
+                              ),
+                            );
+                          }
+                          List<UsersRecord> containerUsersRecordList =
+                              snapshot.data!;
+
+                          return Material(
+                            color: Colors.transparent,
+                            elevation: 1.0,
+                            child: Container(
+                              width: double.infinity,
+                              height: 45.0,
+                              decoration: BoxDecoration(
+                                color: FlutterFlowTheme.of(context)
+                                    .secondaryBackground,
+                              ),
+                              child: Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    20.0, 0.0, 0.0, 0.0),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      getProfessionsListItem,
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            font: GoogleFonts.poppins(
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontStyle,
+                                            ),
+                                            letterSpacing: 0.0,
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontStyle,
+                                          ),
+                                    ),
+                                    FlutterFlowIconButton(
+                                      borderRadius: 8.0,
+                                      buttonSize: 40.0,
+                                      icon: Icon(
+                                        Icons.arrow_forward_ios,
+                                        color: Color(0xFFB8B8B8),
+                                        size: 24.0,
+                                      ),
+                                      onPressed: () {
+                                        print('IconButton pressed ...');
+                                      },
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          );
+                        },
+                      );
+                    },
+                  );
+                },
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}

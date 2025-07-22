@@ -2,15 +2,17 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '/backend/backend.dart';
+
 
 import '/auth/base_auth_user_provider.dart';
 
 import '/backend/push_notifications/push_notifications_handler.dart'
     show PushNotificationsHandler;
-import '/index.dart';
-import '/main.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+
+import '/index.dart';
 
 export 'package:go_router/go_router.dart';
 export 'serialization_util.dart';
@@ -78,320 +80,744 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       refreshListenable: appStateNotifier,
       navigatorKey: appNavigatorKey,
       errorBuilder: (context, state) =>
-          appStateNotifier.loggedIn ? const NavBarPage() : const LoginPageWidget(),
+          appStateNotifier.loggedIn ? HomePageWidget() : LoginPageOldWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
-          builder: (context, _) =>
-              appStateNotifier.loggedIn ? const NavBarPage() : const LoginPageWidget(),
-        ),
-        FFRoute(
-          name: 'loginPage',
-          path: '/login',
-          builder: (context, params) => const LoginPageWidget(),
-        ),
-        FFRoute(
-          name: 'signupPage',
-          path: '/signup',
-          builder: (context, params) => const SignupPageWidget(),
-        ),
-        FFRoute(
-          name: 'forgetPassword',
-          path: '/forgetPassword',
-          builder: (context, params) => const ForgetPasswordWidget(),
-        ),
-        FFRoute(
-          name: 'homeFeedMore',
-          path: '/homeFeedMore',
-          builder: (context, params) => const HomeFeedMoreWidget(),
-        ),
-        FFRoute(
-          name: 'personalProfile',
-          path: '/profile',
-          builder: (context, params) => const NavBarPage(
-            initialPage: '',
-            page: PersonalProfileWidget(),
-          ),
-        ),
-        FFRoute(
-          name: 'connectionProfile',
-          path: '/connectionprofile',
-          builder: (context, params) => NavBarPage(
-            initialPage: '',
-            page: ConnectionProfileWidget(
-              userRef: params.getParam(
-                'userRef',
-                ParamType.DocumentReference,
-                isList: false,
-                collectionNamePath: ['users'],
-              ),
+          builder: (context, _) => appStateNotifier.loggedIn
+              ? HomePageWidget()
+              : LoginPageOldWidget(),
+          routes: [
+            FFRoute(
+              name: LoginPageOldWidget.routeName,
+              path: LoginPageOldWidget.routePath,
+              builder: (context, params) => LoginPageOldWidget(),
             ),
-          ),
-        ),
-        FFRoute(
-          name: 'gallery',
-          path: '/gallery',
-          builder: (context, params) => const GalleryWidget(),
-        ),
-        FFRoute(
-          name: 'myPost',
-          path: '/mypost',
-          builder: (context, params) => NavBarPage(
-            initialPage: '',
-            page: MyPostWidget(
-              adsBool: params.getParam(
-                'adsBool',
-                ParamType.bool,
-              ),
+            FFRoute(
+              name: ForgetPasswordWidget.routeName,
+              path: ForgetPasswordWidget.routePath,
+              builder: (context, params) => ForgetPasswordWidget(),
             ),
-          ),
-        ),
-        FFRoute(
-          name: 'homeFeed',
-          path: '/home',
-          requireAuth: true,
-          builder: (context, params) => const HomeFeedWidget(),
-        ),
-        FFRoute(
-          name: 'ProfileEdit',
-          path: '/profileEdit',
-          builder: (context, params) => const ProfileEditWidget(),
-        ),
-        FFRoute(
-          name: 'Notification',
-          path: '/notification',
-          builder: (context, params) => const NotificationWidget(),
-        ),
-        FFRoute(
-          name: 'BusinessDirectory',
-          path: '/BusinessDirectory',
-          builder: (context, params) => params.isEmpty
-              ? const NavBarPage(initialPage: 'BusinessDirectory')
-              : const NavBarPage(
-                  initialPage: 'BusinessDirectory',
-                  page: BusinessDirectoryWidget(),
+            FFRoute(
+              name: ResourceCenterWidget.routeName,
+              path: ResourceCenterWidget.routePath,
+              builder: (context, params) => ResourceCenterWidget(),
+            ),
+            FFRoute(
+              name: CreateBusinessWidget.routeName,
+              path: CreateBusinessWidget.routePath,
+              builder: (context, params) => CreateBusinessWidget(),
+            ),
+            FFRoute(
+              name: EditProfileWidget.routeName,
+              path: EditProfileWidget.routePath,
+              builder: (context, params) => EditProfileWidget(
+                firsttime: params.getParam(
+                  'firsttime',
+                  ParamType.bool,
                 ),
-        ),
-        FFRoute(
-          name: 'BuisnessProfile',
-          path: '/buisnessProfile',
-          builder: (context, params) => NavBarPage(
-            initialPage: '',
-            page: BuisnessProfileWidget(
-              businessRef: params.getParam(
-                'businessRef',
-                ParamType.DocumentReference,
-                isList: false,
-                collectionNamePath: ['business'],
               ),
             ),
-          ),
-        ),
-        FFRoute(
-          name: 'Review',
-          path: '/review',
-          builder: (context, params) => ReviewWidget(
-            businessRef: params.getParam(
-              'businessRef',
-              ParamType.DocumentReference,
-              isList: false,
-              collectionNamePath: ['business'],
-            ),
-          ),
-        ),
-        FFRoute(
-          name: 'Allmessage',
-          path: '/allmessage',
-          builder: (context, params) => const AllmessageWidget(),
-        ),
-        FFRoute(
-          name: 'groupMessagingBox',
-          path: '/groupmessagingBox',
-          builder: (context, params) => GroupMessagingBoxWidget(
-            chatRef: params.getParam(
-              'chatRef',
-              ParamType.DocumentReference,
-              isList: false,
-              collectionNamePath: ['chat'],
-            ),
-          ),
-        ),
-        FFRoute(
-          name: 'messaging',
-          path: '/messaging',
-          builder: (context, params) => MessagingWidget(
-            chatRef: params.getParam(
-              'chatRef',
-              ParamType.DocumentReference,
-              isList: false,
-              collectionNamePath: ['chat'],
-            ),
-          ),
-        ),
-        FFRoute(
-          name: 'yourConnection',
-          path: '/yourConnection',
-          builder: (context, params) => params.isEmpty
-              ? const NavBarPage(initialPage: 'yourConnection')
-              : NavBarPage(
-                  initialPage: 'yourConnection',
-                  page: YourConnectionWidget(
-                    allConnectionBool: params.getParam(
-                      'allConnectionBool',
-                      ParamType.bool,
-                    ),
-                  ),
+            FFRoute(
+              name: ProfilesWidget.routeName,
+              path: ProfilesWidget.routePath,
+              builder: (context, params) => ProfilesWidget(
+                users: params.getParam(
+                  'users',
+                  ParamType.String,
                 ),
-        ),
-        FFRoute(
-          name: 'Community',
-          path: '/community',
-          builder: (context, params) => params.isEmpty
-              ? const NavBarPage(initialPage: 'Community')
-              : const NavBarPage(
-                  initialPage: 'Community',
-                  page: CommunityWidget(),
+              ),
+            ),
+            FFRoute(
+              name: ProfileshareWidget.routeName,
+              path: ProfileshareWidget.routePath,
+              builder: (context, params) => ProfileshareWidget(
+                user: params.getParam(
+                  'user',
+                  ParamType.DocumentReference,
+                  isList: false,
+                  collectionNamePath: ['users'],
                 ),
-        ),
-        FFRoute(
-          name: 'myCommunities',
-          path: '/mycommunity',
-          builder: (context, params) => const NavBarPage(
-            initialPage: '',
-            page: MyCommunitiesWidget(),
-          ),
-        ),
-        FFRoute(
-          name: 'communitySpace',
-          path: '/communityspace',
-          requireAuth: true,
-          builder: (context, params) => NavBarPage(
-            initialPage: '',
-            page: CommunitySpaceWidget(
-              communityRef: params.getParam(
-                'communityRef',
-                ParamType.DocumentReference,
-                isList: false,
-                collectionNamePath: ['communities'],
               ),
             ),
-          ),
-        ),
-        FFRoute(
-          name: 'aboutCommunity',
-          path: '/aboutcommunity',
-          requireAuth: true,
-          builder: (context, params) => NavBarPage(
-            initialPage: '',
-            page: AboutCommunityWidget(
-              communityRef: params.getParam(
-                'communityRef',
-                ParamType.DocumentReference,
-                isList: false,
-                collectionNamePath: ['communities'],
+            FFRoute(
+              name: EventhomeWidget.routeName,
+              path: EventhomeWidget.routePath,
+              builder: (context, params) => EventhomeWidget(),
+            ),
+            FFRoute(
+              name: EventsearchWidget.routeName,
+              path: EventsearchWidget.routePath,
+              builder: (context, params) => EventsearchWidget(
+                searchedEvents: params.getParam(
+                  'searchedEvents',
+                  ParamType.String,
+                ),
               ),
             ),
-          ),
-        ),
-        FFRoute(
-          name: 'Marketplace',
-          path: '/marketplace',
-          builder: (context, params) => const NavBarPage(
-            initialPage: '',
-            page: MarketplaceWidget(),
-          ),
-        ),
-        FFRoute(
-          name: 'ResourceCenter',
-          path: '/resourceCenter',
-          builder: (context, params) => const ResourceCenterWidget(),
-        ),
-        FFRoute(
-          name: 'adviewPage',
-          path: '/adviewPage',
-          builder: (context, params) => NavBarPage(
-            initialPage: '',
-            page: AdviewPageWidget(
-              adPostRef: params.getParam(
-                'adPostRef',
-                ParamType.DocumentReference,
-                isList: false,
-                collectionNamePath: ['ads'],
+            FFRoute(
+              name: EventdetailsWidget.routeName,
+              path: EventdetailsWidget.routePath,
+              asyncParams: {
+                'event': getDoc(['event'], EventRecord.fromSnapshot),
+              },
+              builder: (context, params) => EventdetailsWidget(
+                event: params.getParam(
+                  'event',
+                  ParamType.Document,
+                ),
               ),
             ),
-          ),
-        ),
-        FFRoute(
-          name: 'events',
-          path: '/events',
-          builder: (context, params) => params.isEmpty
-              ? const NavBarPage(initialPage: 'events')
-              : const EventsWidget(),
-        ),
-        FFRoute(
-          name: 'eventView',
-          path: '/eventView',
-          builder: (context, params) => EventViewWidget(
-            eventRef: params.getParam(
-              'eventRef',
-              ParamType.DocumentReference,
-              isList: false,
-              collectionNamePath: ['event'],
-            ),
-          ),
-        ),
-        FFRoute(
-          name: 'CreateBusiness',
-          path: '/createBusiness',
-          builder: (context, params) => const CreateBusinessWidget(),
-        ),
-        FFRoute(
-          name: 'createProfile',
-          path: '/createProfile',
-          builder: (context, params) => const CreateProfileWidget(),
-        ),
-        FFRoute(
-          name: 'searchResult',
-          path: '/searchResult',
-          builder: (context, params) => SearchResultWidget(
-            searchText: params.getParam(
-              'searchText',
-              ParamType.String,
-            ),
-          ),
-        ),
-        FFRoute(
-          name: 'homePage3',
-          path: '/homePage3',
-          builder: (context, params) => params.isEmpty
-              ? const NavBarPage(initialPage: 'homePage3')
-              : const HomePage3Widget(),
-        ),
-        FFRoute(
-          name: 'Feed',
-          path: '/feed',
-          builder: (context, params) => const FeedWidget(),
-        ),
-        FFRoute(
-          name: 'Feed2',
-          path: '/feed2',
-          builder: (context, params) => const Feed2Widget(),
-        ),
-        FFRoute(
-          name: 'Marketplace1',
-          path: '/marketplace1',
-          builder: (context, params) => NavBarPage(
-            initialPage: '',
-            page: Marketplace1Widget(
-              categoryName: params.getParam(
-                'categoryName',
-                ParamType.String,
+            FFRoute(
+              name: EventodersucessWidget.routeName,
+              path: EventodersucessWidget.routePath,
+              asyncParams: {
+                'purchaseevent': getDoc(
+                    ['RegisterdEvent'], RegisterdEventRecord.fromSnapshot),
+              },
+              builder: (context, params) => EventodersucessWidget(
+                purchaseevent: params.getParam(
+                  'purchaseevent',
+                  ParamType.Document,
+                ),
               ),
             ),
-          ),
-        )
+            FFRoute(
+              name: EventTicketDetailsWidget.routeName,
+              path: EventTicketDetailsWidget.routePath,
+              asyncParams: {
+                'purchaseticket': getDoc(
+                    ['RegisterdEvent'], RegisterdEventRecord.fromSnapshot),
+              },
+              builder: (context, params) => EventTicketDetailsWidget(
+                purchaseticket: params.getParam(
+                  'purchaseticket',
+                  ParamType.Document,
+                ),
+              ),
+            ),
+            FFRoute(
+              name: EventoderWidget.routeName,
+              path: EventoderWidget.routePath,
+              builder: (context, params) => EventoderWidget(),
+            ),
+            FFRoute(
+              name: EmptyeventoderWidget.routeName,
+              path: EmptyeventoderWidget.routePath,
+              builder: (context, params) => EmptyeventoderWidget(),
+            ),
+            FFRoute(
+              name: ComunityHomeWidget.routeName,
+              path: ComunityHomeWidget.routePath,
+              builder: (context, params) => ComunityHomeWidget(),
+            ),
+            FFRoute(
+              name: CommunityProfileWidget.routeName,
+              path: CommunityProfileWidget.routePath,
+              asyncParams: {
+                'community':
+                    getDoc(['community'], CommunityRecord.fromSnapshot),
+              },
+              builder: (context, params) => CommunityProfileWidget(
+                community: params.getParam(
+                  'community',
+                  ParamType.Document,
+                ),
+              ),
+            ),
+            FFRoute(
+              name: ComunityListWidget.routeName,
+              path: ComunityListWidget.routePath,
+              builder: (context, params) => ComunityListWidget(),
+            ),
+            FFRoute(
+              name: AddmemberWidget.routeName,
+              path: AddmemberWidget.routePath,
+              asyncParams: {
+                'commList': getDoc(['community'], CommunityRecord.fromSnapshot),
+              },
+              builder: (context, params) => AddmemberWidget(
+                commList: params.getParam(
+                  'commList',
+                  ParamType.Document,
+                ),
+              ),
+            ),
+            FFRoute(
+              name: AddcomunityDetailsWidget.routeName,
+              path: AddcomunityDetailsWidget.routePath,
+              asyncParams: {
+                'community':
+                    getDoc(['community'], CommunityRecord.fromSnapshot),
+              },
+              builder: (context, params) => AddcomunityDetailsWidget(
+                edite: params.getParam(
+                  'edite',
+                  ParamType.bool,
+                ),
+                community: params.getParam(
+                  'community',
+                  ParamType.Document,
+                ),
+              ),
+            ),
+            FFRoute(
+              name: SearchcontactWidget.routeName,
+              path: SearchcontactWidget.routePath,
+              builder: (context, params) => SearchcontactWidget(),
+            ),
+            FFRoute(
+              name: CommunityShareQRWidget.routeName,
+              path: CommunityShareQRWidget.routePath,
+              builder: (context, params) => CommunityShareQRWidget(),
+            ),
+            FFRoute(
+              name: MarketHomeWidget.routeName,
+              path: MarketHomeWidget.routePath,
+              builder: (context, params) => MarketHomeWidget(),
+            ),
+            FFRoute(
+              name: SelectedWidget.routeName,
+              path: SelectedWidget.routePath,
+              builder: (context, params) => SelectedWidget(),
+            ),
+            FFRoute(
+              name: MarketSeachWidget.routeName,
+              path: MarketSeachWidget.routePath,
+              builder: (context, params) => MarketSeachWidget(
+                filterd: params.getParam(
+                  'filterd',
+                  ParamType.bool,
+                ),
+              ),
+            ),
+            FFRoute(
+              name: MarketSortFilterWidget.routeName,
+              path: MarketSortFilterWidget.routePath,
+              builder: (context, params) => MarketSortFilterWidget(),
+            ),
+            FFRoute(
+              name: ProductWidget.routeName,
+              path: ProductWidget.routePath,
+              asyncParams: {
+                'product': getDoc(['product'], ProductRecord.fromSnapshot),
+              },
+              builder: (context, params) => ProductWidget(
+                product: params.getParam(
+                  'product',
+                  ParamType.Document,
+                ),
+              ),
+            ),
+            FFRoute(
+              name: ResturantHomeWidget.routeName,
+              path: ResturantHomeWidget.routePath,
+              builder: (context, params) => ResturantHomeWidget(),
+            ),
+            FFRoute(
+              name: ResturantDetailsWidget.routeName,
+              path: ResturantDetailsWidget.routePath,
+              asyncParams: {
+                'recipe': getDoc(['recipe'], RecipeRecord.fromSnapshot),
+              },
+              builder: (context, params) => ResturantDetailsWidget(
+                recipe: params.getParam(
+                  'recipe',
+                  ParamType.Document,
+                ),
+              ),
+            ),
+            FFRoute(
+              name: CartWidget.routeName,
+              path: CartWidget.routePath,
+              builder: (context, params) => CartWidget(),
+            ),
+            FFRoute(
+              name: SuccessWidget.routeName,
+              path: SuccessWidget.routePath,
+              builder: (context, params) => SuccessWidget(),
+            ),
+            FFRoute(
+              name: NotificationrestuWidget.routeName,
+              path: NotificationrestuWidget.routePath,
+              builder: (context, params) => NotificationrestuWidget(),
+            ),
+            FFRoute(
+              name: ProfileforResturantWidget.routeName,
+              path: ProfileforResturantWidget.routePath,
+              builder: (context, params) => ProfileforResturantWidget(),
+            ),
+            FFRoute(
+              name: TttWidget.routeName,
+              path: TttWidget.routePath,
+              builder: (context, params) => TttWidget(),
+            ),
+            FFRoute(
+              name: MyEventWidget.routeName,
+              path: MyEventWidget.routePath,
+              builder: (context, params) => MyEventWidget(),
+            ),
+            FFRoute(
+              name: LisEventsWidget.routeName,
+              path: LisEventsWidget.routePath,
+              builder: (context, params) => LisEventsWidget(),
+            ),
+            FFRoute(
+              name: LisEventspecialdealWidget.routeName,
+              path: LisEventspecialdealWidget.routePath,
+              asyncParams: {
+                'category':
+                    getDoc(['Eventcatigory'], EventcatigoryRecord.fromSnapshot),
+              },
+              builder: (context, params) => LisEventspecialdealWidget(
+                category: params.getParam(
+                  'category',
+                  ParamType.Document,
+                ),
+              ),
+            ),
+            FFRoute(
+              name: LisEventforyouWidget.routeName,
+              path: LisEventforyouWidget.routePath,
+              builder: (context, params) => LisEventforyouWidget(),
+            ),
+            FFRoute(
+              name: LisEventcatigoryWidget.routeName,
+              path: LisEventcatigoryWidget.routePath,
+              builder: (context, params) => LisEventcatigoryWidget(),
+            ),
+            FFRoute(
+              name: ProfilesComunityWidget.routeName,
+              path: ProfilesComunityWidget.routePath,
+              asyncParams: {
+                'user': getDoc(['users'], UsersRecord.fromSnapshot),
+              },
+              builder: (context, params) => ProfilesComunityWidget(
+                user: params.getParam(
+                  'user',
+                  ParamType.Document,
+                ),
+              ),
+            ),
+            FFRoute(
+              name: GalleryComunityWidget.routeName,
+              path: GalleryComunityWidget.routePath,
+              builder: (context, params) => GalleryComunityWidget(),
+            ),
+            FFRoute(
+              name: CommunitychatWidget.routeName,
+              path: CommunitychatWidget.routePath,
+              builder: (context, params) => CommunitychatWidget(
+                chat: params.getParam(
+                  'chat',
+                  ParamType.DocumentReference,
+                  isList: false,
+                  collectionNamePath: ['communitychat'],
+                ),
+                comunity: params.getParam(
+                  'comunity',
+                  ParamType.DocumentReference,
+                  isList: false,
+                  collectionNamePath: ['community'],
+                ),
+                member: params.getParam(
+                  'member',
+                  ParamType.DocumentReference,
+                  isList: false,
+                  collectionNamePath: ['community', 'communityMember'],
+                ),
+              ),
+            ),
+            FFRoute(
+              name: CommunitychatlistWidget.routeName,
+              path: CommunitychatlistWidget.routePath,
+              builder: (context, params) => CommunitychatlistWidget(),
+            ),
+            FFRoute(
+              name: ChatproductWidget.routeName,
+              path: ChatproductWidget.routePath,
+              asyncParams: {
+                'chat': getDoc(['chatproduct'], ChatproductRecord.fromSnapshot),
+              },
+              builder: (context, params) => ChatproductWidget(
+                product: params.getParam(
+                  'product',
+                  ParamType.DocumentReference,
+                  isList: false,
+                  collectionNamePath: ['product'],
+                ),
+                chat: params.getParam(
+                  'chat',
+                  ParamType.Document,
+                ),
+              ),
+            ),
+            FFRoute(
+              name: MarketproductlistWidget.routeName,
+              path: MarketproductlistWidget.routePath,
+              builder: (context, params) => MarketproductlistWidget(
+                type: params.getParam(
+                  'type',
+                  ParamType.String,
+                ),
+              ),
+            ),
+            FFRoute(
+              name: MarketproductlistCatigoryWidget.routeName,
+              path: MarketproductlistCatigoryWidget.routePath,
+              builder: (context, params) => MarketproductlistCatigoryWidget(
+                type: params.getParam(
+                  'type',
+                  ParamType.String,
+                ),
+              ),
+            ),
+            FFRoute(
+              name: ResurantorderWidget.routeName,
+              path: ResurantorderWidget.routePath,
+              builder: (context, params) => ResurantorderWidget(),
+            ),
+            FFRoute(
+              name: OrderdetailsWidget.routeName,
+              path: OrderdetailsWidget.routePath,
+              asyncParams: {
+                'order': getDoc(['order'], OrderRecord.fromSnapshot),
+              },
+              builder: (context, params) => OrderdetailsWidget(
+                order: params.getParam(
+                  'order',
+                  ParamType.Document,
+                ),
+              ),
+            ),
+            FFRoute(
+              name: OrderdetailsbuyerWidget.routeName,
+              path: OrderdetailsbuyerWidget.routePath,
+              asyncParams: {
+                'order': getDoc(['order'], OrderRecord.fromSnapshot),
+              },
+              builder: (context, params) => OrderdetailsbuyerWidget(
+                order: params.getParam(
+                  'order',
+                  ParamType.Document,
+                ),
+              ),
+            ),
+            FFRoute(
+              name: ResurantorderbuyerWidget.routeName,
+              path: ResurantorderbuyerWidget.routePath,
+              builder: (context, params) => ResurantorderbuyerWidget(),
+            ),
+            FFRoute(
+              name: MenuWidget.routeName,
+              path: MenuWidget.routePath,
+              builder: (context, params) => MenuWidget(),
+            ),
+            FFRoute(
+              name: MyproductWidget.routeName,
+              path: MyproductWidget.routePath,
+              builder: (context, params) => MyproductWidget(),
+            ),
+            FFRoute(
+              name: ComunityListmyWidget.routeName,
+              path: ComunityListmyWidget.routePath,
+              builder: (context, params) => ComunityListmyWidget(),
+            ),
+            FFRoute(
+              name: MyResturantWidget.routeName,
+              path: MyResturantWidget.routePath,
+              builder: (context, params) => MyResturantWidget(),
+            ),
+            FFRoute(
+              name: ChatoneWidget.routeName,
+              path: ChatoneWidget.routePath,
+              asyncParams: {
+                'chat': getDoc(['chat'], ChatRecord.fromSnapshot),
+              },
+              builder: (context, params) => ChatoneWidget(
+                chat: params.getParam(
+                  'chat',
+                  ParamType.Document,
+                ),
+              ),
+            ),
+            FFRoute(
+              name: ChatWidget.routeName,
+              path: ChatWidget.routePath,
+              builder: (context, params) => ChatWidget(),
+            ),
+            FFRoute(
+              name: BussinessWidget.routeName,
+              path: BussinessWidget.routePath,
+              asyncParams: {
+                'bussiness': getDoc(['business'], BusinessRecord.fromSnapshot),
+              },
+              builder: (context, params) => BussinessWidget(
+                bussiness: params.getParam(
+                  'bussiness',
+                  ParamType.Document,
+                ),
+              ),
+            ),
+            FFRoute(
+              name: MybusineslistWidget.routeName,
+              path: MybusineslistWidget.routePath,
+              builder: (context, params) => MybusineslistWidget(),
+            ),
+            FFRoute(
+              name: EditBusinessWidget.routeName,
+              path: EditBusinessWidget.routePath,
+              asyncParams: {
+                'bussiness': getDoc(['business'], BusinessRecord.fromSnapshot),
+              },
+              builder: (context, params) => EditBusinessWidget(
+                bussiness: params.getParam(
+                  'bussiness',
+                  ParamType.Document,
+                ),
+              ),
+            ),
+            FFRoute(
+              name: LisEventsCatigoryWidget.routeName,
+              path: LisEventsCatigoryWidget.routePath,
+              builder: (context, params) => LisEventsCatigoryWidget(
+                catigory: params.getParam(
+                  'catigory',
+                  ParamType.DocumentReference,
+                  isList: false,
+                  collectionNamePath: ['Eventcatigory'],
+                ),
+              ),
+            ),
+            FFRoute(
+              name: MarketchatlistWidget.routeName,
+              path: MarketchatlistWidget.routePath,
+              builder: (context, params) => MarketchatlistWidget(),
+            ),
+            FFRoute(
+              name: Addmember2Widget.routeName,
+              path: Addmember2Widget.routePath,
+              asyncParams: {
+                'community':
+                    getDoc(['community'], CommunityRecord.fromSnapshot),
+              },
+              builder: (context, params) => Addmember2Widget(
+                community: params.getParam(
+                  'community',
+                  ParamType.Document,
+                ),
+              ),
+            ),
+            FFRoute(
+              name: ResturantmenuWidget.routeName,
+              path: ResturantmenuWidget.routePath,
+              asyncParams: {
+                'menue': getDoc(
+                    ['resturant_menue'], ResturantMenueRecord.fromSnapshot),
+              },
+              builder: (context, params) => ResturantmenuWidget(
+                menue: params.getParam(
+                  'menue',
+                  ParamType.Document,
+                ),
+              ),
+            ),
+            FFRoute(
+              name: ResturantmenusearchWidget.routeName,
+              path: ResturantmenusearchWidget.routePath,
+              builder: (context, params) => ResturantmenusearchWidget(),
+            ),
+            FFRoute(
+              name: HubWidget.routeName,
+              path: HubWidget.routePath,
+              builder: (context, params) => HubWidget(),
+            ),
+            FFRoute(
+              name: BusinessReviewPageWidget.routeName,
+              path: BusinessReviewPageWidget.routePath,
+              asyncParams: {
+                'bussiness': getDoc(['business'], BusinessRecord.fromSnapshot),
+              },
+              builder: (context, params) => BusinessReviewPageWidget(
+                bussiness: params.getParam(
+                  'bussiness',
+                  ParamType.Document,
+                ),
+              ),
+            ),
+            FFRoute(
+              name: VerifyWidget.routeName,
+              path: VerifyWidget.routePath,
+              builder: (context, params) => VerifyWidget(),
+            ),
+            FFRoute(
+              name: VeridetailsWidget.routeName,
+              path: VeridetailsWidget.routePath,
+              asyncParams: {
+                'veryfy':
+                    getDoc(['verification'], VerificationRecord.fromSnapshot),
+              },
+              builder: (context, params) => VeridetailsWidget(
+                veryfy: params.getParam(
+                  'veryfy',
+                  ParamType.Document,
+                ),
+              ),
+            ),
+            FFRoute(
+              name: ViewIDWidget.routeName,
+              path: ViewIDWidget.routePath,
+              asyncParams: {
+                'verify':
+                    getDoc(['verification'], VerificationRecord.fromSnapshot),
+              },
+              builder: (context, params) => ViewIDWidget(
+                verify: params.getParam(
+                  'verify',
+                  ParamType.Document,
+                ),
+              ),
+            ),
+            FFRoute(
+              name: ManageverifymeWidget.routeName,
+              path: ManageverifymeWidget.routePath,
+              builder: (context, params) => ManageverifymeWidget(),
+            ),
+            FFRoute(
+              name: ManageverifyWidget.routeName,
+              path: ManageverifyWidget.routePath,
+              builder: (context, params) => ManageverifyWidget(),
+            ),
+            FFRoute(
+              name: EventAttendeesWidget.routeName,
+              path: EventAttendeesWidget.routePath,
+              asyncParams: {
+                'event': getDoc(['event'], EventRecord.fromSnapshot),
+              },
+              builder: (context, params) => EventAttendeesWidget(
+                event: params.getParam(
+                  'event',
+                  ParamType.Document,
+                ),
+              ),
+            ),
+            FFRoute(
+              name: LoginScreenWidget.routeName,
+              path: LoginScreenWidget.routePath,
+              builder: (context, params) => LoginScreenWidget(),
+            ),
+            FFRoute(
+              name: SignupScreenWidget.routeName,
+              path: SignupScreenWidget.routePath,
+              builder: (context, params) => SignupScreenWidget(),
+            ),
+            FFRoute(
+              name: RecordWidget.routeName,
+              path: RecordWidget.routePath,
+              builder: (context, params) => RecordWidget(),
+            ),
+            FFRoute(
+              name: SignupPageOldWidget.routeName,
+              path: SignupPageOldWidget.routePath,
+              builder: (context, params) => SignupPageOldWidget(),
+            ),
+            FFRoute(
+              name: HomePageWidget.routeName,
+              path: HomePageWidget.routePath,
+              builder: (context, params) => HomePageWidget(),
+            ),
+            FFRoute(
+              name: MyPostWidget.routeName,
+              path: MyPostWidget.routePath,
+              builder: (context, params) => MyPostWidget(),
+            ),
+            FFRoute(
+              name: SearchFilterWidget.routeName,
+              path: SearchFilterWidget.routePath,
+              builder: (context, params) => SearchFilterWidget(),
+            ),
+            FFRoute(
+              name: BusineslistCopyWidget.routeName,
+              path: BusineslistCopyWidget.routePath,
+              builder: (context, params) => BusineslistCopyWidget(),
+            ),
+            FFRoute(
+              name: ComunityHomeCopyWidget.routeName,
+              path: ComunityHomeCopyWidget.routePath,
+              builder: (context, params) => ComunityHomeCopyWidget(),
+            ),
+            FFRoute(
+              name: BusinessSearchWidget.routeName,
+              path: BusinessSearchWidget.routePath,
+              builder: (context, params) => BusinessSearchWidget(),
+            ),
+            FFRoute(
+              name: BusinessSearchFilterWidget.routeName,
+              path: BusinessSearchFilterWidget.routePath,
+              builder: (context, params) => BusinessSearchFilterWidget(),
+            ),
+            FFRoute(
+              name: CommunitySearchResultWidget.routeName,
+              path: CommunitySearchResultWidget.routePath,
+              builder: (context, params) => CommunitySearchResultWidget(
+                commsearchResults: params.getParam(
+                  'commsearchResults',
+                  ParamType.String,
+                ),
+              ),
+            ),
+            FFRoute(
+              name: SearchFilterComuntyWidget.routeName,
+              path: SearchFilterComuntyWidget.routePath,
+              builder: (context, params) => SearchFilterComuntyWidget(),
+            ),
+            FFRoute(
+              name: BusineslistWidget.routeName,
+              path: BusineslistWidget.routePath,
+              builder: (context, params) => BusineslistWidget(),
+            ),
+            FFRoute(
+              name: SearchResultsAllWidget.routeName,
+              path: SearchResultsAllWidget.routePath,
+              builder: (context, params) => SearchResultsAllWidget(),
+            ),
+            FFRoute(
+              name: SearchcontactCopyWidget.routeName,
+              path: SearchcontactCopyWidget.routePath,
+              builder: (context, params) => SearchcontactCopyWidget(),
+            ),
+            FFRoute(
+              name: PopularUsersWidget.routeName,
+              path: PopularUsersWidget.routePath,
+              builder: (context, params) => PopularUsersWidget(),
+            ),
+            FFRoute(
+              name: FeaturedUsersWidget.routeName,
+              path: FeaturedUsersWidget.routePath,
+              builder: (context, params) => FeaturedUsersWidget(),
+            ),
+            FFRoute(
+              name: NewUsersWidget.routeName,
+              path: NewUsersWidget.routePath,
+              builder: (context, params) => NewUsersWidget(),
+            ),
+            FFRoute(
+              name: ProfileshareCopyWidget.routeName,
+              path: ProfileshareCopyWidget.routePath,
+              builder: (context, params) => ProfileshareCopyWidget(
+                user: params.getParam(
+                  'user',
+                  ParamType.DocumentReference,
+                  isList: false,
+                  collectionNamePath: ['users'],
+                ),
+              ),
+            )
+          ].map((r) => r.toRoute(appStateNotifier)).toList(),
+        ),
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
+      observers: [routeObserver],
     );
 
 extension NavParamExtensions on Map<String, String?> {
@@ -560,7 +986,7 @@ class FFRoute {
 
           if (requireAuth && !appStateNotifier.loggedIn) {
             appStateNotifier.setRedirectLocationIfUnset(state.uri.toString());
-            return '/login';
+            return '/loginPage_old';
           }
           return null;
         },
@@ -575,13 +1001,13 @@ class FFRoute {
               : builder(context, ffParams);
           final child = appStateNotifier.loading
               ? Container(
-                  color: FlutterFlowTheme.of(context).secondaryBackground,
+                  color: FlutterFlowTheme.of(context).primary,
                   child: Center(
                     child: Image.asset(
-                      'assets/images/AFRO_T_1.1.1.png',
-                      width: 170.0,
-                      height: 170.0,
-                      fit: BoxFit.cover,
+                      'assets/images/Artboard_5_copy_6@300x_1.png',
+                      width: 200.0,
+                      height: 200.0,
+                      fit: BoxFit.contain,
                     ),
                   ),
                 )
@@ -627,7 +1053,7 @@ class TransitionInfo {
   final Duration duration;
   final Alignment? alignment;
 
-  static TransitionInfo appDefault() => const TransitionInfo(hasTransition: false);
+  static TransitionInfo appDefault() => TransitionInfo(hasTransition: false);
 }
 
 class RootPageContext {

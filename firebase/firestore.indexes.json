@@ -1,6 +1,48 @@
 {
   "indexes": [
     {
+      "collectionGroup": "RegisterdEvent",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "user",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "event_end",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "message",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "chat",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "seenmember",
+          "arrayConfig": "CONTAINS"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "product",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "numberrating",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "catigory",
+          "arrayConfig": "CONTAINS"
+        }
+      ]
+    },
+    {
       "collectionGroup": "event",
       "queryScope": "COLLECTION",
       "fields": [
@@ -15,7 +57,35 @@
       ]
     },
     {
-      "collectionGroup": "ads",
+      "collectionGroup": "message",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "chat",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "time",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "messageproduct",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "chat",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "time",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "community",
       "queryScope": "COLLECTION",
       "fields": [
         {
@@ -23,21 +93,21 @@
           "order": "ASCENDING"
         },
         {
-          "fieldPath": "created_time",
-          "order": "DESCENDING"
+          "fieldPath": "catigories",
+          "arrayConfig": "CONTAINS"
         }
       ]
     },
     {
-      "collectionGroup": "notifications",
+      "collectionGroup": "messagechat",
       "queryScope": "COLLECTION",
       "fields": [
         {
-          "fieldPath": "userIds",
-          "arrayConfig": "CONTAINS"
+          "fieldPath": "chat",
+          "order": "ASCENDING"
         },
         {
-          "fieldPath": "createdTime",
+          "fieldPath": "time",
           "order": "DESCENDING"
         }
       ]
@@ -47,17 +117,17 @@
       "queryScope": "COLLECTION",
       "fields": [
         {
-          "fieldPath": "userIds",
+          "fieldPath": "users",
           "arrayConfig": "CONTAINS"
         },
         {
-          "fieldPath": "timeStamps",
+          "fieldPath": "time",
           "order": "DESCENDING"
         }
       ]
     },
     {
-      "collectionGroup": "communities",
+      "collectionGroup": "business",
       "queryScope": "COLLECTION",
       "fields": [
         {
@@ -71,16 +141,144 @@
       ]
     },
     {
-      "collectionGroup": "ads",
+      "collectionGroup": "chatproduct",
       "queryScope": "COLLECTION",
       "fields": [
         {
-          "fieldPath": "ad_category",
+          "fieldPath": "users",
+          "arrayConfig": "CONTAINS"
+        },
+        {
+          "fieldPath": "time",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "messageproduct",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "sen",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "chat",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "user",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "verification",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "user",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "time",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "verification",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "user",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "status",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "time",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "verification",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "status",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "time",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "wall",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "userto",
           "order": "ASCENDING"
         },
         {
           "fieldPath": "created_time",
-          "order": "DESCENDING"
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "wall",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "post_type",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "created_time",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "chatproduct",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "seller",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "buyer",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "users",
+          "arrayConfig": "CONTAINS"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "chat",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "user_b",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "user_a",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "users",
+          "arrayConfig": "CONTAINS"
         }
       ]
     }

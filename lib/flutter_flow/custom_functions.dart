@@ -10,6 +10,7 @@ import 'place.dart';
 import 'uploaded_file.dart';
 import '/backend/backend.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import '/backend/schema/enums/enums.dart';
 import '/auth/firebase_auth/auth_util.dart';
 
 String generateFirstThreeLetter(DateTime date) {
@@ -49,6 +50,40 @@ List<DocumentReference> generateListOfUsers(
   DocumentReference otherUser,
 ) {
   return [authUser, otherUser];
+}
+
+List<CommunityRecord> filtereventComonuty(
+  List<CommunityRecord> allEvents,
+  DocumentReference? selectedCategoryRef,
+  String? selectedCountry,
+) {
+  return allEvents.where((event) {
+    final matchesCategory =
+        selectedCategoryRef == null || event.catigories == selectedCategoryRef;
+
+    final matchesCountry = selectedCountry == null ||
+        selectedCountry.isEmpty ||
+        event.country == selectedCountry;
+
+    return matchesCategory && matchesCountry;
+  }).toList();
+}
+
+List<BusinessRecord> filtebusiness(
+  List<BusinessRecord> allEvents,
+  String? selectedCategoryRef,
+  String? selectedCountry,
+) {
+  return allEvents.where((event) {
+    final matchesCategory = selectedCategoryRef == null ||
+        event.businessCategory == selectedCategoryRef;
+
+    final matchesCountry = selectedCountry == null ||
+        selectedCountry.isEmpty ||
+        event.country == selectedCountry;
+
+    return matchesCategory && matchesCountry;
+  }).toList();
 }
 
 DocumentReference generateOtherUserRef(
@@ -699,4 +734,318 @@ String? removeFristletter(String? dialcode) {
   }
 
   return dialcode.substring(1);
+}
+
+List<ProductRecord> sortfilterproduct(
+  List<ProductRecord> product,
+  bool? isPriceLowtoHigh,
+  bool? isPriceHightoLow,
+  bool? isNewArrival,
+  bool? isTopRated,
+  bool? isAZ,
+  bool? isZA,
+  String? filtercolor,
+  String? filterprice,
+  String? filterbrand,
+  String? filterSize,
+  DocumentReference? filterCategory,
+) {
+  // Parse price range if provided
+  List<String>? priceRange = filterprice?.split('-');
+  double? minPrice = priceRange != null && priceRange.length == 2
+      ? double.tryParse(priceRange[0].trim())
+      : null;
+  double? maxPrice = priceRange != null && priceRange.length == 2
+      ? double.tryParse(priceRange[1].trim())
+      : null;
+
+  // Filtering
+  List<ProductRecord> filteredProducts = product.where((p) {
+    bool matchesColor = filtercolor == null || p.color == filtercolor;
+    bool matchesPrice = filterprice == null ||
+        (p.price >= (minPrice ?? 0) &&
+            p.price <= (maxPrice ?? double.infinity));
+    bool matchesBrand = filterbrand == null || p.brand == filterbrand;
+    bool matchesSize = filterSize == null || p.size == filterSize;
+    bool matchesCategory = filterCategory == null ||
+        (p.catigory?.contains(filterCategory) ?? false);
+
+    return matchesColor &&
+        matchesPrice &&
+        matchesBrand &&
+        matchesSize &&
+        matchesCategory;
+  }).toList();
+
+  // Sorting
+  if (isPriceLowtoHigh == true) {
+    filteredProducts.sort((a, b) => a.price.compareTo(b.price));
+  } else if (isPriceHightoLow == true) {
+    filteredProducts.sort((a, b) => b.price.compareTo(a.price));
+  } else if (isNewArrival == true) {
+    filteredProducts.sort((a, b) => (b.createdAt ?? DateTime(1970))
+        .compareTo(a.createdAt ?? DateTime(1970)));
+  } else if (isTopRated == true) {
+    filteredProducts.sort((a, b) => b.numberrating.compareTo(a.numberrating));
+  } else if (isAZ == true) {
+    filteredProducts.sort((a, b) => a.name.compareTo(b.name));
+  } else if (isZA == true) {
+    filteredProducts.sort((a, b) => b.name.compareTo(a.name));
+  }
+
+  return filteredProducts;
+}
+
+List<String> languages() {
+  return [
+    'Afrikaans',
+    'Twi',
+    'Arabic',
+    'Armenian',
+    'Azerbaijani',
+    'Belarusian',
+    'Bosnian',
+    'Bulgarian',
+    'Catalan',
+    'Chinese',
+    'Croatian',
+    'Czech',
+    'Danish',
+    'Dutch',
+    'English',
+    'Estonian',
+    'Finnish',
+    'French',
+    'Galician',
+    'German',
+    'Greek',
+    'Hebrew',
+    'Hindi',
+    'Hungarian',
+    'Icelandic',
+    'Indonesian',
+    'Italian',
+    'Japanese',
+    'Kannada',
+    'Kazakh',
+    'Korean',
+    'Latvian',
+    'Lithuanian',
+    'Macedonian',
+    'Malay',
+    'Marathi',
+    'Maori',
+    'Nepali',
+    'Norwegian',
+    'Persian',
+    'Polish',
+    'Portuguese',
+    'Romanian',
+    'Russian',
+    'Serbian',
+    'Slovak',
+    'Slovenian',
+    'Spanish',
+    'Swahili',
+    'Swedish',
+    'Tagalog',
+    'Tamil',
+    'Thai',
+    'Turkish',
+    'Ukrainian',
+    'Urdu',
+    'Vietnamese',
+    'Welsh'
+  ];
+}
+
+List<String> getProfessionsList() {
+  return [
+    "Accountant",
+    "Actor",
+    "Actuary",
+    "Aerospace Engineer",
+    "Agricultural Engineer",
+    "AI Engineer",
+    "Animator",
+    "Archaeologist",
+    "Architect",
+    "Artificial Intelligence Specialist",
+    "Astronomer",
+    "Athlete",
+    "Audio Engineer",
+    "Auditor",
+    "Baker",
+    "Banker",
+    "Barber",
+    "Bartender",
+    "Biomedical Engineer",
+    "Blacksmith",
+    "Blockchain Developer",
+    "Botanist",
+    "Bricklayer",
+    "Business Analyst",
+    "Butcher",
+    "Carpenter",
+    "Cartographer",
+    "Chef",
+    "Chemical Engineer",
+    "Chemist",
+    "Civil Engineer",
+    "Cloud Architect",
+    "Comedian",
+    "Computer Programmer",
+    "Construction Worker",
+    "Content Creator",
+    "Copywriter",
+    "Cryptographer",
+    "Cryptocurrency Trader",
+    "Customer Support",
+    "Data Analyst",
+    "Data Scientist",
+    "Dentist",
+    "Dermatologist",
+    "Detective",
+    "Dietitian",
+    "Digital Marketer",
+    "Diplomat",
+    "Doctor",
+    "Drone Operator",
+    "Economist",
+    "Editor",
+    "Electrician",
+    "Electronics Engineer",
+    "Emergency Medical Technician (EMT)",
+    "Environmental Engineer",
+    "Ethical Hacker",
+    "Event Planner",
+    "Farmer",
+    "Fashion Designer",
+    "Film Director",
+    "Financial Advisor",
+    "Firefighter",
+    "Fisherman",
+    "Flight Attendant",
+    "Florist",
+    "Forensic Scientist",
+    "Game Developer",
+    "Geneticist",
+    "Geologist",
+    "Graphic Designer",
+    "Hairdresser",
+    "Historian",
+    "Hotel Manager",
+    "Human Resources (HR) Manager",
+    "Illustrator",
+    "Industrial Designer",
+    "Information Security Analyst",
+    "Insurance Agent",
+    "Interior Designer",
+    "Investment Banker",
+    "Journalist",
+    "Judge",
+    "Lawyer",
+    "Librarian",
+    "Linguist",
+    "Machine Learning Engineer",
+    "Marine Biologist",
+    "Marketing Manager",
+    "Mechanic",
+    "Meteorologist",
+    "Microbiologist",
+    "Midwife",
+    "Musician",
+    "Nurse",
+    "Nutritionist",
+    "Occupational Therapist",
+    "Optometrist",
+    "Painter",
+    "Paramedic",
+    "Pharmacist",
+    "Photographer",
+    "Physician",
+    "Physicist",
+    "Pilot",
+    "Plumber",
+    "Police Officer",
+    "Politician",
+    "Probation Officer",
+    "Professional Gamer (Esports)",
+    "Psychologist",
+    "Public Relations (PR) Specialist",
+    "Real Estate Agent",
+    "Robotics Engineer",
+    "Sales Manager",
+    "Scientist",
+    "Social Media Manager",
+    "Software Developer",
+    "Soil Scientist",
+    "Statistician",
+    "Surgeon",
+    "Surveyor",
+    "Teacher",
+    "Technical Writer",
+    "Telemedicine Doctor",
+    "Tour Guide",
+    "Translator",
+    "Travel Agent",
+    "UI/UX Designer",
+    "Veterinarian",
+    "Video Editor",
+    "Virtual Reality Developer",
+    "Web Developer",
+    "Welder",
+    "Writer",
+    "Zoologist",
+    "Others"
+  ];
+}
+
+double avaragerating(List<double> numberofrating) {
+  // calculate the avarage rating
+  if (numberofrating.isEmpty) return 0.0; // Return 0 if the list is empty
+  double total = numberofrating.reduce((a, b) => a + b); // Sum all ratings
+  return total / numberofrating.length; // Calculate average
+}
+
+List<UsersRecord> searchfilter(
+  String? country,
+  String? catigory,
+  List<UsersRecord> userRecord,
+  String? profesion,
+) {
+  return userRecord.where((user) {
+    final matchprofission =
+        profesion == null || profesion.isEmpty || user.profession == profesion;
+    final matchCountry =
+        country == null || country.isEmpty || user.countryName == country;
+    final matchCategory = catigory == null ||
+        catigory.isEmpty ||
+        user.catigory.contains(catigory);
+    return matchCountry && matchCategory && matchprofission;
+  }).toList();
+}
+
+List<EventRecord> filterevent(
+  List<EventRecord> allEvents,
+  DocumentReference? selectedCategoryRef,
+  String? selectedCountry,
+  DateTime? selectedDate,
+) {
+  return allEvents.where((event) {
+    final matchesCategory =
+        selectedCategoryRef == null || event.catigory == selectedCategoryRef;
+
+    final matchesCountry = selectedCountry == null ||
+        selectedCountry.isEmpty ||
+        event.country == selectedCountry;
+
+    final matchesDate = selectedDate == null ||
+        (event.eventDate != null &&
+            event.eventDate!.year == selectedDate.year &&
+            event.eventDate!.month == selectedDate.month &&
+            event.eventDate!.day == selectedDate.day);
+
+    return matchesCategory && matchesCountry && matchesDate;
+  }).toList();
 }
