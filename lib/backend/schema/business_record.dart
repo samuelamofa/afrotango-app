@@ -3,15 +3,16 @@ import 'dart:async';
 import 'package:collection/collection.dart';
 
 import '/backend/schema/util/firestore_util.dart';
+import '/backend/schema/util/schema_util.dart';
 
 import 'index.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 
 class BusinessRecord extends FirestoreRecord {
   BusinessRecord._(
-    super.reference,
-    super.data,
-  ) {
+    DocumentReference reference,
+    Map<String, dynamic> data,
+  ) : super(reference, data) {
     _initializeFields();
   }
 
@@ -70,6 +71,31 @@ class BusinessRecord extends FirestoreRecord {
   String get businessAbout => _businessAbout ?? '';
   bool hasBusinessAbout() => _businessAbout != null;
 
+  // "country" field.
+  String? _country;
+  String get country => _country ?? '';
+  bool hasCountry() => _country != null;
+
+  // "business_website" field.
+  String? _businessWebsite;
+  String get businessWebsite => _businessWebsite ?? '';
+  bool hasBusinessWebsite() => _businessWebsite != null;
+
+  // "numerratings" field.
+  List<double>? _numerratings;
+  List<double> get numerratings => _numerratings ?? const [];
+  bool hasNumerratings() => _numerratings != null;
+
+  // "rating" field.
+  double? _rating;
+  double get rating => _rating ?? 0.0;
+  bool hasRating() => _rating != null;
+
+  // "is_featured" field.
+  bool? _isFeatured;
+  bool get isFeatured => _isFeatured ?? false;
+  bool hasIsFeatured() => _isFeatured != null;
+
   void _initializeFields() {
     _businessName = snapshotData['business_name'] as String?;
     _createdUserRef = snapshotData['createdUserRef'] as DocumentReference?;
@@ -82,6 +108,11 @@ class BusinessRecord extends FirestoreRecord {
     _businessPhone = snapshotData['business_phone'] as String?;
     _createdTime = snapshotData['created_time'] as DateTime?;
     _businessAbout = snapshotData['business_about'] as String?;
+    _country = snapshotData['country'] as String?;
+    _businessWebsite = snapshotData['business_website'] as String?;
+    _numerratings = getDataList(snapshotData['numerratings']);
+    _rating = castToType<double>(snapshotData['rating']);
+    _isFeatured = snapshotData['is_featured'] as bool?;
   }
 
   static CollectionReference get collection =>
@@ -130,6 +161,10 @@ Map<String, dynamic> createBusinessRecordData({
   String? businessPhone,
   DateTime? createdTime,
   String? businessAbout,
+  String? country,
+  String? businessWebsite,
+  double? rating,
+  bool? isFeatured,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -144,6 +179,10 @@ Map<String, dynamic> createBusinessRecordData({
       'business_phone': businessPhone,
       'created_time': createdTime,
       'business_about': businessAbout,
+      'country': country,
+      'business_website': businessWebsite,
+      'rating': rating,
+      'is_featured': isFeatured,
     }.withoutNulls,
   );
 
@@ -155,6 +194,7 @@ class BusinessRecordDocumentEquality implements Equality<BusinessRecord> {
 
   @override
   bool equals(BusinessRecord? e1, BusinessRecord? e2) {
+    const listEquality = ListEquality();
     return e1?.businessName == e2?.businessName &&
         e1?.createdUserRef == e2?.createdUserRef &&
         e1?.businessImage == e2?.businessImage &&
@@ -165,7 +205,12 @@ class BusinessRecordDocumentEquality implements Equality<BusinessRecord> {
         e1?.businessWhatsapp == e2?.businessWhatsapp &&
         e1?.businessPhone == e2?.businessPhone &&
         e1?.createdTime == e2?.createdTime &&
-        e1?.businessAbout == e2?.businessAbout;
+        e1?.businessAbout == e2?.businessAbout &&
+        e1?.country == e2?.country &&
+        e1?.businessWebsite == e2?.businessWebsite &&
+        listEquality.equals(e1?.numerratings, e2?.numerratings) &&
+        e1?.rating == e2?.rating &&
+        e1?.isFeatured == e2?.isFeatured;
   }
 
   @override
@@ -180,7 +225,12 @@ class BusinessRecordDocumentEquality implements Equality<BusinessRecord> {
         e?.businessWhatsapp,
         e?.businessPhone,
         e?.createdTime,
-        e?.businessAbout
+        e?.businessAbout,
+        e?.country,
+        e?.businessWebsite,
+        e?.numerratings,
+        e?.rating,
+        e?.isFeatured
       ]);
 
   @override

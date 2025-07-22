@@ -8,82 +8,25 @@ service cloud.firestore {
       allow delete: if request.auth != null;
     }
 
-    match /communities/{document} {
-      allow create: if true;
-      allow read: if true;
-      allow write: if false;
-      allow delete: if false;
-    }
-
     match /business/{document} {
       allow create: if true;
-      allow read: if true;
-      allow write: if false;
-      allow delete: if false;
+      allow read: if request.auth != null;
+      allow write: if request.auth != null;
+      allow delete: if resource.data.createdUserRef == /databases/$(database)/documents/users/$(request.auth.uid);
     }
 
     match /event/{document} {
-      allow create: if true;
-      allow read: if true;
-      allow write: if false;
-      allow delete: if false;
-    }
-
-    match /ads/{document} {
-      allow create: if true;
-      allow read: if true;
-      allow write: if false;
-      allow delete: if false;
-    }
-
-    match /chat/{document} {
-      allow create: if true;
-      allow read: if true;
+      allow create: if request.auth != null;
+      allow read: if request.auth != null;
       allow write: if request.auth != null;
-      allow delete: if false;
+      allow delete: if resource.data.createdUserRef == /databases/$(database)/documents/users/$(request.auth.uid);
     }
-
-    match /chat/{parent}/message/{document} {
-      allow create: if true;
-      allow read: if true;
-      allow write: if request.auth != null;
-      allow delete: if false;
-    }
-
-    match /{path=**}/message/{document} {
-      allow read: if true;
-    }
-
-
-    match /chat/{parent}/groupMessage/{document} {
-      allow create: if true;
-      allow read: if true;
-      allow write: if request.auth != null;
-      allow delete: if false;
-    }
-
-    match /{path=**}/groupMessage/{document} {
-      allow read: if true;
-    }
-
-
-    match /business/{parent}/reviews/{document} {
-      allow create: if true;
-      allow read: if true;
-      allow write: if false;
-      allow delete: if false;
-    }
-
-    match /{path=**}/reviews/{document} {
-      allow read: if true;
-    }
-
 
     match /notifications/{document} {
-      allow create: if true;
-      allow read: if true;
-      allow write: if false;
-      allow delete: if false;
+      allow create: if request.auth != null;
+      allow read: if request.auth != null;
+      allow write: if request.auth != null;
+      allow delete: if resource.data.createdUserRef == /databases/$(database)/documents/users/$(request.auth.uid);
     }
 
     match /posts/{document} {
@@ -93,17 +36,207 @@ service cloud.firestore {
       allow delete: if false;
     }
 
-    match /posts/{parent}/comments/{document} {
+    match /Eventcatigory/{document} {
+      allow create: if request.auth != null;
+      allow read: if request.auth != null;
+      allow write: if request.auth != null;
+      allow delete: if false;
+    }
+
+    match /RegisterdEvent/{document} {
+      allow create: if request.auth != null;
+      allow read: if request.auth != null;
+      allow write: if request.auth != null;
+      allow delete: if resource.data.user == /databases/$(database)/documents/users/$(request.auth.uid);
+    }
+
+    match /community/{document} {
+      allow create: if request.auth != null;
+      allow read: if request.auth != null;
+      allow write: if request.auth != null;
+      allow delete: if resource.data.createdUserRef == /databases/$(database)/documents/users/$(request.auth.uid);
+    }
+
+    match /community/{parent}/communityMember/{document} {
+      allow create: if request.auth != null;
+      allow read: if request.auth != null;
+      allow write: if request.auth != null;
+      allow delete: if false;
+    }
+
+    match /{path=**}/communityMember/{document} {
+      allow read: if request.auth != null;
+    }
+
+
+    match /community/{parent}/communityPost/{document} {
+      allow create: if request.auth != null;
+      allow read: if request.auth != null;
+      allow write: if request.auth != null;
+      allow delete: if false;
+    }
+
+    match /{path=**}/communityPost/{document} {
+      allow read: if request.auth != null;
+    }
+
+
+    match /community/{parent}/communityEvent/{document} {
+      allow create: if request.auth != null;
+      allow read: if request.auth != null;
+      allow write: if request.auth != null;
+      allow delete: if false;
+    }
+
+    match /{path=**}/communityEvent/{document} {
+      allow read: if request.auth != null;
+    }
+
+
+    match /catigory_community/{document} {
+      allow create: if request.auth != null;
+      allow read: if request.auth != null;
+      allow write: if request.auth != null;
+      allow delete: if false;
+    }
+
+    match /communitychat/{document} {
+      allow create: if request.auth != null;
+      allow read: if request.auth != null;
+      allow write: if request.auth != null;
+      allow delete: if false;
+    }
+
+    match /message/{document} {
+      allow create: if request.auth != null;
+      allow read: if request.auth != null;
+      allow write: if request.auth != null;
+      allow delete: if false;
+    }
+
+    match /product/{document} {
+      allow create: if request.auth != null;
+      allow read: if request.auth != null;
+      allow write: if request.auth != null;
+      allow delete: if false;
+    }
+
+    match /product/{parent}/ratings/{document} {
+      allow create: if request.auth != null;
+      allow read: if request.auth != null;
+      allow write: if request.auth != null;
+      allow delete: if false;
+    }
+
+    match /{path=**}/ratings/{document} {
+      allow read: if request.auth != null;
+    }
+
+
+    match /product_catigory/{document} {
+      allow create: if request.auth != null;
+      allow read: if request.auth != null;
+      allow write: if request.auth != null;
+      allow delete: if false;
+    }
+
+    match /chatproduct/{document} {
+      allow create: if request.auth != null;
+      allow read: if request.auth != null;
+      allow write: if request.auth != null;
+      allow delete: if false;
+    }
+
+    match /messageproduct/{document} {
+      allow create: if request.auth != null;
+      allow read: if request.auth != null;
+      allow write: if request.auth != null;
+      allow delete: if false;
+    }
+
+    match /resturant_menue/{document} {
+      allow create: if request.auth != null;
+      allow read: if request.auth != null;
+      allow write: if request.auth != null;
+      allow delete: if resource.data.user == /databases/$(database)/documents/users/$(request.auth.uid);
+    }
+
+    match /recipe/{document} {
+      allow create: if request.auth != null;
+      allow read: if request.auth != null;
+      allow write: if request.auth != null;
+      allow delete: if resource.data.user == /databases/$(database)/documents/users/$(request.auth.uid);
+    }
+
+    match /cart/{document} {
+      allow create: if request.auth != null;
+      allow read: if request.auth != null;
+      allow write: if request.auth != null;
+      allow delete: if resource.data.user == /databases/$(database)/documents/users/$(request.auth.uid);
+    }
+
+    match /order/{document} {
+      allow create: if request.auth != null;
+      allow read: if request.auth != null;
+      allow write: if request.auth != null;
+      allow delete: if false;
+    }
+
+    match /resturant_notify/{document} {
+      allow create: if request.auth != null;
+      allow read: if request.auth != null;
+      allow write: if request.auth != null;
+      allow delete: if false;
+    }
+
+    match /review_recipe/{document} {
+      allow create: if request.auth != null;
+      allow read: if request.auth != null;
+      allow write: if request.auth != null;
+      allow delete: if false;
+    }
+
+    match /chat/{document} {
+      allow create: if request.auth != null;
+      allow read: if request.auth != null;
+      allow write: if request.auth != null;
+      allow delete: if false;
+    }
+
+    match /messagechat/{document} {
+      allow create: if request.auth != null;
+      allow read: if request.auth != null;
+      allow write: if request.auth != null;
+      allow delete: if false;
+    }
+
+    match /businessReview/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if request.auth != null;
+      allow delete: if false;
+    }
+
+    match /verification/{document} {
+      allow create: if request.auth != null;
+      allow read: if request.auth != null;
+      allow write: if request.auth != null;
+      allow delete: if false;
+    }
+
+    match /wall/{document} {
       allow create: if true;
       allow read: if true;
       allow write: if false;
       allow delete: if false;
     }
 
-    match /{path=**}/comments/{document} {
+    match /business_catigory/{document} {
+      allow create: if true;
       allow read: if true;
+      allow write: if false;
+      allow delete: if false;
     }
-
 
     match /ff_user_push_notifications/{id} {
       allow read, update, delete: if false;

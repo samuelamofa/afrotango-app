@@ -10,79 +10,43 @@ import '/flutter_flow/flutter_flow_util.dart';
 
 class ChatRecord extends FirestoreRecord {
   ChatRecord._(
-    super.reference,
-    super.data,
-  ) {
+    DocumentReference reference,
+    Map<String, dynamic> data,
+  ) : super(reference, data) {
     _initializeFields();
   }
 
-  // "userIds" field.
-  List<DocumentReference>? _userIds;
-  List<DocumentReference> get userIds => _userIds ?? const [];
-  bool hasUserIds() => _userIds != null;
+  // "user_a" field.
+  DocumentReference? _userA;
+  DocumentReference? get userA => _userA;
+  bool hasUserA() => _userA != null;
 
-  // "messageBool" field.
-  bool? _messageBool;
-  bool get messageBool => _messageBool ?? false;
-  bool hasMessageBool() => _messageBool != null;
+  // "user_b" field.
+  DocumentReference? _userB;
+  DocumentReference? get userB => _userB;
+  bool hasUserB() => _userB != null;
 
-  // "groupBool" field.
-  bool? _groupBool;
-  bool get groupBool => _groupBool ?? false;
-  bool hasGroupBool() => _groupBool != null;
+  // "users" field.
+  List<DocumentReference>? _users;
+  List<DocumentReference> get users => _users ?? const [];
+  bool hasUsers() => _users != null;
 
-  // "messageRef" field.
-  DocumentReference? _messageRef;
-  DocumentReference? get messageRef => _messageRef;
-  bool hasMessageRef() => _messageRef != null;
+  // "latmessage" field.
+  String? _latmessage;
+  String get latmessage => _latmessage ?? '';
+  bool hasLatmessage() => _latmessage != null;
 
-  // "groupMessageRef" field.
-  DocumentReference? _groupMessageRef;
-  DocumentReference? get groupMessageRef => _groupMessageRef;
-  bool hasGroupMessageRef() => _groupMessageRef != null;
-
-  // "lastMessage" field.
-  String? _lastMessage;
-  String get lastMessage => _lastMessage ?? '';
-  bool hasLastMessage() => _lastMessage != null;
-
-  // "userNames" field.
-  List<String>? _userNames;
-  List<String> get userNames => _userNames ?? const [];
-  bool hasUserNames() => _userNames != null;
-
-  // "timeStamps" field.
-  DateTime? _timeStamps;
-  DateTime? get timeStamps => _timeStamps;
-  bool hasTimeStamps() => _timeStamps != null;
-
-  // "communityRef" field.
-  DocumentReference? _communityRef;
-  DocumentReference? get communityRef => _communityRef;
-  bool hasCommunityRef() => _communityRef != null;
-
-  // "chatId" field.
-  String? _chatId;
-  String get chatId => _chatId ?? '';
-  bool hasChatId() => _chatId != null;
-
-  // "readby" field.
-  List<DocumentReference>? _readby;
-  List<DocumentReference> get readby => _readby ?? const [];
-  bool hasReadby() => _readby != null;
+  // "time" field.
+  DateTime? _time;
+  DateTime? get time => _time;
+  bool hasTime() => _time != null;
 
   void _initializeFields() {
-    _userIds = getDataList(snapshotData['userIds']);
-    _messageBool = snapshotData['messageBool'] as bool?;
-    _groupBool = snapshotData['groupBool'] as bool?;
-    _messageRef = snapshotData['messageRef'] as DocumentReference?;
-    _groupMessageRef = snapshotData['groupMessageRef'] as DocumentReference?;
-    _lastMessage = snapshotData['lastMessage'] as String?;
-    _userNames = getDataList(snapshotData['userNames']);
-    _timeStamps = snapshotData['timeStamps'] as DateTime?;
-    _communityRef = snapshotData['communityRef'] as DocumentReference?;
-    _chatId = snapshotData['chatId'] as String?;
-    _readby = getDataList(snapshotData['readby']);
+    _userA = snapshotData['user_a'] as DocumentReference?;
+    _userB = snapshotData['user_b'] as DocumentReference?;
+    _users = getDataList(snapshotData['users']);
+    _latmessage = snapshotData['latmessage'] as String?;
+    _time = snapshotData['time'] as DateTime?;
   }
 
   static CollectionReference get collection =>
@@ -119,25 +83,17 @@ class ChatRecord extends FirestoreRecord {
 }
 
 Map<String, dynamic> createChatRecordData({
-  bool? messageBool,
-  bool? groupBool,
-  DocumentReference? messageRef,
-  DocumentReference? groupMessageRef,
-  String? lastMessage,
-  DateTime? timeStamps,
-  DocumentReference? communityRef,
-  String? chatId,
+  DocumentReference? userA,
+  DocumentReference? userB,
+  String? latmessage,
+  DateTime? time,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
-      'messageBool': messageBool,
-      'groupBool': groupBool,
-      'messageRef': messageRef,
-      'groupMessageRef': groupMessageRef,
-      'lastMessage': lastMessage,
-      'timeStamps': timeStamps,
-      'communityRef': communityRef,
-      'chatId': chatId,
+      'user_a': userA,
+      'user_b': userB,
+      'latmessage': latmessage,
+      'time': time,
     }.withoutNulls,
   );
 
@@ -150,33 +106,16 @@ class ChatRecordDocumentEquality implements Equality<ChatRecord> {
   @override
   bool equals(ChatRecord? e1, ChatRecord? e2) {
     const listEquality = ListEquality();
-    return listEquality.equals(e1?.userIds, e2?.userIds) &&
-        e1?.messageBool == e2?.messageBool &&
-        e1?.groupBool == e2?.groupBool &&
-        e1?.messageRef == e2?.messageRef &&
-        e1?.groupMessageRef == e2?.groupMessageRef &&
-        e1?.lastMessage == e2?.lastMessage &&
-        listEquality.equals(e1?.userNames, e2?.userNames) &&
-        e1?.timeStamps == e2?.timeStamps &&
-        e1?.communityRef == e2?.communityRef &&
-        e1?.chatId == e2?.chatId &&
-        listEquality.equals(e1?.readby, e2?.readby);
+    return e1?.userA == e2?.userA &&
+        e1?.userB == e2?.userB &&
+        listEquality.equals(e1?.users, e2?.users) &&
+        e1?.latmessage == e2?.latmessage &&
+        e1?.time == e2?.time;
   }
 
   @override
-  int hash(ChatRecord? e) => const ListEquality().hash([
-        e?.userIds,
-        e?.messageBool,
-        e?.groupBool,
-        e?.messageRef,
-        e?.groupMessageRef,
-        e?.lastMessage,
-        e?.userNames,
-        e?.timeStamps,
-        e?.communityRef,
-        e?.chatId,
-        e?.readby
-      ]);
+  int hash(ChatRecord? e) => const ListEquality()
+      .hash([e?.userA, e?.userB, e?.users, e?.latmessage, e?.time]);
 
   @override
   bool isValidKey(Object? o) => o is ChatRecord;

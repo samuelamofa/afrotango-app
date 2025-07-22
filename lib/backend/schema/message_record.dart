@@ -3,60 +3,66 @@ import 'dart:async';
 import 'package:collection/collection.dart';
 
 import '/backend/schema/util/firestore_util.dart';
+import '/backend/schema/util/schema_util.dart';
 
 import 'index.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 
 class MessageRecord extends FirestoreRecord {
   MessageRecord._(
-    super.reference,
-    super.data,
-  ) {
+    DocumentReference reference,
+    Map<String, dynamic> data,
+  ) : super(reference, data) {
     _initializeFields();
   }
 
-  // "text" field.
-  String? _text;
-  String get text => _text ?? '';
-  bool hasText() => _text != null;
+  // "chat" field.
+  DocumentReference? _chat;
+  DocumentReference? get chat => _chat;
+  bool hasChat() => _chat != null;
 
-  // "timeStamp" field.
-  DateTime? _timeStamp;
-  DateTime? get timeStamp => _timeStamp;
-  bool hasTimeStamp() => _timeStamp != null;
+  // "user" field.
+  DocumentReference? _user;
+  DocumentReference? get user => _user;
+  bool hasUser() => _user != null;
 
-  // "uidOfSender" field.
-  DocumentReference? _uidOfSender;
-  DocumentReference? get uidOfSender => _uidOfSender;
-  bool hasUidOfSender() => _uidOfSender != null;
+  // "message" field.
+  String? _message;
+  String get message => _message ?? '';
+  bool hasMessage() => _message != null;
 
-  // "nameOfSender" field.
-  String? _nameOfSender;
-  String get nameOfSender => _nameOfSender ?? '';
-  bool hasNameOfSender() => _nameOfSender != null;
+  // "seenusers" field.
+  List<DocumentReference>? _seenusers;
+  List<DocumentReference> get seenusers => _seenusers ?? const [];
+  bool hasSeenusers() => _seenusers != null;
+
+  // "time" field.
+  DateTime? _time;
+  DateTime? get time => _time;
+  bool hasTime() => _time != null;
 
   // "image" field.
   String? _image;
   String get image => _image ?? '';
   bool hasImage() => _image != null;
 
-  DocumentReference get parentReference => reference.parent.parent!;
+  // "seenmember" field.
+  List<DocumentReference>? _seenmember;
+  List<DocumentReference> get seenmember => _seenmember ?? const [];
+  bool hasSeenmember() => _seenmember != null;
 
   void _initializeFields() {
-    _text = snapshotData['text'] as String?;
-    _timeStamp = snapshotData['timeStamp'] as DateTime?;
-    _uidOfSender = snapshotData['uidOfSender'] as DocumentReference?;
-    _nameOfSender = snapshotData['nameOfSender'] as String?;
+    _chat = snapshotData['chat'] as DocumentReference?;
+    _user = snapshotData['user'] as DocumentReference?;
+    _message = snapshotData['message'] as String?;
+    _seenusers = getDataList(snapshotData['seenusers']);
+    _time = snapshotData['time'] as DateTime?;
     _image = snapshotData['image'] as String?;
+    _seenmember = getDataList(snapshotData['seenmember']);
   }
 
-  static Query<Map<String, dynamic>> collection([DocumentReference? parent]) =>
-      parent != null
-          ? parent.collection('message')
-          : FirebaseFirestore.instance.collectionGroup('message');
-
-  static DocumentReference createDoc(DocumentReference parent, {String? id}) =>
-      parent.collection('message').doc(id);
+  static CollectionReference get collection =>
+      FirebaseFirestore.instance.collection('message');
 
   static Stream<MessageRecord> getDocument(DocumentReference ref) =>
       ref.snapshots().map((s) => MessageRecord.fromSnapshot(s));
@@ -90,18 +96,18 @@ class MessageRecord extends FirestoreRecord {
 }
 
 Map<String, dynamic> createMessageRecordData({
-  String? text,
-  DateTime? timeStamp,
-  DocumentReference? uidOfSender,
-  String? nameOfSender,
+  DocumentReference? chat,
+  DocumentReference? user,
+  String? message,
+  DateTime? time,
   String? image,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
-      'text': text,
-      'timeStamp': timeStamp,
-      'uidOfSender': uidOfSender,
-      'nameOfSender': nameOfSender,
+      'chat': chat,
+      'user': user,
+      'message': message,
+      'time': time,
       'image': image,
     }.withoutNulls,
   );
@@ -114,16 +120,26 @@ class MessageRecordDocumentEquality implements Equality<MessageRecord> {
 
   @override
   bool equals(MessageRecord? e1, MessageRecord? e2) {
-    return e1?.text == e2?.text &&
-        e1?.timeStamp == e2?.timeStamp &&
-        e1?.uidOfSender == e2?.uidOfSender &&
-        e1?.nameOfSender == e2?.nameOfSender &&
-        e1?.image == e2?.image;
+    const listEquality = ListEquality();
+    return e1?.chat == e2?.chat &&
+        e1?.user == e2?.user &&
+        e1?.message == e2?.message &&
+        listEquality.equals(e1?.seenusers, e2?.seenusers) &&
+        e1?.time == e2?.time &&
+        e1?.image == e2?.image &&
+        listEquality.equals(e1?.seenmember, e2?.seenmember);
   }
 
   @override
-  int hash(MessageRecord? e) => const ListEquality()
-      .hash([e?.text, e?.timeStamp, e?.uidOfSender, e?.nameOfSender, e?.image]);
+  int hash(MessageRecord? e) => const ListEquality().hash([
+        e?.chat,
+        e?.user,
+        e?.message,
+        e?.seenusers,
+        e?.time,
+        e?.image,
+        e?.seenmember
+      ]);
 
   @override
   bool isValidKey(Object? o) => o is MessageRecord;

@@ -10,9 +10,9 @@ import '/flutter_flow/flutter_flow_util.dart';
 
 class NotificationsRecord extends FirestoreRecord {
   NotificationsRecord._(
-    super.reference,
-    super.data,
-  ) {
+    DocumentReference reference,
+    Map<String, dynamic> data,
+  ) : super(reference, data) {
     _initializeFields();
   }
 
@@ -41,11 +41,6 @@ class NotificationsRecord extends FirestoreRecord {
   bool get communityBool => _communityBool ?? false;
   bool hasCommunityBool() => _communityBool != null;
 
-  // "communityRef" field.
-  DocumentReference? _communityRef;
-  DocumentReference? get communityRef => _communityRef;
-  bool hasCommunityRef() => _communityRef != null;
-
   // "createdTime" field.
   DateTime? _createdTime;
   DateTime? get createdTime => _createdTime;
@@ -67,7 +62,6 @@ class NotificationsRecord extends FirestoreRecord {
     _messageBool = snapshotData['messageBool'] as bool?;
     _groupMessageBool = snapshotData['groupMessageBool'] as bool?;
     _communityBool = snapshotData['communityBool'] as bool?;
-    _communityRef = snapshotData['communityRef'] as DocumentReference?;
     _createdTime = snapshotData['createdTime'] as DateTime?;
     _connectionRequestUserRef =
         snapshotData['connectionRequestUserRef'] as DocumentReference?;
@@ -114,7 +108,6 @@ Map<String, dynamic> createNotificationsRecordData({
   bool? messageBool,
   bool? groupMessageBool,
   bool? communityBool,
-  DocumentReference? communityRef,
   DateTime? createdTime,
   DocumentReference? connectionRequestUserRef,
 }) {
@@ -125,7 +118,6 @@ Map<String, dynamic> createNotificationsRecordData({
       'messageBool': messageBool,
       'groupMessageBool': groupMessageBool,
       'communityBool': communityBool,
-      'communityRef': communityRef,
       'createdTime': createdTime,
       'connectionRequestUserRef': connectionRequestUserRef,
     }.withoutNulls,
@@ -146,7 +138,6 @@ class NotificationsRecordDocumentEquality
         e1?.messageBool == e2?.messageBool &&
         e1?.groupMessageBool == e2?.groupMessageBool &&
         e1?.communityBool == e2?.communityBool &&
-        e1?.communityRef == e2?.communityRef &&
         e1?.createdTime == e2?.createdTime &&
         e1?.connectionRequestUserRef == e2?.connectionRequestUserRef &&
         listEquality.equals(e1?.userIds, e2?.userIds);
@@ -159,7 +150,6 @@ class NotificationsRecordDocumentEquality
         e?.messageBool,
         e?.groupMessageBool,
         e?.communityBool,
-        e?.communityRef,
         e?.createdTime,
         e?.connectionRequestUserRef,
         e?.userIds

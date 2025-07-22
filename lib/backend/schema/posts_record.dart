@@ -3,61 +3,74 @@ import 'dart:async';
 import 'package:collection/collection.dart';
 
 import '/backend/schema/util/firestore_util.dart';
+import '/backend/schema/util/schema_util.dart';
 
 import 'index.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 
 class PostsRecord extends FirestoreRecord {
   PostsRecord._(
-    super.reference,
-    super.data,
-  ) {
+    DocumentReference reference,
+    Map<String, dynamic> data,
+  ) : super(reference, data) {
     _initializeFields();
   }
 
-  // "postImage" field.
-  String? _postImage;
-  String get postImage => _postImage ?? '';
-  bool hasPostImage() => _postImage != null;
+  // "post_title" field.
+  String? _postTitle;
+  String get postTitle => _postTitle ?? '';
+  bool hasPostTitle() => _postTitle != null;
 
-  // "postUser" field.
+  // "pos_description" field.
+  String? _posDescription;
+  String get posDescription => _posDescription ?? '';
+  bool hasPosDescription() => _posDescription != null;
+
+  // "post_user" field.
   DocumentReference? _postUser;
   DocumentReference? get postUser => _postUser;
   bool hasPostUser() => _postUser != null;
 
-  // "usersLikes" field.
-  int? _usersLikes;
-  int get usersLikes => _usersLikes ?? 0;
-  bool hasUsersLikes() => _usersLikes != null;
+  // "time_posted" field.
+  DateTime? _timePosted;
+  DateTime? get timePosted => _timePosted;
+  bool hasTimePosted() => _timePosted != null;
 
-  // "usersShares" field.
-  int? _usersShares;
-  int get usersShares => _usersShares ?? 0;
-  bool hasUsersShares() => _usersShares != null;
+  // "likes" field.
+  List<DocumentReference>? _likes;
+  List<DocumentReference> get likes => _likes ?? const [];
+  bool hasLikes() => _likes != null;
 
-  // "postText" field.
-  String? _postText;
-  String get postText => _postText ?? '';
-  bool hasPostText() => _postText != null;
+  // "num_comments" field.
+  int? _numComments;
+  int get numComments => _numComments ?? 0;
+  bool hasNumComments() => _numComments != null;
 
-  // "postUserName" field.
-  String? _postUserName;
-  String get postUserName => _postUserName ?? '';
-  bool hasPostUserName() => _postUserName != null;
+  // "num_votes" field.
+  int? _numVotes;
+  int get numVotes => _numVotes ?? 0;
+  bool hasNumVotes() => _numVotes != null;
 
-  // "postUserImage" field.
-  String? _postUserImage;
-  String get postUserImage => _postUserImage ?? '';
-  bool hasPostUserImage() => _postUserImage != null;
+  // "post_liked_by" field.
+  List<DocumentReference>? _postLikedBy;
+  List<DocumentReference> get postLikedBy => _postLikedBy ?? const [];
+  bool hasPostLikedBy() => _postLikedBy != null;
+
+  // "post_image" field.
+  String? _postImage;
+  String get postImage => _postImage ?? '';
+  bool hasPostImage() => _postImage != null;
 
   void _initializeFields() {
-    _postImage = snapshotData['postImage'] as String?;
-    _postUser = snapshotData['postUser'] as DocumentReference?;
-    _usersLikes = castToType<int>(snapshotData['usersLikes']);
-    _usersShares = castToType<int>(snapshotData['usersShares']);
-    _postText = snapshotData['postText'] as String?;
-    _postUserName = snapshotData['postUserName'] as String?;
-    _postUserImage = snapshotData['postUserImage'] as String?;
+    _postTitle = snapshotData['post_title'] as String?;
+    _posDescription = snapshotData['pos_description'] as String?;
+    _postUser = snapshotData['post_user'] as DocumentReference?;
+    _timePosted = snapshotData['time_posted'] as DateTime?;
+    _likes = getDataList(snapshotData['likes']);
+    _numComments = castToType<int>(snapshotData['num_comments']);
+    _numVotes = castToType<int>(snapshotData['num_votes']);
+    _postLikedBy = getDataList(snapshotData['post_liked_by']);
+    _postImage = snapshotData['post_image'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -94,23 +107,23 @@ class PostsRecord extends FirestoreRecord {
 }
 
 Map<String, dynamic> createPostsRecordData({
-  String? postImage,
+  String? postTitle,
+  String? posDescription,
   DocumentReference? postUser,
-  int? usersLikes,
-  int? usersShares,
-  String? postText,
-  String? postUserName,
-  String? postUserImage,
+  DateTime? timePosted,
+  int? numComments,
+  int? numVotes,
+  String? postImage,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
-      'postImage': postImage,
-      'postUser': postUser,
-      'usersLikes': usersLikes,
-      'usersShares': usersShares,
-      'postText': postText,
-      'postUserName': postUserName,
-      'postUserImage': postUserImage,
+      'post_title': postTitle,
+      'pos_description': posDescription,
+      'post_user': postUser,
+      'time_posted': timePosted,
+      'num_comments': numComments,
+      'num_votes': numVotes,
+      'post_image': postImage,
     }.withoutNulls,
   );
 
@@ -122,24 +135,29 @@ class PostsRecordDocumentEquality implements Equality<PostsRecord> {
 
   @override
   bool equals(PostsRecord? e1, PostsRecord? e2) {
-    return e1?.postImage == e2?.postImage &&
+    const listEquality = ListEquality();
+    return e1?.postTitle == e2?.postTitle &&
+        e1?.posDescription == e2?.posDescription &&
         e1?.postUser == e2?.postUser &&
-        e1?.usersLikes == e2?.usersLikes &&
-        e1?.usersShares == e2?.usersShares &&
-        e1?.postText == e2?.postText &&
-        e1?.postUserName == e2?.postUserName &&
-        e1?.postUserImage == e2?.postUserImage;
+        e1?.timePosted == e2?.timePosted &&
+        listEquality.equals(e1?.likes, e2?.likes) &&
+        e1?.numComments == e2?.numComments &&
+        e1?.numVotes == e2?.numVotes &&
+        listEquality.equals(e1?.postLikedBy, e2?.postLikedBy) &&
+        e1?.postImage == e2?.postImage;
   }
 
   @override
   int hash(PostsRecord? e) => const ListEquality().hash([
-        e?.postImage,
+        e?.postTitle,
+        e?.posDescription,
         e?.postUser,
-        e?.usersLikes,
-        e?.usersShares,
-        e?.postText,
-        e?.postUserName,
-        e?.postUserImage
+        e?.timePosted,
+        e?.likes,
+        e?.numComments,
+        e?.numVotes,
+        e?.postLikedBy,
+        e?.postImage
       ]);
 
   @override
