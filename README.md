@@ -1,7 +1,2 @@
 # Afro Tango
-
-A new Flutter project.
-
-## Getting Started
-
-FlutterFlow projects are built to run on the Flutter _stable_ release.
+Afro Tango is a platform designed to connect the African diaspora with businesses, services, and community resources globally and within the African continent.
