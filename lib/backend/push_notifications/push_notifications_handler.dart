@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'serialization_util.dart';
 import '/backend/backend.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
+import 'package:ff_theme/flutter_flow/flutter_flow_theme.dart';
 import '../../flutter_flow/flutter_flow_util.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
@@ -138,7 +138,10 @@ final parametersBuilderMap =
   'Eventhome': ParameterData.none(),
   'eventsearch': (data) async => ParameterData(
         allParams: {
-          'searchedEvents': getParameter<String>(data, 'searchedEvents'),
+          'search': getParameter<String>(data, 'search'),
+          'intialdate': getParameter<DateTime>(data, 'intialdate'),
+          'category': getParameter<String>(data, 'category'),
+          'location': getParameter<String>(data, 'location'),
         },
       ),
   'Eventdetails': (data) async => ParameterData(
@@ -182,7 +185,6 @@ final parametersBuilderMap =
               data, 'community', CommunityRecord.fromSnapshot),
         },
       ),
-  'searchcontact': ParameterData.none(),
   'Community-ShareQR': ParameterData.none(),
   'marketHome': ParameterData.none(),
   'selected': ParameterData.none(),
@@ -346,11 +348,19 @@ final parametersBuilderMap =
   'searchFilter': ParameterData.none(),
   'busineslistCopy': ParameterData.none(),
   'comunityHomeCopy': ParameterData.none(),
-  'businessSearch': ParameterData.none(),
+  'businessSearch': (data) async => ParameterData(
+        allParams: {
+          'country': getParameter<String>(data, 'country'),
+          'search': getParameter<String>(data, 'search'),
+          'category': getParameter<String>(data, 'category'),
+        },
+      ),
   'businessSearchFilter': ParameterData.none(),
   'communitySearchResult': (data) async => ParameterData(
         allParams: {
-          'commsearchResults': getParameter<String>(data, 'commsearchResults'),
+          'category': getParameter<String>(data, 'category'),
+          'country': getParameter<String>(data, 'country'),
+          'search': getParameter<String>(data, 'search'),
         },
       ),
   'searchFilterComunty': ParameterData.none(),
@@ -365,6 +375,7 @@ final parametersBuilderMap =
           'user': getParameter<DocumentReference>(data, 'user'),
         },
       ),
+  'eventsearchCopy': ParameterData.none(),
 };
 
 Map<String, dynamic> getInitialParameterData(Map<String, dynamic> data) {

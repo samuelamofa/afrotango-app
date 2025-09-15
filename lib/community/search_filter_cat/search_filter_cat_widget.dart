@@ -1,11 +1,11 @@
 import '/flutter_flow/flutter_flow_drop_down.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import '/index.dart';
 import 'package:easy_debounce/easy_debounce.dart';
+import 'package:ff_theme/flutter_flow/flutter_flow_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -273,14 +273,14 @@ class _SearchFilterCatWidgetState extends State<SearchFilterCatWidget> {
                                   hoverColor: Colors.transparent,
                                   highlightColor: Colors.transparent,
                                   onTap: () async {
-                                    FFAppState().contactcatigory = profeItem;
+                                    FFAppState().contactcategory = profeItem;
                                     safeSetState(() {});
                                   },
                                   child: Container(
                                     height: 53.0,
                                     decoration: BoxDecoration(
                                       color: profeItem ==
-                                              FFAppState().contactcatigory
+                                              FFAppState().contactcategory
                                           ? FlutterFlowTheme.of(context)
                                               .secondary
                                           : FlutterFlowTheme.of(context)
@@ -314,7 +314,7 @@ class _SearchFilterCatWidgetState extends State<SearchFilterCatWidget> {
                                                   ),
                                                   color: profeItem ==
                                                           FFAppState()
-                                                              .contactcatigory
+                                                              .contactcategory
                                                       ? FlutterFlowTheme.of(
                                                               context)
                                                           .secondaryBackground
@@ -578,11 +578,11 @@ class _SearchFilterCatWidgetState extends State<SearchFilterCatWidget> {
                                       _model.countryDropDownValue != '') ||
                                   (_model.categoryDropDownValue != null &&
                                       _model.categoryDropDownValue != '')) {
-                                FFAppState().contactsearcterm =
+                                FFAppState().contactsearchterm =
                                     _model.textController.text;
                                 FFAppState().contactfiltercountry =
                                     _model.countryDropDownValue!;
-                                FFAppState().contactfilterprofesio =
+                                FFAppState().contactfilterprofession =
                                     _model.categoryDropDownValue!;
                                 FFAppState().isSearchfilter = true;
                                 safeSetState(() {});

@@ -1,4 +1,5 @@
-import 'package:collection/collection.dart';
+import 'package:ff_commons/flutter_flow/enums.dart';
+export 'package:ff_commons/flutter_flow/enums.dart';
 
 enum Status {
   completed,
@@ -9,22 +10,13 @@ enum Status {
 enum Orderstatus {
   OrderPlaced,
   completed,
-  delivery,
+  delivered,
 }
 
-enum Verystatus {
+enum VerificationStatus {
   Reject,
   pending,
-  Approve,
-}
-
-extension FFEnumExtensions<T extends Enum> on T {
-  String serialize() => name;
-}
-
-extension FFEnumListExtensions<T extends Enum> on Iterable<T> {
-  T? deserialize(String? value) =>
-      firstWhereOrNull((e) => e.serialize() == value);
+  Approved,
 }
 
 T? deserializeEnum<T>(String? value) {
@@ -33,8 +25,8 @@ T? deserializeEnum<T>(String? value) {
       return Status.values.deserialize(value) as T?;
     case (Orderstatus):
       return Orderstatus.values.deserialize(value) as T?;
-    case (Verystatus):
-      return Verystatus.values.deserialize(value) as T?;
+    case (VerificationStatus):
+      return VerificationStatus.values.deserialize(value) as T?;
     default:
       return null;
   }

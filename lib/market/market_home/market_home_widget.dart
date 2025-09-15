@@ -2,12 +2,12 @@ import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/components/emptylist_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/market/card/cardmarket/cardmarket_widget.dart';
 import '/market/card/createproduct/createproduct_widget.dart';
 import '/flutter_flow/random_data_util.dart' as random_data;
 import '/index.dart';
+import 'package:ff_theme/flutter_flow/flutter_flow_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -449,7 +449,7 @@ class _MarketHomeWidgetState extends State<MarketHomeWidget> {
                               onTap: () async {
                                 _model.first = 1;
                                 safeSetState(() {});
-                                FFAppState().productCatigory = null;
+                                FFAppState().productCategory = null;
                                 safeSetState(() {});
                               },
                               child: Container(
@@ -545,7 +545,7 @@ class _MarketHomeWidgetState extends State<MarketHomeWidget> {
                                         hoverColor: Colors.transparent,
                                         highlightColor: Colors.transparent,
                                         onTap: () async {
-                                          FFAppState().productCatigory =
+                                          FFAppState().productCategory =
                                               rowProductCatigoryRecord
                                                   .reference;
                                           safeSetState(() {});
@@ -556,7 +556,7 @@ class _MarketHomeWidgetState extends State<MarketHomeWidget> {
                                           decoration: BoxDecoration(
                                             color: rowProductCatigoryRecord
                                                         .reference ==
-                                                    FFAppState().productCatigory
+                                                    FFAppState().productCategory
                                                 ? Color(0xFFFFC63B)
                                                 : Color(0x00000000),
                                             borderRadius:
@@ -565,7 +565,7 @@ class _MarketHomeWidgetState extends State<MarketHomeWidget> {
                                               color: rowProductCatigoryRecord
                                                           .reference !=
                                                       FFAppState()
-                                                          .productCatigory
+                                                          .productCategory
                                                   ? FlutterFlowTheme.of(context)
                                                       .secondaryText
                                                   : Color(0x00000000),
@@ -600,7 +600,7 @@ class _MarketHomeWidgetState extends State<MarketHomeWidget> {
                                                         color: rowProductCatigoryRecord
                                                                     .reference ==
                                                                 FFAppState()
-                                                                    .productCatigory
+                                                                    .productCategory
                                                             ? FlutterFlowTheme
                                                                     .of(context)
                                                                 .secondaryBackground
@@ -725,11 +725,11 @@ class _MarketHomeWidgetState extends State<MarketHomeWidget> {
                                 Builder(
                                   builder: (context) {
                                     final product =
-                                        (FFAppState().productCatigory != null
+                                        (FFAppState().productCategory != null
                                                 ? marketHomeProductRecordList
                                                     .where((e) => e.catigory
                                                         .contains(FFAppState()
-                                                            .productCatigory))
+                                                            .productCategory))
                                                     .toList()
                                                 : marketHomeProductRecordList)
                                             .toList();
@@ -768,11 +768,11 @@ class _MarketHomeWidgetState extends State<MarketHomeWidget> {
                                 Builder(
                                   builder: (context) {
                                     final product =
-                                        (FFAppState().productCatigory != null
+                                        (FFAppState().productCategory != null
                                                 ? marketHomeProductRecordList
                                                     .where((e) => e.catigory
                                                         .contains(FFAppState()
-                                                            .productCatigory))
+                                                            .productCategory))
                                                     .toList()
                                                 : marketHomeProductRecordList)
                                             .toList();
@@ -929,7 +929,7 @@ class _MarketHomeWidgetState extends State<MarketHomeWidget> {
                                             .where(
                                               'catigory',
                                               arrayContains:
-                                                  FFAppState().productCatigory,
+                                                  FFAppState().productCategory,
                                             ),
                                     limit: 20,
                                   ),
@@ -993,7 +993,7 @@ class _MarketHomeWidgetState extends State<MarketHomeWidget> {
                                             .where(
                                               'catigory',
                                               arrayContains:
-                                                  FFAppState().productCatigory,
+                                                  FFAppState().productCategory,
                                             ),
                                     limit: 20,
                                   ),

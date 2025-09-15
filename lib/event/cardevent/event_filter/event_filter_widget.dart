@@ -1,22 +1,35 @@
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import '/index.dart';
-import 'package:easy_debounce/easy_debounce.dart';
+import 'package:ff_theme/flutter_flow/flutter_flow_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
-import 'package:text_search/text_search.dart';
 import 'event_filter_model.dart';
 export 'event_filter_model.dart';
 
 class EventFilterWidget extends StatefulWidget {
-  const EventFilterWidget({super.key});
+  const EventFilterWidget({
+    super.key,
+    this.events,
+    this.name,
+    this.category,
+    this.country,
+    this.intialdate,
+    bool? dismiss,
+  }) : this.dismiss = dismiss ?? false;
+
+  final List<EventRecord>? events;
+  final String? name;
+  final String? category;
+  final String? country;
+  final DateTime? intialdate;
+  final bool dismiss;
 
   @override
   State<EventFilterWidget> createState() => _EventFilterWidgetState();
@@ -36,7 +49,15 @@ class _EventFilterWidgetState extends State<EventFilterWidget> {
     super.initState();
     _model = createModel(context, () => EventFilterModel());
 
-    _model.textController ??= TextEditingController();
+    // On component load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      _model.category = widget.category;
+      _model.country = widget.country;
+      _model.intialdate = widget.intialdate;
+      safeSetState(() {});
+    });
+
+    _model.textController ??= TextEditingController(text: widget.name);
     _model.textFieldFocusNode ??= FocusNode();
   }
 
@@ -49,372 +70,66 @@ class _EventFilterWidgetState extends State<EventFilterWidget> {
 
   @override
   Widget build(BuildContext context) {
-    context.watch<FFAppState>();
-
     return Align(
       alignment: AlignmentDirectional(0.0, 1.0),
-      child: Container(
-        width: double.infinity,
-        height: 560.0,
-        decoration: BoxDecoration(
-          color: FlutterFlowTheme.of(context).secondaryBackground,
-          image: DecorationImage(
-            fit: BoxFit.cover,
-            image: Image.asset(
-              'assets/images/Bottom_Sheet.png',
-            ).image,
-          ),
-          borderRadius: BorderRadius.only(
-            bottomLeft: Radius.circular(0.0),
-            bottomRight: Radius.circular(0.0),
-            topLeft: Radius.circular(30.0),
-            topRight: Radius.circular(30.0),
-          ),
-        ),
-        child: SingleChildScrollView(
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              Divider(
-                height: 20.0,
-                thickness: 5.0,
-                indent: 160.0,
-                endIndent: 160.0,
-                color: FlutterFlowTheme.of(context).secondary,
+      child: StreamBuilder<List<EventcatigoryRecord>>(
+        stream: queryEventcatigoryRecord(),
+        builder: (context, snapshot) {
+          // Customize what your widget looks like when it's loading.
+          if (!snapshot.hasData) {
+            return Center(
+              child: SizedBox(
+                width: 40.0,
+                height: 40.0,
+                child: SpinKitThreeBounce(
+                  color: Color(0x51000000),
+                  size: 40.0,
+                ),
               ),
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
-                child: Column(
-                  mainAxisSize: MainAxisSize.max,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      FFLocalizations.of(context).getText(
-                        'onsm1t0i' /* Filters */,
-                      ),
-                      style: FlutterFlowTheme.of(context).bodyMedium.override(
-                            font: GoogleFonts.poppins(
-                              fontWeight: FontWeight.w600,
-                              fontStyle: FlutterFlowTheme.of(context)
-                                  .bodyMedium
-                                  .fontStyle,
-                            ),
-                            fontSize: 18.0,
-                            letterSpacing: 0.0,
-                            fontWeight: FontWeight.w600,
-                            fontStyle: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .fontStyle,
-                          ),
-                    ),
-                    Container(
-                      width: double.infinity,
-                      height: 54.0,
-                      decoration: BoxDecoration(
-                        color: FlutterFlowTheme.of(context).secondaryBackground,
-                        borderRadius: BorderRadius.circular(10.0),
-                        border: Border.all(
-                          color: Color(0x8A000000),
-                        ),
-                      ),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          Expanded(
-                            child: Container(
-                              width: double.infinity,
-                              child: TextFormField(
-                                controller: _model.textController,
-                                focusNode: _model.textFieldFocusNode,
-                                onChanged: (_) => EasyDebounce.debounce(
-                                  '_model.textController',
-                                  Duration(milliseconds: 2000),
-                                  () async {
-                                    await queryEventRecordOnce()
-                                        .then(
-                                          (records) => _model
-                                              .simpleSearchResults = TextSearch(
-                                            records
-                                                .map(
-                                                  (record) =>
-                                                      TextSearchItem.fromTerms(
-                                                          record, [
-                                                    record.eventCategory,
-                                                    record.eventName,
-                                                    record.eventLocation,
-                                                    record.country,
-                                                    record.eventDescription
-                                                  ]),
-                                                )
-                                                .toList(),
-                                          )
-                                              .search(
-                                                  _model.textController.text)
-                                              .map((r) => r.object)
-                                              .take(200)
-                                              .toList(),
-                                        )
-                                        .onError((_, __) =>
-                                            _model.simpleSearchResults = [])
-                                        .whenComplete(
-                                            () => safeSetState(() {}));
-                                  },
-                                ),
-                                autofocus: false,
-                                obscureText: false,
-                                decoration: InputDecoration(
-                                  isDense: true,
-                                  labelStyle: FlutterFlowTheme.of(context)
-                                      .labelMedium
-                                      .override(
-                                        font: GoogleFonts.poppins(
-                                          fontWeight:
-                                              FlutterFlowTheme.of(context)
-                                                  .labelMedium
-                                                  .fontWeight,
-                                          fontStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .labelMedium
-                                                  .fontStyle,
-                                        ),
-                                        letterSpacing: 0.0,
-                                        fontWeight: FlutterFlowTheme.of(context)
-                                            .labelMedium
-                                            .fontWeight,
-                                        fontStyle: FlutterFlowTheme.of(context)
-                                            .labelMedium
-                                            .fontStyle,
-                                      ),
-                                  hintText: FFLocalizations.of(context).getText(
-                                    'cvvzmcjc' /* Search Event */,
-                                  ),
-                                  hintStyle: FlutterFlowTheme.of(context)
-                                      .labelMedium
-                                      .override(
-                                        font: GoogleFonts.poppins(
-                                          fontWeight:
-                                              FlutterFlowTheme.of(context)
-                                                  .labelMedium
-                                                  .fontWeight,
-                                          fontStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .labelMedium
-                                                  .fontStyle,
-                                        ),
-                                        letterSpacing: 0.0,
-                                        fontWeight: FlutterFlowTheme.of(context)
-                                            .labelMedium
-                                            .fontWeight,
-                                        fontStyle: FlutterFlowTheme.of(context)
-                                            .labelMedium
-                                            .fontStyle,
-                                      ),
-                                  enabledBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: Color(0x00000000),
-                                      width: 1.0,
-                                    ),
-                                    borderRadius: BorderRadius.circular(8.0),
-                                  ),
-                                  focusedBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: Color(0x00000000),
-                                      width: 1.0,
-                                    ),
-                                    borderRadius: BorderRadius.circular(8.0),
-                                  ),
-                                  errorBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: FlutterFlowTheme.of(context).error,
-                                      width: 1.0,
-                                    ),
-                                    borderRadius: BorderRadius.circular(8.0),
-                                  ),
-                                  focusedErrorBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: FlutterFlowTheme.of(context).error,
-                                      width: 1.0,
-                                    ),
-                                    borderRadius: BorderRadius.circular(8.0),
-                                  ),
-                                  filled: true,
-                                  fillColor: FlutterFlowTheme.of(context)
-                                      .secondaryBackground,
-                                ),
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .override(
-                                      font: GoogleFonts.poppins(
-                                        fontWeight: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .fontWeight,
-                                        fontStyle: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .fontStyle,
-                                      ),
-                                      letterSpacing: 0.0,
-                                      fontWeight: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .fontWeight,
-                                      fontStyle: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .fontStyle,
-                                    ),
-                                cursorColor:
-                                    FlutterFlowTheme.of(context).primaryText,
-                                validator: _model.textControllerValidator
-                                    .asValidator(context),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Divider(
-                      thickness: 2.0,
-                      color: FlutterFlowTheme.of(context).alternate,
-                    ),
-                    Column(
+            );
+          }
+          List<EventcatigoryRecord> containerEventcatigoryRecordList =
+              snapshot.data!;
+
+          return Container(
+            width: double.infinity,
+            height: 560.0,
+            decoration: BoxDecoration(
+              color: FlutterFlowTheme.of(context).secondaryBackground,
+              image: DecorationImage(
+                fit: BoxFit.cover,
+                image: Image.asset(
+                  'assets/images/Bottom_Sheet.png',
+                ).image,
+              ),
+              borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(0.0),
+                bottomRight: Radius.circular(0.0),
+                topLeft: Radius.circular(30.0),
+                topRight: Radius.circular(30.0),
+              ),
+            ),
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  Divider(
+                    height: 20.0,
+                    thickness: 5.0,
+                    indent: 160.0,
+                    endIndent: 160.0,
+                    color: FlutterFlowTheme.of(context).secondary,
+                  ),
+                  Padding(
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
+                    child: Column(
                       mainAxisSize: MainAxisSize.max,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
                           FFLocalizations.of(context).getText(
-                            'n51itkoo' /* Category */,
-                          ),
-                          style:
-                              FlutterFlowTheme.of(context).bodyMedium.override(
-                                    font: GoogleFonts.poppins(
-                                      fontWeight: FontWeight.w600,
-                                      fontStyle: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .fontStyle,
-                                    ),
-                                    color: Color(0xFF666666),
-                                    fontSize: 15.0,
-                                    letterSpacing: 0.0,
-                                    fontWeight: FontWeight.w600,
-                                    fontStyle: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .fontStyle,
-                                  ),
-                        ),
-                        StreamBuilder<List<EventcatigoryRecord>>(
-                          stream: queryEventcatigoryRecord(),
-                          builder: (context, snapshot) {
-                            // Customize what your widget looks like when it's loading.
-                            if (!snapshot.hasData) {
-                              return Center(
-                                child: SizedBox(
-                                  width: 40.0,
-                                  height: 40.0,
-                                  child: SpinKitThreeBounce(
-                                    color: Color(0x51000000),
-                                    size: 40.0,
-                                  ),
-                                ),
-                              );
-                            }
-                            List<EventcatigoryRecord>
-                                rowEventcatigoryRecordList = snapshot.data!;
-
-                            return SingleChildScrollView(
-                              scrollDirection: Axis.horizontal,
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                children: List.generate(
-                                    rowEventcatigoryRecordList.length,
-                                    (rowIndex) {
-                                  final rowEventcatigoryRecord =
-                                      rowEventcatigoryRecordList[rowIndex];
-                                  return InkWell(
-                                    splashColor: Colors.transparent,
-                                    focusColor: Colors.transparent,
-                                    hoverColor: Colors.transparent,
-                                    highlightColor: Colors.transparent,
-                                    onTap: () async {
-                                      FFAppState().eventfilterCatigory =
-                                          rowEventcatigoryRecord.reference;
-                                      safeSetState(() {});
-                                    },
-                                    child: Container(
-                                      height: 54.0,
-                                      decoration: BoxDecoration(
-                                        color: FlutterFlowTheme.of(context)
-                                            .secondaryBackground,
-                                        borderRadius:
-                                            BorderRadius.circular(10.0),
-                                        border: Border.all(
-                                          color: valueOrDefault<Color>(
-                                            rowEventcatigoryRecord.reference ==
-                                                    FFAppState()
-                                                        .eventfilterCatigory
-                                                ? FlutterFlowTheme.of(context)
-                                                    .secondary
-                                                : Color(0xFF4F4E4E),
-                                            Color(0xFF4F4E4E),
-                                          ),
-                                        ),
-                                      ),
-                                      child: Padding(
-                                        padding: EdgeInsets.all(10.0),
-                                        child: Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: [
-                                            ClipRRect(
-                                              borderRadius:
-                                                  BorderRadius.circular(8.0),
-                                              child: Image.network(
-                                                rowEventcatigoryRecord.image,
-                                                width: 24.0,
-                                                height: 24.0,
-                                                fit: BoxFit.cover,
-                                              ),
-                                            ),
-                                            Text(
-                                              rowEventcatigoryRecord.name,
-                                              style: FlutterFlowTheme.of(
-                                                      context)
-                                                  .bodyMedium
-                                                  .override(
-                                                    font: GoogleFonts.poppins(
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                      fontStyle:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMedium
-                                                              .fontStyle,
-                                                    ),
-                                                    fontSize: 12.0,
-                                                    letterSpacing: 0.0,
-                                                    fontWeight: FontWeight.bold,
-                                                    fontStyle:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .bodyMedium
-                                                            .fontStyle,
-                                                  ),
-                                            ),
-                                          ].divide(SizedBox(width: 10.0)),
-                                        ),
-                                      ),
-                                    ),
-                                  );
-                                }).divide(SizedBox(width: 15.0)),
-                              ),
-                            );
-                          },
-                        ),
-                        Divider(
-                          thickness: 2.0,
-                          color: FlutterFlowTheme.of(context).alternate,
-                        ),
-                        Text(
-                          FFLocalizations.of(context).getText(
-                            '20mewptn' /* Select Country/Date */,
+                            'onsm1t0i' /* Filters */,
                           ),
                           style:
                               FlutterFlowTheme.of(context).bodyMedium.override(
@@ -432,19 +147,316 @@ class _EventFilterWidgetState extends State<EventFilterWidget> {
                                         .fontStyle,
                                   ),
                         ),
-                        FlutterFlowDropDown<String>(
-                          controller: _model.countryDropDownValueController ??=
-                              FormFieldController<String>(null),
-                          options: functions.getCountryNames(),
-                          onChanged: (val) async {
-                            safeSetState(
-                                () => _model.countryDropDownValue = val);
-                            FFAppState().update(() {});
-                          },
+                        Container(
                           width: double.infinity,
                           height: 54.0,
-                          searchHintTextStyle:
-                              FlutterFlowTheme.of(context).labelMedium.override(
+                          decoration: BoxDecoration(
+                            color: FlutterFlowTheme.of(context)
+                                .secondaryBackground,
+                            borderRadius: BorderRadius.circular(10.0),
+                            border: Border.all(
+                              color: Color(0x8A000000),
+                            ),
+                          ),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Expanded(
+                                child: Container(
+                                  width: double.infinity,
+                                  child: TextFormField(
+                                    controller: _model.textController,
+                                    focusNode: _model.textFieldFocusNode,
+                                    autofocus: false,
+                                    obscureText: false,
+                                    decoration: InputDecoration(
+                                      isDense: true,
+                                      labelStyle: FlutterFlowTheme.of(context)
+                                          .labelMedium
+                                          .override(
+                                            font: GoogleFonts.poppins(
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelMedium
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelMedium
+                                                      .fontStyle,
+                                            ),
+                                            letterSpacing: 0.0,
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .labelMedium
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .labelMedium
+                                                    .fontStyle,
+                                          ),
+                                      hintText:
+                                          FFLocalizations.of(context).getText(
+                                        'cvvzmcjc' /* Search Event */,
+                                      ),
+                                      hintStyle: FlutterFlowTheme.of(context)
+                                          .labelMedium
+                                          .override(
+                                            font: GoogleFonts.poppins(
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelMedium
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelMedium
+                                                      .fontStyle,
+                                            ),
+                                            letterSpacing: 0.0,
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .labelMedium
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .labelMedium
+                                                    .fontStyle,
+                                          ),
+                                      enabledBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: Color(0x00000000),
+                                          width: 1.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                      ),
+                                      focusedBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: Color(0x00000000),
+                                          width: 1.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                      ),
+                                      errorBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: FlutterFlowTheme.of(context)
+                                              .error,
+                                          width: 1.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                      ),
+                                      focusedErrorBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: FlutterFlowTheme.of(context)
+                                              .error,
+                                          width: 1.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                      ),
+                                    ),
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          font: GoogleFonts.poppins(
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontStyle,
+                                          ),
+                                          letterSpacing: 0.0,
+                                          fontWeight:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMedium
+                                                  .fontWeight,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMedium
+                                                  .fontStyle,
+                                        ),
+                                    cursorColor: FlutterFlowTheme.of(context)
+                                        .primaryText,
+                                    validator: _model.textControllerValidator
+                                        .asValidator(context),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Divider(
+                          thickness: 2.0,
+                          color: FlutterFlowTheme.of(context).alternate,
+                        ),
+                        Column(
+                          mainAxisSize: MainAxisSize.max,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              FFLocalizations.of(context).getText(
+                                'n51itkoo' /* Category */,
+                              ),
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    font: GoogleFonts.poppins(
+                                      fontWeight: FontWeight.w600,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .fontStyle,
+                                    ),
+                                    color: Color(0xFF666666),
+                                    fontSize: 15.0,
+                                    letterSpacing: 0.0,
+                                    fontWeight: FontWeight.w600,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .fontStyle,
+                                  ),
+                            ),
+                            Builder(
+                              builder: (context) {
+                                final events =
+                                    containerEventcatigoryRecordList.toList();
+
+                                return SingleChildScrollView(
+                                  scrollDirection: Axis.horizontal,
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: List.generate(events.length,
+                                        (eventsIndex) {
+                                      final eventsItem = events[eventsIndex];
+                                      return InkWell(
+                                        splashColor: Colors.transparent,
+                                        focusColor: Colors.transparent,
+                                        hoverColor: Colors.transparent,
+                                        highlightColor: Colors.transparent,
+                                        onTap: () async {
+                                          _model.category = eventsItem.name;
+                                          safeSetState(() {});
+                                        },
+                                        child: Container(
+                                          height: 54.0,
+                                          decoration: BoxDecoration(
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryBackground,
+                                            borderRadius:
+                                                BorderRadius.circular(10.0),
+                                            border: Border.all(
+                                              color: valueOrDefault<Color>(
+                                                eventsItem.name ==
+                                                        _model.category
+                                                    ? FlutterFlowTheme.of(
+                                                            context)
+                                                        .secondary
+                                                    : Color(0xFF4F4E4E),
+                                                Color(0xFF4F4E4E),
+                                              ),
+                                            ),
+                                          ),
+                                          child: Padding(
+                                            padding: EdgeInsets.all(10.0),
+                                            child: Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: [
+                                                ClipRRect(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          8.0),
+                                                  child: Image.network(
+                                                    eventsItem.image,
+                                                    width: 24.0,
+                                                    height: 24.0,
+                                                    fit: BoxFit.cover,
+                                                  ),
+                                                ),
+                                                Text(
+                                                  eventsItem.name,
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        font:
+                                                            GoogleFonts.poppins(
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontStyle,
+                                                        ),
+                                                        fontSize: 12.0,
+                                                        letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .fontStyle,
+                                                      ),
+                                                ),
+                                              ].divide(SizedBox(width: 10.0)),
+                                            ),
+                                          ),
+                                        ),
+                                      );
+                                    }).divide(SizedBox(width: 15.0)),
+                                  ),
+                                );
+                              },
+                            ),
+                            Divider(
+                              thickness: 2.0,
+                              color: FlutterFlowTheme.of(context).alternate,
+                            ),
+                            Text(
+                              FFLocalizations.of(context).getText(
+                                '20mewptn' /* Select Country/Date */,
+                              ),
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    font: GoogleFonts.poppins(
+                                      fontWeight: FontWeight.w600,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .fontStyle,
+                                    ),
+                                    fontSize: 18.0,
+                                    letterSpacing: 0.0,
+                                    fontWeight: FontWeight.w600,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .fontStyle,
+                                  ),
+                            ),
+                            FlutterFlowDropDown<String>(
+                              controller:
+                                  _model.countryDropDownValueController ??=
+                                      FormFieldController<String>(
+                                _model.countryDropDownValue ??= _model.country,
+                              ),
+                              options: functions.getCountryNames(),
+                              onChanged: (val) async {
+                                safeSetState(
+                                    () => _model.countryDropDownValue = val);
+                                _model.country = _model.countryDropDownValue;
+                                safeSetState(() {});
+                              },
+                              width: double.infinity,
+                              height: 54.0,
+                              searchHintTextStyle: FlutterFlowTheme.of(context)
+                                  .labelMedium
+                                  .override(
                                     font: GoogleFonts.poppins(
                                       fontWeight: FlutterFlowTheme.of(context)
                                           .labelMedium
@@ -463,8 +475,9 @@ class _EventFilterWidgetState extends State<EventFilterWidget> {
                                         .labelMedium
                                         .fontStyle,
                                   ),
-                          searchTextStyle:
-                              FlutterFlowTheme.of(context).bodyMedium.override(
+                              searchTextStyle: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
                                     font: GoogleFonts.poppins(
                                       fontWeight: FlutterFlowTheme.of(context)
                                           .bodyMedium
@@ -481,8 +494,9 @@ class _EventFilterWidgetState extends State<EventFilterWidget> {
                                         .bodyMedium
                                         .fontStyle,
                                   ),
-                          textStyle:
-                              FlutterFlowTheme.of(context).bodyMedium.override(
+                              textStyle: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
                                     font: GoogleFonts.poppins(
                                       fontWeight: FontWeight.w600,
                                       fontStyle: FlutterFlowTheme.of(context)
@@ -498,252 +512,210 @@ class _EventFilterWidgetState extends State<EventFilterWidget> {
                                         .bodyMedium
                                         .fontStyle,
                                   ),
-                          hintText: FFLocalizations.of(context).getText(
-                            'gd2yscef' /* Select country */,
-                          ),
-                          searchHintText: FFLocalizations.of(context).getText(
-                            'jnawhw0s' /* Search... */,
-                          ),
-                          searchCursorColor:
-                              FlutterFlowTheme.of(context).secondaryBackground,
-                          icon: Icon(
-                            Icons.arrow_drop_down_sharp,
-                            color: FlutterFlowTheme.of(context)
-                                .secondaryBackground,
-                            size: 24.0,
-                          ),
-                          fillColor: Color(0xFF666666),
-                          elevation: 2.0,
-                          borderColor: Colors.transparent,
-                          borderWidth: 0.0,
-                          borderRadius: 10.0,
-                          margin: EdgeInsetsDirectional.fromSTEB(
-                              12.0, 0.0, 12.0, 0.0),
-                          hidesUnderline: true,
-                          isOverButton: false,
-                          isSearchable: true,
-                          isMultiSelect: false,
-                        ),
-                        InkWell(
-                          splashColor: Colors.transparent,
-                          focusColor: Colors.transparent,
-                          hoverColor: Colors.transparent,
-                          highlightColor: Colors.transparent,
-                          onTap: () async {
-                            final _datePickedDate = await showDatePicker(
-                              context: context,
-                              initialDate: getCurrentTimestamp,
-                              firstDate: getCurrentTimestamp,
-                              lastDate: DateTime(2050),
-                              builder: (context, child) {
-                                return wrapInMaterialDatePickerTheme(
-                                  context,
-                                  child!,
-                                  headerBackgroundColor:
-                                      FlutterFlowTheme.of(context).primary,
-                                  headerForegroundColor:
-                                      FlutterFlowTheme.of(context).info,
-                                  headerTextStyle: FlutterFlowTheme.of(context)
-                                      .headlineLarge
-                                      .override(
-                                        font: GoogleFonts.poppins(
-                                          fontWeight: FontWeight.w600,
-                                          fontStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .headlineLarge
-                                                  .fontStyle,
-                                        ),
-                                        fontSize: 32.0,
-                                        letterSpacing: 0.0,
-                                        fontWeight: FontWeight.w600,
-                                        fontStyle: FlutterFlowTheme.of(context)
-                                            .headlineLarge
-                                            .fontStyle,
-                                      ),
-                                  pickerBackgroundColor:
-                                      FlutterFlowTheme.of(context)
-                                          .secondaryBackground,
-                                  pickerForegroundColor:
-                                      FlutterFlowTheme.of(context).primaryText,
-                                  selectedDateTimeBackgroundColor:
-                                      FlutterFlowTheme.of(context).eventcolor,
-                                  selectedDateTimeForegroundColor:
-                                      FlutterFlowTheme.of(context).info,
-                                  actionButtonForegroundColor:
-                                      FlutterFlowTheme.of(context).primaryText,
-                                  iconSize: 24.0,
-                                );
-                              },
-                            );
-
-                            if (_datePickedDate != null) {
-                              safeSetState(() {
-                                _model.datePicked = DateTime(
-                                  _datePickedDate.year,
-                                  _datePickedDate.month,
-                                  _datePickedDate.day,
-                                );
-                              });
-                            } else if (_model.datePicked != null) {
-                              safeSetState(() {
-                                _model.datePicked = getCurrentTimestamp;
-                              });
-                            }
-                          },
-                          child: Container(
-                            width: double.infinity,
-                            height: 54.0,
-                            decoration: BoxDecoration(
-                              color: Color(0xFF666666),
-                              borderRadius: BorderRadius.circular(10.0),
-                              border: Border.all(
-                                color: Color(0xFF6B7280),
+                              hintText: FFLocalizations.of(context).getText(
+                                'gd2yscef' /* Select country */,
                               ),
+                              searchHintText:
+                                  FFLocalizations.of(context).getText(
+                                'jnawhw0s' /* Search... */,
+                              ),
+                              searchCursorColor: FlutterFlowTheme.of(context)
+                                  .secondaryBackground,
+                              icon: Icon(
+                                Icons.arrow_drop_down_sharp,
+                                color: FlutterFlowTheme.of(context)
+                                    .secondaryBackground,
+                                size: 24.0,
+                              ),
+                              fillColor: Color(0xFF666666),
+                              elevation: 2.0,
+                              borderColor: Colors.transparent,
+                              borderWidth: 0.0,
+                              borderRadius: 10.0,
+                              margin: EdgeInsetsDirectional.fromSTEB(
+                                  12.0, 0.0, 12.0, 0.0),
+                              hidesUnderline: true,
+                              isOverButton: false,
+                              isSearchable: true,
+                              isMultiSelect: false,
                             ),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      15.0, 0.0, 0.0, 0.0),
-                                  child: Text(
-                                    valueOrDefault<String>(
-                                      dateTimeFormat(
-                                        "d MMMM y",
-                                        _model.datePicked,
-                                        locale: FFLocalizations.of(context)
-                                            .languageCode,
-                                      ),
-                                      'DD/MM/YYYY',
-                                    ),
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          font: GoogleFonts.poppins(
-                                            fontWeight: FontWeight.w500,
+                            InkWell(
+                              splashColor: Colors.transparent,
+                              focusColor: Colors.transparent,
+                              hoverColor: Colors.transparent,
+                              highlightColor: Colors.transparent,
+                              onTap: () async {
+                                final _datePickedDate = await showDatePicker(
+                                  context: context,
+                                  initialDate: getCurrentTimestamp,
+                                  firstDate: DateTime(1900),
+                                  lastDate: DateTime(2050),
+                                  builder: (context, child) {
+                                    return wrapInMaterialDatePickerTheme(
+                                      context,
+                                      child!,
+                                      headerBackgroundColor:
+                                          FlutterFlowTheme.of(context).primary,
+                                      headerForegroundColor:
+                                          FlutterFlowTheme.of(context).info,
+                                      headerTextStyle: FlutterFlowTheme.of(
+                                              context)
+                                          .headlineLarge
+                                          .override(
+                                            font: GoogleFonts.poppins(
+                                              fontWeight: FontWeight.w600,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .headlineLarge
+                                                      .fontStyle,
+                                            ),
+                                            fontSize: 32.0,
+                                            letterSpacing: 0.0,
+                                            fontWeight: FontWeight.w600,
                                             fontStyle:
                                                 FlutterFlowTheme.of(context)
-                                                    .bodyMedium
+                                                    .headlineLarge
                                                     .fontStyle,
                                           ),
-                                          color: FlutterFlowTheme.of(context)
+                                      pickerBackgroundColor:
+                                          FlutterFlowTheme.of(context)
                                               .secondaryBackground,
-                                          fontSize: 14.0,
-                                          letterSpacing: 0.0,
-                                          fontWeight: FontWeight.w500,
+                                      pickerForegroundColor:
+                                          FlutterFlowTheme.of(context)
+                                              .primaryText,
+                                      selectedDateTimeBackgroundColor:
+                                          FlutterFlowTheme.of(context)
+                                              .eventcolor,
+                                      selectedDateTimeForegroundColor:
+                                          FlutterFlowTheme.of(context).info,
+                                      actionButtonForegroundColor:
+                                          FlutterFlowTheme.of(context)
+                                              .primaryText,
+                                      iconSize: 24.0,
+                                    );
+                                  },
+                                );
+
+                                if (_datePickedDate != null) {
+                                  safeSetState(() {
+                                    _model.datePicked = DateTime(
+                                      _datePickedDate.year,
+                                      _datePickedDate.month,
+                                      _datePickedDate.day,
+                                    );
+                                  });
+                                } else if (_model.datePicked != null) {
+                                  safeSetState(() {
+                                    _model.datePicked = getCurrentTimestamp;
+                                  });
+                                }
+                                _model.intialdate = _model.datePicked;
+                                safeSetState(() {});
+                              },
+                              child: Container(
+                                width: double.infinity,
+                                height: 54.0,
+                                decoration: BoxDecoration(
+                                  color: Color(0xFF666666),
+                                  borderRadius: BorderRadius.circular(10.0),
+                                  border: Border.all(
+                                    color: Color(0xFF6B7280),
+                                  ),
+                                ),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          15.0, 0.0, 0.0, 0.0),
+                                      child: Text(
+                                        valueOrDefault<String>(
+                                          dateTimeFormat(
+                                            "d MMMM y",
+                                            _model.intialdate,
+                                            locale: FFLocalizations.of(context)
+                                                .languageCode,
+                                          ),
+                                          'Select Event Date',
+                                        ),
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .override(
+                                              font: GoogleFonts.poppins(
+                                                fontWeight: FontWeight.w600,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .fontStyle,
+                                              ),
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryBackground,
+                                              fontSize: 14.0,
+                                              letterSpacing: 0.0,
+                                              fontWeight: FontWeight.w600,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontStyle,
+                                            ),
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 0.0, 15.0, 0.0),
+                                      child: Icon(
+                                        Icons.date_range,
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryBackground,
+                                        size: 24.0,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ].divide(SizedBox(height: 15.0)),
+                        ),
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 10.0, 0.0, 0.0),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              FFButtonWidget(
+                                onPressed: () async {
+                                  Navigator.pop(context);
+                                },
+                                text: FFLocalizations.of(context).getText(
+                                  'qirnn7n6' /* Cancel */,
+                                ),
+                                options: FFButtonOptions(
+                                  width: 155.0,
+                                  height: 54.0,
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      16.0, 0.0, 16.0, 0.0),
+                                  iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 0.0),
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryBackground,
+                                  textStyle: FlutterFlowTheme.of(context)
+                                      .titleSmall
+                                      .override(
+                                        font: GoogleFonts.poppins(
+                                          fontWeight:
+                                              FlutterFlowTheme.of(context)
+                                                  .titleSmall
+                                                  .fontWeight,
                                           fontStyle:
                                               FlutterFlowTheme.of(context)
-                                                  .bodyMedium
+                                                  .titleSmall
                                                   .fontStyle,
                                         ),
-                                  ),
-                                ),
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 15.0, 0.0),
-                                  child: Icon(
-                                    Icons.date_range,
-                                    color: FlutterFlowTheme.of(context)
-                                        .secondaryBackground,
-                                    size: 24.0,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ].divide(SizedBox(height: 15.0)),
-                    ),
-                    Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          FFButtonWidget(
-                            onPressed: () async {
-                              Navigator.pop(context);
-                            },
-                            text: FFLocalizations.of(context).getText(
-                              'qirnn7n6' /* Cancel */,
-                            ),
-                            options: FFButtonOptions(
-                              width: 155.0,
-                              height: 54.0,
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  16.0, 0.0, 16.0, 0.0),
-                              iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 0.0, 0.0, 0.0),
-                              color: FlutterFlowTheme.of(context)
-                                  .secondaryBackground,
-                              textStyle: FlutterFlowTheme.of(context)
-                                  .titleSmall
-                                  .override(
-                                    font: GoogleFonts.poppins(
-                                      fontWeight: FlutterFlowTheme.of(context)
-                                          .titleSmall
-                                          .fontWeight,
-                                      fontStyle: FlutterFlowTheme.of(context)
-                                          .titleSmall
-                                          .fontStyle,
-                                    ),
-                                    color: Color(0xFFFF0008),
-                                    letterSpacing: 0.0,
-                                    fontWeight: FlutterFlowTheme.of(context)
-                                        .titleSmall
-                                        .fontWeight,
-                                    fontStyle: FlutterFlowTheme.of(context)
-                                        .titleSmall
-                                        .fontStyle,
-                                  ),
-                              elevation: 0.0,
-                              borderSide: BorderSide(
-                                color: Color(0x80A3A3A3),
-                              ),
-                              borderRadius: BorderRadius.circular(10.0),
-                            ),
-                          ),
-                          Expanded(
-                            child: FFButtonWidget(
-                              onPressed: () async {
-                                if ((_model.textController.text != '') ||
-                                    (_model.countryDropDownValue != null &&
-                                        _model.countryDropDownValue != '')) {
-                                  FFAppState().eventfilterCountry =
-                                      _model.countryDropDownValue!;
-                                  FFAppState().eventfilterdate =
-                                      _model.datePicked;
-                                  FFAppState().iseventfilter = true;
-                                  FFAppState().update(() {});
-                                  Navigator.pop(context);
-
-                                  context.pushNamed(
-                                    EventsearchWidget.routeName,
-                                    queryParameters: {
-                                      'searchedEvents': serializeParam(
-                                        '',
-                                        ParamType.String,
-                                      ),
-                                    }.withoutNulls,
-                                  );
-                                }
-                              },
-                              text: FFLocalizations.of(context).getText(
-                                'oxwcypro' /* Apply */,
-                              ),
-                              options: FFButtonOptions(
-                                width: 155.0,
-                                height: 54.0,
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    16.0, 0.0, 16.0, 0.0),
-                                iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 0.0, 0.0),
-                                color: FlutterFlowTheme.of(context).secondary,
-                                textStyle: FlutterFlowTheme.of(context)
-                                    .titleSmall
-                                    .override(
-                                      font: GoogleFonts.poppins(
+                                        color: Color(0xFFFF0008),
+                                        letterSpacing: 0.0,
                                         fontWeight: FlutterFlowTheme.of(context)
                                             .titleSmall
                                             .fontWeight,
@@ -751,29 +723,143 @@ class _EventFilterWidgetState extends State<EventFilterWidget> {
                                             .titleSmall
                                             .fontStyle,
                                       ),
-                                      color: Colors.white,
-                                      letterSpacing: 0.0,
-                                      fontWeight: FlutterFlowTheme.of(context)
-                                          .titleSmall
-                                          .fontWeight,
-                                      fontStyle: FlutterFlowTheme.of(context)
-                                          .titleSmall
-                                          .fontStyle,
-                                    ),
-                                elevation: 0.0,
-                                borderRadius: BorderRadius.circular(10.0),
+                                  elevation: 0.0,
+                                  borderSide: BorderSide(
+                                    color: Color(0x80A3A3A3),
+                                  ),
+                                  borderRadius: BorderRadius.circular(10.0),
+                                ),
                               ),
-                            ),
+                              Expanded(
+                                child: FFButtonWidget(
+                                  onPressed: () async {
+                                    if ((_model.category != null &&
+                                            _model.category != '') ||
+                                        (_model.country != null &&
+                                            _model.country != '') ||
+                                        (_model.textController.text != '') ||
+                                        (_model.datePicked != null)) {
+                                      if (widget.dismiss == true) {
+                                        Navigator.pop(
+                                            context,
+                                            functions.eventFIlter(
+                                                widget.events?.toList(),
+                                                _model.textController.text,
+                                                _model.category,
+                                                containerEventcatigoryRecordList
+                                                    .toList(),
+                                                _model.country,
+                                                _model.intialdate));
+                                      } else {
+                                        context.pushNamed(
+                                          EventsearchWidget.routeName,
+                                          queryParameters: {
+                                            'events': serializeParam(
+                                              functions.eventFIlter(
+                                                  widget.events?.toList(),
+                                                  _model.textController.text,
+                                                  _model.category,
+                                                  containerEventcatigoryRecordList
+                                                      .toList(),
+                                                  _model.country,
+                                                  _model.datePicked),
+                                              ParamType.Document,
+                                              isList: true,
+                                            ),
+                                            'search': serializeParam(
+                                              _model.textController.text,
+                                              ParamType.String,
+                                            ),
+                                            'intialdate': serializeParam(
+                                              _model.datePicked,
+                                              ParamType.DateTime,
+                                            ),
+                                            'category': serializeParam(
+                                              _model.category,
+                                              ParamType.String,
+                                            ),
+                                            'catigorydocs': serializeParam(
+                                              containerEventcatigoryRecordList,
+                                              ParamType.Document,
+                                              isList: true,
+                                            ),
+                                            'location': serializeParam(
+                                              _model.country,
+                                              ParamType.String,
+                                            ),
+                                          }.withoutNulls,
+                                          extra: <String, dynamic>{
+                                            'events': functions.eventFIlter(
+                                                widget.events?.toList(),
+                                                _model.textController.text,
+                                                _model.category,
+                                                containerEventcatigoryRecordList
+                                                    .toList(),
+                                                _model.country,
+                                                _model.datePicked),
+                                            'catigorydocs':
+                                                containerEventcatigoryRecordList,
+                                          },
+                                        );
+
+                                        Navigator.pop(context);
+                                      }
+                                    } else {
+                                      Navigator.pop(context);
+                                    }
+                                  },
+                                  text: FFLocalizations.of(context).getText(
+                                    'oxwcypro' /* Apply */,
+                                  ),
+                                  options: FFButtonOptions(
+                                    width: 155.0,
+                                    height: 54.0,
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        16.0, 0.0, 16.0, 0.0),
+                                    iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 0.0, 0.0, 0.0),
+                                    color:
+                                        FlutterFlowTheme.of(context).secondary,
+                                    textStyle: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .override(
+                                          font: GoogleFonts.poppins(
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .titleSmall
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .titleSmall
+                                                    .fontStyle,
+                                          ),
+                                          color: Colors.white,
+                                          letterSpacing: 0.0,
+                                          fontWeight:
+                                              FlutterFlowTheme.of(context)
+                                                  .titleSmall
+                                                  .fontWeight,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .titleSmall
+                                                  .fontStyle,
+                                        ),
+                                    elevation: 0.0,
+                                    borderRadius: BorderRadius.circular(10.0),
+                                  ),
+                                ),
+                              ),
+                            ].divide(SizedBox(width: 10.0)),
                           ),
-                        ].divide(SizedBox(width: 10.0)),
-                      ),
+                        ),
+                      ].divide(SizedBox(height: 10.0)),
                     ),
-                  ].divide(SizedBox(height: 10.0)),
-                ),
+                  ),
+                ].divide(SizedBox(height: 20.0)),
               ),
-            ].divide(SizedBox(height: 20.0)),
-          ),
-        ),
+            ),
+          );
+        },
       ),
     );
   }

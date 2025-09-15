@@ -3,10 +3,10 @@ import '/business/business_card/business_card_widget.dart';
 import '/business/business_component/business_filter/business_filter_widget.dart';
 import '/components/emptylist_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/random_data_util.dart' as random_data;
 import '/index.dart';
+import 'package:ff_theme/flutter_flow/flutter_flow_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -169,7 +169,6 @@ class _BusineslistWidgetState extends State<BusineslistWidget> {
                               await showModalBottomSheet(
                                 isScrollControlled: true,
                                 backgroundColor: Colors.transparent,
-                                enableDrag: false,
                                 context: context,
                                 builder: (context) {
                                   return GestureDetector(
@@ -180,7 +179,9 @@ class _BusineslistWidgetState extends State<BusineslistWidget> {
                                     },
                                     child: Padding(
                                       padding: MediaQuery.viewInsetsOf(context),
-                                      child: BusinessFilterWidget(),
+                                      child: BusinessFilterWidget(
+                                        business: busineslistBusinessRecordList,
+                                      ),
                                     ),
                                   );
                                 },

@@ -5,13 +5,15 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:timeago/timeago.dart' as timeago;
-import 'lat_lng.dart';
-import 'place.dart';
-import 'uploaded_file.dart';
+import 'package:ff_commons/flutter_flow/lat_lng.dart';
+import 'package:ff_commons/flutter_flow/place.dart';
+import 'package:ff_commons/flutter_flow/uploaded_file.dart';
 import '/backend/backend.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import '/backend/schema/enums/enums.dart';
 import '/auth/firebase_auth/auth_util.dart';
+import 'package:branchio_dynamic_linking_akp5u6/flutter_flow/custom_functions.dart'
+    as branchio_dynamic_linking_akp5u6_functions;
 
 String generateFirstThreeLetter(DateTime date) {
   // generate First Three Letter Of any Month From DateTime Value In Upper Case
@@ -1048,4 +1050,189 @@ List<EventRecord> filterevent(
 
     return matchesCategory && matchesCountry && matchesDate;
   }).toList();
+}
+
+List<CommunityRecord>? comunityFIlter(
+  List<CommunityRecord>? listCommunity,
+  String? name,
+  String? category,
+  String? country,
+  List<CatigoryCommunityRecord>? categories,
+) {
+  if (listCommunity == null) {
+    return [];
+  }
+
+  // Normalize search params
+  final searchName = name?.toLowerCase().trim();
+  final searchCategory = category?.toLowerCase().trim();
+  final searchCountry = country?.toLowerCase().trim();
+
+  // Find category IDs that match the searchCategory string
+  List<String> matchedCategoryIds = [];
+  if (searchCategory != null &&
+      searchCategory.isNotEmpty &&
+      categories != null) {
+    matchedCategoryIds = categories
+        .where((cat) =>
+            cat.name.toLowerCase() == searchCategory ||
+            cat.name.toLowerCase().contains(searchCategory))
+        .map((cat) => cat.reference.id)
+        .toList();
+  }
+
+  // Apply filters
+  return listCommunity.where((community) {
+    bool matches = true;
+
+    // Name filter
+    if (searchName != null && searchName.isNotEmpty) {
+      final commName = community.displayName?.toLowerCase() ?? '';
+      matches =
+          matches && (commName == searchName || commName.contains(searchName));
+    }
+
+    // Country filter
+    if (searchCountry != null && searchCountry.isNotEmpty) {
+      final commCountry = community.country?.toLowerCase() ?? '';
+      matches = matches && commCountry == searchCountry;
+    }
+
+    // Category filter
+    if (matchedCategoryIds.isNotEmpty) {
+      // Assuming community has a list of category references
+      final communityCategoryIds =
+          (community.catigories ?? []).map((ref) => ref.id).toList();
+      matches = matches &&
+          communityCategoryIds.any((id) => matchedCategoryIds.contains(id));
+    }
+
+    return matches;
+  }).toList();
+}
+
+List<BusinessRecord>? businessFilter(
+  List<BusinessRecord>? business,
+  String? name,
+  String? category,
+  String? country,
+) {
+  if (business == null) return null;
+
+  var filteredList = business;
+
+  // Step 1: Name filter
+  if (name != null && name.trim().isNotEmpty) {
+    final nameLower = name.toLowerCase();
+    filteredList = filteredList.where((b) {
+      final bName = b.businessName?.toLowerCase() ?? '';
+      return bName == nameLower || bName.contains(nameLower);
+    }).toList();
+  }
+
+  // Step 2: Category filter
+  if (category != null && category.trim().isNotEmpty) {
+    final catLower = category.toLowerCase();
+    filteredList = filteredList.where((b) {
+      final bCat = b.businessCategory?.toLowerCase() ?? '';
+      return bCat == catLower || bCat.contains(catLower);
+    }).toList();
+  }
+
+  // Step 3: Country filter
+  if (country != null && country.trim().isNotEmpty) {
+    filteredList = filteredList.where((b) {
+      return b.country == country;
+    }).toList();
+  }
+
+  return filteredList;
+}
+
+List<EventRecord>? eventFIlter(
+  List<EventRecord>? events,
+  String? name,
+  String? category,
+  List<EventcatigoryRecord>? categoryList,
+  String? country,
+  DateTime? initialDate,
+) {
+  if (events == null) return [];
+
+  // Normalize params
+  final searchName = name?.toLowerCase().trim();
+  final searchCategory = category?.toLowerCase().trim();
+  final searchCountry = country?.toLowerCase().trim();
+
+  // Find matched category IDs from categoryList
+  List<String> matchedCategoryIds = [];
+  if (searchCategory != null &&
+      searchCategory.isNotEmpty &&
+      categoryList != null) {
+    matchedCategoryIds = categoryList
+        .where((cat) =>
+            cat.name.toLowerCase() == searchCategory ||
+            cat.name.toLowerCase().contains(searchCategory))
+        .map((cat) => cat.reference.id)
+        .toList();
+  }
+
+  return events.where((event) {
+    bool matches = true;
+
+    // 1. Name filter
+    if (searchName != null && searchName.isNotEmpty) {
+      final evName = event.eventName?.toLowerCase() ?? '';
+      matches =
+          matches && (evName == searchName || evName.contains(searchName));
+    }
+
+    // 2. Category filter
+    if (matchedCategoryIds.isNotEmpty) {
+      final eventCategoryId = event.catigory?.id;
+      matches = matches &&
+          eventCategoryId != null &&
+          matchedCategoryIds.contains(eventCategoryId);
+    }
+
+    // 3. Country filter
+    if (searchCountry != null && searchCountry.isNotEmpty) {
+      final evCountry = event.country?.toLowerCase() ?? '';
+      matches = matches && evCountry == searchCountry;
+    }
+
+    // 4. Date filter (compare only date part)
+    if (initialDate != null && event.eventDate != null) {
+      final evDate = DateTime(
+        event.eventDate!.year,
+        event.eventDate!.month,
+        event.eventDate!.day,
+      );
+      final compDate = DateTime(
+        initialDate.year,
+        initialDate.month,
+        initialDate.day,
+      );
+      matches = matches && evDate == compDate;
+    }
+
+    return matches;
+  }).toList();
+}
+
+DateTime? dateTimeToDate(DateTime? dateTime) {
+  // return date ( e.g. 15 May 2025) from a value with date and time
+  if (dateTime == null) return null;
+  return DateTime(dateTime.year, dateTime.month, dateTime.day);
+}
+
+String? getCountry(String? location) {
+  // get country name from a location
+  if (location == null || location.isEmpty) {
+    return null;
+  }
+
+  // Example logic to extract country name from location
+  List<String> parts = location.split(',');
+  return parts.isNotEmpty ? parts.last.trim() : null;
 }

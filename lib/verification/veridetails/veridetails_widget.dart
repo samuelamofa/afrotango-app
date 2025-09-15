@@ -2,10 +2,10 @@ import '/backend/backend.dart';
 import '/backend/push_notifications/push_notifications_util.dart';
 import '/backend/schema/enums/enums.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/index.dart';
+import 'package:ff_theme/flutter_flow/flutter_flow_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -182,11 +182,11 @@ class _VeridetailsWidgetState extends State<VeridetailsWidget> {
                                       decoration: BoxDecoration(
                                         color: () {
                                           if (widget.veryfy?.status ==
-                                              Verystatus.pending) {
+                                              VerificationStatus.pending) {
                                             return FlutterFlowTheme.of(context)
                                                 .accent3;
                                           } else if (widget.veryfy?.status ==
-                                              Verystatus.Reject) {
+                                              VerificationStatus.Reject) {
                                             return FlutterFlowTheme.of(context)
                                                 .tertiary;
                                           } else {
@@ -276,10 +276,10 @@ class _VeridetailsWidgetState extends State<VeridetailsWidget> {
                                         Text(
                                           () {
                                             if (widget.veryfy?.status ==
-                                                Verystatus.pending) {
+                                                VerificationStatus.pending) {
                                               return 'Your identity is under reviews';
                                             } else if (widget.veryfy?.status ==
-                                                Verystatus.Approve) {
+                                                VerificationStatus.Approved) {
                                               return 'Your identity has been successfully verified';
                                             } else {
                                               return 'Your identity has been Rejected';
@@ -1106,7 +1106,7 @@ class _VeridetailsWidgetState extends State<VeridetailsWidget> {
                       onPressed: () async {
                         await widget.veryfy!.reference
                             .update(createVerificationRecordData(
-                          status: Verystatus.Approve,
+                          status: VerificationStatus.Approved,
                         ));
 
                         await veridetailsUsersRecord.reference
@@ -1124,16 +1124,18 @@ class _VeridetailsWidgetState extends State<VeridetailsWidget> {
                           parameterData: {},
                         );
                       },
-                      text: widget.veryfy?.status == Verystatus.Approve
-                          ? 'Approved'
-                          : 'Approve',
+                      text:
+                          widget.veryfy?.status == VerificationStatus.Approved
+                              ? 'Approved'
+                              : 'Approve',
                       options: FFButtonOptions(
                         width: double.infinity,
                         height: 50.0,
                         padding: EdgeInsets.all(8.0),
                         iconPadding:
                             EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                        color: widget.veryfy?.status == Verystatus.Approve
+                        color: widget.veryfy?.status ==
+                                VerificationStatus.Approved
                             ? FlutterFlowTheme.of(context).success
                             : FlutterFlowTheme.of(context).primary,
                         textStyle:

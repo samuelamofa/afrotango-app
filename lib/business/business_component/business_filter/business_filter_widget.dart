@@ -1,12 +1,13 @@
 import '/backend/backend.dart';
 import '/community/cardcomponent/cardbusines/cardbusines_widget.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
+import '/index.dart';
 import 'package:easy_debounce/easy_debounce.dart';
+import 'package:ff_theme/flutter_flow/flutter_flow_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -15,7 +16,12 @@ import 'business_filter_model.dart';
 export 'business_filter_model.dart';
 
 class BusinessFilterWidget extends StatefulWidget {
-  const BusinessFilterWidget({super.key});
+  const BusinessFilterWidget({
+    super.key,
+    required this.business,
+  });
+
+  final List<BusinessRecord>? business;
 
   @override
   State<BusinessFilterWidget> createState() => _BusinessFilterWidgetState();
@@ -298,9 +304,12 @@ class _BusinessFilterWidgetState extends State<BusinessFilterWidget> {
                                     hoverColor: Colors.transparent,
                                     highlightColor: Colors.transparent,
                                     onTap: () async {
-                                      FFAppState().businessfiltercatigory =
+                                      FFAppState().businessfiltercategory =
                                           rowBusinessCatigoryRecord.reference;
                                       FFAppState().businessfiltername =
+                                          rowBusinessCatigoryRecord.name;
+                                      safeSetState(() {});
+                                      _model.category =
                                           rowBusinessCatigoryRecord.name;
                                       safeSetState(() {});
                                     },
@@ -316,7 +325,7 @@ class _BusinessFilterWidgetState extends State<BusinessFilterWidget> {
                                         ),
                                         catigory: rowBusinessCatigoryRecord,
                                         swlected:
-                                            FFAppState().businessfiltercatigory,
+                                            FFAppState().businessfiltercategory,
                                       ),
                                     ),
                                   );
@@ -474,8 +483,48 @@ class _BusinessFilterWidgetState extends State<BusinessFilterWidget> {
                           ),
                           Expanded(
                             child: FFButtonWidget(
-                              onPressed: () {
-                                print('Button pressed ...');
+                              onPressed: () async {
+                                if ((_model.category != null &&
+                                        _model.category != '') ||
+                                    (_model.textController.text != '') ||
+                                    (_model.countryDropDownValue != null &&
+                                        _model.countryDropDownValue != '')) {
+                                  context.pushNamed(
+                                    BusinessSearchWidget.routeName,
+                                    queryParameters: {
+                                      'business': serializeParam(
+                                        functions.businessFilter(
+                                            widget.business?.toList(),
+                                            _model.textController.text,
+                                            _model.category,
+                                            _model.countryDropDownValue),
+                                        ParamType.Document,
+                                        isList: true,
+                                      ),
+                                      'country': serializeParam(
+                                        _model.countryDropDownValue,
+                                        ParamType.String,
+                                      ),
+                                      'search': serializeParam(
+                                        _model.textController.text,
+                                        ParamType.String,
+                                      ),
+                                      'category': serializeParam(
+                                        _model.category,
+                                        ParamType.String,
+                                      ),
+                                    }.withoutNulls,
+                                    extra: <String, dynamic>{
+                                      'business': functions.businessFilter(
+                                          widget.business?.toList(),
+                                          _model.textController.text,
+                                          _model.category,
+                                          _model.countryDropDownValue),
+                                    },
+                                  );
+                                } else {
+                                  Navigator.pop(context);
+                                }
                               },
                               text: FFLocalizations.of(context).getText(
                                 '4cqu7kg2' /* Apply */,

@@ -6,10 +6,10 @@ import '/event/cardevent/event_filter/event_filter_widget.dart';
 import '/event/cardevent/event_navebar/event_navebar_widget.dart';
 import '/event/cardevent/eventcardcatigory/eventcardcatigory_widget.dart';
 import '/event/event_create/event_create_widget.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/random_data_util.dart' as random_data;
 import '/index.dart';
+import 'package:ff_theme/flutter_flow/flutter_flow_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -185,7 +185,6 @@ class _EventhomeWidgetState extends State<EventhomeWidget> {
                                     await showModalBottomSheet(
                                       isScrollControlled: true,
                                       backgroundColor: Colors.transparent,
-                                      enableDrag: false,
                                       context: context,
                                       builder: (context) {
                                         return GestureDetector(
@@ -197,7 +196,10 @@ class _EventhomeWidgetState extends State<EventhomeWidget> {
                                           child: Padding(
                                             padding: MediaQuery.viewInsetsOf(
                                                 context),
-                                            child: EventFilterWidget(),
+                                            child: EventFilterWidget(
+                                              events: eventhomeEventRecordList,
+                                              dismiss: false,
+                                            ),
                                           ),
                                         );
                                       },
@@ -214,31 +216,53 @@ class _EventhomeWidgetState extends State<EventhomeWidget> {
                                     child: Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           20.0, 0.0, 20.0, 0.0),
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            children: [
-                                              Icon(
-                                                Icons.search,
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondary,
-                                                size: 25.0,
-                                              ),
-                                              Text(
-                                                FFLocalizations.of(context)
-                                                    .getText(
-                                                  'quek167f' /* Search Event */,
+                                      child: InkWell(
+                                        splashColor: Colors.transparent,
+                                        focusColor: Colors.transparent,
+                                        hoverColor: Colors.transparent,
+                                        highlightColor: Colors.transparent,
+                                        onTap: () async {
+                                          context.pushNamed(
+                                              EventsearchCopyWidget.routeName);
+                                        },
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              children: [
+                                                Icon(
+                                                  Icons.search,
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .secondary,
+                                                  size: 25.0,
                                                 ),
-                                                style: FlutterFlowTheme.of(
-                                                        context)
-                                                    .bodyMedium
-                                                    .override(
-                                                      font: GoogleFonts.poppins(
+                                                Text(
+                                                  FFLocalizations.of(context)
+                                                      .getText(
+                                                    'quek167f' /* Search Event */,
+                                                  ),
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        font:
+                                                            GoogleFonts.poppins(
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontStyle,
+                                                        ),
+                                                        color:
+                                                            Color(0x9314181B),
+                                                        fontSize: 16.0,
+                                                        letterSpacing: 0.0,
                                                         fontWeight:
                                                             FontWeight.w500,
                                                         fontStyle:
@@ -247,27 +271,18 @@ class _EventhomeWidgetState extends State<EventhomeWidget> {
                                                                 .bodyMedium
                                                                 .fontStyle,
                                                       ),
-                                                      color: Color(0x9314181B),
-                                                      fontSize: 16.0,
-                                                      letterSpacing: 0.0,
-                                                      fontWeight:
-                                                          FontWeight.w500,
-                                                      fontStyle:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMedium
-                                                              .fontStyle,
-                                                    ),
-                                              ),
-                                            ].divide(SizedBox(width: 10.0)),
-                                          ),
-                                          FaIcon(
-                                            FontAwesomeIcons.slidersH,
-                                            color: FlutterFlowTheme.of(context)
-                                                .secondary,
-                                            size: 24.0,
-                                          ),
-                                        ].divide(SizedBox(width: 10.0)),
+                                                ),
+                                              ].divide(SizedBox(width: 10.0)),
+                                            ),
+                                            FaIcon(
+                                              FontAwesomeIcons.slidersH,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondary,
+                                              size: 24.0,
+                                            ),
+                                          ].divide(SizedBox(width: 10.0)),
+                                        ),
                                       ),
                                     ),
                                   ),

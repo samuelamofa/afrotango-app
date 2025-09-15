@@ -1,8 +1,8 @@
 import '/backend/backend.dart';
 import '/event/cardevent/card2/card2_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import 'package:ff_theme/flutter_flow/flutter_flow_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -72,20 +72,18 @@ class _LisEventspecialdealWidgetState extends State<LisEventspecialdealWidget> {
           ),
           title: Text(
             FFLocalizations.of(context).getText(
-              '5n5z1p0w' /* Special Deal */,
+              'gxh141kv' /* Special Offers */,
             ),
-            style: FlutterFlowTheme.of(context).titleMedium.override(
+            style: FlutterFlowTheme.of(context).bodyMedium.override(
                   font: GoogleFonts.poppins(
-                    fontWeight:
-                        FlutterFlowTheme.of(context).titleMedium.fontWeight,
+                    fontWeight: FontWeight.w600,
                     fontStyle:
-                        FlutterFlowTheme.of(context).titleMedium.fontStyle,
+                        FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                   ),
-                  color: FlutterFlowTheme.of(context).primary,
+                  fontSize: 16.0,
                   letterSpacing: 0.0,
-                  fontWeight:
-                      FlutterFlowTheme.of(context).titleMedium.fontWeight,
-                  fontStyle: FlutterFlowTheme.of(context).titleMedium.fontStyle,
+                  fontWeight: FontWeight.w600,
+                  fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                 ),
           ),
           actions: [],

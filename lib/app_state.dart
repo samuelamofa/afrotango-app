@@ -23,18 +23,18 @@ class FFAppState extends ChangeNotifier {
       _apiKey = await secureStorage.getString('ff_apiKey') ?? _apiKey;
     });
     await _safeInitAsync(() async {
-      _searcheterms =
-          await secureStorage.getStringList('ff_searcheterms') ?? _searcheterms;
+      _searchterms =
+          await secureStorage.getStringList('ff_searchterms') ?? _searchterms;
     });
     await _safeInitAsync(() async {
-      _serchedUser = (await secureStorage.getStringList('ff_serchedUser'))
+      _searchedUser = (await secureStorage.getStringList('ff_searchedUser'))
               ?.map((path) => path.ref)
               .toList() ??
-          _serchedUser;
+          _searchedUser;
     });
     await _safeInitAsync(() async {
-      _originalAdio =
-          await secureStorage.getString('ff_originalAdio') ?? _originalAdio;
+      _originalAudio =
+          await secureStorage.getString('ff_originalAudio') ?? _originalAudio;
     });
     await _safeInitAsync(() async {
       _originalText =
@@ -45,8 +45,8 @@ class FFAppState extends ChangeNotifier {
           await secureStorage.getString('ff_transcribeText') ?? _transcribeText;
     });
     await _safeInitAsync(() async {
-      _transcribeAdio =
-          await secureStorage.getString('ff_transcribeAdio') ?? _transcribeAdio;
+      _transcribeAudio = await secureStorage.getString('ff_transcribeAudio') ??
+          _transcribeAudio;
     });
   }
 
@@ -93,88 +93,88 @@ class FFAppState extends ChangeNotifier {
     _swipx = value;
   }
 
-  List<String> _searcheterms = [];
-  List<String> get searcheterms => _searcheterms;
-  set searcheterms(List<String> value) {
-    _searcheterms = value;
-    secureStorage.setStringList('ff_searcheterms', value);
+  List<String> _searchterms = [];
+  List<String> get searchterms => _searchterms;
+  set searchterms(List<String> value) {
+    _searchterms = value;
+    secureStorage.setStringList('ff_searchterms', value);
   }
 
-  void deleteSearcheterms() {
-    secureStorage.delete(key: 'ff_searcheterms');
+  void deleteSearchterms() {
+    secureStorage.delete(key: 'ff_searchterms');
   }
 
-  void addToSearcheterms(String value) {
-    searcheterms.add(value);
-    secureStorage.setStringList('ff_searcheterms', _searcheterms);
+  void addToSearchterms(String value) {
+    searchterms.add(value);
+    secureStorage.setStringList('ff_searchterms', _searchterms);
   }
 
-  void removeFromSearcheterms(String value) {
-    searcheterms.remove(value);
-    secureStorage.setStringList('ff_searcheterms', _searcheterms);
+  void removeFromSearchterms(String value) {
+    searchterms.remove(value);
+    secureStorage.setStringList('ff_searchterms', _searchterms);
   }
 
-  void removeAtIndexFromSearcheterms(int index) {
-    searcheterms.removeAt(index);
-    secureStorage.setStringList('ff_searcheterms', _searcheterms);
+  void removeAtIndexFromSearchterms(int index) {
+    searchterms.removeAt(index);
+    secureStorage.setStringList('ff_searchterms', _searchterms);
   }
 
-  void updateSearchetermsAtIndex(
+  void updateSearchtermsAtIndex(
     int index,
     String Function(String) updateFn,
   ) {
-    searcheterms[index] = updateFn(_searcheterms[index]);
-    secureStorage.setStringList('ff_searcheterms', _searcheterms);
+    searchterms[index] = updateFn(_searchterms[index]);
+    secureStorage.setStringList('ff_searchterms', _searchterms);
   }
 
-  void insertAtIndexInSearcheterms(int index, String value) {
-    searcheterms.insert(index, value);
-    secureStorage.setStringList('ff_searcheterms', _searcheterms);
+  void insertAtIndexInSearchterms(int index, String value) {
+    searchterms.insert(index, value);
+    secureStorage.setStringList('ff_searchterms', _searchterms);
   }
 
-  List<DocumentReference> _serchedUser = [];
-  List<DocumentReference> get serchedUser => _serchedUser;
-  set serchedUser(List<DocumentReference> value) {
-    _serchedUser = value;
+  List<DocumentReference> _searchedUser = [];
+  List<DocumentReference> get searchedUser => _searchedUser;
+  set searchedUser(List<DocumentReference> value) {
+    _searchedUser = value;
     secureStorage.setStringList(
-        'ff_serchedUser', value.map((x) => x.path).toList());
+        'ff_searchedUser', value.map((x) => x.path).toList());
   }
 
-  void deleteSerchedUser() {
-    secureStorage.delete(key: 'ff_serchedUser');
+  void deleteSearchedUser() {
+    secureStorage.delete(key: 'ff_searchedUser');
   }
 
-  void addToSerchedUser(DocumentReference value) {
-    serchedUser.add(value);
+  void addToSearchedUser(DocumentReference value) {
+    searchedUser.add(value);
     secureStorage.setStringList(
-        'ff_serchedUser', _serchedUser.map((x) => x.path).toList());
+        'ff_searchedUser', _searchedUser.map((x) => x.path).toList());
   }
 
-  void removeFromSerchedUser(DocumentReference value) {
-    serchedUser.remove(value);
+  void removeFromSearchedUser(DocumentReference value) {
+    searchedUser.remove(value);
     secureStorage.setStringList(
-        'ff_serchedUser', _serchedUser.map((x) => x.path).toList());
+        'ff_searchedUser', _searchedUser.map((x) => x.path).toList());
   }
 
-  void removeAtIndexFromSerchedUser(int index) {
-    serchedUser.removeAt(index);
+  void removeAtIndexFromSearchedUser(int index) {
+    searchedUser.removeAt(index);
     secureStorage.setStringList(
-        'ff_serchedUser', _serchedUser.map((x) => x.path).toList());
+        'ff_searchedUser', _searchedUser.map((x) => x.path).toList());
   }
 
-  void updateSerchedUserAtIndex(
+  void updateSearchedUserAtIndex(
     int index,
     DocumentReference Function(DocumentReference) updateFn,
   ) {
-    serchedUser[index] = updateFn(_serchedUser[index]);
+    searchedUser[index] = updateFn(_searchedUser[index]);
     secureStorage.setStringList(
-        'ff_serchedUser', _serchedUser.map((x) => x.path).toList());
+        'ff_searchedUser', _searchedUser.map((x) => x.path).toList());
   }
 
-  void insertAtIndexInSerchedUser(int index, DocumentReference value) {
-    serchedUser.insert(index, value);
+  void insertAtIndexInSearchedUser(int index, DocumentReference value) {
+    searchedUser.insert(index, value);
     secureStorage.setStringList(
-        'ff_serchedUser', _serchedUser.map((x) => x.path).toList());
+        'ff_searchedUser', _searchedUser.map((x) => x.path).toList());
   }
 
   bool _isOptionsExpanded = false;
@@ -212,10 +212,10 @@ class FFAppState extends ChangeNotifier {
     memberlist.insert(index, value);
   }
 
-  DocumentReference? _productCatigory;
-  DocumentReference? get productCatigory => _productCatigory;
-  set productCatigory(DocumentReference? value) {
-    _productCatigory = value;
+  DocumentReference? _productCategory;
+  DocumentReference? get productCategory => _productCategory;
+  set productCategory(DocumentReference? value) {
+    _productCategory = value;
   }
 
   bool _isPriceLowtoHigh = false;
@@ -290,15 +290,15 @@ class FFAppState extends ChangeNotifier {
     _downloadurl = value;
   }
 
-  String _originalAdio = '';
-  String get originalAdio => _originalAdio;
-  set originalAdio(String value) {
-    _originalAdio = value;
-    secureStorage.setString('ff_originalAdio', value);
+  String _originalAudio = '';
+  String get originalAudio => _originalAudio;
+  set originalAudio(String value) {
+    _originalAudio = value;
+    secureStorage.setString('ff_originalAudio', value);
   }
 
-  void deleteOriginalAdio() {
-    secureStorage.delete(key: 'ff_originalAdio');
+  void deleteOriginalAudio() {
+    secureStorage.delete(key: 'ff_originalAudio');
   }
 
   String _originalText = '';
@@ -323,21 +323,21 @@ class FFAppState extends ChangeNotifier {
     secureStorage.delete(key: 'ff_transcribeText');
   }
 
-  String _transcribeAdio = '';
-  String get transcribeAdio => _transcribeAdio;
-  set transcribeAdio(String value) {
-    _transcribeAdio = value;
-    secureStorage.setString('ff_transcribeAdio', value);
+  String _transcribeAudio = '';
+  String get transcribeAudio => _transcribeAudio;
+  set transcribeAudio(String value) {
+    _transcribeAudio = value;
+    secureStorage.setString('ff_transcribeAudio', value);
   }
 
-  void deleteTranscribeAdio() {
-    secureStorage.delete(key: 'ff_transcribeAdio');
+  void deleteTranscribeAudio() {
+    secureStorage.delete(key: 'ff_transcribeAudio');
   }
 
-  String _filterProfessionCat = '';
-  String get filterProfessionCat => _filterProfessionCat;
-  set filterProfessionCat(String value) {
-    _filterProfessionCat = value;
+  String _filterProfessionCategory = '';
+  String get filterProfessionCategory => _filterProfessionCategory;
+  set filterProfessionCategory(String value) {
+    _filterProfessionCategory = value;
   }
 
   String _filtersearchcountry = '';
@@ -370,10 +370,10 @@ class FFAppState extends ChangeNotifier {
     _eventsearchterms = value;
   }
 
-  DocumentReference? _eventfilterCatigory;
-  DocumentReference? get eventfilterCatigory => _eventfilterCatigory;
-  set eventfilterCatigory(DocumentReference? value) {
-    _eventfilterCatigory = value;
+  DocumentReference? _eventfilterCategory;
+  DocumentReference? get eventfilterCategory => _eventfilterCategory;
+  set eventfilterCategory(DocumentReference? value) {
+    _eventfilterCategory = value;
   }
 
   bool _iseventfilter = false;
@@ -382,16 +382,16 @@ class FFAppState extends ChangeNotifier {
     _iseventfilter = value;
   }
 
-  DocumentReference? _bussinessfiltercati;
-  DocumentReference? get bussinessfiltercati => _bussinessfiltercati;
-  set bussinessfiltercati(DocumentReference? value) {
-    _bussinessfiltercati = value;
+  DocumentReference? _bussinessfiltercategory;
+  DocumentReference? get bussinessfiltercategory => _bussinessfiltercategory;
+  set bussinessfiltercategory(DocumentReference? value) {
+    _bussinessfiltercategory = value;
   }
 
-  String _comunityfilterterm = '';
-  String get comunityfilterterm => _comunityfilterterm;
-  set comunityfilterterm(String value) {
-    _comunityfilterterm = value;
+  String _communityfilterterm = '';
+  String get communityfilterterm => _communityfilterterm;
+  set communityfilterterm(String value) {
+    _communityfilterterm = value;
   }
 
   String _eventfilterteam = '';
@@ -400,16 +400,16 @@ class FFAppState extends ChangeNotifier {
     _eventfilterteam = value;
   }
 
-  DocumentReference? _communityfiltercatigory;
-  DocumentReference? get communityfiltercatigory => _communityfiltercatigory;
-  set communityfiltercatigory(DocumentReference? value) {
-    _communityfiltercatigory = value;
+  DocumentReference? _communityfiltercategory;
+  DocumentReference? get communityfiltercategory => _communityfiltercategory;
+  set communityfiltercategory(DocumentReference? value) {
+    _communityfiltercategory = value;
   }
 
-  String _comunityfiltercountry = '';
-  String get comunityfiltercountry => _comunityfiltercountry;
-  set comunityfiltercountry(String value) {
-    _comunityfiltercountry = value;
+  String _communityfiltercountry = '';
+  String get communityfiltercountry => _communityfiltercountry;
+  set communityfiltercountry(String value) {
+    _communityfiltercountry = value;
   }
 
   String _bussinesfilterterm = '';
@@ -418,10 +418,10 @@ class FFAppState extends ChangeNotifier {
     _bussinesfilterterm = value;
   }
 
-  DocumentReference? _businessfiltercatigory;
-  DocumentReference? get businessfiltercatigory => _businessfiltercatigory;
-  set businessfiltercatigory(DocumentReference? value) {
-    _businessfiltercatigory = value;
+  DocumentReference? _businessfiltercategory;
+  DocumentReference? get businessfiltercategory => _businessfiltercategory;
+  set businessfiltercategory(DocumentReference? value) {
+    _businessfiltercategory = value;
   }
 
   String _bussinesfiltercountry = '';
@@ -436,16 +436,16 @@ class FFAppState extends ChangeNotifier {
     _businessfiltername = value;
   }
 
-  String _contactsearcterm = '';
-  String get contactsearcterm => _contactsearcterm;
-  set contactsearcterm(String value) {
-    _contactsearcterm = value;
+  String _contactsearchterm = '';
+  String get contactsearchterm => _contactsearchterm;
+  set contactsearchterm(String value) {
+    _contactsearchterm = value;
   }
 
-  String _contactcatigory = '';
-  String get contactcatigory => _contactcatigory;
-  set contactcatigory(String value) {
-    _contactcatigory = value;
+  String _contactcategory = '';
+  String get contactcategory => _contactcategory;
+  set contactcategory(String value) {
+    _contactcategory = value;
   }
 
   String _contactfiltercountry = '';
@@ -454,10 +454,156 @@ class FFAppState extends ChangeNotifier {
     _contactfiltercountry = value;
   }
 
-  String _contactfilterprofesio = '';
-  String get contactfilterprofesio => _contactfilterprofesio;
-  set contactfilterprofesio(String value) {
-    _contactfilterprofesio = value;
+  String _contactfilterprofession = '';
+  String get contactfilterprofession => _contactfilterprofession;
+  set contactfilterprofession(String value) {
+    _contactfilterprofession = value;
+  }
+
+  bool _isFilter = false;
+  bool get isFilter => _isFilter;
+  set isFilter(bool value) {
+    _isFilter = value;
+  }
+
+  String _NameFilter = '';
+  String get NameFilter => _NameFilter;
+  set NameFilter(String value) {
+    _NameFilter = value;
+  }
+
+  String _CountryFilter = '';
+  String get CountryFilter => _CountryFilter;
+  set CountryFilter(String value) {
+    _CountryFilter = value;
+  }
+
+  DateTime? _DateFilter;
+  DateTime? get DateFilter => _DateFilter;
+  set DateFilter(DateTime? value) {
+    _DateFilter = value;
+  }
+
+  String _CategoryFilter = '';
+  String get CategoryFilter => _CategoryFilter;
+  set CategoryFilter(String value) {
+    _CategoryFilter = value;
+  }
+
+  List<String> _country = [];
+  List<String> get country => _country;
+  set country(List<String> value) {
+    _country = value;
+  }
+
+  void addToCountry(String value) {
+    country.add(value);
+  }
+
+  void removeFromCountry(String value) {
+    country.remove(value);
+  }
+
+  void removeAtIndexFromCountry(int index) {
+    country.removeAt(index);
+  }
+
+  void updateCountryAtIndex(
+    int index,
+    String Function(String) updateFn,
+  ) {
+    country[index] = updateFn(_country[index]);
+  }
+
+  void insertAtIndexInCountry(int index, String value) {
+    country.insert(index, value);
+  }
+
+  List<String> _categoryFiltr = [];
+  List<String> get categoryFiltr => _categoryFiltr;
+  set categoryFiltr(List<String> value) {
+    _categoryFiltr = value;
+  }
+
+  void addToCategoryFiltr(String value) {
+    categoryFiltr.add(value);
+  }
+
+  void removeFromCategoryFiltr(String value) {
+    categoryFiltr.remove(value);
+  }
+
+  void removeAtIndexFromCategoryFiltr(int index) {
+    categoryFiltr.removeAt(index);
+  }
+
+  void updateCategoryFiltrAtIndex(
+    int index,
+    String Function(String) updateFn,
+  ) {
+    categoryFiltr[index] = updateFn(_categoryFiltr[index]);
+  }
+
+  void insertAtIndexInCategoryFiltr(int index, String value) {
+    categoryFiltr.insert(index, value);
+  }
+
+  List<String> _dateFiltr = [];
+  List<String> get dateFiltr => _dateFiltr;
+  set dateFiltr(List<String> value) {
+    _dateFiltr = value;
+  }
+
+  void addToDateFiltr(String value) {
+    dateFiltr.add(value);
+  }
+
+  void removeFromDateFiltr(String value) {
+    dateFiltr.remove(value);
+  }
+
+  void removeAtIndexFromDateFiltr(int index) {
+    dateFiltr.removeAt(index);
+  }
+
+  void updateDateFiltrAtIndex(
+    int index,
+    String Function(String) updateFn,
+  ) {
+    dateFiltr[index] = updateFn(_dateFiltr[index]);
+  }
+
+  void insertAtIndexInDateFiltr(int index, String value) {
+    dateFiltr.insert(index, value);
+  }
+
+  List<String> _nameFiltr = [];
+  List<String> get nameFiltr => _nameFiltr;
+  set nameFiltr(List<String> value) {
+    _nameFiltr = value;
+  }
+
+  void addToNameFiltr(String value) {
+    nameFiltr.add(value);
+  }
+
+  void removeFromNameFiltr(String value) {
+    nameFiltr.remove(value);
+  }
+
+  void removeAtIndexFromNameFiltr(int index) {
+    nameFiltr.removeAt(index);
+  }
+
+  void updateNameFiltrAtIndex(
+    int index,
+    String Function(String) updateFn,
+  ) {
+    nameFiltr[index] = updateFn(_nameFiltr[index]);
+  }
+
+  void insertAtIndexInNameFiltr(int index, String value) {
+    nameFiltr.insert(index, value);
   }
 }
 

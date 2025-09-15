@@ -75,7 +75,10 @@
     </array>
 
 
-
+<!-- Start of Branch Key -->
+<key>branch_key</key>
+<string>aaa</string>
+<!-- End of Branch Key -->
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

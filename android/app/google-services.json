@@ -55,10 +55,10 @@
               "client_type": 3
             },
             {
-              "client_id": "766518736455-mp6edsjsoif2csdqlkt0i947k7t2ucq5.apps.googleusercontent.com",
+              "client_id": "766518736455-5dk2lsj8o4j4hnnv4rj6ms0519urhu86.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.mycompany.afrotango"
+                "bundle_id": "com.mycompany.afrotangohomes"
               }
             }
           ]
@@ -115,10 +115,54 @@
               "client_type": 3
             },
             {
-              "client_id": "766518736455-mp6edsjsoif2csdqlkt0i947k7t2ucq5.apps.googleusercontent.com",
+              "client_id": "766518736455-5dk2lsj8o4j4hnnv4rj6ms0519urhu86.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.mycompany.afrotango"
+                "bundle_id": "com.mycompany.afrotangohomes"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:766518736455:android:fbe18d1ea9b9b1ff23e362",
+        "android_client_info": {
+          "package_name": "com.mycompany.afrotangohomes"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "766518736455-3o5deel17lbcj8sadijm30tb4ojefv7j.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mycompany.afrotangohomes",
+            "certificate_hash": "9bbb3186b2189ef16d8f272bdab59362c395cbb4"
+          }
+        },
+        {
+          "client_id": "766518736455-bvim7aq2pjp0dnh08j92sr2tbbpopvp6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCifzx1LBkjoScKaQvoqTTIY6NbpZweNnc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "766518736455-bvim7aq2pjp0dnh08j92sr2tbbpopvp6.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "766518736455-5dk2lsj8o4j4hnnv4rj6ms0519urhu86.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.mycompany.afrotangohomes"
               }
             }
           ]

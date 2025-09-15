@@ -71,6 +71,11 @@ class CommunityRecord extends FirestoreRecord {
   String get country => _country ?? '';
   bool hasCountry() => _country != null;
 
+  // "comunityChat" field.
+  DocumentReference? _comunityChat;
+  DocumentReference? get comunityChat => _comunityChat;
+  bool hasComunityChat() => _comunityChat != null;
+
   void _initializeFields() {
     _displayName = snapshotData['displayName'] as String?;
     _description = snapshotData['description'] as String?;
@@ -83,6 +88,7 @@ class CommunityRecord extends FirestoreRecord {
     _communityfiles = getDataList(snapshotData['communityfiles']);
     _catigories = getDataList(snapshotData['catigories']);
     _country = snapshotData['country'] as String?;
+    _comunityChat = snapshotData['comunityChat'] as DocumentReference?;
   }
 
   static CollectionReference get collection =>
@@ -126,6 +132,7 @@ Map<String, dynamic> createCommunityRecordData({
   DocumentReference? createdUserRef,
   DateTime? createdTime,
   String? country,
+  DocumentReference? comunityChat,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -135,6 +142,7 @@ Map<String, dynamic> createCommunityRecordData({
       'createdUserRef': createdUserRef,
       'createdTime': createdTime,
       'country': country,
+      'comunityChat': comunityChat,
     }.withoutNulls,
   );
 
@@ -157,7 +165,8 @@ class CommunityRecordDocumentEquality implements Equality<CommunityRecord> {
         listEquality.equals(e1?.events, e2?.events) &&
         listEquality.equals(e1?.communityfiles, e2?.communityfiles) &&
         listEquality.equals(e1?.catigories, e2?.catigories) &&
-        e1?.country == e2?.country;
+        e1?.country == e2?.country &&
+        e1?.comunityChat == e2?.comunityChat;
   }
 
   @override
@@ -172,7 +181,8 @@ class CommunityRecordDocumentEquality implements Equality<CommunityRecord> {
         e?.events,
         e?.communityfiles,
         e?.catigories,
-        e?.country
+        e?.country,
+        e?.comunityChat
       ]);
 
   @override

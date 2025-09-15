@@ -2,7 +2,6 @@ import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/firebase_storage/storage.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
@@ -10,6 +9,7 @@ import '/flutter_flow/upload_data.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import '/index.dart';
 import 'package:collection/collection.dart';
+import 'package:ff_theme/flutter_flow/flutter_flow_theme.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -505,6 +505,42 @@ class _EventCreateWidgetState extends State<EventCreateWidget> {
                         safeSetState(() => _model.dropDownValue2 = val),
                     width: double.infinity,
                     height: 40.0,
+                    searchHintTextStyle:
+                        FlutterFlowTheme.of(context).labelMedium.override(
+                              font: GoogleFonts.poppins(
+                                fontWeight: FlutterFlowTheme.of(context)
+                                    .labelMedium
+                                    .fontWeight,
+                                fontStyle: FlutterFlowTheme.of(context)
+                                    .labelMedium
+                                    .fontStyle,
+                              ),
+                              letterSpacing: 0.0,
+                              fontWeight: FlutterFlowTheme.of(context)
+                                  .labelMedium
+                                  .fontWeight,
+                              fontStyle: FlutterFlowTheme.of(context)
+                                  .labelMedium
+                                  .fontStyle,
+                            ),
+                    searchTextStyle: FlutterFlowTheme.of(context)
+                        .bodyMedium
+                        .override(
+                          font: GoogleFonts.poppins(
+                            fontWeight: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .fontWeight,
+                            fontStyle: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .fontStyle,
+                          ),
+                          letterSpacing: 0.0,
+                          fontWeight: FlutterFlowTheme.of(context)
+                              .bodyMedium
+                              .fontWeight,
+                          fontStyle:
+                              FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                        ),
                     textStyle: FlutterFlowTheme.of(context).bodyMedium.override(
                           font: GoogleFonts.poppins(
                             fontWeight: FontWeight.w500,
@@ -522,6 +558,9 @@ class _EventCreateWidgetState extends State<EventCreateWidget> {
                     hintText: FFLocalizations.of(context).getText(
                       'cb35nev8' /* Select Country */,
                     ),
+                    searchHintText: FFLocalizations.of(context).getText(
+                      'vhrvlryy' /* Search... */,
+                    ),
                     icon: Icon(
                       Icons.keyboard_arrow_down_rounded,
                       color: FlutterFlowTheme.of(context).secondaryText,
@@ -536,7 +575,7 @@ class _EventCreateWidgetState extends State<EventCreateWidget> {
                         EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
                     hidesUnderline: true,
                     isOverButton: false,
-                    isSearchable: false,
+                    isSearchable: true,
                     isMultiSelect: false,
                   ),
                 ),
