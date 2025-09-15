@@ -11,18 +11,33 @@ import 'backend/firebase/firebase_config.dart';
 import 'flutter_flow/flutter_flow_util.dart';
 import 'flutter_flow/internationalization.dart';
 
+import 'package:branchio_dynamic_linking_akp5u6/library_values.dart'
+    as branchio_dynamic_linking_akp5u6_library_values;
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   GoRouter.optionURLReflectsImperativeAPIs = true;
   usePathUrlStrategy();
 
+  branchio_dynamic_linking_akp5u6_library_values.FFLibraryValues()
+      .branchApiKey = 'aaa';
+  branchio_dynamic_linking_akp5u6_library_values.FFLibraryValues()
+      .branchLinkDomain = 'aaa';
+  branchio_dynamic_linking_akp5u6_library_values.FFLibraryValues().isTestMode =
+      false;
+  branchio_dynamic_linking_akp5u6_library_values.FFLibraryValues()
+      .branchAlternateLinkDomain = 'aa';
   await initFirebase();
 
   final appState = FFAppState(); // Initialize FFAppState
   await appState.initializePersistedState();
 
-  runApp(ChangeNotifierProvider(
-    create: (context) => appState,
+  runApp(MultiProvider(
+    providers: [
+      ChangeNotifierProvider(
+        create: (context) => appState,
+      ),
+    ],
     child: MyApp(),
   ));
 }

@@ -3,10 +3,10 @@ import '/backend/backend.dart';
 import '/community/cardcomponent/card/card_widget.dart';
 import '/community/cardcomponent/card_comunity/card_comunity_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/index.dart';
 import 'package:collection/collection.dart';
+import 'package:ff_theme/flutter_flow/flutter_flow_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -106,7 +106,7 @@ class _ComunityListmyWidgetState extends State<ComunityListmyWidget> {
                     size: 24.0,
                   ),
                   onPressed: () async {
-                    context.pushNamed(SearchcontactWidget.routeName);
+                    context.pushNamed(SearchcontactCopyWidget.routeName);
                   },
                 ),
               ],
@@ -189,7 +189,7 @@ class _ComunityListmyWidgetState extends State<ComunityListmyWidget> {
                           size: 24.0,
                         ),
                         onPressed: () async {
-                          context.pushNamed(SearchcontactWidget.routeName);
+                          context.pushNamed(SearchcontactCopyWidget.routeName);
                         },
                       ),
                     ],

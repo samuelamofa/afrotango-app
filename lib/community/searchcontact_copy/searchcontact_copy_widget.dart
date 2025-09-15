@@ -6,11 +6,11 @@ import '/community/comunity_nav/comunity_nav_widget.dart';
 import '/community/search_filter_cat/search_filter_cat_widget.dart';
 import '/components/emptylist_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/random_data_util.dart' as random_data;
 import '/index.dart';
 import 'package:easy_debounce/easy_debounce.dart';
+import 'package:ff_theme/flutter_flow/flutter_flow_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -46,7 +46,7 @@ class _SearchcontactCopyWidgetState extends State<SearchcontactCopyWidget> {
     _model.textFieldFocusNode!.addListener(
       () async {
         if (_model.textController.text != '') {
-          FFAppState().addToSearcheterms(_model.textController.text);
+          FFAppState().addToSearchterms(_model.textController.text);
           safeSetState(() {});
         }
       },
@@ -926,11 +926,11 @@ class _SearchcontactCopyWidgetState extends State<SearchcontactCopyWidget> {
                                     size: 20.0,
                                   ),
                                   onPressed: () async {
-                                    FFAppState().deleteSearcheterms();
-                                    FFAppState().searcheterms = [];
+                                    FFAppState().deleteSearchterms();
+                                    FFAppState().searchterms = [];
 
-                                    FFAppState().deleteSerchedUser();
-                                    FFAppState().serchedUser = [];
+                                    FFAppState().deleteSearchedUser();
+                                    FFAppState().searchedUser = [];
 
                                     safeSetState(() {});
                                   },
@@ -947,7 +947,7 @@ class _SearchcontactCopyWidgetState extends State<SearchcontactCopyWidget> {
                             Builder(
                               builder: (context) {
                                 final users = FFAppState()
-                                    .serchedUser
+                                    .searchedUser
                                     .toList()
                                     .take(7)
                                     .toList();
@@ -1034,8 +1034,7 @@ class _SearchcontactCopyWidgetState extends State<SearchcontactCopyWidget> {
                           ))
                             Builder(
                               builder: (context) {
-                                final terms =
-                                    FFAppState().searcheterms.toList();
+                                final terms = FFAppState().searchterms.toList();
 
                                 return Wrap(
                                   spacing: 5.0,

@@ -1,12 +1,13 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/random_data_util.dart' as random_data;
 import '/index.dart';
+import 'package:ff_theme/flutter_flow/flutter_flow_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'eventdetails_model.dart';
 export 'eventdetails_model.dart';
@@ -600,6 +601,55 @@ class _EventdetailsWidgetState extends State<EventdetailsWidget> {
                                         ],
                                       ),
                                     ].divide(SizedBox(width: 8.0)),
+                                  ),
+                                  StreamBuilder<EventcatigoryRecord>(
+                                    stream: EventcatigoryRecord.getDocument(
+                                        widget.event!.catigory!),
+                                    builder: (context, snapshot) {
+                                      // Customize what your widget looks like when it's loading.
+                                      if (!snapshot.hasData) {
+                                        return Center(
+                                          child: SizedBox(
+                                            width: 40.0,
+                                            height: 40.0,
+                                            child: SpinKitThreeBounce(
+                                              color: Color(0x51000000),
+                                              size: 40.0,
+                                            ),
+                                          ),
+                                        );
+                                      }
+
+                                      final textEventcatigoryRecord =
+                                          snapshot.data!;
+
+                                      return Text(
+                                        textEventcatigoryRecord.name,
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .override(
+                                              font: GoogleFonts.poppins(
+                                                fontWeight:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .fontWeight,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .fontStyle,
+                                              ),
+                                              letterSpacing: 0.0,
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontStyle,
+                                            ),
+                                      );
+                                    },
                                   ),
                                 ].divide(SizedBox(height: 8.0)),
                               ),

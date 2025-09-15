@@ -4,9 +4,9 @@ import '/community/search_filter_cat/search_filter_cat_widget.dart';
 import '/components/emptylist_widget.dart';
 import '/event/cardevent/event_filter/event_filter_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
+import 'package:ff_theme/flutter_flow/flutter_flow_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -52,7 +52,7 @@ class _SearchResultsAllWidgetState extends State<SearchResultsAllWidget> {
                   )
                   .toList(),
             )
-                .search(FFAppState().contactsearcterm)
+                .search(FFAppState().contactsearchterm)
                 .map((r) => r.object)
                 .toList(),
           )
@@ -228,10 +228,10 @@ class _SearchResultsAllWidgetState extends State<SearchResultsAllWidget> {
                                 hoverColor: Colors.transparent,
                                 highlightColor: Colors.transparent,
                                 onTap: () async {
-                                  FFAppState().contactsearcterm = '';
-                                  FFAppState().contactcatigory = '';
+                                  FFAppState().contactsearchterm = '';
+                                  FFAppState().contactcategory = '';
                                   FFAppState().contactfiltercountry = '';
-                                  FFAppState().contactfilterprofesio = '';
+                                  FFAppState().contactfilterprofession = '';
                                   FFAppState().isSearchfilter = false;
                                   FFAppState().update(() {});
                                 },
@@ -262,17 +262,17 @@ class _SearchResultsAllWidgetState extends State<SearchResultsAllWidget> {
                         EdgeInsetsDirectional.fromSTEB(15.0, 20.0, 15.0, 0.0),
                     child: Builder(
                       builder: (context) {
-                        final serchterms = (FFAppState().contactsearcterm == ''
+                        final serchterms = (FFAppState().contactsearchterm == ''
                                 ? functions.searchfilter(
                                     FFAppState().contactfiltercountry,
-                                    FFAppState().contactfilterprofesio,
+                                    FFAppState().contactfilterprofession,
                                     searchResultsAllUsersRecordList.toList(),
-                                    FFAppState().contactfilterprofesio)
+                                    FFAppState().contactfilterprofession)
                                 : functions.searchfilter(
                                     FFAppState().contactfiltercountry,
-                                    FFAppState().contactcatigory,
+                                    FFAppState().contactcategory,
                                     _model.simpleSearchResults.toList(),
-                                    FFAppState().contactfilterprofesio))
+                                    FFAppState().contactfilterprofession))
                             .toList();
                         if (serchterms.isEmpty) {
                           return Container(
@@ -314,17 +314,17 @@ class _SearchResultsAllWidgetState extends State<SearchResultsAllWidget> {
                         EdgeInsetsDirectional.fromSTEB(15.0, 20.0, 15.0, 0.0),
                     child: Builder(
                       builder: (context) {
-                        final serchterms = (FFAppState().contactsearcterm == ''
+                        final serchterms = (FFAppState().contactsearchterm == ''
                                 ? functions.searchfilter(
                                     FFAppState().contactfiltercountry,
-                                    FFAppState().contactfilterprofesio,
+                                    FFAppState().contactfilterprofession,
                                     searchResultsAllUsersRecordList.toList(),
-                                    FFAppState().contactfilterprofesio)
+                                    FFAppState().contactfilterprofession)
                                 : functions.searchfilter(
                                     FFAppState().contactfiltercountry,
-                                    FFAppState().contactcatigory,
+                                    FFAppState().contactcategory,
                                     _model.simpleSearchResults.toList(),
-                                    FFAppState().contactfilterprofesio))
+                                    FFAppState().contactfilterprofession))
                             .toList();
                         if (serchterms.isEmpty) {
                           return Container(

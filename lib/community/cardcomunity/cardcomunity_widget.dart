@@ -1,8 +1,9 @@
 import '/backend/backend.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/index.dart';
+import 'package:ff_theme/flutter_flow/flutter_flow_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'cardcomunity_model.dart';
 export 'cardcomunity_model.dart';
@@ -156,8 +157,7 @@ class _CardcomunityWidgetState extends State<CardcomunityWidget> {
                                     .bodyMedium
                                     .fontStyle,
                               ),
-                              color: FlutterFlowTheme.of(context)
-                                  .secondaryBackground,
+                              color: FlutterFlowTheme.of(context).secondary,
                               fontSize: 15.0,
                               letterSpacing: 0.0,
                               fontWeight: FontWeight.bold,
@@ -169,6 +169,47 @@ class _CardcomunityWidgetState extends State<CardcomunityWidget> {
                     ],
                   ),
                 ].divide(SizedBox(width: 25.0)),
+              ),
+              StreamBuilder<CatigoryCommunityRecord>(
+                stream: CatigoryCommunityRecord.getDocument(
+                    widget.community!.catigories.firstOrNull!),
+                builder: (context, snapshot) {
+                  // Customize what your widget looks like when it's loading.
+                  if (!snapshot.hasData) {
+                    return Center(
+                      child: SizedBox(
+                        width: 40.0,
+                        height: 40.0,
+                        child: SpinKitThreeBounce(
+                          color: Color(0x51000000),
+                          size: 40.0,
+                        ),
+                      ),
+                    );
+                  }
+
+                  final textCatigoryCommunityRecord = snapshot.data!;
+
+                  return Text(
+                    textCatigoryCommunityRecord.name,
+                    style: FlutterFlowTheme.of(context).bodyMedium.override(
+                          font: GoogleFonts.poppins(
+                            fontWeight: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .fontWeight,
+                            fontStyle: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .fontStyle,
+                          ),
+                          letterSpacing: 0.0,
+                          fontWeight: FlutterFlowTheme.of(context)
+                              .bodyMedium
+                              .fontWeight,
+                          fontStyle:
+                              FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                        ),
+                  );
+                },
               ),
             ],
           ),

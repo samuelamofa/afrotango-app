@@ -3,10 +3,10 @@ import '/backend/push_notifications/push_notifications_util.dart';
 import '/backend/schema/enums/enums.dart';
 import '/flutter_flow/flutter_flow_choice_chips.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
+import 'package:ff_theme/flutter_flow/flutter_flow_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -783,7 +783,8 @@ class _ManageverifyWidgetState extends State<ManageverifyWidget> {
                                                   .reference
                                                   .update(
                                                       createVerificationRecordData(
-                                                status: Verystatus.Approve,
+                                                status:
+                                                    VerificationStatus.Approved,
                                               ));
 
                                               await listViewallVerificationRecord
@@ -862,7 +863,8 @@ class _ManageverifyWidgetState extends State<ManageverifyWidget> {
                                                   .reference
                                                   .update(
                                                       createVerificationRecordData(
-                                                status: Verystatus.Reject,
+                                                status:
+                                                    VerificationStatus.Reject,
                                               ));
                                               triggerPushNotification(
                                                 notificationTitle:
@@ -951,7 +953,7 @@ class _ManageverifyWidgetState extends State<ManageverifyWidget> {
                     queryBuilder: (verificationRecord) => verificationRecord
                         .where(
                           'status',
-                          isEqualTo: Verystatus.pending.serialize(),
+                          isEqualTo: VerificationStatus.pending.serialize(),
                         )
                         .orderBy('time', descending: true),
                   ),
@@ -1355,7 +1357,7 @@ class _ManageverifyWidgetState extends State<ManageverifyWidget> {
                                               .reference
                                               .update(
                                                   createVerificationRecordData(
-                                            status: Verystatus.Approve,
+                                            status: VerificationStatus.Approved,
                                           ));
 
                                           await listViewpensdingVerificationRecord
@@ -1431,7 +1433,7 @@ class _ManageverifyWidgetState extends State<ManageverifyWidget> {
                                               .reference
                                               .update(
                                                   createVerificationRecordData(
-                                            status: Verystatus.Reject,
+                                            status: VerificationStatus.Reject,
                                           ));
                                           triggerPushNotification(
                                             notificationTitle:
@@ -1515,7 +1517,7 @@ class _ManageverifyWidgetState extends State<ManageverifyWidget> {
                     queryBuilder: (verificationRecord) => verificationRecord
                         .where(
                           'status',
-                          isEqualTo: Verystatus.Approve.serialize(),
+                          isEqualTo: VerificationStatus.Approved.serialize(),
                         )
                         .orderBy('time', descending: true),
                   ),
@@ -1964,7 +1966,7 @@ class _ManageverifyWidgetState extends State<ManageverifyWidget> {
                     queryBuilder: (verificationRecord) => verificationRecord
                         .where(
                           'status',
-                          isEqualTo: Verystatus.Reject.serialize(),
+                          isEqualTo: VerificationStatus.Reject.serialize(),
                         )
                         .orderBy('time', descending: true),
                   ),

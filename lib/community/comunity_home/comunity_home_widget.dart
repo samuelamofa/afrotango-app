@@ -6,12 +6,12 @@ import '/community/comunity_nav/comunity_nav_widget.dart';
 import '/components/emptylist_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'dart:ui';
 import '/flutter_flow/random_data_util.dart' as random_data;
 import '/index.dart';
 import 'dart:math' as math;
+import 'package:ff_theme/flutter_flow/flutter_flow_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -236,7 +236,6 @@ class _ComunityHomeWidgetState extends State<ComunityHomeWidget>
                       await showModalBottomSheet(
                         isScrollControlled: true,
                         backgroundColor: Colors.transparent,
-                        enableDrag: false,
                         context: context,
                         builder: (context) {
                           return GestureDetector(
@@ -246,7 +245,9 @@ class _ComunityHomeWidgetState extends State<ComunityHomeWidget>
                             },
                             child: Padding(
                               padding: MediaQuery.viewInsetsOf(context),
-                              child: CommunityFilterWidget(),
+                              child: CommunityFilterWidget(
+                                listofDoc: comunityHomeCommunityRecordList,
+                              ),
                             ),
                           );
                         },

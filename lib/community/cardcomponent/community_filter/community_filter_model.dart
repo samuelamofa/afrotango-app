@@ -5,6 +5,10 @@ import 'community_filter_widget.dart' show CommunityFilterWidget;
 import 'package:flutter/material.dart';
 
 class CommunityFilterModel extends FlutterFlowModel<CommunityFilterWidget> {
+  ///  Local state fields for this component.
+
+  String? catgegory;
+
   ///  State fields for stateful widgets in this component.
 
   // State field(s) for TextField widget.

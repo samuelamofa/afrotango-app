@@ -42,8 +42,8 @@ class VerificationRecord extends FirestoreRecord {
   bool hasTime() => _time != null;
 
   // "status" field.
-  Verystatus? _status;
-  Verystatus? get status => _status;
+  VerificationStatus? _status;
+  VerificationStatus? get status => _status;
   bool hasStatus() => _status != null;
 
   void _initializeFields() {
@@ -52,9 +52,9 @@ class VerificationRecord extends FirestoreRecord {
     _imageback = snapshotData['imageback'] as String?;
     _photshot = snapshotData['photshot'] as String?;
     _time = snapshotData['time'] as DateTime?;
-    _status = snapshotData['status'] is Verystatus
+    _status = snapshotData['status'] is VerificationStatus
         ? snapshotData['status']
-        : deserializeEnum<Verystatus>(snapshotData['status']);
+        : deserializeEnum<VerificationStatus>(snapshotData['status']);
   }
 
   static CollectionReference get collection =>
@@ -97,7 +97,7 @@ Map<String, dynamic> createVerificationRecordData({
   String? imageback,
   String? photshot,
   DateTime? time,
-  Verystatus? status,
+  VerificationStatus? status,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{

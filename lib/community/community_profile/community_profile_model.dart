@@ -10,12 +10,14 @@ class CommunityProfileModel extends FlutterFlowModel<CommunityProfileWidget> {
 
   bool show = false;
 
+  bool visibility = false;
+
   ///  State fields for stateful widgets in this page.
 
-  // Stores action output result for [Firestore Query - Query a collection] action in Text widget.
-  CommunitychatRecord? chat;
-  // Stores action output result for [Backend Call - Create Document] action in Text widget.
+  // Stores action output result for [Backend Call - Create Document] action in Container widget.
   CommunityMemberRecord? membe;
+  // Stores action output result for [Backend Call - Create Document] action in Container widget.
+  CommunitychatRecord? newcommunity;
   // State field(s) for Switch widget.
   bool? switchValue;
   // Models for cardmember dynamic component.

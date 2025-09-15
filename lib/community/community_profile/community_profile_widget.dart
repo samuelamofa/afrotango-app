@@ -3,10 +3,9 @@ import '/backend/backend.dart';
 import '/community/cardcomponent/cardmember/cardmember_widget.dart';
 import '/flutter_flow/flutter_flow_expanded_image_view.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/index.dart';
-import 'package:collection/collection.dart';
+import 'package:ff_theme/flutter_flow/flutter_flow_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -457,81 +456,99 @@ class _CommunityProfileWidgetState extends State<CommunityProfileWidget> {
                       ),
                       Align(
                         alignment: AlignmentDirectional(1.0, 1.0),
-                        child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 270.0, 30.0, 0.0),
-                          child: Container(
-                            width: 70.0,
-                            height: 70.0,
-                            decoration: BoxDecoration(
-                              gradient: LinearGradient(
-                                colors: [Color(0xFFE2BF4E), Color(0xFF937416)],
-                                stops: [0.0, 1.0],
-                                begin: AlignmentDirectional(0.0, -1.0),
-                                end: AlignmentDirectional(0, 1.0),
-                              ),
-                              shape: BoxShape.circle,
-                            ),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                if (widget.community?.members.contains(
-                                        communityProfileCommunityMemberRecord
-                                            ?.reference) ==
-                                    true)
-                                  FlutterFlowIconButton(
-                                    borderRadius: 8.0,
-                                    buttonSize: 65.0,
-                                    icon: Icon(
-                                      FFIcons.kchat1,
-                                      color: FlutterFlowTheme.of(context).info,
-                                      size: 30.0,
+                        child: Builder(
+                          builder: (context) {
+                            if (widget.community?.members.contains(
+                                    communityProfileCommunityMemberRecord
+                                        ?.reference) ??
+                                false) {
+                              return Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 270.0, 30.0, 0.0),
+                                child: Container(
+                                  width: 70.0,
+                                  height: 70.0,
+                                  decoration: BoxDecoration(
+                                    gradient: LinearGradient(
+                                      colors: [
+                                        Color(0xFFE2BF4E),
+                                        Color(0xFF937416)
+                                      ],
+                                      stops: [0.0, 1.0],
+                                      begin: AlignmentDirectional(0.0, -1.0),
+                                      end: AlignmentDirectional(0, 1.0),
                                     ),
-                                    onPressed: () {
-                                      print('IconButton pressed ...');
-                                    },
+                                    shape: BoxShape.circle,
                                   ),
-                                if (widget.community?.members.contains(
-                                        communityProfileCommunityMemberRecord
-                                            ?.reference) ==
-                                    false)
-                                  InkWell(
-                                    splashColor: Colors.transparent,
-                                    focusColor: Colors.transparent,
-                                    hoverColor: Colors.transparent,
-                                    highlightColor: Colors.transparent,
-                                    onTap: () async {
-                                      _model.chat =
-                                          await queryCommunitychatRecordOnce(
-                                        queryBuilder: (communitychatRecord) =>
-                                            communitychatRecord.where(
-                                          'communityRef',
-                                          isEqualTo:
-                                              widget.community?.reference,
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      FlutterFlowIconButton(
+                                        borderRadius: 8.0,
+                                        buttonSize: 65.0,
+                                        icon: Icon(
+                                          FFIcons.kchat1,
+                                          color:
+                                              FlutterFlowTheme.of(context).info,
+                                          size: 30.0,
                                         ),
-                                        singleRecord: true,
-                                      ).then((s) => s.firstOrNull);
-
-                                      var communityMemberRecordReference =
-                                          CommunityMemberRecord.createDoc(
-                                              widget.community!.reference);
-                                      await communityMemberRecordReference
-                                          .set(createCommunityMemberRecordData(
-                                        userRef: currentUserReference,
-                                        isAdmin: false,
-                                        isModerator: false,
-                                      ));
-                                      _model.membe = CommunityMemberRecord
-                                          .getDocumentFromData(
-                                              createCommunityMemberRecordData(
-                                                userRef: currentUserReference,
-                                                isAdmin: false,
-                                                isModerator: false,
+                                        onPressed: () async {
+                                          context.pushNamed(
+                                            CommunitychatWidget.routeName,
+                                            queryParameters: {
+                                              'chat': serializeParam(
+                                                widget.community?.comunityChat,
+                                                ParamType.DocumentReference,
                                               ),
-                                              communityMemberRecordReference);
-
-                                      await _model.chat!.reference.update({
+                                              'comunity': serializeParam(
+                                                widget.community?.reference,
+                                                ParamType.DocumentReference,
+                                              ),
+                                              'member': serializeParam(
+                                                communityProfileCommunityMemberRecord
+                                                    ?.reference,
+                                                ParamType.DocumentReference,
+                                              ),
+                                            }.withoutNulls,
+                                          );
+                                        },
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              );
+                            } else {
+                              return Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 270.0, 30.0, 0.0),
+                                child: InkWell(
+                                  splashColor: Colors.transparent,
+                                  focusColor: Colors.transparent,
+                                  hoverColor: Colors.transparent,
+                                  highlightColor: Colors.transparent,
+                                  onTap: () async {
+                                    var communityMemberRecordReference =
+                                        CommunityMemberRecord.createDoc(
+                                            widget.community!.reference);
+                                    await communityMemberRecordReference
+                                        .set(createCommunityMemberRecordData(
+                                      userRef: currentUserReference,
+                                      isAdmin: false,
+                                      isModerator: false,
+                                    ));
+                                    _model.membe = CommunityMemberRecord
+                                        .getDocumentFromData(
+                                            createCommunityMemberRecordData(
+                                              userRef: currentUserReference,
+                                              isAdmin: false,
+                                              isModerator: false,
+                                            ),
+                                            communityMemberRecordReference);
+                                    if (widget.community?.comunityChat !=
+                                        null) {
+                                      await widget.community!.comunityChat!
+                                          .update({
                                         ...mapToFirestore(
                                           {
                                             'members': FieldValue.arrayUnion(
@@ -549,56 +566,119 @@ class _CommunityProfileWidgetState extends State<CommunityProfileWidget> {
                                           },
                                         ),
                                       });
+                                    } else {
+                                      var communitychatRecordReference =
+                                          CommunitychatRecord.collection.doc();
+                                      await communitychatRecordReference.set({
+                                        ...createCommunitychatRecordData(
+                                          communityRef:
+                                              widget.community?.reference,
+                                          message: 'welcom',
+                                          createdUserRef:
+                                              widget.community?.createdUserRef,
+                                          createdTime: getCurrentTimestamp,
+                                          lastmesageTime: getCurrentTimestamp,
+                                        ),
+                                        ...mapToFirestore(
+                                          {
+                                            'members': [currentUserReference],
+                                          },
+                                        ),
+                                      });
+                                      _model.newcommunity = CommunitychatRecord
+                                          .getDocumentFromData({
+                                        ...createCommunitychatRecordData(
+                                          communityRef:
+                                              widget.community?.reference,
+                                          message: 'welcom',
+                                          createdUserRef:
+                                              widget.community?.createdUserRef,
+                                          createdTime: getCurrentTimestamp,
+                                          lastmesageTime: getCurrentTimestamp,
+                                        ),
+                                        ...mapToFirestore(
+                                          {
+                                            'members': [currentUserReference],
+                                          },
+                                        ),
+                                      }, communitychatRecordReference);
 
-                                      context.pushNamed(
-                                        CommunitychatWidget.routeName,
-                                        queryParameters: {
-                                          'chat': serializeParam(
-                                            _model.chat?.reference,
-                                            ParamType.DocumentReference,
-                                          ),
-                                          'comunity': serializeParam(
-                                            widget.community?.reference,
-                                            ParamType.DocumentReference,
-                                          ),
-                                          'member': serializeParam(
-                                            _model.membe?.reference,
-                                            ParamType.DocumentReference,
-                                          ),
-                                        }.withoutNulls,
-                                      );
+                                      await widget.community!.reference
+                                          .update({
+                                        ...createCommunityRecordData(
+                                          comunityChat:
+                                              widget.community?.comunityChat,
+                                        ),
+                                        ...mapToFirestore(
+                                          {
+                                            'members': FieldValue.arrayUnion([
+                                              communityProfileCommunityMemberRecord
+                                                  ?.reference
+                                            ]),
+                                          },
+                                        ),
+                                      });
+                                    }
 
-                                      safeSetState(() {});
-                                    },
-                                    child: Text(
-                                      FFLocalizations.of(context).getText(
-                                        'r1efunhk' /* Join */,
+                                    _model.visibility = true;
+                                    safeSetState(() {});
+
+                                    safeSetState(() {});
+                                  },
+                                  child: Container(
+                                    width: 70.0,
+                                    height: 70.0,
+                                    decoration: BoxDecoration(
+                                      gradient: LinearGradient(
+                                        colors: [
+                                          Color(0xFFE2BF4E),
+                                          Color(0xFF937416)
+                                        ],
+                                        stops: [0.0, 1.0],
+                                        begin: AlignmentDirectional(0.0, -1.0),
+                                        end: AlignmentDirectional(0, 1.0),
                                       ),
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .override(
-                                            font: GoogleFonts.poppins(
-                                              fontWeight: FontWeight.w600,
-                                              fontStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .fontStyle,
-                                            ),
-                                            color: FlutterFlowTheme.of(context)
-                                                .secondaryBackground,
-                                            fontSize: 16.0,
-                                            letterSpacing: 0.0,
-                                            fontWeight: FontWeight.w600,
-                                            fontStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .bodyMedium
-                                                    .fontStyle,
+                                      shape: BoxShape.circle,
+                                    ),
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Text(
+                                          FFLocalizations.of(context).getText(
+                                            'vjdh86gl' /* Join */,
                                           ),
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                font: GoogleFonts.poppins(
+                                                  fontWeight: FontWeight.w600,
+                                                  fontStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMedium
+                                                          .fontStyle,
+                                                ),
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondaryBackground,
+                                                fontSize: 16.0,
+                                                letterSpacing: 0.0,
+                                                fontWeight: FontWeight.w600,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .fontStyle,
+                                              ),
+                                        ),
+                                      ],
                                     ),
                                   ),
-                              ],
-                            ),
-                          ),
+                                ),
+                              );
+                            }
+                          },
                         ),
                       ),
                     ],

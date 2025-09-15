@@ -5,6 +5,10 @@ import 'business_filter_widget.dart' show BusinessFilterWidget;
 import 'package:flutter/material.dart';
 
 class BusinessFilterModel extends FlutterFlowModel<BusinessFilterWidget> {
+  ///  Local state fields for this component.
+
+  String? category;
+
   ///  State fields for stateful widgets in this component.
 
   // State field(s) for TextField widget.

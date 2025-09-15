@@ -6,8 +6,8 @@ import '/backend/backend.dart';
 
 import '/backend/schema/enums/enums.dart';
 
-import '../../flutter_flow/place.dart';
-import '../../flutter_flow/uploaded_file.dart';
+import 'package:ff_commons/flutter_flow/place.dart';
+import 'package:ff_commons/flutter_flow/uploaded_file.dart';
 
 /// SERIALIZATION HELPERS
 

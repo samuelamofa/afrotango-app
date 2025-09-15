@@ -14,6 +14,10 @@ class ProfilesComunityModel extends FlutterFlowModel<ProfilesComunityWidget> {
 
   bool media = false;
 
+  bool? isFollow = false;
+
+  int? num = 0;
+
   ///  State fields for stateful widgets in this page.
 
   // Stores action output result for [Firestore Query - Query a collection] action in IconButton widget.

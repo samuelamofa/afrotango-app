@@ -10,7 +10,8 @@ export '/auth/edit_profile/edit_profile_widget.dart' show EditProfileWidget;
 export '/auth/profiles/profiles_widget.dart' show ProfilesWidget;
 export '/auth/profileshare/profileshare_widget.dart' show ProfileshareWidget;
 export '/event/eventhome/eventhome_widget.dart' show EventhomeWidget;
-export '/event/eventsearch/eventsearch_widget.dart' show EventsearchWidget;
+export '/community/cardcomponent/eventsearch/eventsearch_widget.dart'
+    show EventsearchWidget;
 export '/event/eventdetails/eventdetails_widget.dart' show EventdetailsWidget;
 export '/event/eventodersucess/eventodersucess_widget.dart'
     show EventodersucessWidget;
@@ -28,8 +29,6 @@ export '/community/comunity_list/comunity_list_widget.dart'
 export '/community/addmember/addmember_widget.dart' show AddmemberWidget;
 export '/community/addcomunity_details/addcomunity_details_widget.dart'
     show AddcomunityDetailsWidget;
-export '/community/searchcontact/searchcontact_widget.dart'
-    show SearchcontactWidget;
 export '/community/community_share_q_r/community_share_q_r_widget.dart'
     show CommunityShareQRWidget;
 export '/market/market_home/market_home_widget.dart' show MarketHomeWidget;
@@ -144,3 +143,5 @@ export '/featured_users/featured_users_widget.dart' show FeaturedUsersWidget;
 export '/new_users/new_users_widget.dart' show NewUsersWidget;
 export '/auth/profileshare_copy/profileshare_copy_widget.dart'
     show ProfileshareCopyWidget;
+export '/event/eventsearch_copy/eventsearch_copy_widget.dart'
+    show EventsearchCopyWidget;

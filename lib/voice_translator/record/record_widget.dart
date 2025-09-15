@@ -2,13 +2,13 @@ import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_audio_player.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/voice_translator/loading/loading_widget.dart';
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import '/flutter_flow/permissions_util.dart';
+import 'package:ff_theme/flutter_flow/flutter_flow_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
@@ -455,7 +455,7 @@ Language */
                                       },
                                     );
 
-                                    FFAppState().originalAdio =
+                                    FFAppState().originalAudio =
                                         _model.recorded!;
                                     safeSetState(() {});
                                     _model.apiResultf46 =
@@ -501,7 +501,7 @@ Language */
                                             GetResponseCall.message(
                                           (_model.translatr?.jsonBody ?? ''),
                                         )!;
-                                        FFAppState().transcribeAdio =
+                                        FFAppState().transcribeAudio =
                                             _model.audiotranscrib!;
                                         FFAppState().update(() {});
                                         _model.returnadio = !_model.returnadio;
@@ -580,7 +580,7 @@ Language */
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           children: [
-                            if (FFAppState().originalAdio != '')
+                            if (FFAppState().originalAudio != '')
                               Row(
                                 mainAxisSize: MainAxisSize.max,
                                 mainAxisAlignment:
@@ -614,7 +614,7 @@ Language */
                                     false))
                               FlutterFlowAudioPlayer(
                                 audio: Audio.network(
-                                  FFAppState().originalAdio,
+                                  FFAppState().originalAudio,
                                   metas: Metas(
                                     title: 'English Recording',
                                   ),
@@ -673,7 +673,7 @@ Language */
                               thickness: 1.0,
                               color: FlutterFlowTheme.of(context).alternate,
                             ),
-                            if (FFAppState().transcribeAdio != '')
+                            if (FFAppState().transcribeAudio != '')
                               Row(
                                 mainAxisSize: MainAxisSize.max,
                                 mainAxisAlignment:
@@ -732,10 +732,10 @@ Language */
                                   ),
                                 ],
                               ),
-                            if (FFAppState().transcribeAdio != '')
+                            if (FFAppState().transcribeAudio != '')
                               FlutterFlowAudioPlayer(
                                 audio: Audio.network(
-                                  FFAppState().transcribeAdio,
+                                  FFAppState().transcribeAudio,
                                   metas: Metas(
                                     title:
                                         '${_model.dropDownoutValue} Translation',

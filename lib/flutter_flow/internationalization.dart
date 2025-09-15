@@ -1155,6 +1155,12 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // eventsearch
   {
+    '1yx6e2qd': {
+      'en': 'TextField',
+      'es': '',
+      'fr': '',
+      'pt': '',
+    },
     'jyyasfw9': {
       'en': 'Home',
       'es': 'Hogar',
@@ -1434,7 +1440,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'fr': 'Description',
       'pt': 'Descrição',
     },
-    'r1efunhk': {
+    'vjdh86gl': {
       'en': 'Join',
       'es': 'Unirse',
       'fr': 'Rejoindre',
@@ -1570,105 +1576,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'pt': 'Adicione os detalhes do grupo abaixo',
     },
     '01kun1qt': {
-      'en': 'Home',
-      'es': 'Hogar',
-      'fr': 'Maison',
-      'pt': 'Lar',
-    },
-  },
-  // searchcontact
-  {
-    '55cvs65i': {
-      'en': 'Search something',
-      'es': 'Buscar algo',
-      'fr': 'Rechercher quelque chose',
-      'pt': 'Pesquisar algo',
-    },
-    'esn62cxg': {
-      'en': 'Professionals',
-      'es': 'Profesionales',
-      'fr': 'Professionnels',
-      'pt': 'Profissionais',
-    },
-    'mvoonssw': {
-      'en': 'Entrepreneurs',
-      'es': 'Emprendedores',
-      'fr': 'Entrepreneurs',
-      'pt': 'Empreendedores',
-    },
-    'h9vdfrab': {
-      'en': 'Students',
-      'es': 'Estudiantes',
-      'fr': 'Étudiants',
-      'pt': 'Estudantes',
-    },
-    'td5pn1bo': {
-      'en': 'Athletes',
-      'es': 'Atletas',
-      'fr': 'Athlètes',
-      'pt': 'Atletas',
-    },
-    'hm8oc7n6': {
-      'en': 'Artisans',
-      'es': 'artesanos',
-      'fr': 'Artisans',
-      'pt': 'Artesãos',
-    },
-    'qjtw23fm': {
-      'en': 'Recent Search',
-      'es': 'Búsqueda reciente',
-      'fr': 'Recherche récente',
-      'pt': 'Pesquisa recente',
-    },
-    'dmbkqg3y': {
-      'en': 'System check',
-      'es': 'Comprobación del sistema',
-      'fr': 'Vérification du système',
-      'pt': 'Verificação do sistema',
-    },
-    'wf024lpq': {
-      'en': 'System check',
-      'es': 'Comprobación del sistema',
-      'fr': 'Vérification du système',
-      'pt': 'Verificação do sistema',
-    },
-    '3a4159jt': {
-      'en': 'System check',
-      'es': 'Comprobación del sistema',
-      'fr': 'Vérification du système',
-      'pt': 'Verificação do sistema',
-    },
-    'p0cgsqcf': {
-      'en': 'Search result',
-      'es': 'Resultado de la búsqueda',
-      'fr': 'Résultat de la recherche',
-      'pt': 'Resultado da pesquisa',
-    },
-    '7lsn2szn': {
-      'en': 'Featured users',
-      'es': 'Usuarios destacados',
-      'fr': 'Utilisateurs en vedette',
-      'pt': 'Usuários em destaque',
-    },
-    'dmxh8xj7': {
-      'en': 'Popular Users',
-      'es': 'Usuarios populares',
-      'fr': 'Utilisateurs populaires',
-      'pt': 'Usuários populares',
-    },
-    'fe3qxe7d': {
-      'en': 'New Users',
-      'es': 'Nuevos usuarios',
-      'fr': 'Nouveaux utilisateurs',
-      'pt': 'Novos usuários',
-    },
-    '1yoggde8': {
-      'en': 'Search people',
-      'es': 'Buscar personas',
-      'fr': 'Rechercher des personnes',
-      'pt': 'Pesquisar pessoas',
-    },
-    '76ggq9vd': {
       'en': 'Home',
       'es': 'Hogar',
       'fr': 'Maison',
@@ -2428,11 +2335,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // LisEventspecialdeal
   {
-    '5n5z1p0w': {
-      'en': 'Special Deal',
-      'es': 'Oferta especial',
-      'fr': 'Offre spéciale',
-      'pt': 'Oferta especial',
+    'gxh141kv': {
+      'en': 'Special Offers',
+      'es': '',
+      'fr': '',
+      'pt': '',
     },
     'gcyww85z': {
       'en': 'Home',
@@ -2490,18 +2397,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'es': 'Perfil',
       'fr': 'Profil',
       'pt': 'Perfil',
-    },
-    'ym7div6g': {
-      'en': 'Follow',
-      'es': 'Seguir',
-      'fr': 'Suivre',
-      'pt': 'Seguir',
-    },
-    'rv2dz9xa': {
-      'en': 'Unfollow',
-      'es': 'Dejar de seguir',
-      'fr': 'Ne plus suivre',
-      'pt': 'Deixar de seguir',
     },
     'oubymq6x': {
       'en': 'Bio',
@@ -5264,6 +5159,12 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'fr': 'Recherche...',
       'pt': 'Procurar...',
     },
+    'ss2ws4k9': {
+      'en': 'Search Field',
+      'es': '',
+      'fr': '',
+      'pt': '',
+    },
     '9qth6b8b': {
       'en': 'Search Results',
       'es': 'Resultados de la búsqueda',
@@ -5294,6 +5195,12 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // communitySearchResult
   {
+    'mp90od1q': {
+      'en': 'Search Field',
+      'es': '',
+      'fr': '',
+      'pt': '',
+    },
     'cclzpwa0': {
       'en': 'Country',
       'es': 'País',
@@ -5547,6 +5454,21 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'pt': 'Compartilhe seu perfil',
     },
     'ox8x8w1j': {
+      'en': 'Home',
+      'es': 'Hogar',
+      'fr': 'Maison',
+      'pt': 'Lar',
+    },
+  },
+  // eventsearchCopy
+  {
+    'os48qcyp': {
+      'en': 'TextField',
+      'es': '',
+      'fr': '',
+      'pt': '',
+    },
+    'g7rfbgl1': {
       'en': 'Home',
       'es': 'Hogar',
       'fr': 'Maison',
@@ -6694,12 +6616,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'fr': 'Catégorie',
       'pt': 'Categoria',
     },
-    'yrja0uxz': {
-      'en': 'Sport',
-      'es': 'Deporte',
-      'fr': 'Sport',
-      'pt': 'Esporte',
-    },
     'kbnh76q1': {
       'en': 'Food',
       'es': 'Alimento',
@@ -6711,12 +6627,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'es': 'Seleccionar país/fecha',
       'fr': 'Sélectionnez le pays/la date',
       'pt': 'Selecione País/Data',
-    },
-    'tk4dcuz0': {
-      'en': '',
-      'es': '',
-      'fr': '',
-      'pt': '',
     },
     'gd2yscef': {
       'en': 'Select country',
@@ -6851,6 +6761,57 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'pt': 'Cancelar',
     },
     '4cqu7kg2': {
+      'en': 'Apply',
+      'es': 'Aplicar',
+      'fr': 'Appliquer',
+      'pt': 'Aplicar',
+    },
+  },
+  // eventFilterCopy
+  {
+    'uh8fmftk': {
+      'en': 'Filters',
+      'es': 'Filtros',
+      'fr': 'Filtres',
+      'pt': 'Filtros',
+    },
+    'yv2cq0xp': {
+      'en': 'Event name',
+      'es': 'Buscar evento',
+      'fr': 'Rechercher un événement',
+      'pt': 'Pesquisar Evento',
+    },
+    'm6zfzmuv': {
+      'en': 'Category',
+      'es': 'Categoría',
+      'fr': 'Catégorie',
+      'pt': 'Categoria',
+    },
+    'k6jnbmpd': {
+      'en': 'Select Country/Date',
+      'es': 'Seleccionar país/fecha',
+      'fr': 'Sélectionnez le pays/la date',
+      'pt': 'Selecione País/Data',
+    },
+    'lmel239c': {
+      'en': 'Select country',
+      'es': 'Seleccionar país',
+      'fr': 'Sélectionnez un pays',
+      'pt': 'Selecione o país',
+    },
+    'a9e6yzw3': {
+      'en': 'Search...',
+      'es': 'Buscar...',
+      'fr': 'Recherche...',
+      'pt': 'Procurar...',
+    },
+    'evdoidmp': {
+      'en': 'Cancel',
+      'es': 'Cancelar',
+      'fr': 'Annuler',
+      'pt': 'Cancelar',
+    },
+    'zbqgxaz3': {
       'en': 'Apply',
       'es': 'Aplicar',
       'fr': 'Appliquer',
