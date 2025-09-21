@@ -14,7 +14,7 @@
     "@langchain/core": "^0.3.19",
     "@langchain/langgraph": "^0.2.23",
     "@langchain/openai": "^0.3.14",
-    "@langchain/google-genai": "^0.0.8",
+    "@langchain/google-genai": "^0.2.16",
     "@langchain/anthropic": "^0.1.1"
   },
   "devDependencies": {
