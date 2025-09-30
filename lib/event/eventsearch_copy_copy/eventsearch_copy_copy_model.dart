@@ -1,10 +1,11 @@
 import '/backend/backend.dart';
 import '/event/cardevent/card2/card2_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import 'eventsearch_copy_widget.dart' show EventsearchCopyWidget;
+import 'eventsearch_copy_copy_widget.dart' show EventsearchCopyCopyWidget;
 import 'package:flutter/material.dart';
 
-class EventsearchCopyModel extends FlutterFlowModel<EventsearchCopyWidget> {
+class EventsearchCopyCopyModel
+    extends FlutterFlowModel<EventsearchCopyCopyWidget> {
   ///  Local state fields for this page.
 
   bool? isfilter = false;
@@ -32,10 +33,10 @@ class EventsearchCopyModel extends FlutterFlowModel<EventsearchCopyWidget> {
   late FlutterFlowDynamicModels<Card2Model> card2Models1;
   // Models for card2 dynamic component.
   late FlutterFlowDynamicModels<Card2Model> card2Models2;
-  // State field(s) for SearchEvent widget.
-  FocusNode? searchEventFocusNode;
-  TextEditingController? searchEventTextController;
-  String? Function(BuildContext, String?)? searchEventTextControllerValidator;
+  // State field(s) for TextField widget.
+  FocusNode? textFieldFocusNode;
+  TextEditingController? textController;
+  String? Function(BuildContext, String?)? textControllerValidator;
   List<EventRecord> simpleSearchResults = [];
 
   @override
@@ -48,7 +49,7 @@ class EventsearchCopyModel extends FlutterFlowModel<EventsearchCopyWidget> {
   void dispose() {
     card2Models1.dispose();
     card2Models2.dispose();
-    searchEventFocusNode?.dispose();
-    searchEventTextController?.dispose();
+    textFieldFocusNode?.dispose();
+    textController?.dispose();
   }
 }

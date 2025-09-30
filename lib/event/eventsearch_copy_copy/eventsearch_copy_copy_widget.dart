@@ -12,28 +12,29 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:text_search/text_search.dart';
-import 'eventsearch_copy_model.dart';
-export 'eventsearch_copy_model.dart';
+import 'eventsearch_copy_copy_model.dart';
+export 'eventsearch_copy_copy_model.dart';
 
-class EventsearchCopyWidget extends StatefulWidget {
-  const EventsearchCopyWidget({super.key});
+class EventsearchCopyCopyWidget extends StatefulWidget {
+  const EventsearchCopyCopyWidget({super.key});
 
-  static String routeName = 'eventsearchCopy';
-  static String routePath = 'eventsearchCopy';
+  static String routeName = 'eventsearchCopyCopy';
+  static String routePath = 'eventsearchCopyCopy';
 
   @override
-  State<EventsearchCopyWidget> createState() => _EventsearchCopyWidgetState();
+  State<EventsearchCopyCopyWidget> createState() =>
+      _EventsearchCopyCopyWidgetState();
 }
 
-class _EventsearchCopyWidgetState extends State<EventsearchCopyWidget> {
-  late EventsearchCopyModel _model;
+class _EventsearchCopyCopyWidgetState extends State<EventsearchCopyCopyWidget> {
+  late EventsearchCopyCopyModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => EventsearchCopyModel());
+    _model = createModel(context, () => EventsearchCopyCopyModel());
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
@@ -44,8 +45,8 @@ class _EventsearchCopyWidgetState extends State<EventsearchCopyWidget> {
       safeSetState(() {});
     });
 
-    _model.searchEventTextController ??= TextEditingController();
-    _model.searchEventFocusNode ??= FocusNode();
+    _model.textController ??= TextEditingController();
+    _model.textFieldFocusNode ??= FocusNode();
   }
 
   @override
@@ -83,7 +84,7 @@ class _EventsearchCopyWidgetState extends State<EventsearchCopyWidget> {
             ),
           );
         }
-        List<EventRecord> eventsearchCopyEventRecordList = snapshot.data!;
+        List<EventRecord> eventsearchCopyCopyEventRecordList = snapshot.data!;
 
         return GestureDetector(
           onTap: () {
@@ -143,13 +144,11 @@ class _EventsearchCopyWidgetState extends State<EventsearchCopyWidget> {
                                       Container(
                                         width: 200.0,
                                         child: TextFormField(
-                                          controller:
-                                              _model.searchEventTextController,
-                                          focusNode:
-                                              _model.searchEventFocusNode,
+                                          controller: _model.textController,
+                                          focusNode: _model.textFieldFocusNode,
                                           onChanged: (_) =>
                                               EasyDebounce.debounce(
-                                            '_model.searchEventTextController',
+                                            '_model.textController',
                                             Duration(milliseconds: 2000),
                                             () async {
                                               FFAppState().isFilter = false;
@@ -157,7 +156,7 @@ class _EventsearchCopyWidgetState extends State<EventsearchCopyWidget> {
                                               safeSetState(() {
                                                 _model.simpleSearchResults =
                                                     TextSearch(
-                                                  eventsearchCopyEventRecordList
+                                                  eventsearchCopyCopyEventRecordList
                                                       .map(
                                                         (record) =>
                                                             TextSearchItem
@@ -174,7 +173,7 @@ class _EventsearchCopyWidgetState extends State<EventsearchCopyWidget> {
                                                       .toList(),
                                                 )
                                                         .search(_model
-                                                            .searchEventTextController
+                                                            .textController
                                                             .text)
                                                         .map((r) => r.object)
                                                         .toList();
@@ -219,7 +218,7 @@ class _EventsearchCopyWidgetState extends State<EventsearchCopyWidget> {
                                             hintText:
                                                 FFLocalizations.of(context)
                                                     .getText(
-                                              'os48qcyp' /* Search Event */,
+                                              'tk1dxpx5' /* Search Event */,
                                             ),
                                             hintStyle:
                                                 FlutterFlowTheme.of(context)
@@ -321,7 +320,7 @@ class _EventsearchCopyWidgetState extends State<EventsearchCopyWidget> {
                                                   .primaryText,
                                           enableInteractiveSelection: true,
                                           validator: _model
-                                              .searchEventTextControllerValidator
+                                              .textControllerValidator
                                               .asValidator(context),
                                         ),
                                       ),
@@ -440,7 +439,7 @@ class _EventsearchCopyWidgetState extends State<EventsearchCopyWidget> {
                                       updateCallback: () => safeSetState(() {}),
                                       child: Card2Widget(
                                         key: Key(
-                                          'Keywsg_${filterListViewEventRecord.reference.id}',
+                                          'Keyjqm_${filterListViewEventRecord.reference.id}',
                                         ),
                                         event: filterListViewEventRecord,
                                       ),
@@ -454,7 +453,7 @@ class _EventsearchCopyWidgetState extends State<EventsearchCopyWidget> {
                               builder: (context) {
                                 final events = (_model.isSearch == true
                                         ? _model.simpleSearchResults
-                                        : eventsearchCopyEventRecordList)
+                                        : eventsearchCopyCopyEventRecordList)
                                     .toList();
                                 if (events.isEmpty) {
                                   return Center(
@@ -483,7 +482,7 @@ class _EventsearchCopyWidgetState extends State<EventsearchCopyWidget> {
                                       updateCallback: () => safeSetState(() {}),
                                       child: Card2Widget(
                                         key: Key(
-                                          'Keyc6u_${eventsIndex.toString()}',
+                                          'Keyotz_${eventsIndex.toString()}',
                                         ),
                                         event: eventsItem,
                                       ),
