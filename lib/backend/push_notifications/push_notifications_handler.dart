@@ -376,6 +376,7 @@ final parametersBuilderMap =
         },
       ),
   'eventsearchCopy': ParameterData.none(),
+  'eventsearchCopyCopy': ParameterData.none(),
 };
 
 Map<String, dynamic> getInitialParameterData(Map<String, dynamic> data) {

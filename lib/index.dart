@@ -145,3 +145,5 @@ export '/auth/profileshare_copy/profileshare_copy_widget.dart'
     show ProfileshareCopyWidget;
 export '/event/eventsearch_copy/eventsearch_copy_widget.dart'
     show EventsearchCopyWidget;
+export '/event/eventsearch_copy_copy/eventsearch_copy_copy_widget.dart'
+    show EventsearchCopyCopyWidget;

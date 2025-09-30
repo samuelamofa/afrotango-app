@@ -5463,12 +5463,27 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   // eventsearchCopy
   {
     'os48qcyp': {
-      'en': 'TextField',
+      'en': 'Search Event',
       'es': '',
       'fr': '',
       'pt': '',
     },
     'g7rfbgl1': {
+      'en': 'Home',
+      'es': 'Hogar',
+      'fr': 'Maison',
+      'pt': 'Lar',
+    },
+  },
+  // eventsearchCopyCopy
+  {
+    'tk1dxpx5': {
+      'en': 'Search Event',
+      'es': '',
+      'fr': '',
+      'pt': '',
+    },
+    'vvxygf0t': {
       'en': 'Home',
       'es': 'Hogar',
       'fr': 'Maison',
