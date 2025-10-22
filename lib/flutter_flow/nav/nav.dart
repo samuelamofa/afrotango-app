@@ -888,14 +888,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) {
             ),
           ),
           FFRoute(
-            name: EventsearchCopyWidget.routeName,
-            path: EventsearchCopyWidget.routePath,
-            builder: (context, params) => EventsearchCopyWidget(),
-          ),
-          FFRoute(
-            name: EventsearchCopyCopyWidget.routeName,
-            path: EventsearchCopyCopyWidget.routePath,
-            builder: (context, params) => EventsearchCopyCopyWidget(),
+            name: EventsearchTestWidget.routeName,
+            path: EventsearchTestWidget.routePath,
+            builder: (context, params) => EventsearchTestWidget(),
           ),
           FFRoute(
             name: $branchio_dynamic_linking_akp5u6.TestHomePageWidget.routeName,

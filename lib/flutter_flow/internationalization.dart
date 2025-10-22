@@ -5460,30 +5460,15 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'pt': 'Lar',
     },
   },
-  // eventsearchCopy
+  // eventsearchTest
   {
-    'os48qcyp': {
-      'en': 'Search Event',
+    'ebqyci57': {
+      'en': 'TextField',
       'es': '',
       'fr': '',
       'pt': '',
     },
-    'g7rfbgl1': {
-      'en': 'Home',
-      'es': 'Hogar',
-      'fr': 'Maison',
-      'pt': 'Lar',
-    },
-  },
-  // eventsearchCopyCopy
-  {
-    'tk1dxpx5': {
-      'en': 'Search Event',
-      'es': '',
-      'fr': '',
-      'pt': '',
-    },
-    'vvxygf0t': {
+    'i2c7bff3': {
       'en': 'Home',
       'es': 'Hogar',
       'fr': 'Maison',
@@ -6789,12 +6774,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'es': 'Filtros',
       'fr': 'Filtres',
       'pt': 'Filtros',
-    },
-    'yv2cq0xp': {
-      'en': 'Event name',
-      'es': 'Buscar evento',
-      'fr': 'Rechercher un événement',
-      'pt': 'Pesquisar Evento',
     },
     'm6zfzmuv': {
       'en': 'Category',

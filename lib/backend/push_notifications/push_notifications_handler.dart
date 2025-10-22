@@ -375,8 +375,7 @@ final parametersBuilderMap =
           'user': getParameter<DocumentReference>(data, 'user'),
         },
       ),
-  'eventsearchCopy': ParameterData.none(),
-  'eventsearchCopyCopy': ParameterData.none(),
+  'eventsearchTest': ParameterData.none(),
 };
 
 Map<String, dynamic> getInitialParameterData(Map<String, dynamic> data) {

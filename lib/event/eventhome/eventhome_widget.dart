@@ -223,7 +223,7 @@ class _EventhomeWidgetState extends State<EventhomeWidget> {
                                         highlightColor: Colors.transparent,
                                         onTap: () async {
                                           context.pushNamed(
-                                              EventsearchCopyWidget.routeName);
+                                              EventsearchTestWidget.routeName);
                                         },
                                         child: Row(
                                           mainAxisSize: MainAxisSize.max,

@@ -13,10 +13,11 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
+// ❌ Removed flutter_barcode_scanner
+import 'package:mobile_scanner/mobile_scanner.dart';
 import 'dart:io';
 import 'dart:typed_data';
-import 'package:share/share.dart';
+import 'package:share_plus/share_plus.dart';
 import 'package:flutter/rendering.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import 'dart:ui' as ui;
@@ -55,16 +56,18 @@ class _CreateQrCodeState extends State<CreateQrCodeCopy> {
   }
 
   Future<void> scanQrCode() async {
-    try {
-      final qrCod = await FlutterBarcodeScanner.scanBarcode(
-          "#ff6666", "cancel", true, ScanMode.QR);
-      if (qrCod.isNotEmpty) {
-        print("My code qr : $qrCod");
-        textQrCodeScan = qrCod;
-        setState(() {});
-      }
-    } on PlatformException {
-      print("exception");
+    final result = await Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => const QRScanScreen(),
+      ),
+    );
+
+    if (result != null && result is String) {
+      print("My code qr: $result");
+      setState(() {
+        textQrCodeScan = result;
+      });
     }
   }
 
@@ -78,21 +81,22 @@ class _CreateQrCodeState extends State<CreateQrCodeCopy> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Center(
-                child: RepaintBoundary(
-              key: globalKey,
-              child: QrImageView(
-                data: "${widget.qrcodedate}",
-                version: QrVersions.auto,
-                size: 200.0,
-                backgroundColor: Colors.white,
-                gapless: true,
-                errorStateBuilder: (cxt, err) {
-                  return const Center(
-                    child: Text("Error"),
-                  );
-                },
+              child: RepaintBoundary(
+                key: globalKey,
+                child: QrImageView(
+                  data: "${widget.qrcodedate}",
+                  version: QrVersions.auto,
+                  size: 200.0,
+                  backgroundColor: Colors.white,
+                  gapless: true,
+                  errorStateBuilder: (cxt, err) {
+                    return const Center(
+                      child: Text("Error"),
+                    );
+                  },
+                ),
               ),
-            )),
+            ),
             Padding(
               padding: const EdgeInsets.all(12.0),
               child: Center(
@@ -139,7 +143,8 @@ class _CreateQrCodeState extends State<CreateQrCodeCopy> {
                             borderRadius: BorderRadius.circular(22),
                             color: Colors.black,
                           ),
-                          padding: EdgeInsetsDirectional.fromSTEB(16, 0, 16, 0),
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              16, 0, 16, 0),
                           child: Center(
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
@@ -165,8 +170,40 @@ class _CreateQrCodeState extends State<CreateQrCodeCopy> {
                 ),
               ),
             ),
+            if (textQrCodeScan.isNotEmpty)
+              Padding(
+                padding: const EdgeInsets.only(top: 20),
+                child: Text(
+                  "Scanned QR: $textQrCodeScan",
+                  style: FlutterFlowTheme.of(context).bodyMedium,
+                ),
+              ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+// ✅ Updated QR scanner screen for mobile_scanner 3.5.7
+class QRScanScreen extends StatelessWidget {
+  const QRScanScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text("Scan QR Code")),
+      body: MobileScanner(
+        controller: MobileScannerController(),
+        onDetect: (capture) {
+          final List<Barcode> barcodes = capture.barcodes;
+          if (barcodes.isNotEmpty) {
+            final String? code = barcodes.first.rawValue;
+            if (code != null) {
+              Navigator.pop(context, code); // Return scanned value
+            }
+          }
+        },
       ),
     );
   }
